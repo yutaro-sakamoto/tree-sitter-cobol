@@ -95,7 +95,45 @@ module.exports = grammar({
       $.error
     ),
 
-    redefines_clause: $ => /todo_redefines_clause/,
+    redefines_clause: $ => seq(
+      $._REDEFINES, $._identifier_1
+    ),
+
+    _identifier_1: $ => choice(
+      $.qualified_word,
+      seq($.qualified_word, $._subref),
+      seq($.qualified_word, $._refmod),
+      seq($.qualified_word, $._subref, $._refmod),
+    ),
+
+    qualified_word: $ => seq(
+      $._WORD,
+      repeat(seq($._in_of, $._WORD))
+    ),
+
+    _in_of: $ => choice(
+      $._IN,
+      $._OF
+    ),
+
+    _subref: $ => seq(
+      '(',
+      $._exp_list,
+      ')'
+    ),
+
+    _refmod: $ => seq(
+      '(',
+      $._exp,
+      ':',
+      ')'
+    ),
+
+    //todo
+    _exp_list: $ => $._NUMBER,
+    //todo
+    _exp: $ => $._NUMBER,
+
     external_clause: $ => /todo_external_clause/,
     global_clause: $ => /todo_global_clause/,
     picture_clause: $ => seq(
@@ -106,10 +144,18 @@ module.exports = grammar({
 
     //todo
     _picture_string: $ => choice(
-      $.picture_x
+      $.picture_x,
+      $.picture_9,
     ),
 
     picture_x: $ => /([xX](\([0-9]+\))?)+/,
+
+    picture_9: $ => choice(
+      $._picture_9_z,
+      $._picture_9_v,
+    ),
+    _picture_9_z: $ => /(9(\([0-9]+\))?)+([zZ](\([0-9]+\))?)+/,
+    _picture_9_v: $ => /(9(\([0-9]+\))?)+([vV](9(\([0-9]+\))?)+)?/,
 
     usage_clause: $ => /todo_usage_clause/,
     sign_clause: $ => /todo_sign_clause/,
