@@ -1,6 +1,6 @@
 module.exports = grammar({
   name: 'COBOL',
-  word: $ => $.identifier,
+  word: $ => $._WORD,
 
   rules: {
     start: $ => repeat(
@@ -28,7 +28,7 @@ module.exports = grammar({
     ),
 
     program_name: $ => choice(
-      $.identifier,
+      $._WORD,
       $._LITERAL
     ),
 
@@ -40,7 +40,93 @@ module.exports = grammar({
     function_definition: $ => /todo_function_definition/,
 
     environment_division: $ => /todo_environment_division/,
-    data_division: $ => /todo_data_division/,
+    data_division: $ => seq(
+      $._DATA, $._DIVISION, '.',
+      optional($.file_section),
+      optional($.working_storage_section),
+      optional($.local_storage_section),
+      optional($.linkage_section),
+      optional($.report_section),
+      optional($.screen_section),
+    ),
+
+    file_section: $ => /todo_file_section/,
+    working_storage_section: $ => seq(
+      $._WORKING_STORAGE, $._SECTION, '.',
+      repeat(seq($.data_description, '.'))
+    ),
+
+    data_description: $ => choice(
+      $.constant_entry,
+      seq(
+        $.level_number, $.entry_name,
+        repeat($._data_description_clause), optional($._LITERAL)
+      ),
+      seq(
+        $.level_number_88, $.entry_name
+      ),
+    ),
+
+    level_number: $ => /[0-9][0-9]/,
+    level_number_88: $ => /88/,
+
+    entry_name: $ => choice(
+      $._FILLER,
+      $._WORD
+    ),
+
+    constant_entry: $ => /todo_constant_entry/,
+
+    _data_description_clause: $ => choice(
+      $.redefines_clause,
+      $.external_clause,
+      $.global_clause,
+      $.picture_clause,
+      $.usage_clause,
+      $.sign_clause,
+      $.occurs_clause,
+      $.justified_clause,
+      $.synchronized_clause,
+      $.blank_clause,
+      $.based_clause,
+      $.value_clause,
+      $.renames_clause,
+      $.any_length_clause,
+      $.error
+    ),
+
+    redefines_clause: $ => /todo_redefines_clause/,
+    external_clause: $ => /todo_external_clause/,
+    global_clause: $ => /todo_global_clause/,
+    picture_clause: $ => seq(
+      choice($._PICTURE, $._PIC),
+      optional($._IS),
+      $._picture_string
+    ),
+
+    //todo
+    _picture_string: $ => choice(
+      $.picture_x
+    ),
+
+    picture_x: $ => /([xX](\([0-9]+\))?)+/,
+
+    usage_clause: $ => /todo_usage_clause/,
+    sign_clause: $ => /todo_sign_clause/,
+    occurs_clause: $ => /todo_occurs_clause/,
+    justified_clause: $ => /todo_justified_clause/,
+    synchronized_clause: $ => /todo_synchronized_clause/,
+    blank_clause: $ => /todo_blank_clause/,
+    based_clause: $ => /todo_based_clause/,
+    value_clause: $ => /todo_value_clause/,
+    renames_clause: $ => /todo_renames_clause/,
+    any_length_clause: $ => /todo_any_length/,
+    error: $ => /todo_error/,
+
+    local_storage_section: $ => /local_storage_section/,
+    linkage_section: $ => /linkage_section/,
+    report_section: $ => /report_section/,
+    screen_section: $ => /screen_section/,
 
     //todo
     procedure_division: $ => seq(
@@ -63,7 +149,6 @@ module.exports = grammar({
       $._STOP, $._RUN
     ),
 
-    identifier: $ => /[a-zA-Z_][a-zA-Z0-9_\-]*/,
     number: $ => /[0-9]+/,
 
     //Reserved keywords
@@ -363,6 +448,7 @@ module.exports = grammar({
     _PAGE_HEADING: $ => /[pP][aA][gG][eE]-[hH][eE][aA][dD][iI][nN][gG]/,
     _PARAGRAPH: $ => /[pP][aA][rR][aA][gG][rR][aA][pP][hH]/,
     _PERFORM: $ => /[pP][eE][rR][fF][oO][rR][mM]/,
+    _PIC: $ => /[pP][iI][cC]/,
     _PICTURE: $ => /[pP][iI][cC][tT][uU][rR][eE]/,
     _PLUS: $ => /[pP][lL][uU][sS]/,
     _POINTER: $ => /[pP][oO][iI][nN][tT][eE][rR]/,
@@ -507,7 +593,7 @@ module.exports = grammar({
     _WHEN_COMPILED_FUNC: $ => /[wW][hH][eE][nN]-[cC][oO][mM][pP][iI][lL][eE][dD]-[fF][uU][nN][cC]/,
     _WHEN_OTHER: $ => /[wW][hH][eE][nN]-[oO][tT][hH][eE][rR]/,
     _WITH: $ => /[wW][iI][tT][hH]/,
-    _WORD: $ => /[wW][oO][rR][dD]/,
+    _WORD: $ => /[a-zA-z_][a-zA-Z0-9_\-]*/,
     _WORDS: $ => /[wW][oO][rR][dD][sS]/,
     _WORKING_STORAGE: $ => /[wW][oO][rR][kK][iI][nN][gG]-[sS][tT][oO][rR][aA][gG][eE]/,
     _WRITE: $ => /[wW][rR][iI][tT][eE]/,

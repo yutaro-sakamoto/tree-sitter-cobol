@@ -1,6 +1,6 @@
 {
   "name": "COBOL",
-  "word": "identifier",
+  "word": "_WORD",
   "rules": {
     "start": {
       "type": "REPEAT",
@@ -125,7 +125,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "_WORD"
         },
         {
           "type": "SYMBOL",
@@ -155,8 +155,393 @@
       "value": "todo_environment_division"
     },
     "data_division": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_DATA"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_DIVISION"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "file_section"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "working_storage_section"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "local_storage_section"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "linkage_section"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "report_section"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "screen_section"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "file_section": {
       "type": "PATTERN",
-      "value": "todo_data_division"
+      "value": "todo_file_section"
+    },
+    "working_storage_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_WORKING_STORAGE"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_SECTION"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "data_description"
+              },
+              {
+                "type": "STRING",
+                "value": "."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "data_description": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "constant_entry"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "level_number"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "entry_name"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_data_description_clause"
+              }
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_LITERAL"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "level_number_88"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "entry_name"
+            }
+          ]
+        }
+      ]
+    },
+    "level_number": {
+      "type": "PATTERN",
+      "value": "[0-9][0-9]"
+    },
+    "level_number_88": {
+      "type": "PATTERN",
+      "value": "88"
+    },
+    "entry_name": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_FILLER"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_WORD"
+        }
+      ]
+    },
+    "constant_entry": {
+      "type": "PATTERN",
+      "value": "todo_constant_entry"
+    },
+    "_data_description_clause": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "redefines_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "external_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "global_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "picture_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "usage_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "sign_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "occurs_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "justified_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "synchronized_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "blank_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "based_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "value_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "renames_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "any_length_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "error"
+        }
+      ]
+    },
+    "redefines_clause": {
+      "type": "PATTERN",
+      "value": "todo_redefines_clause"
+    },
+    "external_clause": {
+      "type": "PATTERN",
+      "value": "todo_external_clause"
+    },
+    "global_clause": {
+      "type": "PATTERN",
+      "value": "todo_global_clause"
+    },
+    "picture_clause": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_PICTURE"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_PIC"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_IS"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_picture_string"
+        }
+      ]
+    },
+    "_picture_string": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "picture_x"
+        }
+      ]
+    },
+    "picture_x": {
+      "type": "PATTERN",
+      "value": "([xX](\\([0-9]+\\))?)+"
+    },
+    "usage_clause": {
+      "type": "PATTERN",
+      "value": "todo_usage_clause"
+    },
+    "sign_clause": {
+      "type": "PATTERN",
+      "value": "todo_sign_clause"
+    },
+    "occurs_clause": {
+      "type": "PATTERN",
+      "value": "todo_occurs_clause"
+    },
+    "justified_clause": {
+      "type": "PATTERN",
+      "value": "todo_justified_clause"
+    },
+    "synchronized_clause": {
+      "type": "PATTERN",
+      "value": "todo_synchronized_clause"
+    },
+    "blank_clause": {
+      "type": "PATTERN",
+      "value": "todo_blank_clause"
+    },
+    "based_clause": {
+      "type": "PATTERN",
+      "value": "todo_based_clause"
+    },
+    "value_clause": {
+      "type": "PATTERN",
+      "value": "todo_value_clause"
+    },
+    "renames_clause": {
+      "type": "PATTERN",
+      "value": "todo_renames_clause"
+    },
+    "any_length_clause": {
+      "type": "PATTERN",
+      "value": "todo_any_length"
+    },
+    "error": {
+      "type": "PATTERN",
+      "value": "todo_error"
+    },
+    "local_storage_section": {
+      "type": "PATTERN",
+      "value": "local_storage_section"
+    },
+    "linkage_section": {
+      "type": "PATTERN",
+      "value": "linkage_section"
+    },
+    "report_section": {
+      "type": "PATTERN",
+      "value": "report_section"
+    },
+    "screen_section": {
+      "type": "PATTERN",
+      "value": "screen_section"
     },
     "procedure_division": {
       "type": "SEQ",
@@ -220,10 +605,6 @@
           "name": "_RUN"
         }
       ]
-    },
-    "identifier": {
-      "type": "PATTERN",
-      "value": "[a-zA-Z_][a-zA-Z0-9_\\-]*"
     },
     "number": {
       "type": "PATTERN",
@@ -1409,6 +1790,10 @@
       "type": "PATTERN",
       "value": "[pP][eE][rR][fF][oO][rR][mM]"
     },
+    "_PIC": {
+      "type": "PATTERN",
+      "value": "[pP][iI][cC]"
+    },
     "_PICTURE": {
       "type": "PATTERN",
       "value": "[pP][iI][cC][tT][uU][rR][eE]"
@@ -1987,7 +2372,7 @@
     },
     "_WORD": {
       "type": "PATTERN",
-      "value": "[wW][oO][rR][dD]"
+      "value": "[a-zA-z_][a-zA-Z0-9_\\-]*"
     },
     "_WORDS": {
       "type": "PATTERN",

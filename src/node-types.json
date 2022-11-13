@@ -5,6 +5,133 @@
     "fields": {}
   },
   {
+    "type": "data_description",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "any_length_clause",
+          "named": true
+        },
+        {
+          "type": "based_clause",
+          "named": true
+        },
+        {
+          "type": "blank_clause",
+          "named": true
+        },
+        {
+          "type": "constant_entry",
+          "named": true
+        },
+        {
+          "type": "entry_name",
+          "named": true
+        },
+        {
+          "type": "error",
+          "named": true
+        },
+        {
+          "type": "external_clause",
+          "named": true
+        },
+        {
+          "type": "global_clause",
+          "named": true
+        },
+        {
+          "type": "justified_clause",
+          "named": true
+        },
+        {
+          "type": "level_number",
+          "named": true
+        },
+        {
+          "type": "level_number_88",
+          "named": true
+        },
+        {
+          "type": "occurs_clause",
+          "named": true
+        },
+        {
+          "type": "picture_clause",
+          "named": true
+        },
+        {
+          "type": "redefines_clause",
+          "named": true
+        },
+        {
+          "type": "renames_clause",
+          "named": true
+        },
+        {
+          "type": "sign_clause",
+          "named": true
+        },
+        {
+          "type": "synchronized_clause",
+          "named": true
+        },
+        {
+          "type": "usage_clause",
+          "named": true
+        },
+        {
+          "type": "value_clause",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "data_division",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "file_section",
+          "named": true
+        },
+        {
+          "type": "linkage_section",
+          "named": true
+        },
+        {
+          "type": "local_storage_section",
+          "named": true
+        },
+        {
+          "type": "report_section",
+          "named": true
+        },
+        {
+          "type": "screen_section",
+          "named": true
+        },
+        {
+          "type": "working_storage_section",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "entry_name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "identification_division",
     "named": true,
     "fields": {},
@@ -18,6 +145,21 @@
         },
         {
           "type": "program_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "picture_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "picture_x",
           "named": true
         }
       ]
@@ -76,17 +218,7 @@
   {
     "type": "program_name",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "start",
@@ -109,11 +241,38 @@
     "fields": {}
   },
   {
+    "type": "working_storage_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "data_description",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": ".",
     "named": false
   },
   {
-    "type": "data_division",
+    "type": "any_length_clause",
+    "named": true
+  },
+  {
+    "type": "based_clause",
+    "named": true
+  },
+  {
+    "type": "blank_clause",
+    "named": true
+  },
+  {
+    "type": "constant_entry",
     "named": true
   },
   {
@@ -125,11 +284,83 @@
     "named": true
   },
   {
-    "type": "identifier",
+    "type": "error",
+    "named": true
+  },
+  {
+    "type": "external_clause",
+    "named": true
+  },
+  {
+    "type": "file_section",
+    "named": true
+  },
+  {
+    "type": "global_clause",
+    "named": true
+  },
+  {
+    "type": "justified_clause",
+    "named": true
+  },
+  {
+    "type": "level_number",
+    "named": true
+  },
+  {
+    "type": "level_number_88",
+    "named": true
+  },
+  {
+    "type": "linkage_section",
+    "named": true
+  },
+  {
+    "type": "local_storage_section",
     "named": true
   },
   {
     "type": "nested_prog",
+    "named": true
+  },
+  {
+    "type": "occurs_clause",
+    "named": true
+  },
+  {
+    "type": "picture_x",
+    "named": true
+  },
+  {
+    "type": "redefines_clause",
+    "named": true
+  },
+  {
+    "type": "renames_clause",
+    "named": true
+  },
+  {
+    "type": "report_section",
+    "named": true
+  },
+  {
+    "type": "screen_section",
+    "named": true
+  },
+  {
+    "type": "sign_clause",
+    "named": true
+  },
+  {
+    "type": "synchronized_clause",
+    "named": true
+  },
+  {
+    "type": "usage_clause",
+    "named": true
+  },
+  {
+    "type": "value_clause",
     "named": true
   }
 ]
