@@ -1,0 +1,135 @@
+[
+  {
+    "type": "as_literal",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "identification_division",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "as_literal",
+          "named": true
+        },
+        {
+          "type": "program_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "procedure_division",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "stop_run_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "program_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "data_division",
+          "named": true
+        },
+        {
+          "type": "end_program",
+          "named": true
+        },
+        {
+          "type": "environment_division",
+          "named": true
+        },
+        {
+          "type": "identification_division",
+          "named": true
+        },
+        {
+          "type": "nested_prog",
+          "named": true
+        },
+        {
+          "type": "procedure_division",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "program_name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "start",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "program_definition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "stop_run_statement",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": ".",
+    "named": false
+  },
+  {
+    "type": "data_division",
+    "named": true
+  },
+  {
+    "type": "end_program",
+    "named": true
+  },
+  {
+    "type": "environment_division",
+    "named": true
+  },
+  {
+    "type": "identifier",
+    "named": true
+  },
+  {
+    "type": "nested_prog",
+    "named": true
+  }
+]

@@ -1,0 +1,2029 @@
+{
+  "name": "COBOL",
+  "word": "identifier",
+  "rules": {
+    "start": {
+      "type": "REPEAT",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "program_definition"
+          }
+        ]
+      }
+    },
+    "program_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identification_division"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "environment_division"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "data_division"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "procedure_division"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "nested_prog"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "end_program"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "identification_division": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_IDENTIFICATION"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_DIVISION"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_PROGRAM_ID"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "SYMBOL",
+          "name": "program_name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "as_literal"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        }
+      ]
+    },
+    "program_name": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_LITERAL"
+        }
+      ]
+    },
+    "as_literal": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_AS"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_LITERAL"
+        }
+      ]
+    },
+    "function_definition": {
+      "type": "PATTERN",
+      "value": "todo_function_definition"
+    },
+    "environment_division": {
+      "type": "PATTERN",
+      "value": "todo_environment_division"
+    },
+    "data_division": {
+      "type": "PATTERN",
+      "value": "todo_data_division"
+    },
+    "procedure_division": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_PROCEDURE"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_DIVISION"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_statement"
+              },
+              {
+                "type": "STRING",
+                "value": "."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "nested_prog": {
+      "type": "PATTERN",
+      "value": "todo_nested_prog"
+    },
+    "end_program": {
+      "type": "PATTERN",
+      "value": "todo_end_program"
+    },
+    "_statement": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "stop_run_statement"
+        }
+      ]
+    },
+    "stop_run_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_STOP"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_RUN"
+        }
+      ]
+    },
+    "identifier": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z_][a-zA-Z0-9_\\-]*"
+    },
+    "number": {
+      "type": "PATTERN",
+      "value": "[0-9]+"
+    },
+    "_ACCEPT": {
+      "type": "PATTERN",
+      "value": "[aA][cC][cC][eE][pP][tT]"
+    },
+    "_ACCESS": {
+      "type": "PATTERN",
+      "value": "[aA][cC][cC][eE][sS][sS]"
+    },
+    "_ADD": {
+      "type": "PATTERN",
+      "value": "[aA][dD][dD]"
+    },
+    "_ADDRESS": {
+      "type": "PATTERN",
+      "value": "[aA][dD][dD][rR][eE][sS][sS]"
+    },
+    "_ADVANCING": {
+      "type": "PATTERN",
+      "value": "[aA][dD][vV][aA][nN][cC][iI][nN][gG]"
+    },
+    "_AFTER": {
+      "type": "PATTERN",
+      "value": "[aA][fF][tT][eE][rR]"
+    },
+    "_ALL": {
+      "type": "PATTERN",
+      "value": "[aA][lL][lL]"
+    },
+    "_ALLOCATE": {
+      "type": "PATTERN",
+      "value": "[aA][lL][lL][oO][cC][aA][tT][eE]"
+    },
+    "_ALPHABET": {
+      "type": "PATTERN",
+      "value": "[aA][lL][pP][hH][aA][bB][eE][tT]"
+    },
+    "_ALPHABETIC": {
+      "type": "PATTERN",
+      "value": "[aA][lL][pP][hH][aA][bB][eE][tT][iI][cC]"
+    },
+    "_ALPHABETIC_LOWER": {
+      "type": "PATTERN",
+      "value": "[aA][lL][pP][hH][aA][bB][eE][tT][iI][cC]-[lL][oO][wW][eE][rR]"
+    },
+    "_ALPHABETIC_UPPER": {
+      "type": "PATTERN",
+      "value": "[aA][lL][pP][hH][aA][bB][eE][tT][iI][cC]-[uU][pP][pP][eE][rR]"
+    },
+    "_ALPHANUMERIC": {
+      "type": "PATTERN",
+      "value": "[aA][lL][pP][hH][aA][nN][uU][mM][eE][rR][iI][cC]"
+    },
+    "_ALPHANUMERIC_EDITED": {
+      "type": "PATTERN",
+      "value": "[aA][lL][pP][hH][aA][nN][uU][mM][eE][rR][iI][cC]-[eE][dD][iI][tT][eE][dD]"
+    },
+    "_ALSO": {
+      "type": "PATTERN",
+      "value": "[aA][lL][sS][oO]"
+    },
+    "_ALTER": {
+      "type": "PATTERN",
+      "value": "[aA][lL][tT][eE][rR]"
+    },
+    "_ALTERNATE": {
+      "type": "PATTERN",
+      "value": "[aA][lL][tT][eE][rR][nN][aA][tT][eE]"
+    },
+    "_AND": {
+      "type": "PATTERN",
+      "value": "[aA][nN][dD]"
+    },
+    "_ANY": {
+      "type": "PATTERN",
+      "value": "[aA][nN][yY]"
+    },
+    "_APPLY": {
+      "type": "PATTERN",
+      "value": "[aA][pP][pP][lL][yY]"
+    },
+    "_ARE": {
+      "type": "PATTERN",
+      "value": "[aA][rR][eE]"
+    },
+    "_AREA": {
+      "type": "PATTERN",
+      "value": "[aA][rR][eE][aA]"
+    },
+    "_ARGUMENT_NUMBER": {
+      "type": "PATTERN",
+      "value": "[aA][rR][gG][uU][mM][eE][nN][tT]-[nN][uU][mM][bB][eE][rR]"
+    },
+    "_ARGUMENT_VALUE": {
+      "type": "PATTERN",
+      "value": "[aA][rR][gG][uU][mM][eE][nN][tT]-[vV][aA][lL][uU][eE]"
+    },
+    "_AS": {
+      "type": "PATTERN",
+      "value": "[aA][sS]"
+    },
+    "_ASCENDING": {
+      "type": "PATTERN",
+      "value": "[aA][sS][cC][eE][nN][dD][iI][nN][gG]"
+    },
+    "_ASSIGN": {
+      "type": "PATTERN",
+      "value": "[aA][sS][sS][iI][gG][nN]"
+    },
+    "_AT": {
+      "type": "PATTERN",
+      "value": "[aA][tT]"
+    },
+    "_AUTO": {
+      "type": "PATTERN",
+      "value": "[aA][uU][tT][oO]"
+    },
+    "_AUTOMATIC": {
+      "type": "PATTERN",
+      "value": "[aA][uU][tT][oO][mM][aA][tT][iI][cC]"
+    },
+    "_BACKGROUND_COLOR": {
+      "type": "PATTERN",
+      "value": "[bB][aA][cC][kK][gG][rR][oO][uU][nN][dD]-[cC][oO][lL][oO][rR]"
+    },
+    "_BASED": {
+      "type": "PATTERN",
+      "value": "[bB][aA][sS][eE][dD]"
+    },
+    "_BEFORE": {
+      "type": "PATTERN",
+      "value": "[bB][eE][fF][oO][rR][eE]"
+    },
+    "_BELL": {
+      "type": "PATTERN",
+      "value": "[bB][eE][lL][lL]"
+    },
+    "_BINARY": {
+      "type": "PATTERN",
+      "value": "[bB][iI][nN][aA][rR][yY]"
+    },
+    "_BINARY_C_LONG": {
+      "type": "PATTERN",
+      "value": "[bB][iI][nN][aA][rR][yY]-[cC]-[lL][oO][nN][gG]"
+    },
+    "_BINARY_CHAR": {
+      "type": "PATTERN",
+      "value": "[bB][iI][nN][aA][rR][yY]-[cC][hH][aA][rR]"
+    },
+    "_BINARY_DOUBLE": {
+      "type": "PATTERN",
+      "value": "[bB][iI][nN][aA][rR][yY]-[dD][oO][uU][bB][lL][eE]"
+    },
+    "_BINARY_LONG": {
+      "type": "PATTERN",
+      "value": "[bB][iI][nN][aA][rR][yY]-[lL][oO][nN][gG]"
+    },
+    "_BINARY_SHORT": {
+      "type": "PATTERN",
+      "value": "[bB][iI][nN][aA][rR][yY]-[sS][hH][oO][rR][tT]"
+    },
+    "_BLANK": {
+      "type": "PATTERN",
+      "value": "[bB][lL][aA][nN][kK]"
+    },
+    "_BLANK_LINE": {
+      "type": "PATTERN",
+      "value": "[bB][lL][aA][nN][kK]-[lL][iI][nN][eE]"
+    },
+    "_BLANK_SCREEN": {
+      "type": "PATTERN",
+      "value": "[bB][lL][aA][nN][kK]-[sS][cC][rR][eE][eE][nN]"
+    },
+    "_BLINK": {
+      "type": "PATTERN",
+      "value": "[bB][lL][iI][nN][kK]"
+    },
+    "_BLOCK": {
+      "type": "PATTERN",
+      "value": "[bB][lL][oO][cC][kK]"
+    },
+    "_BOTTOM": {
+      "type": "PATTERN",
+      "value": "[bB][oO][tT][tT][oO][mM]"
+    },
+    "_BY": {
+      "type": "PATTERN",
+      "value": "[bB][yY]"
+    },
+    "_BYTE_LENGTH": {
+      "type": "PATTERN",
+      "value": "[bB][yY][tT][eE]-[lL][eE][nN][gG][tT][hH]"
+    },
+    "_CALL": {
+      "type": "PATTERN",
+      "value": "[cC][aA][lL][lL]"
+    },
+    "_CANCEL": {
+      "type": "PATTERN",
+      "value": "[cC][aA][nN][cC][eE][lL]"
+    },
+    "_CH": {
+      "type": "PATTERN",
+      "value": "[cC][hH]"
+    },
+    "_CHAINING": {
+      "type": "PATTERN",
+      "value": "[cC][hH][aA][iI][nN][iI][nN][gG]"
+    },
+    "_CHARACTER": {
+      "type": "PATTERN",
+      "value": "[cC][hH][aA][rR][aA][cC][tT][eE][rR]"
+    },
+    "_CHARACTERS": {
+      "type": "PATTERN",
+      "value": "[cC][hH][aA][rR][aA][cC][tT][eE][rR][sS]"
+    },
+    "_CLASS": {
+      "type": "PATTERN",
+      "value": "[cC][lL][aA][sS][sS]"
+    },
+    "_CLASS_NAME": {
+      "type": "PATTERN",
+      "value": "[cC][lL][aA][sS][sS]-[nN][aA][mM][eE]"
+    },
+    "_CLOSE": {
+      "type": "PATTERN",
+      "value": "[cC][lL][oO][sS][eE]"
+    },
+    "_CLOSE_NOFEED": {
+      "type": "PATTERN",
+      "value": "[cC][lL][oO][sS][eE]-[nN][oO][fF][eE][eE][dD]"
+    },
+    "_CODE": {
+      "type": "PATTERN",
+      "value": "[cC][oO][dD][eE]"
+    },
+    "_CODE_SET": {
+      "type": "PATTERN",
+      "value": "[cC][oO][dD][eE]-[sS][eE][tT]"
+    },
+    "_COLLATING": {
+      "type": "PATTERN",
+      "value": "[cC][oO][lL][lL][aA][tT][iI][nN][gG]"
+    },
+    "_COL": {
+      "type": "PATTERN",
+      "value": "[cC][oO][lL]"
+    },
+    "_COLS": {
+      "type": "PATTERN",
+      "value": "[cC][oO][lL][sS]"
+    },
+    "_COLUMN": {
+      "type": "PATTERN",
+      "value": "[cC][oO][lL][uU][mM][nN]"
+    },
+    "_COLUMNS": {
+      "type": "PATTERN",
+      "value": "[cC][oO][lL][uU][mM][nN][sS]"
+    },
+    "_COMMA": {
+      "type": "PATTERN",
+      "value": "[cC][oO][mM][mM][aA]"
+    },
+    "_COMMAND_LINE": {
+      "type": "PATTERN",
+      "value": "[cC][oO][mM][mM][aA][nN][dD]-[lL][iI][nN][eE]"
+    },
+    "_COMMA_DELIM": {
+      "type": "PATTERN",
+      "value": "[cC][oO][mM][mM][aA]-[dD][eE][lL][iI][mM]"
+    },
+    "_COMMIT": {
+      "type": "PATTERN",
+      "value": "[cC][oO][mM][mM][iI][tT]"
+    },
+    "_COMMITMENT_CONTROL": {
+      "type": "PATTERN",
+      "value": "[cC][oO][mM][mM][iI][tT][mM][eE][nN][tT]-[cC][oO][nN][tT][rR][oO][lL]"
+    },
+    "_COMMON": {
+      "type": "PATTERN",
+      "value": "[cC][oO][mM][mM][oO][nN]"
+    },
+    "_COMP": {
+      "type": "PATTERN",
+      "value": "[cC][oO][mM][pP]"
+    },
+    "_COMPUTE": {
+      "type": "PATTERN",
+      "value": "[cC][oO][mM][pP][uU][tT][eE]"
+    },
+    "_COMP_1": {
+      "type": "PATTERN",
+      "value": "[cC][oO][mM][pP]-1"
+    },
+    "_COMP_2": {
+      "type": "PATTERN",
+      "value": "[cC][oO][mM][pP]-2"
+    },
+    "_COMP_3": {
+      "type": "PATTERN",
+      "value": "[cC][oO][mM][pP]-3"
+    },
+    "_COMP_4": {
+      "type": "PATTERN",
+      "value": "[cC][oO][mM][pP]-4"
+    },
+    "_COMP_5": {
+      "type": "PATTERN",
+      "value": "[cC][oO][mM][pP]-5"
+    },
+    "_COMP_X": {
+      "type": "PATTERN",
+      "value": "[cC][oO][mM][pP]-[xX]"
+    },
+    "_CONCATENATE_FUNC": {
+      "type": "PATTERN",
+      "value": "[cC][oO][nN][cC][aA][tT][eE][nN][aA][tT][eE]-[fF][uU][nN][cC]"
+    },
+    "_CONFIGURATION": {
+      "type": "PATTERN",
+      "value": "[cC][oO][nN][fF][iI][gG][uU][rR][aA][tT][iI][oO][nN]"
+    },
+    "_CONSTANT": {
+      "type": "PATTERN",
+      "value": "[cC][oO][nN][sS][tT][aA][nN][tT]"
+    },
+    "_CONTAINS": {
+      "type": "PATTERN",
+      "value": "[cC][oO][nN][tT][aA][iI][nN][sS]"
+    },
+    "_CONTENT": {
+      "type": "PATTERN",
+      "value": "[cC][oO][nN][tT][eE][nN][tT]"
+    },
+    "_CONTINUE": {
+      "type": "PATTERN",
+      "value": "[cC][oO][nN][tT][iI][nN][uU][eE]"
+    },
+    "_CONTROL": {
+      "type": "PATTERN",
+      "value": "[cC][oO][nN][tT][rR][oO][lL]"
+    },
+    "_CONTROLS": {
+      "type": "PATTERN",
+      "value": "[cC][oO][nN][tT][rR][oO][lL][sS]"
+    },
+    "_CONTROL_FOOTING": {
+      "type": "PATTERN",
+      "value": "[cC][oO][nN][tT][rR][oO][lL]-[fF][oO][oO][tT][iI][nN][gG]"
+    },
+    "_CONTROL_HEADING": {
+      "type": "PATTERN",
+      "value": "[cC][oO][nN][tT][rR][oO][lL]-[hH][eE][aA][dD][iI][nN][gG]"
+    },
+    "_CONVERTING": {
+      "type": "PATTERN",
+      "value": "[cC][oO][nN][vV][eE][rR][tT][iI][nN][gG]"
+    },
+    "_CORE_INDEX": {
+      "type": "PATTERN",
+      "value": "[cC][oO][rR][eE]-[iI][nN][dD][eE][xX]"
+    },
+    "_CORRESPONDING": {
+      "type": "PATTERN",
+      "value": "[cC][oO][rR][rR][eE][sS][pP][oO][nN][dD][iI][nN][gG]"
+    },
+    "_COUNT": {
+      "type": "PATTERN",
+      "value": "[cC][oO][uU][nN][tT]"
+    },
+    "_CRT": {
+      "type": "PATTERN",
+      "value": "[cC][rR][tT]"
+    },
+    "_CURRENCY": {
+      "type": "PATTERN",
+      "value": "[cC][uU][rR][rR][eE][nN][cC][yY]"
+    },
+    "_CURRENT_DATE_FUNC": {
+      "type": "PATTERN",
+      "value": "[cC][uU][rR][rR][eE][nN][tT]-[dD][aA][tT][eE]-[fF][uU][nN][cC]"
+    },
+    "_CURSOR": {
+      "type": "PATTERN",
+      "value": "[cC][uU][rR][sS][oO][rR]"
+    },
+    "_CYCLE": {
+      "type": "PATTERN",
+      "value": "[cC][yY][cC][lL][eE]"
+    },
+    "_CYL_OVERFLOW": {
+      "type": "PATTERN",
+      "value": "[cC][yY][lL]-[oO][vV][eE][rR][fF][lL][oO][wW]"
+    },
+    "_DATA": {
+      "type": "PATTERN",
+      "value": "[dD][aA][tT][aA]"
+    },
+    "_DATE": {
+      "type": "PATTERN",
+      "value": "[dD][aA][tT][eE]"
+    },
+    "_DAY": {
+      "type": "PATTERN",
+      "value": "[dD][aA][yY]"
+    },
+    "_DAY_OF_WEEK": {
+      "type": "PATTERN",
+      "value": "[dD][aA][yY]-[oO][fF]-[wW][eE][eE][kK]"
+    },
+    "_DE": {
+      "type": "PATTERN",
+      "value": "[dD][eE]"
+    },
+    "_DEBUGGING": {
+      "type": "PATTERN",
+      "value": "[dD][eE][bB][uU][gG][gG][iI][nN][gG]"
+    },
+    "_DECIMAL_POINT": {
+      "type": "PATTERN",
+      "value": "[dD][eE][cC][iI][mM][aA][lL]-[pP][oO][iI][nN][tT]"
+    },
+    "_DECLARATIVES": {
+      "type": "PATTERN",
+      "value": "[dD][eE][cC][lL][aA][rR][aA][tT][iI][vV][eE][sS]"
+    },
+    "_DEFAULT": {
+      "type": "PATTERN",
+      "value": "[dD][eE][fF][aA][uU][lL][tT]"
+    },
+    "_DELETE": {
+      "type": "PATTERN",
+      "value": "[dD][eE][lL][eE][tT][eE]"
+    },
+    "_DELIMITED": {
+      "type": "PATTERN",
+      "value": "[dD][eE][lL][iI][mM][iI][tT][eE][dD]"
+    },
+    "_DELIMITER": {
+      "type": "PATTERN",
+      "value": "[dD][eE][lL][iI][mM][iI][tT][eE][rR]"
+    },
+    "_DEPENDING": {
+      "type": "PATTERN",
+      "value": "[dD][eE][pP][eE][nN][dD][iI][nN][gG]"
+    },
+    "_DESCENDING": {
+      "type": "PATTERN",
+      "value": "[dD][eE][sS][cC][eE][nN][dD][iI][nN][gG]"
+    },
+    "_DETAIL": {
+      "type": "PATTERN",
+      "value": "[dD][eE][tT][aA][iI][lL]"
+    },
+    "_DISK": {
+      "type": "PATTERN",
+      "value": "[dD][iI][sS][kK]"
+    },
+    "_DISPLAY": {
+      "type": "PATTERN",
+      "value": "[dD][iI][sS][pP][lL][aA][yY]"
+    },
+    "_DIVIDE": {
+      "type": "PATTERN",
+      "value": "[dD][iI][vV][iI][dD][eE]"
+    },
+    "_DIVISION": {
+      "type": "PATTERN",
+      "value": "[dD][iI][vV][iI][sS][iI][oO][nN]"
+    },
+    "_DOWN": {
+      "type": "PATTERN",
+      "value": "[dD][oO][wW][nN]"
+    },
+    "_DUPLICATES": {
+      "type": "PATTERN",
+      "value": "[dD][uU][pP][lL][iI][cC][aA][tT][eE][sS]"
+    },
+    "_DYNAMIC": {
+      "type": "PATTERN",
+      "value": "[dD][yY][nN][aA][mM][iI][cC]"
+    },
+    "_EBCDIC": {
+      "type": "PATTERN",
+      "value": "[eE][bB][cC][dD][iI][cC]"
+    },
+    "_ELSE": {
+      "type": "PATTERN",
+      "value": "[eE][lL][sS][eE]"
+    },
+    "_END": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]"
+    },
+    "_END_ACCEPT": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]-[aA][cC][cC][eE][pP][tT]"
+    },
+    "_END_ADD": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]-[aA][dD][dD]"
+    },
+    "_END_CALL": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]-[cC][aA][lL][lL]"
+    },
+    "_END_COMPUTE": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]-[cC][oO][mM][pP][uU][tT][eE]"
+    },
+    "_END_DELETE": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]-[dD][eE][lL][eE][tT][eE]"
+    },
+    "_END_DISPLAY": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]-[dD][iI][sS][pP][lL][aA][yY]"
+    },
+    "_END_DIVIDE": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]-[dD][iI][vV][iI][dD][eE]"
+    },
+    "_END_EVALUATE": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]-[eE][vV][aA][lL][uU][aA][tT][eE]"
+    },
+    "_END_FUNCTION": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]-[fF][uU][nN][cC][tT][iI][oO][nN]"
+    },
+    "_END_IF": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]-[iI][fF]"
+    },
+    "_END_MULTIPLY": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]-[mM][uU][lL][tT][iI][pP][lL][yY]"
+    },
+    "_END_PERFORM": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]-[pP][eE][rR][fF][oO][rR][mM]"
+    },
+    "_END_PROGRAM": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]-[pP][rR][oO][gG][rR][aA][mM]"
+    },
+    "_END_READ": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]-[rR][eE][aA][dD]"
+    },
+    "_END_RETURN": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]-[rR][eE][tT][uU][rR][nN]"
+    },
+    "_END_REWRITE": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]-[rR][eE][wW][rR][iI][tT][eE]"
+    },
+    "_END_SEARCH": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]-[sS][eE][aA][rR][cC][hH]"
+    },
+    "_END_START": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]-[sS][tT][aA][rR][tT]"
+    },
+    "_END_STRING": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]-[sS][tT][rR][iI][nN][gG]"
+    },
+    "_END_SUBTRACT": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]-[sS][uU][bB][tT][rR][aA][cC][tT]"
+    },
+    "_END_UNSTRING": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]-[uU][nN][sS][tT][rR][iI][nN][gG]"
+    },
+    "_END_WRITE": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD]-[wW][rR][iI][tT][eE]"
+    },
+    "_ENTRY": {
+      "type": "PATTERN",
+      "value": "[eE][nN][tT][rR][yY]"
+    },
+    "_ENVIRONMENT": {
+      "type": "PATTERN",
+      "value": "[eE][nN][vV][iI][rR][oO][nN][mM][eE][nN][tT]"
+    },
+    "_ENVIRONMENT_NAME": {
+      "type": "PATTERN",
+      "value": "[eE][nN][vV][iI][rR][oO][nN][mM][eE][nN][tT]-[nN][aA][mM][eE]"
+    },
+    "_ENVIRONMENT_VALUE": {
+      "type": "PATTERN",
+      "value": "[eE][nN][vV][iI][rR][oO][nN][mM][eE][nN][tT]-[vV][aA][lL][uU][eE]"
+    },
+    "_EOL": {
+      "type": "PATTERN",
+      "value": "[eE][oO][lL]"
+    },
+    "_EOP": {
+      "type": "PATTERN",
+      "value": "[eE][oO][pP]"
+    },
+    "_EOS": {
+      "type": "PATTERN",
+      "value": "[eE][oO][sS]"
+    },
+    "_EQUAL": {
+      "type": "PATTERN",
+      "value": "[eE][qQ][uU][aA][lL]"
+    },
+    "_EQUALS": {
+      "type": "PATTERN",
+      "value": "[eE][qQ][uU][aA][lL][sS]"
+    },
+    "_ERASE": {
+      "type": "PATTERN",
+      "value": "[eE][rR][aA][sS][eE]"
+    },
+    "_ERROR": {
+      "type": "PATTERN",
+      "value": "[eE][rR][rR][oO][rR]"
+    },
+    "_ESCAPE": {
+      "type": "PATTERN",
+      "value": "[eE][sS][cC][aA][pP][eE]"
+    },
+    "_EVALUATE": {
+      "type": "PATTERN",
+      "value": "[eE][vV][aA][lL][uU][aA][tT][eE]"
+    },
+    "_EVENT_STATUS": {
+      "type": "PATTERN",
+      "value": "[eE][vV][eE][nN][tT]-[sS][tT][aA][tT][uU][sS]"
+    },
+    "_EXCEPTION": {
+      "type": "PATTERN",
+      "value": "[eE][xX][cC][eE][pP][tT][iI][oO][nN]"
+    },
+    "_EXCLUSIVE": {
+      "type": "PATTERN",
+      "value": "[eE][xX][cC][lL][uU][sS][iI][vV][eE]"
+    },
+    "_EXIT": {
+      "type": "PATTERN",
+      "value": "[eE][xX][iI][tT]"
+    },
+    "_EXTEND": {
+      "type": "PATTERN",
+      "value": "[eE][xX][tT][eE][nN][dD]"
+    },
+    "_EXTERNAL": {
+      "type": "PATTERN",
+      "value": "[eE][xX][tT][eE][rR][nN][aA][lL]"
+    },
+    "_FD": {
+      "type": "PATTERN",
+      "value": "[fF][dD]"
+    },
+    "_FILE_CONTROL": {
+      "type": "PATTERN",
+      "value": "[fF][iI][lL][eE]-[cC][oO][nN][tT][rR][oO][lL]"
+    },
+    "_FILE_ID": {
+      "type": "PATTERN",
+      "value": "[fF][iI][lL][eE]-[iI][dD]"
+    },
+    "_FILLER": {
+      "type": "PATTERN",
+      "value": "[fF][iI][lL][lL][eE][rR]"
+    },
+    "_FINAL": {
+      "type": "PATTERN",
+      "value": "[fF][iI][nN][aA][lL]"
+    },
+    "_FIRST": {
+      "type": "PATTERN",
+      "value": "[fF][iI][rR][sS][tT]"
+    },
+    "_FOOTING": {
+      "type": "PATTERN",
+      "value": "[fF][oO][oO][tT][iI][nN][gG]"
+    },
+    "_FOR": {
+      "type": "PATTERN",
+      "value": "[fF][oO][rR]"
+    },
+    "_FOREGROUND_COLOR": {
+      "type": "PATTERN",
+      "value": "[fF][oO][rR][eE][gG][rR][oO][uU][nN][dD]-[cC][oO][lL][oO][rR]"
+    },
+    "_FOREVER": {
+      "type": "PATTERN",
+      "value": "[fF][oO][rR][eE][vV][eE][rR]"
+    },
+    "_FORMS_OVERLAY": {
+      "type": "PATTERN",
+      "value": "[fF][oO][rR][mM][sS]-[oO][vV][eE][rR][lL][aA][yY]"
+    },
+    "_FREE": {
+      "type": "PATTERN",
+      "value": "[fF][rR][eE][eE]"
+    },
+    "_FROM": {
+      "type": "PATTERN",
+      "value": "[fF][rR][oO][mM]"
+    },
+    "_FULL": {
+      "type": "PATTERN",
+      "value": "[fF][uU][lL][lL]"
+    },
+    "_FUNCTION": {
+      "type": "PATTERN",
+      "value": "[fF][uU][nN][cC][tT][iI][oO][nN]"
+    },
+    "_FUNCTION_ID": {
+      "type": "PATTERN",
+      "value": "[fF][uU][nN][cC][tT][iI][oO][nN]-[iI][dD]"
+    },
+    "_FUNCTION_NAME": {
+      "type": "PATTERN",
+      "value": "[fF][uU][nN][cC][tT][iI][oO][nN]-[nN][aA][mM][eE]"
+    },
+    "_GE": {
+      "type": "PATTERN",
+      "value": "[gG][eE]"
+    },
+    "_GENERATE": {
+      "type": "PATTERN",
+      "value": "[gG][eE][nN][eE][rR][aA][tT][eE]"
+    },
+    "_GIVING": {
+      "type": "PATTERN",
+      "value": "[gG][iI][vV][iI][nN][gG]"
+    },
+    "_GLOBAL": {
+      "type": "PATTERN",
+      "value": "[gG][lL][oO][bB][aA][lL]"
+    },
+    "_GO": {
+      "type": "PATTERN",
+      "value": "[gG][oO]"
+    },
+    "_GOBACK": {
+      "type": "PATTERN",
+      "value": "[gG][oO][bB][aA][cC][kK]"
+    },
+    "_GREATER": {
+      "type": "PATTERN",
+      "value": "[gG][rR][eE][aA][tT][eE][rR]"
+    },
+    "_GROUP": {
+      "type": "PATTERN",
+      "value": "[gG][rR][oO][uU][pP]"
+    },
+    "_HEADING": {
+      "type": "PATTERN",
+      "value": "[hH][eE][aA][dD][iI][nN][gG]"
+    },
+    "_HIGHLIGHT": {
+      "type": "PATTERN",
+      "value": "[hH][iI][gG][hH][lL][iI][gG][hH][tT]"
+    },
+    "_HIGH_VALUE": {
+      "type": "PATTERN",
+      "value": "[hH][iI][gG][hH]-[vV][aA][lL][uU][eE]"
+    },
+    "_IDENTIFICATION": {
+      "type": "PATTERN",
+      "value": "[iI][dD][eE][nN][tT][iI][fF][iI][cC][aA][tT][iI][oO][nN]"
+    },
+    "_IF": {
+      "type": "PATTERN",
+      "value": "[iI][fF]"
+    },
+    "_IGNORE": {
+      "type": "PATTERN",
+      "value": "[iI][gG][nN][oO][rR][eE]"
+    },
+    "_IGNORING": {
+      "type": "PATTERN",
+      "value": "[iI][gG][nN][oO][rR][iI][nN][gG]"
+    },
+    "_IN": {
+      "type": "PATTERN",
+      "value": "[iI][nN]"
+    },
+    "_INDEX": {
+      "type": "PATTERN",
+      "value": "[iI][nN][dD][eE][xX]"
+    },
+    "_INDEXED": {
+      "type": "PATTERN",
+      "value": "[iI][nN][dD][eE][xX][eE][dD]"
+    },
+    "_INDICATE": {
+      "type": "PATTERN",
+      "value": "[iI][nN][dD][iI][cC][aA][tT][eE]"
+    },
+    "_INITIALIZE": {
+      "type": "PATTERN",
+      "value": "[iI][nN][iI][tT][iI][aA][lL][iI][zZ][eE]"
+    },
+    "_INITIALIZED": {
+      "type": "PATTERN",
+      "value": "[iI][nN][iI][tT][iI][aA][lL][iI][zZ][eE][dD]"
+    },
+    "_INITIATE": {
+      "type": "PATTERN",
+      "value": "[iI][nN][iI][tT][iI][aA][tT][eE]"
+    },
+    "_INPUT": {
+      "type": "PATTERN",
+      "value": "[iI][nN][pP][uU][tT]"
+    },
+    "_INPUT_OUTPUT": {
+      "type": "PATTERN",
+      "value": "[iI][nN][pP][uU][tT]-[oO][uU][tT][pP][uU][tT]"
+    },
+    "_INSPECT": {
+      "type": "PATTERN",
+      "value": "[iI][nN][sS][pP][eE][cC][tT]"
+    },
+    "_INTO": {
+      "type": "PATTERN",
+      "value": "[iI][nN][tT][oO]"
+    },
+    "_INTRINSIC": {
+      "type": "PATTERN",
+      "value": "[iI][nN][tT][rR][iI][nN][sS][iI][cC]"
+    },
+    "_INVALID": {
+      "type": "PATTERN",
+      "value": "[iI][nN][vV][aA][lL][iI][dD]"
+    },
+    "_INVALID_KEY": {
+      "type": "PATTERN",
+      "value": "[iI][nN][vV][aA][lL][iI][dD]-[kK][eE][yY]"
+    },
+    "_IS": {
+      "type": "PATTERN",
+      "value": "[iI][sS]"
+    },
+    "_I_O": {
+      "type": "PATTERN",
+      "value": "[iI]-[oO]"
+    },
+    "_I_O_CONTROL": {
+      "type": "PATTERN",
+      "value": "[iI]-[oO]-[cC][oO][nN][tT][rR][oO][lL]"
+    },
+    "_JUSTIFIED": {
+      "type": "PATTERN",
+      "value": "[jJ][uU][sS][tT][iI][fF][iI][eE][dD]"
+    },
+    "_KEY": {
+      "type": "PATTERN",
+      "value": "[kK][eE][yY]"
+    },
+    "_LABEL": {
+      "type": "PATTERN",
+      "value": "[lL][aA][bB][eE][lL]"
+    },
+    "_LAST": {
+      "type": "PATTERN",
+      "value": "[lL][aA][sS][tT]"
+    },
+    "_LAST_DETAIL": {
+      "type": "PATTERN",
+      "value": "[lL][aA][sS][tT]-[dD][eE][tT][aA][iI][lL]"
+    },
+    "_LE": {
+      "type": "PATTERN",
+      "value": "[lL][eE]"
+    },
+    "_LEADING": {
+      "type": "PATTERN",
+      "value": "[lL][eE][aA][dD][iI][nN][gG]"
+    },
+    "_LEFT": {
+      "type": "PATTERN",
+      "value": "[lL][eE][fF][tT]"
+    },
+    "_LENGTH": {
+      "type": "PATTERN",
+      "value": "[lL][eE][nN][gG][tT][hH]"
+    },
+    "_LESS": {
+      "type": "PATTERN",
+      "value": "[lL][eE][sS][sS]"
+    },
+    "_LEVEL_NUMBER_WORD": {
+      "type": "PATTERN",
+      "value": "[lL][eE][vV][eE][lL]-[nN][uU][mM][bB][eE][rR]-[wW][oO][rR][dD]"
+    },
+    "_LEVEL88_NUMBER_WORD": {
+      "type": "PATTERN",
+      "value": "[lL][eE][vV][eE][lL]88-[nN][uU][mM][bB][eE][rR]-[wW][oO][rR][dD]"
+    },
+    "_LIMIT": {
+      "type": "PATTERN",
+      "value": "[lL][iI][mM][iI][tT]"
+    },
+    "_LIMITS": {
+      "type": "PATTERN",
+      "value": "[lL][iI][mM][iI][tT][sS]"
+    },
+    "_LINAGE": {
+      "type": "PATTERN",
+      "value": "[lL][iI][nN][aA][gG][eE]"
+    },
+    "_LINAGE_COUNTER": {
+      "type": "PATTERN",
+      "value": "[lL][iI][nN][aA][gG][eE]-[cC][oO][uU][nN][tT][eE][rR]"
+    },
+    "_LINE": {
+      "type": "PATTERN",
+      "value": "[lL][iI][nN][eE]"
+    },
+    "_LINES": {
+      "type": "PATTERN",
+      "value": "[lL][iI][nN][eE][sS]"
+    },
+    "_LINKAGE": {
+      "type": "PATTERN",
+      "value": "[lL][iI][nN][kK][aA][gG][eE]"
+    },
+    "_LITERAL": {
+      "type": "PATTERN",
+      "value": "[lL][iI][tT][eE][rR][aA][lL]"
+    },
+    "_LOCALE": {
+      "type": "PATTERN",
+      "value": "[lL][oO][cC][aA][lL][eE]"
+    },
+    "_LOCALE_DT_FUNC": {
+      "type": "PATTERN",
+      "value": "[lL][oO][cC][aA][lL][eE]-[dD][tT]-[fF][uU][nN][cC]"
+    },
+    "_LOCAL_STORAGE": {
+      "type": "PATTERN",
+      "value": "[lL][oO][cC][aA][lL]-[sS][tT][oO][rR][aA][gG][eE]"
+    },
+    "_LOCK": {
+      "type": "PATTERN",
+      "value": "[lL][oO][cC][kK]"
+    },
+    "_LOWER_CASE_FUNC": {
+      "type": "PATTERN",
+      "value": "[lL][oO][wW][eE][rR]-[cC][aA][sS][eE]-[fF][uU][nN][cC]"
+    },
+    "_LOWLIGHT": {
+      "type": "PATTERN",
+      "value": "[lL][oO][wW][lL][iI][gG][hH][tT]"
+    },
+    "_LOW_VALUE": {
+      "type": "PATTERN",
+      "value": "[lL][oO][wW]-[vV][aA][lL][uU][eE]"
+    },
+    "_MANUAL": {
+      "type": "PATTERN",
+      "value": "[mM][aA][nN][uU][aA][lL]"
+    },
+    "_MEMORY": {
+      "type": "PATTERN",
+      "value": "[mM][eE][mM][oO][rR][yY]"
+    },
+    "_MERGE": {
+      "type": "PATTERN",
+      "value": "[mM][eE][rR][gG][eE]"
+    },
+    "_MINUS": {
+      "type": "PATTERN",
+      "value": "[mM][iI][nN][uU][sS]"
+    },
+    "_MNEMONIC_NAME": {
+      "type": "PATTERN",
+      "value": "[mM][nN][eE][mM][oO][nN][iI][cC]-[nN][aA][mM][eE]"
+    },
+    "_MODE": {
+      "type": "PATTERN",
+      "value": "[mM][oO][dD][eE]"
+    },
+    "_MOVE": {
+      "type": "PATTERN",
+      "value": "[mM][oO][vV][eE]"
+    },
+    "_MULTIPLE": {
+      "type": "PATTERN",
+      "value": "[mM][uU][lL][tT][iI][pP][lL][eE]"
+    },
+    "_MULTIPLY": {
+      "type": "PATTERN",
+      "value": "[mM][uU][lL][tT][iI][pP][lL][yY]"
+    },
+    "_NATIONAL": {
+      "type": "PATTERN",
+      "value": "[nN][aA][tT][iI][oO][nN][aA][lL]"
+    },
+    "_NATIONAL_EDITED": {
+      "type": "PATTERN",
+      "value": "[nN][aA][tT][iI][oO][nN][aA][lL]-[eE][dD][iI][tT][eE][dD]"
+    },
+    "_NATIVE": {
+      "type": "PATTERN",
+      "value": "[nN][aA][tT][iI][vV][eE]"
+    },
+    "_NE": {
+      "type": "PATTERN",
+      "value": "[nN][eE]"
+    },
+    "_NEGATIVE": {
+      "type": "PATTERN",
+      "value": "[nN][eE][gG][aA][tT][iI][vV][eE]"
+    },
+    "_NEXT": {
+      "type": "PATTERN",
+      "value": "[nN][eE][xX][tT]"
+    },
+    "_NEXT_SENTENCE": {
+      "type": "PATTERN",
+      "value": "[nN][eE][xX][tT]-[sS][eE][nN][tT][eE][nN][cC][eE]"
+    },
+    "_NO": {
+      "type": "PATTERN",
+      "value": "[nN][oO]"
+    },
+    "_NOMINAL": {
+      "type": "PATTERN",
+      "value": "[nN][oO][mM][iI][nN][aA][lL]"
+    },
+    "_NOT": {
+      "type": "PATTERN",
+      "value": "[nN][oO][tT]"
+    },
+    "_NOT_END": {
+      "type": "PATTERN",
+      "value": "[nN][oO][tT]-[eE][nN][dD]"
+    },
+    "_NOT_EOP": {
+      "type": "PATTERN",
+      "value": "[nN][oO][tT]-[eE][oO][pP]"
+    },
+    "_NOT_EXCEPTION": {
+      "type": "PATTERN",
+      "value": "[nN][oO][tT]-[eE][xX][cC][eE][pP][tT][iI][oO][nN]"
+    },
+    "_NOT_INVALID_KEY": {
+      "type": "PATTERN",
+      "value": "[nN][oO][tT]-[iI][nN][vV][aA][lL][iI][dD]-[kK][eE][yY]"
+    },
+    "_NOT_OVERFLOW": {
+      "type": "PATTERN",
+      "value": "[nN][oO][tT]-[oO][vV][eE][rR][fF][lL][oO][wW]"
+    },
+    "_NOT_SIZE_ERROR": {
+      "type": "PATTERN",
+      "value": "[nN][oO][tT]-[sS][iI][zZ][eE]-[eE][rR][rR][oO][rR]"
+    },
+    "_NO_ADVANCING": {
+      "type": "PATTERN",
+      "value": "[nN][oO]-[aA][dD][vV][aA][nN][cC][iI][nN][gG]"
+    },
+    "_NUMBER": {
+      "type": "PATTERN",
+      "value": "[nN][uU][mM][bB][eE][rR]"
+    },
+    "_NUMBERS": {
+      "type": "PATTERN",
+      "value": "[nN][uU][mM][bB][eE][rR][sS]"
+    },
+    "_NUMERIC": {
+      "type": "PATTERN",
+      "value": "[nN][uU][mM][eE][rR][iI][cC]"
+    },
+    "_NUMERIC_EDITED": {
+      "type": "PATTERN",
+      "value": "[nN][uU][mM][eE][rR][iI][cC]-[eE][dD][iI][tT][eE][dD]"
+    },
+    "_NUMVALC_FUNC": {
+      "type": "PATTERN",
+      "value": "[nN][uU][mM][vV][aA][lL][cC]-[fF][uU][nN][cC]"
+    },
+    "_OBJECT_COMPUTER": {
+      "type": "PATTERN",
+      "value": "[oO][bB][jJ][eE][cC][tT]-[cC][oO][mM][pP][uU][tT][eE][rR]"
+    },
+    "_OCCURS": {
+      "type": "PATTERN",
+      "value": "[oO][cC][cC][uU][rR][sS]"
+    },
+    "_OF": {
+      "type": "PATTERN",
+      "value": "[oO][fF]"
+    },
+    "_OFF": {
+      "type": "PATTERN",
+      "value": "[oO][fF][fF]"
+    },
+    "_OMITTED": {
+      "type": "PATTERN",
+      "value": "[oO][mM][iI][tT][tT][eE][dD]"
+    },
+    "_ON": {
+      "type": "PATTERN",
+      "value": "[oO][nN]"
+    },
+    "_ONLY": {
+      "type": "PATTERN",
+      "value": "[oO][nN][lL][yY]"
+    },
+    "_OPEN": {
+      "type": "PATTERN",
+      "value": "[oO][pP][eE][nN]"
+    },
+    "_OPTIONAL": {
+      "type": "PATTERN",
+      "value": "[oO][pP][tT][iI][oO][nN][aA][lL]"
+    },
+    "_OR": {
+      "type": "PATTERN",
+      "value": "[oO][rR]"
+    },
+    "_ORDER": {
+      "type": "PATTERN",
+      "value": "[oO][rR][dD][eE][rR]"
+    },
+    "_ORGANIZATION": {
+      "type": "PATTERN",
+      "value": "[oO][rR][gG][aA][nN][iI][zZ][aA][tT][iI][oO][nN]"
+    },
+    "_OTHER": {
+      "type": "PATTERN",
+      "value": "[oO][tT][hH][eE][rR]"
+    },
+    "_OUTPUT": {
+      "type": "PATTERN",
+      "value": "[oO][uU][tT][pP][uU][tT]"
+    },
+    "_OVERFLOW": {
+      "type": "PATTERN",
+      "value": "[oO][vV][eE][rR][fF][lL][oO][wW]"
+    },
+    "_OVERLINE": {
+      "type": "PATTERN",
+      "value": "[oO][vV][eE][rR][lL][iI][nN][eE]"
+    },
+    "_PACKED_DECIMAL": {
+      "type": "PATTERN",
+      "value": "[pP][aA][cC][kK][eE][dD]-[dD][eE][cC][iI][mM][aA][lL]"
+    },
+    "_PADDING": {
+      "type": "PATTERN",
+      "value": "[pP][aA][dD][dD][iI][nN][gG]"
+    },
+    "_PAGE": {
+      "type": "PATTERN",
+      "value": "[pP][aA][gG][eE]"
+    },
+    "_PAGE_FOOTING": {
+      "type": "PATTERN",
+      "value": "[pP][aA][gG][eE]-[fF][oO][oO][tT][iI][nN][gG]"
+    },
+    "_PAGE_HEADING": {
+      "type": "PATTERN",
+      "value": "[pP][aA][gG][eE]-[hH][eE][aA][dD][iI][nN][gG]"
+    },
+    "_PARAGRAPH": {
+      "type": "PATTERN",
+      "value": "[pP][aA][rR][aA][gG][rR][aA][pP][hH]"
+    },
+    "_PERFORM": {
+      "type": "PATTERN",
+      "value": "[pP][eE][rR][fF][oO][rR][mM]"
+    },
+    "_PICTURE": {
+      "type": "PATTERN",
+      "value": "[pP][iI][cC][tT][uU][rR][eE]"
+    },
+    "_PLUS": {
+      "type": "PATTERN",
+      "value": "[pP][lL][uU][sS]"
+    },
+    "_POINTER": {
+      "type": "PATTERN",
+      "value": "[pP][oO][iI][nN][tT][eE][rR]"
+    },
+    "_POSITION": {
+      "type": "PATTERN",
+      "value": "[pP][oO][sS][iI][tT][iI][oO][nN]"
+    },
+    "_POSITIVE": {
+      "type": "PATTERN",
+      "value": "[pP][oO][sS][iI][tT][iI][vV][eE]"
+    },
+    "_PRESENT": {
+      "type": "PATTERN",
+      "value": "[pP][rR][eE][sS][eE][nN][tT]"
+    },
+    "_PREVIOUS": {
+      "type": "PATTERN",
+      "value": "[pP][rR][eE][vV][iI][oO][uU][sS]"
+    },
+    "_PRINTER": {
+      "type": "PATTERN",
+      "value": "[pP][rR][iI][nN][tT][eE][rR]"
+    },
+    "_PRINTING": {
+      "type": "PATTERN",
+      "value": "[pP][rR][iI][nN][tT][iI][nN][gG]"
+    },
+    "_PROCEDURE": {
+      "type": "PATTERN",
+      "value": "[pP][rR][oO][cC][eE][dD][uU][rR][eE]"
+    },
+    "_PROCEDURES": {
+      "type": "PATTERN",
+      "value": "[pP][rR][oO][cC][eE][dD][uU][rR][eE][sS]"
+    },
+    "_PROCEED": {
+      "type": "PATTERN",
+      "value": "[pP][rR][oO][cC][eE][eE][dD]"
+    },
+    "_PROGRAM": {
+      "type": "PATTERN",
+      "value": "[pP][rR][oO][gG][rR][aA][mM]"
+    },
+    "_PROGRAM_ID": {
+      "type": "PATTERN",
+      "value": "[pP][rR][oO][gG][rR][aA][mM]-[iI][dD]"
+    },
+    "_PROGRAM_NAME": {
+      "type": "PATTERN",
+      "value": "[pP][rR][oO][gG][rR][aA][mM]-[nN][aA][mM][eE]"
+    },
+    "_PROGRAM_POINTER": {
+      "type": "PATTERN",
+      "value": "[pP][rR][oO][gG][rR][aA][mM]-[pP][oO][iI][nN][tT][eE][rR]"
+    },
+    "_PROMPT": {
+      "type": "PATTERN",
+      "value": "[pP][rR][oO][mM][pP][tT]"
+    },
+    "_QUOTE": {
+      "type": "PATTERN",
+      "value": "[qQ][uU][oO][tT][eE]"
+    },
+    "_RANDOM": {
+      "type": "PATTERN",
+      "value": "[rR][aA][nN][dD][oO][mM]"
+    },
+    "_RD": {
+      "type": "PATTERN",
+      "value": "[rR][dD]"
+    },
+    "_READ": {
+      "type": "PATTERN",
+      "value": "[rR][eE][aA][dD]"
+    },
+    "_RECORD": {
+      "type": "PATTERN",
+      "value": "[rR][eE][cC][oO][rR][dD]"
+    },
+    "_RECORDING": {
+      "type": "PATTERN",
+      "value": "[rR][eE][cC][oO][rR][dD][iI][nN][gG]"
+    },
+    "_RECORDS": {
+      "type": "PATTERN",
+      "value": "[rR][eE][cC][oO][rR][dD][sS]"
+    },
+    "_RECURSIVE": {
+      "type": "PATTERN",
+      "value": "[rR][eE][cC][uU][rR][sS][iI][vV][eE]"
+    },
+    "_REDEFINES": {
+      "type": "PATTERN",
+      "value": "[rR][eE][dD][eE][fF][iI][nN][eE][sS]"
+    },
+    "_REEL": {
+      "type": "PATTERN",
+      "value": "[rR][eE][eE][lL]"
+    },
+    "_REFERENCE": {
+      "type": "PATTERN",
+      "value": "[rR][eE][fF][eE][rR][eE][nN][cC][eE]"
+    },
+    "_RELATIVE": {
+      "type": "PATTERN",
+      "value": "[rR][eE][lL][aA][tT][iI][vV][eE]"
+    },
+    "_RELEASE": {
+      "type": "PATTERN",
+      "value": "[rR][eE][lL][eE][aA][sS][eE]"
+    },
+    "_REMAINDER": {
+      "type": "PATTERN",
+      "value": "[rR][eE][mM][aA][iI][nN][dD][eE][rR]"
+    },
+    "_REMOVAL": {
+      "type": "PATTERN",
+      "value": "[rR][eE][mM][oO][vV][aA][lL]"
+    },
+    "_RENAMES": {
+      "type": "PATTERN",
+      "value": "[rR][eE][nN][aA][mM][eE][sS]"
+    },
+    "_REPLACING": {
+      "type": "PATTERN",
+      "value": "[rR][eE][pP][lL][aA][cC][iI][nN][gG]"
+    },
+    "_REPORT": {
+      "type": "PATTERN",
+      "value": "[rR][eE][pP][oO][rR][tT]"
+    },
+    "_REPORTING": {
+      "type": "PATTERN",
+      "value": "[rR][eE][pP][oO][rR][tT][iI][nN][gG]"
+    },
+    "_REPORTS": {
+      "type": "PATTERN",
+      "value": "[rR][eE][pP][oO][rR][tT][sS]"
+    },
+    "_REPORT_FOOTING": {
+      "type": "PATTERN",
+      "value": "[rR][eE][pP][oO][rR][tT]-[fF][oO][oO][tT][iI][nN][gG]"
+    },
+    "_REPORT_HEADING": {
+      "type": "PATTERN",
+      "value": "[rR][eE][pP][oO][rR][tT]-[hH][eE][aA][dD][iI][nN][gG]"
+    },
+    "_REPOSITORY": {
+      "type": "PATTERN",
+      "value": "[rR][eE][pP][oO][sS][iI][tT][oO][rR][yY]"
+    },
+    "_REQUIRED": {
+      "type": "PATTERN",
+      "value": "[rR][eE][qQ][uU][iI][rR][eE][dD]"
+    },
+    "_RESERVE": {
+      "type": "PATTERN",
+      "value": "[rR][eE][sS][eE][rR][vV][eE]"
+    },
+    "_RETURN": {
+      "type": "PATTERN",
+      "value": "[rR][eE][tT][uU][rR][nN]"
+    },
+    "_RETURNING": {
+      "type": "PATTERN",
+      "value": "[rR][eE][tT][uU][rR][nN][iI][nN][gG]"
+    },
+    "_REVERSE_FUNC": {
+      "type": "PATTERN",
+      "value": "[rR][eE][vV][eE][rR][sS][eE]-[fF][uU][nN][cC]"
+    },
+    "_REVERSE_VIDEO": {
+      "type": "PATTERN",
+      "value": "[rR][eE][vV][eE][rR][sS][eE]-[vV][iI][dD][eE][oO]"
+    },
+    "_REWIND": {
+      "type": "PATTERN",
+      "value": "[rR][eE][wW][iI][nN][dD]"
+    },
+    "_REWRITE": {
+      "type": "PATTERN",
+      "value": "[rR][eE][wW][rR][iI][tT][eE]"
+    },
+    "_RIGHT": {
+      "type": "PATTERN",
+      "value": "[rR][iI][gG][hH][tT]"
+    },
+    "_ROLLBACK": {
+      "type": "PATTERN",
+      "value": "[rR][oO][lL][lL][bB][aA][cC][kK]"
+    },
+    "_ROUNDED": {
+      "type": "PATTERN",
+      "value": "[rR][oO][uU][nN][dD][eE][dD]"
+    },
+    "_RUN": {
+      "type": "PATTERN",
+      "value": "[rR][uU][nN]"
+    },
+    "_SAME": {
+      "type": "PATTERN",
+      "value": "[sS][aA][mM][eE]"
+    },
+    "_SCREEN": {
+      "type": "PATTERN",
+      "value": "[sS][cC][rR][eE][eE][nN]"
+    },
+    "_SCREEN_CONTROL": {
+      "type": "PATTERN",
+      "value": "[sS][cC][rR][eE][eE][nN]-[cC][oO][nN][tT][rR][oO][lL]"
+    },
+    "_SCROLL": {
+      "type": "PATTERN",
+      "value": "[sS][cC][rR][oO][lL][lL]"
+    },
+    "_SD": {
+      "type": "PATTERN",
+      "value": "[sS][dD]"
+    },
+    "_SEARCH": {
+      "type": "PATTERN",
+      "value": "[sS][eE][aA][rR][cC][hH]"
+    },
+    "_SECTION": {
+      "type": "PATTERN",
+      "value": "[sS][eE][cC][tT][iI][oO][nN]"
+    },
+    "_SECURE": {
+      "type": "PATTERN",
+      "value": "[sS][eE][cC][uU][rR][eE]"
+    },
+    "_SEGMENT_LIMIT": {
+      "type": "PATTERN",
+      "value": "[sS][eE][gG][mM][eE][nN][tT]-[lL][iI][mM][iI][tT]"
+    },
+    "_SELECT": {
+      "type": "PATTERN",
+      "value": "[sS][eE][lL][eE][cC][tT]"
+    },
+    "_SEMI_COLON": {
+      "type": "PATTERN",
+      "value": "[sS][eE][mM][iI]-[cC][oO][lL][oO][nN]"
+    },
+    "_SENTENCE": {
+      "type": "PATTERN",
+      "value": "[sS][eE][nN][tT][eE][nN][cC][eE]"
+    },
+    "_SEPARATE": {
+      "type": "PATTERN",
+      "value": "[sS][eE][pP][aA][rR][aA][tT][eE]"
+    },
+    "_SEQUENCE": {
+      "type": "PATTERN",
+      "value": "[sS][eE][qQ][uU][eE][nN][cC][eE]"
+    },
+    "_SEQUENTIAL": {
+      "type": "PATTERN",
+      "value": "[sS][eE][qQ][uU][eE][nN][tT][iI][aA][lL]"
+    },
+    "_SET": {
+      "type": "PATTERN",
+      "value": "[sS][eE][tT]"
+    },
+    "_SHARING": {
+      "type": "PATTERN",
+      "value": "[sS][hH][aA][rR][iI][nN][gG]"
+    },
+    "_SIGN": {
+      "type": "PATTERN",
+      "value": "[sS][iI][gG][nN]"
+    },
+    "_SIGNED": {
+      "type": "PATTERN",
+      "value": "[sS][iI][gG][nN][eE][dD]"
+    },
+    "_SIGNED_INT": {
+      "type": "PATTERN",
+      "value": "[sS][iI][gG][nN][eE][dD]-[iI][nN][tT]"
+    },
+    "_SIGNED_LONG": {
+      "type": "PATTERN",
+      "value": "[sS][iI][gG][nN][eE][dD]-[lL][oO][nN][gG]"
+    },
+    "_SIGNED_SHORT": {
+      "type": "PATTERN",
+      "value": "[sS][iI][gG][nN][eE][dD]-[sS][hH][oO][rR][tT]"
+    },
+    "_SIZE": {
+      "type": "PATTERN",
+      "value": "[sS][iI][zZ][eE]"
+    },
+    "_SIZE_ERROR": {
+      "type": "PATTERN",
+      "value": "[sS][iI][zZ][eE]-[eE][rR][rR][oO][rR]"
+    },
+    "_SORT": {
+      "type": "PATTERN",
+      "value": "[sS][oO][rR][tT]"
+    },
+    "_SORT_MERGE": {
+      "type": "PATTERN",
+      "value": "[sS][oO][rR][tT]-[mM][eE][rR][gG][eE]"
+    },
+    "_SOURCE": {
+      "type": "PATTERN",
+      "value": "[sS][oO][uU][rR][cC][eE]"
+    },
+    "_SOURCE_COMPUTER": {
+      "type": "PATTERN",
+      "value": "[sS][oO][uU][rR][cC][eE]-[cC][oO][mM][pP][uU][tT][eE][rR]"
+    },
+    "_SPACE": {
+      "type": "PATTERN",
+      "value": "[sS][pP][aA][cC][eE]"
+    },
+    "_SPECIAL_NAMES": {
+      "type": "PATTERN",
+      "value": "[sS][pP][eE][cC][iI][aA][lL]-[nN][aA][mM][eE][sS]"
+    },
+    "_STANDARD": {
+      "type": "PATTERN",
+      "value": "[sS][tT][aA][nN][dD][aA][rR][dD]"
+    },
+    "_STANDARD_1": {
+      "type": "PATTERN",
+      "value": "[sS][tT][aA][nN][dD][aA][rR][dD]-1"
+    },
+    "_STANDARD_2": {
+      "type": "PATTERN",
+      "value": "[sS][tT][aA][nN][dD][aA][rR][dD]-2"
+    },
+    "_START": {
+      "type": "PATTERN",
+      "value": "[sS][tT][aA][rR][tT]"
+    },
+    "_STATUS": {
+      "type": "PATTERN",
+      "value": "[sS][tT][aA][tT][uU][sS]"
+    },
+    "_STOP": {
+      "type": "PATTERN",
+      "value": "[sS][tT][oO][pP]"
+    },
+    "_STRING": {
+      "type": "PATTERN",
+      "value": "[sS][tT][rR][iI][nN][gG]"
+    },
+    "_SUBSTITUTE_FUNC": {
+      "type": "PATTERN",
+      "value": "[sS][uU][bB][sS][tT][iI][tT][uU][tT][eE]-[fF][uU][nN][cC]"
+    },
+    "_SUBSTITUTE_CASE_FUNC": {
+      "type": "PATTERN",
+      "value": "[sS][uU][bB][sS][tT][iI][tT][uU][tT][eE]-[cC][aA][sS][eE]-[fF][uU][nN][cC]"
+    },
+    "_SUBTRACT": {
+      "type": "PATTERN",
+      "value": "[sS][uU][bB][tT][rR][aA][cC][tT]"
+    },
+    "_SUM": {
+      "type": "PATTERN",
+      "value": "[sS][uU][mM]"
+    },
+    "_SUPPRESS": {
+      "type": "PATTERN",
+      "value": "[sS][uU][pP][pP][rR][eE][sS][sS]"
+    },
+    "_SYMBOLIC": {
+      "type": "PATTERN",
+      "value": "[sS][yY][mM][bB][oO][lL][iI][cC]"
+    },
+    "_SYNCHRONIZED": {
+      "type": "PATTERN",
+      "value": "[sS][yY][nN][cC][hH][rR][oO][nN][iI][zZ][eE][dD]"
+    },
+    "_TALLYING": {
+      "type": "PATTERN",
+      "value": "[tT][aA][lL][lL][yY][iI][nN][gG]"
+    },
+    "_TAPE": {
+      "type": "PATTERN",
+      "value": "[tT][aA][pP][eE]"
+    },
+    "_TERMINATE": {
+      "type": "PATTERN",
+      "value": "[tT][eE][rR][mM][iI][nN][aA][tT][eE]"
+    },
+    "_TEST": {
+      "type": "PATTERN",
+      "value": "[tT][eE][sS][tT]"
+    },
+    "_THAN": {
+      "type": "PATTERN",
+      "value": "[tT][hH][aA][nN]"
+    },
+    "_THEN": {
+      "type": "PATTERN",
+      "value": "[tT][hH][eE][nN]"
+    },
+    "_THRU": {
+      "type": "PATTERN",
+      "value": "[tT][hH][rR][uU]"
+    },
+    "_TIME": {
+      "type": "PATTERN",
+      "value": "[tT][iI][mM][eE]"
+    },
+    "_TIMES": {
+      "type": "PATTERN",
+      "value": "[tT][iI][mM][eE][sS]"
+    },
+    "_TO": {
+      "type": "PATTERN",
+      "value": "[tT][oO]"
+    },
+    "_TOK_FALSE": {
+      "type": "PATTERN",
+      "value": "[tT][oO][kK]-[fF][aA][lL][sS][eE]"
+    },
+    "_TOK_FILE": {
+      "type": "PATTERN",
+      "value": "[tT][oO][kK]-[fF][iI][lL][eE]"
+    },
+    "_TOK_INITIAL": {
+      "type": "PATTERN",
+      "value": "[tT][oO][kK]-[iI][nN][iI][tT][iI][aA][lL]"
+    },
+    "_TOK_NULL": {
+      "type": "PATTERN",
+      "value": "[tT][oO][kK]-[nN][uU][lL][lL]"
+    },
+    "_TOK_TRUE": {
+      "type": "PATTERN",
+      "value": "[tT][oO][kK]-[tT][rR][uU][eE]"
+    },
+    "_TOP": {
+      "type": "PATTERN",
+      "value": "[tT][oO][pP]"
+    },
+    "_TRACKS": {
+      "type": "PATTERN",
+      "value": "[tT][rR][aA][cC][kK][sS]"
+    },
+    "_TRAILING": {
+      "type": "PATTERN",
+      "value": "[tT][rR][aA][iI][lL][iI][nN][gG]"
+    },
+    "_TRANSFORM": {
+      "type": "PATTERN",
+      "value": "[tT][rR][aA][nN][sS][fF][oO][rR][mM]"
+    },
+    "_TRIM_FUNCTION": {
+      "type": "PATTERN",
+      "value": "[tT][rR][iI][mM]-[fF][uU][nN][cC][tT][iI][oO][nN]"
+    },
+    "_TYPE": {
+      "type": "PATTERN",
+      "value": "[tT][yY][pP][eE]"
+    },
+    "_UNDERLINE": {
+      "type": "PATTERN",
+      "value": "[uU][nN][dD][eE][rR][lL][iI][nN][eE]"
+    },
+    "_UNIT": {
+      "type": "PATTERN",
+      "value": "[uU][nN][iI][tT]"
+    },
+    "_UNLOCK": {
+      "type": "PATTERN",
+      "value": "[uU][nN][lL][oO][cC][kK]"
+    },
+    "_UNSIGNED": {
+      "type": "PATTERN",
+      "value": "[uU][nN][sS][iI][gG][nN][eE][dD]"
+    },
+    "_UNSIGNED_INT": {
+      "type": "PATTERN",
+      "value": "[uU][nN][sS][iI][gG][nN][eE][dD]-[iI][nN][tT]"
+    },
+    "_UNSIGNED_LONG": {
+      "type": "PATTERN",
+      "value": "[uU][nN][sS][iI][gG][nN][eE][dD]-[lL][oO][nN][gG]"
+    },
+    "_UNSIGNED_SHORT": {
+      "type": "PATTERN",
+      "value": "[uU][nN][sS][iI][gG][nN][eE][dD]-[sS][hH][oO][rR][tT]"
+    },
+    "_UNSTRING": {
+      "type": "PATTERN",
+      "value": "[uU][nN][sS][tT][rR][iI][nN][gG]"
+    },
+    "_UNTIL": {
+      "type": "PATTERN",
+      "value": "[uU][nN][tT][iI][lL]"
+    },
+    "_UP": {
+      "type": "PATTERN",
+      "value": "[uU][pP]"
+    },
+    "_UPDATE": {
+      "type": "PATTERN",
+      "value": "[uU][pP][dD][aA][tT][eE]"
+    },
+    "_UPON": {
+      "type": "PATTERN",
+      "value": "[uU][pP][oO][nN]"
+    },
+    "_UPON_ARGUMENT_NUMBER": {
+      "type": "PATTERN",
+      "value": "[uU][pP][oO][nN]-[aA][rR][gG][uU][mM][eE][nN][tT]-[nN][uU][mM][bB][eE][rR]"
+    },
+    "_UPON_COMMAND_LINE": {
+      "type": "PATTERN",
+      "value": "[uU][pP][oO][nN]-[cC][oO][mM][mM][aA][nN][dD]-[lL][iI][nN][eE]"
+    },
+    "_UPON_ENVIRONMENT_NAME": {
+      "type": "PATTERN",
+      "value": "[uU][pP][oO][nN]-[eE][nN][vV][iI][rR][oO][nN][mM][eE][nN][tT]-[nN][aA][mM][eE]"
+    },
+    "_UPON_ENVIRONMENT_VALUE": {
+      "type": "PATTERN",
+      "value": "[uU][pP][oO][nN]-[eE][nN][vV][iI][rR][oO][nN][mM][eE][nN][tT]-[vV][aA][lL][uU][eE]"
+    },
+    "_UPPER_CASE_FUNC": {
+      "type": "PATTERN",
+      "value": "[uU][pP][pP][eE][rR]-[cC][aA][sS][eE]-[fF][uU][nN][cC]"
+    },
+    "_USAGE": {
+      "type": "PATTERN",
+      "value": "[uU][sS][aA][gG][eE]"
+    },
+    "_USE": {
+      "type": "PATTERN",
+      "value": "[uU][sS][eE]"
+    },
+    "_USING": {
+      "type": "PATTERN",
+      "value": "[uU][sS][iI][nN][gG]"
+    },
+    "_VALUE": {
+      "type": "PATTERN",
+      "value": "[vV][aA][lL][uU][eE]"
+    },
+    "_VARYING": {
+      "type": "PATTERN",
+      "value": "[vV][aA][rR][yY][iI][nN][gG]"
+    },
+    "_WAIT": {
+      "type": "PATTERN",
+      "value": "[wW][aA][iI][tT]"
+    },
+    "_WHEN": {
+      "type": "PATTERN",
+      "value": "[wW][hH][eE][nN]"
+    },
+    "_WHEN_COMPILED_FUNC": {
+      "type": "PATTERN",
+      "value": "[wW][hH][eE][nN]-[cC][oO][mM][pP][iI][lL][eE][dD]-[fF][uU][nN][cC]"
+    },
+    "_WHEN_OTHER": {
+      "type": "PATTERN",
+      "value": "[wW][hH][eE][nN]-[oO][tT][hH][eE][rR]"
+    },
+    "_WITH": {
+      "type": "PATTERN",
+      "value": "[wW][iI][tT][hH]"
+    },
+    "_WORD": {
+      "type": "PATTERN",
+      "value": "[wW][oO][rR][dD]"
+    },
+    "_WORDS": {
+      "type": "PATTERN",
+      "value": "[wW][oO][rR][dD][sS]"
+    },
+    "_WORKING_STORAGE": {
+      "type": "PATTERN",
+      "value": "[wW][oO][rR][kK][iI][nN][gG]-[sS][tT][oO][rR][aA][gG][eE]"
+    },
+    "_WRITE": {
+      "type": "PATTERN",
+      "value": "[wW][rR][iI][tT][eE]"
+    },
+    "_YYYYDDD": {
+      "type": "PATTERN",
+      "value": "[yY][yY][yY][yY][dD][dD][dD]"
+    },
+    "_YYYYMMDD": {
+      "type": "PATTERN",
+      "value": "[yY][yY][yY][yY][mM][mM][dD][dD]"
+    },
+    "_ZERO": {
+      "type": "PATTERN",
+      "value": "[zZ][eE][rR][oO]"
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}
+
