@@ -14,5 +14,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install
-      - run: node_modules/.bin/tree-sitter generate
+
+      - name: npm install
+        run: npm install
+
+      - name: Generating a parser
+        run: node_modules/.bin/tree-sitter generate
+
+      - name: Run tests
+        run: node_modules/.bin/tree-sitter test
