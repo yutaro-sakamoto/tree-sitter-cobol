@@ -1,5 +1,105 @@
 [
   {
+    "type": "ALL_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "CONCATENATE_FUNC_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "CURRENT_DATE_FUNC_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "FUNCTION_NAME_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "HIGH_VALUE_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "LITERAL_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "LOCALE_DT_FUNC_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "LOWER_CASE_FUNC_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "LOW_VALUE_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "NUMVALC_FUNC_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "QUOTE_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "REVERSE_FUNC_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "SPACE_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "SUBSTITUTE_CASE_FUNC_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "SUBSTITUTE_FUNC_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "TOK_NULL_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "TRIM_FUNCTION_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "UPPER_CASE_FUNC_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "WHEN_COMPILED_FUNC_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "ZERO_",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "as_literal",
     "named": true,
     "fields": {}
@@ -129,7 +229,89 @@
   {
     "type": "entry_name",
     "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "WORD",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "func_refmod",
+    "named": true,
     "fields": {}
+  },
+  {
+    "type": "function_",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "CONCATENATE_FUNC_",
+          "named": true
+        },
+        {
+          "type": "CURRENT_DATE_FUNC_",
+          "named": true
+        },
+        {
+          "type": "FUNCTION_NAME_",
+          "named": true
+        },
+        {
+          "type": "LOCALE_DT_FUNC_",
+          "named": true
+        },
+        {
+          "type": "LOWER_CASE_FUNC_",
+          "named": true
+        },
+        {
+          "type": "NUMVALC_FUNC_",
+          "named": true
+        },
+        {
+          "type": "REVERSE_FUNC_",
+          "named": true
+        },
+        {
+          "type": "SUBSTITUTE_CASE_FUNC_",
+          "named": true
+        },
+        {
+          "type": "SUBSTITUTE_FUNC_",
+          "named": true
+        },
+        {
+          "type": "TRIM_FUNCTION_",
+          "named": true
+        },
+        {
+          "type": "UPPER_CASE_FUNC_",
+          "named": true
+        },
+        {
+          "type": "WHEN_COMPILED_FUNC_",
+          "named": true
+        },
+        {
+          "type": "WORD",
+          "named": true
+        },
+        {
+          "type": "func_refmod",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "identification_division",
@@ -148,6 +330,115 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "linage_counter",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "WORD",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "move_statement",
+    "named": true,
+    "fields": {
+      "dst": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "WORD",
+            "named": true
+          }
+        ]
+      },
+      "src": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "ALL_",
+            "named": true
+          },
+          {
+            "type": "HIGH_VALUE_",
+            "named": true
+          },
+          {
+            "type": "LITERAL_",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE_",
+            "named": true
+          },
+          {
+            "type": "QUOTE_",
+            "named": true
+          },
+          {
+            "type": "SPACE_",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL_",
+            "named": true
+          },
+          {
+            "type": "WORD",
+            "named": true
+          },
+          {
+            "type": "ZERO_",
+            "named": true
+          },
+          {
+            "type": "function_",
+            "named": true
+          },
+          {
+            "type": "linage_counter",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -182,6 +473,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "move_statement",
+          "named": true
+        },
         {
           "type": "stop_run_statement",
           "named": true
@@ -227,23 +522,28 @@
   {
     "type": "program_name",
     "named": true,
-    "fields": {}
-  },
-  {
-    "type": "qualified_word",
-    "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "WORD",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "redefines_clause",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
-      "required": true,
+      "multiple": true,
+      "required": false,
       "types": [
         {
-          "type": "qualified_word",
+          "type": "WORD",
           "named": true
         }
       ]
@@ -285,6 +585,10 @@
     }
   },
   {
+    "type": "&",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -298,6 +602,90 @@
   },
   {
     "type": ":",
+    "named": false
+  },
+  {
+    "type": "HIGH-VALUE",
+    "named": false
+  },
+  {
+    "type": "HIGH-Value",
+    "named": false
+  },
+  {
+    "type": "HIGH-value",
+    "named": false
+  },
+  {
+    "type": "High-VALUE",
+    "named": false
+  },
+  {
+    "type": "High-Value",
+    "named": false
+  },
+  {
+    "type": "High-value",
+    "named": false
+  },
+  {
+    "type": "LOW-VALUE",
+    "named": false
+  },
+  {
+    "type": "LOW-Value",
+    "named": false
+  },
+  {
+    "type": "LOW-value",
+    "named": false
+  },
+  {
+    "type": "Low-VALUE",
+    "named": false
+  },
+  {
+    "type": "Low-Value",
+    "named": false
+  },
+  {
+    "type": "Low-value",
+    "named": false
+  },
+  {
+    "type": "NULL",
+    "named": false
+  },
+  {
+    "type": "Null",
+    "named": false
+  },
+  {
+    "type": "QUOTE",
+    "named": false
+  },
+  {
+    "type": "Quote",
+    "named": false
+  },
+  {
+    "type": "SPACE",
+    "named": false
+  },
+  {
+    "type": "Space",
+    "named": false
+  },
+  {
+    "type": "WORD",
+    "named": true
+  },
+  {
+    "type": "ZERO",
+    "named": false
+  },
+  {
+    "type": "Zero",
     "named": false
   },
   {
@@ -341,6 +729,18 @@
     "named": true
   },
   {
+    "type": "high-VALUE",
+    "named": false
+  },
+  {
+    "type": "high-Value",
+    "named": false
+  },
+  {
+    "type": "high-value",
+    "named": false
+  },
+  {
     "type": "justified_clause",
     "named": true
   },
@@ -361,8 +761,24 @@
     "named": true
   },
   {
+    "type": "low-VALUE",
+    "named": false
+  },
+  {
+    "type": "low-Value",
+    "named": false
+  },
+  {
+    "type": "low-value",
+    "named": false
+  },
+  {
     "type": "nested_prog",
     "named": true
+  },
+  {
+    "type": "null",
+    "named": false
   },
   {
     "type": "occurs_clause",
@@ -371,6 +787,10 @@
   {
     "type": "picture_x",
     "named": true
+  },
+  {
+    "type": "quote",
+    "named": false
   },
   {
     "type": "renames_clause",
@@ -389,6 +809,10 @@
     "named": true
   },
   {
+    "type": "space",
+    "named": false
+  },
+  {
     "type": "synchronized_clause",
     "named": true
   },
@@ -399,5 +823,9 @@
   {
     "type": "value_clause",
     "named": true
+  },
+  {
+    "type": "zero",
+    "named": false
   }
 ]
