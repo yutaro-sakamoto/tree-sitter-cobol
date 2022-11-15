@@ -25,6 +25,11 @@
     "fields": {}
   },
   {
+    "type": "LENGTH_",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "LITERAL_",
     "named": true,
     "fields": {}
@@ -98,6 +103,200 @@
     "type": "ZERO_",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "add_exp",
+    "named": true,
+    "fields": {
+      "left": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "HIGH_VALUE_",
+            "named": true
+          },
+          {
+            "type": "LENGTH_",
+            "named": true
+          },
+          {
+            "type": "LITERAL_",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE_",
+            "named": true
+          },
+          {
+            "type": "QUOTE_",
+            "named": true
+          },
+          {
+            "type": "SPACE_",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL_",
+            "named": true
+          },
+          {
+            "type": "WORD",
+            "named": true
+          },
+          {
+            "type": "ZERO_",
+            "named": true
+          },
+          {
+            "type": "add_exp",
+            "named": true
+          },
+          {
+            "type": "div_exp",
+            "named": true
+          },
+          {
+            "type": "function_",
+            "named": true
+          },
+          {
+            "type": "linage_counter",
+            "named": true
+          },
+          {
+            "type": "mul_exp",
+            "named": true
+          },
+          {
+            "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "positive_exp",
+            "named": true
+          },
+          {
+            "type": "pow_exp",
+            "named": true
+          },
+          {
+            "type": "sub_exp",
+            "named": true
+          }
+        ]
+      },
+      "right": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "HIGH_VALUE_",
+            "named": true
+          },
+          {
+            "type": "LENGTH_",
+            "named": true
+          },
+          {
+            "type": "LITERAL_",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE_",
+            "named": true
+          },
+          {
+            "type": "QUOTE_",
+            "named": true
+          },
+          {
+            "type": "SPACE_",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL_",
+            "named": true
+          },
+          {
+            "type": "WORD",
+            "named": true
+          },
+          {
+            "type": "ZERO_",
+            "named": true
+          },
+          {
+            "type": "add_exp",
+            "named": true
+          },
+          {
+            "type": "div_exp",
+            "named": true
+          },
+          {
+            "type": "function_",
+            "named": true
+          },
+          {
+            "type": "linage_counter",
+            "named": true
+          },
+          {
+            "type": "mul_exp",
+            "named": true
+          },
+          {
+            "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "positive_exp",
+            "named": true
+          },
+          {
+            "type": "pow_exp",
+            "named": true
+          },
+          {
+            "type": "sub_exp",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "as_literal",
@@ -227,6 +426,200 @@
     }
   },
   {
+    "type": "div_exp",
+    "named": true,
+    "fields": {
+      "left": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "HIGH_VALUE_",
+            "named": true
+          },
+          {
+            "type": "LENGTH_",
+            "named": true
+          },
+          {
+            "type": "LITERAL_",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE_",
+            "named": true
+          },
+          {
+            "type": "QUOTE_",
+            "named": true
+          },
+          {
+            "type": "SPACE_",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL_",
+            "named": true
+          },
+          {
+            "type": "WORD",
+            "named": true
+          },
+          {
+            "type": "ZERO_",
+            "named": true
+          },
+          {
+            "type": "add_exp",
+            "named": true
+          },
+          {
+            "type": "div_exp",
+            "named": true
+          },
+          {
+            "type": "function_",
+            "named": true
+          },
+          {
+            "type": "linage_counter",
+            "named": true
+          },
+          {
+            "type": "mul_exp",
+            "named": true
+          },
+          {
+            "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "positive_exp",
+            "named": true
+          },
+          {
+            "type": "pow_exp",
+            "named": true
+          },
+          {
+            "type": "sub_exp",
+            "named": true
+          }
+        ]
+      },
+      "right": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "HIGH_VALUE_",
+            "named": true
+          },
+          {
+            "type": "LENGTH_",
+            "named": true
+          },
+          {
+            "type": "LITERAL_",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE_",
+            "named": true
+          },
+          {
+            "type": "QUOTE_",
+            "named": true
+          },
+          {
+            "type": "SPACE_",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL_",
+            "named": true
+          },
+          {
+            "type": "WORD",
+            "named": true
+          },
+          {
+            "type": "ZERO_",
+            "named": true
+          },
+          {
+            "type": "add_exp",
+            "named": true
+          },
+          {
+            "type": "div_exp",
+            "named": true
+          },
+          {
+            "type": "function_",
+            "named": true
+          },
+          {
+            "type": "linage_counter",
+            "named": true
+          },
+          {
+            "type": "mul_exp",
+            "named": true
+          },
+          {
+            "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "positive_exp",
+            "named": true
+          },
+          {
+            "type": "pow_exp",
+            "named": true
+          },
+          {
+            "type": "sub_exp",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "entry_name",
     "named": true,
     "fields": {},
@@ -244,7 +637,85 @@
   {
     "type": "func_refmod",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "HIGH_VALUE_",
+          "named": true
+        },
+        {
+          "type": "LENGTH_",
+          "named": true
+        },
+        {
+          "type": "LITERAL_",
+          "named": true
+        },
+        {
+          "type": "LOW_VALUE_",
+          "named": true
+        },
+        {
+          "type": "QUOTE_",
+          "named": true
+        },
+        {
+          "type": "SPACE_",
+          "named": true
+        },
+        {
+          "type": "TOK_NULL_",
+          "named": true
+        },
+        {
+          "type": "WORD",
+          "named": true
+        },
+        {
+          "type": "ZERO_",
+          "named": true
+        },
+        {
+          "type": "add_exp",
+          "named": true
+        },
+        {
+          "type": "div_exp",
+          "named": true
+        },
+        {
+          "type": "function_",
+          "named": true
+        },
+        {
+          "type": "linage_counter",
+          "named": true
+        },
+        {
+          "type": "mul_exp",
+          "named": true
+        },
+        {
+          "type": "negative_exp",
+          "named": true
+        },
+        {
+          "type": "positive_exp",
+          "named": true
+        },
+        {
+          "type": "pow_exp",
+          "named": true
+        },
+        {
+          "type": "sub_exp",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "function_",
@@ -267,6 +738,18 @@
           "named": true
         },
         {
+          "type": "HIGH_VALUE_",
+          "named": true
+        },
+        {
+          "type": "LENGTH_",
+          "named": true
+        },
+        {
+          "type": "LITERAL_",
+          "named": true
+        },
+        {
           "type": "LOCALE_DT_FUNC_",
           "named": true
         },
@@ -275,11 +758,23 @@
           "named": true
         },
         {
+          "type": "LOW_VALUE_",
+          "named": true
+        },
+        {
           "type": "NUMVALC_FUNC_",
           "named": true
         },
         {
+          "type": "QUOTE_",
+          "named": true
+        },
+        {
           "type": "REVERSE_FUNC_",
+          "named": true
+        },
+        {
+          "type": "SPACE_",
           "named": true
         },
         {
@@ -288,6 +783,10 @@
         },
         {
           "type": "SUBSTITUTE_FUNC_",
+          "named": true
+        },
+        {
+          "type": "TOK_NULL_",
           "named": true
         },
         {
@@ -307,7 +806,47 @@
           "named": true
         },
         {
+          "type": "ZERO_",
+          "named": true
+        },
+        {
+          "type": "add_exp",
+          "named": true
+        },
+        {
+          "type": "div_exp",
+          "named": true
+        },
+        {
           "type": "func_refmod",
+          "named": true
+        },
+        {
+          "type": "function_",
+          "named": true
+        },
+        {
+          "type": "linage_counter",
+          "named": true
+        },
+        {
+          "type": "mul_exp",
+          "named": true
+        },
+        {
+          "type": "negative_exp",
+          "named": true
+        },
+        {
+          "type": "positive_exp",
+          "named": true
+        },
+        {
+          "type": "pow_exp",
+          "named": true
+        },
+        {
+          "type": "sub_exp",
           "named": true
         }
       ]
@@ -356,6 +895,10 @@
         "required": true,
         "types": [
           {
+            "type": "&",
+            "named": false
+          },
+          {
             "type": "(",
             "named": false
           },
@@ -368,7 +911,75 @@
             "named": false
           },
           {
+            "type": "HIGH_VALUE_",
+            "named": true
+          },
+          {
+            "type": "LENGTH_",
+            "named": true
+          },
+          {
+            "type": "LITERAL_",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE_",
+            "named": true
+          },
+          {
+            "type": "QUOTE_",
+            "named": true
+          },
+          {
+            "type": "SPACE_",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL_",
+            "named": true
+          },
+          {
             "type": "WORD",
+            "named": true
+          },
+          {
+            "type": "ZERO_",
+            "named": true
+          },
+          {
+            "type": "add_exp",
+            "named": true
+          },
+          {
+            "type": "div_exp",
+            "named": true
+          },
+          {
+            "type": "function_",
+            "named": true
+          },
+          {
+            "type": "linage_counter",
+            "named": true
+          },
+          {
+            "type": "mul_exp",
+            "named": true
+          },
+          {
+            "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "positive_exp",
+            "named": true
+          },
+          {
+            "type": "pow_exp",
+            "named": true
+          },
+          {
+            "type": "sub_exp",
             "named": true
           }
         ]
@@ -402,6 +1013,10 @@
             "named": true
           },
           {
+            "type": "LENGTH_",
+            "named": true
+          },
+          {
             "type": "LITERAL_",
             "named": true
           },
@@ -430,11 +1045,333 @@
             "named": true
           },
           {
+            "type": "add_exp",
+            "named": true
+          },
+          {
+            "type": "div_exp",
+            "named": true
+          },
+          {
             "type": "function_",
             "named": true
           },
           {
             "type": "linage_counter",
+            "named": true
+          },
+          {
+            "type": "mul_exp",
+            "named": true
+          },
+          {
+            "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "positive_exp",
+            "named": true
+          },
+          {
+            "type": "pow_exp",
+            "named": true
+          },
+          {
+            "type": "sub_exp",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "mul_exp",
+    "named": true,
+    "fields": {
+      "left": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "HIGH_VALUE_",
+            "named": true
+          },
+          {
+            "type": "LENGTH_",
+            "named": true
+          },
+          {
+            "type": "LITERAL_",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE_",
+            "named": true
+          },
+          {
+            "type": "QUOTE_",
+            "named": true
+          },
+          {
+            "type": "SPACE_",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL_",
+            "named": true
+          },
+          {
+            "type": "WORD",
+            "named": true
+          },
+          {
+            "type": "ZERO_",
+            "named": true
+          },
+          {
+            "type": "add_exp",
+            "named": true
+          },
+          {
+            "type": "div_exp",
+            "named": true
+          },
+          {
+            "type": "function_",
+            "named": true
+          },
+          {
+            "type": "linage_counter",
+            "named": true
+          },
+          {
+            "type": "mul_exp",
+            "named": true
+          },
+          {
+            "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "positive_exp",
+            "named": true
+          },
+          {
+            "type": "pow_exp",
+            "named": true
+          },
+          {
+            "type": "sub_exp",
+            "named": true
+          }
+        ]
+      },
+      "right": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "HIGH_VALUE_",
+            "named": true
+          },
+          {
+            "type": "LENGTH_",
+            "named": true
+          },
+          {
+            "type": "LITERAL_",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE_",
+            "named": true
+          },
+          {
+            "type": "QUOTE_",
+            "named": true
+          },
+          {
+            "type": "SPACE_",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL_",
+            "named": true
+          },
+          {
+            "type": "WORD",
+            "named": true
+          },
+          {
+            "type": "ZERO_",
+            "named": true
+          },
+          {
+            "type": "add_exp",
+            "named": true
+          },
+          {
+            "type": "div_exp",
+            "named": true
+          },
+          {
+            "type": "function_",
+            "named": true
+          },
+          {
+            "type": "linage_counter",
+            "named": true
+          },
+          {
+            "type": "mul_exp",
+            "named": true
+          },
+          {
+            "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "positive_exp",
+            "named": true
+          },
+          {
+            "type": "pow_exp",
+            "named": true
+          },
+          {
+            "type": "sub_exp",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "negative_exp",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "HIGH_VALUE_",
+            "named": true
+          },
+          {
+            "type": "LENGTH_",
+            "named": true
+          },
+          {
+            "type": "LITERAL_",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE_",
+            "named": true
+          },
+          {
+            "type": "QUOTE_",
+            "named": true
+          },
+          {
+            "type": "SPACE_",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL_",
+            "named": true
+          },
+          {
+            "type": "WORD",
+            "named": true
+          },
+          {
+            "type": "ZERO_",
+            "named": true
+          },
+          {
+            "type": "add_exp",
+            "named": true
+          },
+          {
+            "type": "div_exp",
+            "named": true
+          },
+          {
+            "type": "function_",
+            "named": true
+          },
+          {
+            "type": "linage_counter",
+            "named": true
+          },
+          {
+            "type": "mul_exp",
+            "named": true
+          },
+          {
+            "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "positive_exp",
+            "named": true
+          },
+          {
+            "type": "pow_exp",
+            "named": true
+          },
+          {
+            "type": "sub_exp",
             "named": true
           }
         ]
@@ -463,6 +1400,300 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "positive_exp",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "HIGH_VALUE_",
+            "named": true
+          },
+          {
+            "type": "LENGTH_",
+            "named": true
+          },
+          {
+            "type": "LITERAL_",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE_",
+            "named": true
+          },
+          {
+            "type": "QUOTE_",
+            "named": true
+          },
+          {
+            "type": "SPACE_",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL_",
+            "named": true
+          },
+          {
+            "type": "WORD",
+            "named": true
+          },
+          {
+            "type": "ZERO_",
+            "named": true
+          },
+          {
+            "type": "add_exp",
+            "named": true
+          },
+          {
+            "type": "div_exp",
+            "named": true
+          },
+          {
+            "type": "function_",
+            "named": true
+          },
+          {
+            "type": "linage_counter",
+            "named": true
+          },
+          {
+            "type": "mul_exp",
+            "named": true
+          },
+          {
+            "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "positive_exp",
+            "named": true
+          },
+          {
+            "type": "pow_exp",
+            "named": true
+          },
+          {
+            "type": "sub_exp",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "pow_exp",
+    "named": true,
+    "fields": {
+      "left": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "HIGH_VALUE_",
+            "named": true
+          },
+          {
+            "type": "LENGTH_",
+            "named": true
+          },
+          {
+            "type": "LITERAL_",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE_",
+            "named": true
+          },
+          {
+            "type": "QUOTE_",
+            "named": true
+          },
+          {
+            "type": "SPACE_",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL_",
+            "named": true
+          },
+          {
+            "type": "WORD",
+            "named": true
+          },
+          {
+            "type": "ZERO_",
+            "named": true
+          },
+          {
+            "type": "add_exp",
+            "named": true
+          },
+          {
+            "type": "div_exp",
+            "named": true
+          },
+          {
+            "type": "function_",
+            "named": true
+          },
+          {
+            "type": "linage_counter",
+            "named": true
+          },
+          {
+            "type": "mul_exp",
+            "named": true
+          },
+          {
+            "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "positive_exp",
+            "named": true
+          },
+          {
+            "type": "pow_exp",
+            "named": true
+          },
+          {
+            "type": "sub_exp",
+            "named": true
+          }
+        ]
+      },
+      "right": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "HIGH_VALUE_",
+            "named": true
+          },
+          {
+            "type": "LENGTH_",
+            "named": true
+          },
+          {
+            "type": "LITERAL_",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE_",
+            "named": true
+          },
+          {
+            "type": "QUOTE_",
+            "named": true
+          },
+          {
+            "type": "SPACE_",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL_",
+            "named": true
+          },
+          {
+            "type": "WORD",
+            "named": true
+          },
+          {
+            "type": "ZERO_",
+            "named": true
+          },
+          {
+            "type": "add_exp",
+            "named": true
+          },
+          {
+            "type": "div_exp",
+            "named": true
+          },
+          {
+            "type": "function_",
+            "named": true
+          },
+          {
+            "type": "linage_counter",
+            "named": true
+          },
+          {
+            "type": "mul_exp",
+            "named": true
+          },
+          {
+            "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "positive_exp",
+            "named": true
+          },
+          {
+            "type": "pow_exp",
+            "named": true
+          },
+          {
+            "type": "sub_exp",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -543,7 +1774,75 @@
       "required": false,
       "types": [
         {
+          "type": "HIGH_VALUE_",
+          "named": true
+        },
+        {
+          "type": "LENGTH_",
+          "named": true
+        },
+        {
+          "type": "LITERAL_",
+          "named": true
+        },
+        {
+          "type": "LOW_VALUE_",
+          "named": true
+        },
+        {
+          "type": "QUOTE_",
+          "named": true
+        },
+        {
+          "type": "SPACE_",
+          "named": true
+        },
+        {
+          "type": "TOK_NULL_",
+          "named": true
+        },
+        {
           "type": "WORD",
+          "named": true
+        },
+        {
+          "type": "ZERO_",
+          "named": true
+        },
+        {
+          "type": "add_exp",
+          "named": true
+        },
+        {
+          "type": "div_exp",
+          "named": true
+        },
+        {
+          "type": "function_",
+          "named": true
+        },
+        {
+          "type": "linage_counter",
+          "named": true
+        },
+        {
+          "type": "mul_exp",
+          "named": true
+        },
+        {
+          "type": "negative_exp",
+          "named": true
+        },
+        {
+          "type": "positive_exp",
+          "named": true
+        },
+        {
+          "type": "pow_exp",
+          "named": true
+        },
+        {
+          "type": "sub_exp",
           "named": true
         }
       ]
@@ -568,6 +1867,200 @@
     "type": "stop_run_statement",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "sub_exp",
+    "named": true,
+    "fields": {
+      "left": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "HIGH_VALUE_",
+            "named": true
+          },
+          {
+            "type": "LENGTH_",
+            "named": true
+          },
+          {
+            "type": "LITERAL_",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE_",
+            "named": true
+          },
+          {
+            "type": "QUOTE_",
+            "named": true
+          },
+          {
+            "type": "SPACE_",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL_",
+            "named": true
+          },
+          {
+            "type": "WORD",
+            "named": true
+          },
+          {
+            "type": "ZERO_",
+            "named": true
+          },
+          {
+            "type": "add_exp",
+            "named": true
+          },
+          {
+            "type": "div_exp",
+            "named": true
+          },
+          {
+            "type": "function_",
+            "named": true
+          },
+          {
+            "type": "linage_counter",
+            "named": true
+          },
+          {
+            "type": "mul_exp",
+            "named": true
+          },
+          {
+            "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "positive_exp",
+            "named": true
+          },
+          {
+            "type": "pow_exp",
+            "named": true
+          },
+          {
+            "type": "sub_exp",
+            "named": true
+          }
+        ]
+      },
+      "right": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "HIGH_VALUE_",
+            "named": true
+          },
+          {
+            "type": "LENGTH_",
+            "named": true
+          },
+          {
+            "type": "LITERAL_",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE_",
+            "named": true
+          },
+          {
+            "type": "QUOTE_",
+            "named": true
+          },
+          {
+            "type": "SPACE_",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL_",
+            "named": true
+          },
+          {
+            "type": "WORD",
+            "named": true
+          },
+          {
+            "type": "ZERO_",
+            "named": true
+          },
+          {
+            "type": "add_exp",
+            "named": true
+          },
+          {
+            "type": "div_exp",
+            "named": true
+          },
+          {
+            "type": "function_",
+            "named": true
+          },
+          {
+            "type": "linage_counter",
+            "named": true
+          },
+          {
+            "type": "mul_exp",
+            "named": true
+          },
+          {
+            "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "positive_exp",
+            "named": true
+          },
+          {
+            "type": "pow_exp",
+            "named": true
+          },
+          {
+            "type": "sub_exp",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "working_storage_section",
@@ -597,7 +2090,23 @@
     "named": false
   },
   {
+    "type": "*",
+    "named": false
+  },
+  {
+    "type": "+",
+    "named": false
+  },
+  {
+    "type": "-",
+    "named": false
+  },
+  {
     "type": ".",
+    "named": false
+  },
+  {
+    "type": "/",
     "named": false
   },
   {
@@ -686,6 +2195,10 @@
   },
   {
     "type": "Zero",
+    "named": false
+  },
+  {
+    "type": "^",
     "named": false
   },
   {

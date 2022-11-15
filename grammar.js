@@ -132,10 +132,80 @@ module.exports = grammar({
       ')'
     ),
 
+    _exp_list: $ => sepBy(
+      $._exp, $._e_sep
+    ),
+
+    _exp: $ => choice(
+      $._arith_x,
+      $._binary_exp,
+      $._unary_exp,
+      seq('(', $._exp, ')')
+    ),
+
+    _binary_exp: $ => choice(
+      $.pow_exp,
+      $.mul_exp,
+      $.div_exp,
+      $.add_exp,
+      $.sub_exp,
+    ),
+
+    _unary_exp: $ => prec(4, choice(
+      $.positive_exp,
+      $.negative_exp
+    )),
+
+    positive_exp: $ => seq(
+      '+',
+      field('value', $._exp)
+    ),
+
+    negative_exp: $ => seq(
+      '-',
+      field('value', $._exp)
+    ),
+
+    add_exp: $ => prec.left(1, seq(
+      field('left', $._exp),
+      '+',
+      field('right', $._exp)
+    )),
+
+    sub_exp: $ => prec.left(1, seq(
+      field('left', $._exp),
+      '-',
+      field('right', $._exp)
+    )),
+
+    mul_exp: $ => prec.left(2, seq(
+      field('left', $._exp),
+      '*',
+      field('right', $._exp)
+    )),
+
+    div_exp: $ => prec.left(2, seq(
+      field('left', $._exp),
+      '/',
+      field('right', $._exp)
+    )),
+
+    pow_exp: $ => prec.left(3, seq(
+      field('left', $._exp),
+      '^',
+      field('right', $._exp)
+    )),
+
     //todo
-    _exp_list: $ => $._NUMBER,
-    //todo
-    _exp: $ => $._NUMBER,
+    _arith_x: $ => choice(
+      $._identifier,
+      seq($.LENGTH_, optional($._OF), $._identifier),
+      seq($.LENGTH_, optional($._OF), $._basic_literal),
+      seq($.LENGTH_, optional($._OF), $.function_),
+      $._basic_literal,
+      $.function_,
+      $.linage_counter,
+    ),
 
     external_clause: $ => /todo_external_clause/,
     global_clause: $ => /todo_global_clause/,
@@ -212,12 +282,12 @@ module.exports = grammar({
     ),
 
     _x: $ => choice(
-      seq($._LENGTH, $._OF, choice(
+      seq($._LENGTH, optional($._OF), choice(
         $._identifier,
         $._basic_literal,
         $.function_)
       ),
-      seq($._ADDRESS, $._OF, choice(
+      seq($._ADDRESS, optional($._OF), choice(
         seq(
           choice($._PROGRAM, $._ENTRY),
           choice($._identifier, $._LITERAL)),
@@ -232,7 +302,7 @@ module.exports = grammar({
     _target_x_list: $ => repeat1($._target_x),
     _target_x: $ => choice(
       $._identifier,
-      seq($._ADDRESS, $._OF, $._identifier)
+      seq($._ADDRESS, optional($._OF), $._identifier)
     ),
 
     _basic_literal: $ => sepBy(
@@ -241,7 +311,7 @@ module.exports = grammar({
     ),
 
     _basic_value: $ => choice(
-      $.LITERAL_,
+      $.LITERAL_,//todo implement
       $.SPACE_,
       $.ZERO_,
       $.QUOTE_,
