@@ -104,13 +104,13 @@ module.exports = grammar({
     ),
 
     _identifier: $ => choice(
-      $._qualified_word,
-      seq($._qualified_word, $._subref),
-      seq($._qualified_word, $._refmod),
-      seq($._qualified_word, $._subref, $._refmod),
+      $.qualified_word,
+      seq($.qualified_word, $.subref),
+      seq($.qualified_word, $.refmod),
+      seq($.qualified_word, $.subref, $.refmod),
     ),
 
-    _qualified_word: $ => sepBy(
+    qualified_word: $ => sepBy(
       $.WORD, $._in_of
     ),
 
@@ -119,13 +119,13 @@ module.exports = grammar({
       $._OF
     ),
 
-    _subref: $ => seq(
+    subref: $ => seq(
       '(',
       $._exp_list,
       ')'
     ),
 
-    _refmod: $ => seq(
+    refmod: $ => seq(
       '(',
       $._exp,
       ':',
@@ -367,7 +367,7 @@ module.exports = grammar({
     _locale_dt_args: $ => seq(
       $._exp,
       optional(
-        seq($._e_sep, $._qualified_word)
+        seq($._e_sep, $.qualified_word)
       )
     ),
 
@@ -1310,7 +1310,6 @@ module.exports = grammar({
     WHEN_COMPILED_FUNC_: $ => $._WHEN_COMPILED_FUNC,
     WHEN_OTHER_: $ => $._WHEN_OTHER,
     WITH_: $ => $._WITH,
-    //WORD_: $ => $.WORD,
     WORDS_: $ => $._WORDS,
     WORKING_STORAGE_: $ => $._WORKING_STORAGE,
     WRITE_: $ => $._WRITE,

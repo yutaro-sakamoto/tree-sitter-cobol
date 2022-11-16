@@ -120,10 +120,6 @@
             "named": false
           },
           {
-            "type": ":",
-            "named": false
-          },
-          {
             "type": "HIGH_VALUE_",
             "named": true
           },
@@ -145,10 +141,6 @@
           },
           {
             "type": "TOK_NULL_",
-            "named": true
-          },
-          {
-            "type": "WORD",
             "named": true
           },
           {
@@ -200,7 +192,19 @@
             "named": true
           },
           {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "subref",
             "named": true
           },
           {
@@ -226,10 +230,6 @@
             "named": false
           },
           {
-            "type": ":",
-            "named": false
-          },
-          {
             "type": "HIGH_VALUE_",
             "named": true
           },
@@ -251,10 +251,6 @@
           },
           {
             "type": "TOK_NULL_",
-            "named": true
-          },
-          {
-            "type": "WORD",
             "named": true
           },
           {
@@ -306,7 +302,19 @@
             "named": true
           },
           {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "subref",
             "named": true
           },
           {
@@ -503,10 +511,6 @@
             "named": false
           },
           {
-            "type": ":",
-            "named": false
-          },
-          {
             "type": "HIGH_VALUE_",
             "named": true
           },
@@ -528,10 +532,6 @@
           },
           {
             "type": "TOK_NULL_",
-            "named": true
-          },
-          {
-            "type": "WORD",
             "named": true
           },
           {
@@ -583,7 +583,19 @@
             "named": true
           },
           {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "subref",
             "named": true
           },
           {
@@ -609,10 +621,6 @@
             "named": false
           },
           {
-            "type": ":",
-            "named": false
-          },
-          {
             "type": "HIGH_VALUE_",
             "named": true
           },
@@ -634,10 +642,6 @@
           },
           {
             "type": "TOK_NULL_",
-            "named": true
-          },
-          {
-            "type": "WORD",
             "named": true
           },
           {
@@ -689,7 +693,19 @@
             "named": true
           },
           {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "subref",
             "named": true
           },
           {
@@ -748,10 +764,6 @@
           "named": true
         },
         {
-          "type": "WORD",
-          "named": true
-        },
-        {
           "type": "ZERO_",
           "named": true
         },
@@ -800,7 +812,19 @@
           "named": true
         },
         {
+          "type": "qualified_word",
+          "named": true
+        },
+        {
+          "type": "refmod",
+          "named": true
+        },
+        {
           "type": "sub_exp",
+          "named": true
+        },
+        {
+          "type": "subref",
           "named": true
         },
         {
@@ -891,10 +915,6 @@
           "named": true
         },
         {
-          "type": "WORD",
-          "named": true
-        },
-        {
           "type": "ZERO_",
           "named": true
         },
@@ -947,7 +967,19 @@
           "named": true
         },
         {
+          "type": "qualified_word",
+          "named": true
+        },
+        {
+          "type": "refmod",
+          "named": true
+        },
+        {
           "type": "sub_exp",
+          "named": true
+        },
+        {
+          "type": "subref",
           "named": true
         },
         {
@@ -1005,103 +1037,15 @@
         "required": true,
         "types": [
           {
-            "type": "&",
-            "named": false
-          },
-          {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": ":",
-            "named": false
-          },
-          {
-            "type": "HIGH_VALUE_",
+            "type": "qualified_word",
             "named": true
           },
           {
-            "type": "LENGTH_",
+            "type": "refmod",
             "named": true
           },
           {
-            "type": "LOW_VALUE_",
-            "named": true
-          },
-          {
-            "type": "QUOTE_",
-            "named": true
-          },
-          {
-            "type": "SPACE_",
-            "named": true
-          },
-          {
-            "type": "TOK_NULL_",
-            "named": true
-          },
-          {
-            "type": "WORD",
-            "named": true
-          },
-          {
-            "type": "ZERO_",
-            "named": true
-          },
-          {
-            "type": "add_exp",
-            "named": true
-          },
-          {
-            "type": "div_exp",
-            "named": true
-          },
-          {
-            "type": "function_",
-            "named": true
-          },
-          {
-            "type": "h_string",
-            "named": true
-          },
-          {
-            "type": "linage_counter",
-            "named": true
-          },
-          {
-            "type": "mul_exp",
-            "named": true
-          },
-          {
-            "type": "n_string",
-            "named": true
-          },
-          {
-            "type": "negative_exp",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "positive_exp",
-            "named": true
-          },
-          {
-            "type": "pow_exp",
-            "named": true
-          },
-          {
-            "type": "sub_exp",
-            "named": true
-          },
-          {
-            "type": "x_string",
+            "type": "subref",
             "named": true
           }
         ]
@@ -1115,27 +1059,11 @@
             "named": false
           },
           {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": ":",
-            "named": false
-          },
-          {
             "type": "ALL_",
             "named": true
           },
           {
             "type": "HIGH_VALUE_",
-            "named": true
-          },
-          {
-            "type": "LENGTH_",
             "named": true
           },
           {
@@ -1155,19 +1083,7 @@
             "named": true
           },
           {
-            "type": "WORD",
-            "named": true
-          },
-          {
             "type": "ZERO_",
-            "named": true
-          },
-          {
-            "type": "add_exp",
-            "named": true
-          },
-          {
-            "type": "div_exp",
             "named": true
           },
           {
@@ -1183,15 +1099,7 @@
             "named": true
           },
           {
-            "type": "mul_exp",
-            "named": true
-          },
-          {
             "type": "n_string",
-            "named": true
-          },
-          {
-            "type": "negative_exp",
             "named": true
           },
           {
@@ -1199,15 +1107,15 @@
             "named": true
           },
           {
-            "type": "positive_exp",
+            "type": "qualified_word",
             "named": true
           },
           {
-            "type": "pow_exp",
+            "type": "refmod",
             "named": true
           },
           {
-            "type": "sub_exp",
+            "type": "subref",
             "named": true
           },
           {
@@ -1239,10 +1147,6 @@
             "named": false
           },
           {
-            "type": ":",
-            "named": false
-          },
-          {
             "type": "HIGH_VALUE_",
             "named": true
           },
@@ -1264,10 +1168,6 @@
           },
           {
             "type": "TOK_NULL_",
-            "named": true
-          },
-          {
-            "type": "WORD",
             "named": true
           },
           {
@@ -1319,7 +1219,19 @@
             "named": true
           },
           {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "subref",
             "named": true
           },
           {
@@ -1345,10 +1257,6 @@
             "named": false
           },
           {
-            "type": ":",
-            "named": false
-          },
-          {
             "type": "HIGH_VALUE_",
             "named": true
           },
@@ -1370,10 +1278,6 @@
           },
           {
             "type": "TOK_NULL_",
-            "named": true
-          },
-          {
-            "type": "WORD",
             "named": true
           },
           {
@@ -1425,7 +1329,19 @@
             "named": true
           },
           {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "subref",
             "named": true
           },
           {
@@ -1462,10 +1378,6 @@
             "named": false
           },
           {
-            "type": ":",
-            "named": false
-          },
-          {
             "type": "HIGH_VALUE_",
             "named": true
           },
@@ -1487,10 +1399,6 @@
           },
           {
             "type": "TOK_NULL_",
-            "named": true
-          },
-          {
-            "type": "WORD",
             "named": true
           },
           {
@@ -1542,7 +1450,19 @@
             "named": true
           },
           {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "subref",
             "named": true
           },
           {
@@ -1598,10 +1518,6 @@
             "named": false
           },
           {
-            "type": ":",
-            "named": false
-          },
-          {
             "type": "HIGH_VALUE_",
             "named": true
           },
@@ -1623,10 +1539,6 @@
           },
           {
             "type": "TOK_NULL_",
-            "named": true
-          },
-          {
-            "type": "WORD",
             "named": true
           },
           {
@@ -1678,7 +1590,19 @@
             "named": true
           },
           {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "subref",
             "named": true
           },
           {
@@ -1710,10 +1634,6 @@
             "named": false
           },
           {
-            "type": ":",
-            "named": false
-          },
-          {
             "type": "HIGH_VALUE_",
             "named": true
           },
@@ -1735,10 +1655,6 @@
           },
           {
             "type": "TOK_NULL_",
-            "named": true
-          },
-          {
-            "type": "WORD",
             "named": true
           },
           {
@@ -1790,7 +1706,19 @@
             "named": true
           },
           {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "subref",
             "named": true
           },
           {
@@ -1816,10 +1744,6 @@
             "named": false
           },
           {
-            "type": ":",
-            "named": false
-          },
-          {
             "type": "HIGH_VALUE_",
             "named": true
           },
@@ -1841,10 +1765,6 @@
           },
           {
             "type": "TOK_NULL_",
-            "named": true
-          },
-          {
-            "type": "WORD",
             "named": true
           },
           {
@@ -1896,7 +1816,19 @@
             "named": true
           },
           {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "subref",
             "named": true
           },
           {
@@ -1993,7 +1925,45 @@
     }
   },
   {
+    "type": "qualified_word",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "WORD",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "redefines_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "qualified_word",
+          "named": true
+        },
+        {
+          "type": "refmod",
+          "named": true
+        },
+        {
+          "type": "subref",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "refmod",
     "named": true,
     "fields": {},
     "children": {
@@ -2022,10 +1992,6 @@
         },
         {
           "type": "TOK_NULL_",
-          "named": true
-        },
-        {
-          "type": "WORD",
           "named": true
         },
         {
@@ -2077,7 +2043,19 @@
           "named": true
         },
         {
+          "type": "qualified_word",
+          "named": true
+        },
+        {
+          "type": "refmod",
+          "named": true
+        },
+        {
           "type": "sub_exp",
+          "named": true
+        },
+        {
+          "type": "subref",
           "named": true
         },
         {
@@ -2128,10 +2106,6 @@
             "named": false
           },
           {
-            "type": ":",
-            "named": false
-          },
-          {
             "type": "HIGH_VALUE_",
             "named": true
           },
@@ -2153,10 +2127,6 @@
           },
           {
             "type": "TOK_NULL_",
-            "named": true
-          },
-          {
-            "type": "WORD",
             "named": true
           },
           {
@@ -2208,7 +2178,19 @@
             "named": true
           },
           {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "subref",
             "named": true
           },
           {
@@ -2234,10 +2216,6 @@
             "named": false
           },
           {
-            "type": ":",
-            "named": false
-          },
-          {
             "type": "HIGH_VALUE_",
             "named": true
           },
@@ -2259,10 +2237,6 @@
           },
           {
             "type": "TOK_NULL_",
-            "named": true
-          },
-          {
-            "type": "WORD",
             "named": true
           },
           {
@@ -2314,7 +2288,19 @@
             "named": true
           },
           {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "subref",
             "named": true
           },
           {
@@ -2323,6 +2309,109 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "subref",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "HIGH_VALUE_",
+          "named": true
+        },
+        {
+          "type": "LENGTH_",
+          "named": true
+        },
+        {
+          "type": "LOW_VALUE_",
+          "named": true
+        },
+        {
+          "type": "QUOTE_",
+          "named": true
+        },
+        {
+          "type": "SPACE_",
+          "named": true
+        },
+        {
+          "type": "TOK_NULL_",
+          "named": true
+        },
+        {
+          "type": "ZERO_",
+          "named": true
+        },
+        {
+          "type": "add_exp",
+          "named": true
+        },
+        {
+          "type": "div_exp",
+          "named": true
+        },
+        {
+          "type": "function_",
+          "named": true
+        },
+        {
+          "type": "h_string",
+          "named": true
+        },
+        {
+          "type": "linage_counter",
+          "named": true
+        },
+        {
+          "type": "mul_exp",
+          "named": true
+        },
+        {
+          "type": "n_string",
+          "named": true
+        },
+        {
+          "type": "negative_exp",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "positive_exp",
+          "named": true
+        },
+        {
+          "type": "pow_exp",
+          "named": true
+        },
+        {
+          "type": "qualified_word",
+          "named": true
+        },
+        {
+          "type": "refmod",
+          "named": true
+        },
+        {
+          "type": "sub_exp",
+          "named": true
+        },
+        {
+          "type": "subref",
+          "named": true
+        },
+        {
+          "type": "x_string",
+          "named": true
+        }
+      ]
     }
   },
   {

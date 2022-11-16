@@ -1,10 +1,10 @@
 (
   (move_statement
      src: (_)
-     dst: (WORD) @first-dst)
+     dst: (qualified_word) @first-dst)
   .
   (move_statement
      src: (_)
-     dst: (WORD) @second-dst)
+     dst: (qualified_word) @second-dst)
   (#eq? @first-dst @second-dst)
 )
