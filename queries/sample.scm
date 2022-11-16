@@ -1,5 +1,10 @@
-(data_description
-  (level_number)
-  (entry_name)
-  (picture_clause
-    (picture_9) @picture_9_string)) @data.definition
+(
+  (move_statement
+     src: (_)
+     dst: (WORD) @first-dst)
+  .
+  (move_statement
+     src: (_)
+     dst: (WORD) @second-dst)
+  (#eq? @first-dst @second-dst)
+)
