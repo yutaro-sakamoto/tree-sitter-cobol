@@ -15,3 +15,5 @@
        MOVE 3 TO date-year of date-r.
        MOVE HIGH-VALUE TO date-month.
        MOVE 4 TO date-year of date-r.
+
+       DISPLAY 1 + 1.

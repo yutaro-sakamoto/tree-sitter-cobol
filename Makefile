@@ -1,9 +1,9 @@
 all:
 	node_modules/.bin/tree-sitter generate
-	node_modules/.bin/tree-sitter parse a.cbl
+	node_modules/.bin/tree-sitter parse sample/a.cbl
 
 ck:
-	cobc -fsyntax-only a.cbl
+	cobc -fsyntax-only sample/a.cbl
 
 test:
 	node_modules/.bin/tree-sitter test

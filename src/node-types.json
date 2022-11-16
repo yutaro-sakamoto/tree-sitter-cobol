@@ -5,7 +5,37 @@
     "fields": {}
   },
   {
+    "type": "BACKGROUND_COLOR_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "BELL_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "BLANK_LINE_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "BLANK_SCREEN_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "BLINK_",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "CONCATENATE_FUNC_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "CRT_",
     "named": true,
     "fields": {}
   },
@@ -15,7 +45,42 @@
     "fields": {}
   },
   {
+    "type": "DOWN_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "EOL_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "EOS_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "ERASE_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "EXCEPTION_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "FOREGROUND_COLOR_",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "FUNCTION_NAME_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "HIGHLIGHT_",
     "named": true,
     "fields": {}
   },
@@ -30,6 +95,16 @@
     "fields": {}
   },
   {
+    "type": "LINES_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "LINE_",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "LOCALE_DT_FUNC_",
     "named": true,
     "fields": {}
@@ -40,12 +115,42 @@
     "fields": {}
   },
   {
+    "type": "LOWLIGHT_",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "LOW_VALUE_",
     "named": true,
     "fields": {}
   },
   {
+    "type": "MNEMONIC_NAME_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "NOT_EXCEPTION_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "NO_ADVANCING_",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "NUMVALC_FUNC_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "OVERLINE_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "PRINTER_",
     "named": true,
     "fields": {}
   },
@@ -56,6 +161,16 @@
   },
   {
     "type": "REVERSE_FUNC_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "REVERSE_VIDEO_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "SCROLL_",
     "named": true,
     "fields": {}
   },
@@ -85,12 +200,32 @@
     "fields": {}
   },
   {
+    "type": "UNDERLINE_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "UPON_",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "UPPER_CASE_FUNC_",
     "named": true,
     "fields": {}
   },
   {
+    "type": "UP_",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "WHEN_COMPILED_FUNC_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "WITH_",
     "named": true,
     "fields": {}
   },
@@ -485,6 +620,216 @@
         },
         {
           "type": "working_storage_section",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "disp_attr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "BACKGROUND_COLOR_",
+          "named": true
+        },
+        {
+          "type": "BELL_",
+          "named": true
+        },
+        {
+          "type": "BLANK_LINE_",
+          "named": true
+        },
+        {
+          "type": "BLANK_SCREEN_",
+          "named": true
+        },
+        {
+          "type": "BLINK_",
+          "named": true
+        },
+        {
+          "type": "DOWN_",
+          "named": true
+        },
+        {
+          "type": "EOL_",
+          "named": true
+        },
+        {
+          "type": "EOS_",
+          "named": true
+        },
+        {
+          "type": "ERASE_",
+          "named": true
+        },
+        {
+          "type": "FOREGROUND_COLOR_",
+          "named": true
+        },
+        {
+          "type": "HIGHLIGHT_",
+          "named": true
+        },
+        {
+          "type": "LOWLIGHT_",
+          "named": true
+        },
+        {
+          "type": "OVERLINE_",
+          "named": true
+        },
+        {
+          "type": "REVERSE_VIDEO_",
+          "named": true
+        },
+        {
+          "type": "SCROLL_",
+          "named": true
+        },
+        {
+          "type": "UNDERLINE_",
+          "named": true
+        },
+        {
+          "type": "UP_",
+          "named": true
+        },
+        {
+          "type": "ZERO_",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "qualified_word",
+          "named": true
+        },
+        {
+          "type": "refmod",
+          "named": true
+        },
+        {
+          "type": "scroll_lines",
+          "named": true
+        },
+        {
+          "type": "subref",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "display_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "ALL_",
+          "named": true
+        },
+        {
+          "type": "CRT_",
+          "named": true
+        },
+        {
+          "type": "HIGH_VALUE_",
+          "named": true
+        },
+        {
+          "type": "LOW_VALUE_",
+          "named": true
+        },
+        {
+          "type": "MNEMONIC_NAME_",
+          "named": true
+        },
+        {
+          "type": "PRINTER_",
+          "named": true
+        },
+        {
+          "type": "QUOTE_",
+          "named": true
+        },
+        {
+          "type": "SPACE_",
+          "named": true
+        },
+        {
+          "type": "TOK_NULL_",
+          "named": true
+        },
+        {
+          "type": "UPON_",
+          "named": true
+        },
+        {
+          "type": "WORD",
+          "named": true
+        },
+        {
+          "type": "ZERO_",
+          "named": true
+        },
+        {
+          "type": "at_line_column",
+          "named": true
+        },
+        {
+          "type": "function_",
+          "named": true
+        },
+        {
+          "type": "h_string",
+          "named": true
+        },
+        {
+          "type": "linage_counter",
+          "named": true
+        },
+        {
+          "type": "n_string",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "on_disp_exception",
+          "named": true
+        },
+        {
+          "type": "qualified_word",
+          "named": true
+        },
+        {
+          "type": "refmod",
+          "named": true
+        },
+        {
+          "type": "subref",
+          "named": true
+        },
+        {
+          "type": "with_clause",
+          "named": true
+        },
+        {
+          "type": "x_string",
           "named": true
         }
       ]
@@ -1029,6 +1374,25 @@
     }
   },
   {
+    "type": "line_or_lines",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "LINES_",
+          "named": true
+        },
+        {
+          "type": "LINE_",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "move_statement",
     "named": true,
     "fields": {
@@ -1474,6 +1838,37 @@
     }
   },
   {
+    "type": "on_disp_exception",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "EXCEPTION_",
+          "named": true
+        },
+        {
+          "type": "NOT_EXCEPTION_",
+          "named": true
+        },
+        {
+          "type": "display_statement",
+          "named": true
+        },
+        {
+          "type": "move_statement",
+          "named": true
+        },
+        {
+          "type": "stop_run_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "picture_9",
     "named": true,
     "fields": {}
@@ -1848,6 +2243,10 @@
       "required": false,
       "types": [
         {
+          "type": "display_statement",
+          "named": true
+        },
+        {
           "type": "move_statement",
           "named": true
         },
@@ -2060,6 +2459,41 @@
         },
         {
           "type": "x_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "scroll_lines",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ZERO_",
+          "named": true
+        },
+        {
+          "type": "line_or_lines",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "qualified_word",
+          "named": true
+        },
+        {
+          "type": "refmod",
+          "named": true
+        },
+        {
+          "type": "subref",
           "named": true
         }
       ]
@@ -2415,6 +2849,29 @@
     }
   },
   {
+    "type": "with_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "NO_ADVANCING_",
+          "named": true
+        },
+        {
+          "type": "WITH_",
+          "named": true
+        },
+        {
+          "type": "disp_attr",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "working_storage_section",
     "named": true,
     "fields": {},
@@ -2560,6 +3017,10 @@
   },
   {
     "type": "any_length_clause",
+    "named": true
+  },
+  {
+    "type": "at_line_column",
     "named": true
   },
   {

@@ -261,6 +261,7 @@ module.exports = grammar({
     //todo
     _statement: $ => choice(
       $.stop_run_statement,
+      $.display_statement,
       $.move_statement,
     ),
 
@@ -268,6 +269,77 @@ module.exports = grammar({
     stop_run_statement: $ => seq(
       $._STOP, $._RUN
     ),
+
+    display_statement: $ => prec.right(0, seq(
+      $._DISPLAY,
+      $._display_body,
+      optional($._END_DISPLAY)
+    )),
+
+    _display_body: $ => choice(
+      seq($._id_or_lit, $._UPON_ENVIRONMENT_NAME, optional($.on_disp_exception)),
+      seq($._id_or_lit, $._UPON_ENVIRONMENT_VALUE, optional($.on_disp_exception)),
+      seq($._id_or_lit, $._UPON_ARGUMENT_NUMBER, optional($.on_disp_exception)),
+      seq($._id_or_lit, $._UPON_COMMAND_LINE, optional($.on_disp_exception)),
+      seq(repeat1($._x), optional($.at_line_column), optional($.with_clause), optional($.on_disp_exception)),
+      seq(repeat1($._x), optional($.at_line_column), $.UPON_, $.MNEMONIC_NAME_, optional($.with_clause), optional($.on_disp_exception)),
+      seq(repeat1($._x), optional($.at_line_column), $.UPON_, $.WORD, optional($.with_clause), optional($.on_disp_exception)),
+      seq(repeat1($._x), optional($.at_line_column), $.UPON_, $.PRINTER_, optional($.with_clause), optional($.on_disp_exception)),
+      seq(repeat1($._x), optional($.at_line_column), $.UPON_, $.CRT_, optional($.with_clause), optional($.on_disp_exception)),
+    ),
+
+    at_line_column: $ => /todo_at_line_column/,
+
+    _id_or_lit: $ => choice(
+      $._identifier,
+      $._literal
+    ),
+
+    on_disp_exception: $ => prec.right(0, seq(
+      choice($.EXCEPTION_, $.NOT_EXCEPTION_),
+      repeat($._statement)
+    )),
+
+    with_clause: $ => choice(
+      seq(optional($.WITH_), $.NO_ADVANCING_),
+      seq($.WITH_, repeat1($.disp_attr))
+    ),
+
+    disp_attr: $ => choice(
+      $.BELL_,
+      $.BLINK_,
+      seq($.ERASE_, $.EOL_),
+      seq($.ERASE_, $.EOS_),
+      $.HIGHLIGHT_,
+      $.LOWLIGHT_,
+      $.REVERSE_VIDEO_,
+      $.UNDERLINE_,
+      $.OVERLINE_,
+      seq(
+        choice($.FOREGROUND_COLOR_, $.BACKGROUND_COLOR_),
+        optional($._IS),
+        $._num_or_id_or_lit),
+      seq(
+        $.SCROLL_,
+        choice($.UP_, $.DOWN_),
+        optional($._IS), optional($.scroll_lines)),
+      $.BLANK_LINE_,
+      $.BLANK_SCREEN_,
+    ),
+
+    _num_or_id_or_lit: $ => choice(
+      $._identifier,
+      $.number,//todo convert this to integer
+      $.ZERO_
+    ),
+
+    scroll_lines: $ => seq(
+      optional($._BY),
+      $._num_or_id_or_lit,
+      optional($.line_or_lines),
+    ),
+
+    line_or_lines: $ => choice($.LINE_, $.LINES_),
 
     move_statement: $ => seq(
       $._MOVE,
@@ -666,6 +738,7 @@ module.exports = grammar({
     _MEMORY: $ => /[mM][eE][mM][oO][rR][yY]/,
     _MERGE: $ => /[mM][eE][rR][gG][eE]/,
     _MINUS: $ => /[mM][iI][nN][uU][sS]/,
+    //todo
     _MNEMONIC_NAME: $ => /[mM][nN][eE][mM][oO][nN][iI][cC]-[nN][aA][mM][eE]/,
     _MODE: $ => /[mM][oO][dD][eE]/,
     _MOVE: $ => /[mM][oO][vV][eE]/,
