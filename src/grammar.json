@@ -1389,7 +1389,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "LITERAL_"
+          "name": "_LITERAL"
         },
         {
           "type": "SYMBOL",
@@ -2005,9 +2005,102 @@
         }
       ]
     },
+    "_LITERAL": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_string"
+        }
+      ]
+    },
     "number": {
       "type": "PATTERN",
-      "value": "[0-9]+"
+      "value": "[+-]?[0-9]+(\\.[0-9]+)?"
+    },
+    "_string": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "x_string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "n_string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "h_string"
+        }
+      ]
+    },
+    "x_string": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "'[^'\\n]*'"
+        },
+        {
+          "type": "PATTERN",
+          "value": "\"[^\"\\n]*\""
+        }
+      ]
+    },
+    "h_string": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "H'[^'\\n]*'"
+        },
+        {
+          "type": "PATTERN",
+          "value": "H\"[^\"\\n]*\""
+        }
+      ]
+    },
+    "n_string": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "N'[^'\\n]*'"
+        },
+        {
+          "type": "PATTERN",
+          "value": "N\"[^\"\\n]*\""
+        },
+        {
+          "type": "PATTERN",
+          "value": "NC'[^'\\n]*'"
+        },
+        {
+          "type": "PATTERN",
+          "value": "NC\"[^\"\\n]*\""
+        },
+        {
+          "type": "PATTERN",
+          "value": "ND'[^'\\n]*'"
+        },
+        {
+          "type": "PATTERN",
+          "value": "ND\"[^\"\\n]*\""
+        },
+        {
+          "type": "PATTERN",
+          "value": "NX'[^'\\n]*'"
+        },
+        {
+          "type": "PATTERN",
+          "value": "NX\"[^\"\\n]*\""
+        }
+      ]
     },
     "_ACCEPT": {
       "type": "PATTERN",
@@ -2977,10 +3070,6 @@
     "_LINKAGE": {
       "type": "PATTERN",
       "value": "[lL][iI][nN][kK][aA][gG][eE]"
-    },
-    "_LITERAL": {
-      "type": "PATTERN",
-      "value": "[lL][iI][tT][eE][rR][aA][lL]"
     },
     "_LOCALE": {
       "type": "PATTERN",

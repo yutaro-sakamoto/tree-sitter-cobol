@@ -311,7 +311,7 @@ module.exports = grammar({
     ),
 
     _basic_value: $ => choice(
-      $.LITERAL_,//todo implement
+      $._LITERAL,
       $.SPACE_,
       $.ZERO_,
       $.QUOTE_,
@@ -380,9 +380,39 @@ module.exports = grammar({
       '(', optional($._exp_list), ')'
     ),
 
-    number: $ => /[0-9]+/,
+    _LITERAL: $ => choice(
+      $.number,
+      $._string,
+    ),
 
-    //Reserved keywords
+    //todo
+    number: $ => /[+-]?[0-9]+(\.[0-9]+)?/,
+    _string: $ => choice(
+      $.x_string,
+      $.n_string,
+      $.h_string
+    ),
+
+    x_string: $ => choice(
+      /'[^'\n]*'/,
+      /"[^"\n]*"/,
+    ),
+
+    h_string: $ => choice(
+      /H'[^'\n]*'/,
+      /H"[^"\n]*"/,
+    ),
+
+    n_string: $ => choice(
+      /N'[^'\n]*'/,
+      /N"[^"\n]*"/,
+      /NC'[^'\n]*'/,
+      /NC"[^"\n]*"/,
+      /ND'[^'\n]*'/,
+      /ND"[^"\n]*"/,
+      /NX'[^'\n]*'/,
+      /NX"[^"\n]*"/,
+    ),
 
     _ACCEPT: $ => /[aA][cC][cC][eE][pP][tT]/,
     _ACCESS: $ => /[aA][cC][cC][eE][sS][sS]/,
@@ -621,7 +651,6 @@ module.exports = grammar({
     _LINE: $ => /[lL][iI][nN][eE]/,
     _LINES: $ => /[lL][iI][nN][eE][sS]/,
     _LINKAGE: $ => /[lL][iI][nN][kK][aA][gG][eE]/,
-    _LITERAL: $ => /[lL][iI][tT][eE][rR][aA][lL]/,
     _LOCALE: $ => /[lL][oO][cC][aA][lL][eE]/,
     _LOCALE_DT_FUNC: $ => /[lL][oO][cC][aA][lL][eE]-[dD][tT]-[fF][uU][nN][cC]/,
     _LOCAL_STORAGE: $ => /[lL][oO][cC][aA][lL]-[sS][tT][oO][rR][aA][gG][eE]/,

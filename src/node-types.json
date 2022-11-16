@@ -30,11 +30,6 @@
     "fields": {}
   },
   {
-    "type": "LITERAL_",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "LOCALE_DT_FUNC_",
     "named": true,
     "fields": {}
@@ -137,10 +132,6 @@
             "named": true
           },
           {
-            "type": "LITERAL_",
-            "named": true
-          },
-          {
             "type": "LOW_VALUE_",
             "named": true
           },
@@ -177,6 +168,10 @@
             "named": true
           },
           {
+            "type": "h_string",
+            "named": true
+          },
+          {
             "type": "linage_counter",
             "named": true
           },
@@ -185,7 +180,15 @@
             "named": true
           },
           {
+            "type": "n_string",
+            "named": true
+          },
+          {
             "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "number",
             "named": true
           },
           {
@@ -198,6 +201,10 @@
           },
           {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "x_string",
             "named": true
           }
         ]
@@ -231,10 +238,6 @@
             "named": true
           },
           {
-            "type": "LITERAL_",
-            "named": true
-          },
-          {
             "type": "LOW_VALUE_",
             "named": true
           },
@@ -271,6 +274,10 @@
             "named": true
           },
           {
+            "type": "h_string",
+            "named": true
+          },
+          {
             "type": "linage_counter",
             "named": true
           },
@@ -279,7 +286,15 @@
             "named": true
           },
           {
+            "type": "n_string",
+            "named": true
+          },
+          {
             "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "number",
             "named": true
           },
           {
@@ -293,6 +308,10 @@
           {
             "type": "sub_exp",
             "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
           }
         ]
       }
@@ -301,7 +320,29 @@
   {
     "type": "as_literal",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "h_string",
+          "named": true
+        },
+        {
+          "type": "n_string",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "x_string",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "data_description",
@@ -344,6 +385,10 @@
           "named": true
         },
         {
+          "type": "h_string",
+          "named": true
+        },
+        {
           "type": "justified_clause",
           "named": true
         },
@@ -353,6 +398,14 @@
         },
         {
           "type": "level_number_88",
+          "named": true
+        },
+        {
+          "type": "n_string",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -385,6 +438,10 @@
         },
         {
           "type": "value_clause",
+          "named": true
+        },
+        {
+          "type": "x_string",
           "named": true
         }
       ]
@@ -458,10 +515,6 @@
             "named": true
           },
           {
-            "type": "LITERAL_",
-            "named": true
-          },
-          {
             "type": "LOW_VALUE_",
             "named": true
           },
@@ -498,6 +551,10 @@
             "named": true
           },
           {
+            "type": "h_string",
+            "named": true
+          },
+          {
             "type": "linage_counter",
             "named": true
           },
@@ -506,7 +563,15 @@
             "named": true
           },
           {
+            "type": "n_string",
+            "named": true
+          },
+          {
             "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "number",
             "named": true
           },
           {
@@ -519,6 +584,10 @@
           },
           {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "x_string",
             "named": true
           }
         ]
@@ -552,10 +621,6 @@
             "named": true
           },
           {
-            "type": "LITERAL_",
-            "named": true
-          },
-          {
             "type": "LOW_VALUE_",
             "named": true
           },
@@ -592,6 +657,10 @@
             "named": true
           },
           {
+            "type": "h_string",
+            "named": true
+          },
+          {
             "type": "linage_counter",
             "named": true
           },
@@ -600,7 +669,15 @@
             "named": true
           },
           {
+            "type": "n_string",
+            "named": true
+          },
+          {
             "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "number",
             "named": true
           },
           {
@@ -613,6 +690,10 @@
           },
           {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "x_string",
             "named": true
           }
         ]
@@ -648,10 +729,6 @@
         },
         {
           "type": "LENGTH_",
-          "named": true
-        },
-        {
-          "type": "LITERAL_",
           "named": true
         },
         {
@@ -691,6 +768,10 @@
           "named": true
         },
         {
+          "type": "h_string",
+          "named": true
+        },
+        {
           "type": "linage_counter",
           "named": true
         },
@@ -699,7 +780,15 @@
           "named": true
         },
         {
+          "type": "n_string",
+          "named": true
+        },
+        {
           "type": "negative_exp",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -712,6 +801,10 @@
         },
         {
           "type": "sub_exp",
+          "named": true
+        },
+        {
+          "type": "x_string",
           "named": true
         }
       ]
@@ -743,10 +836,6 @@
         },
         {
           "type": "LENGTH_",
-          "named": true
-        },
-        {
-          "type": "LITERAL_",
           "named": true
         },
         {
@@ -826,6 +915,10 @@
           "named": true
         },
         {
+          "type": "h_string",
+          "named": true
+        },
+        {
           "type": "linage_counter",
           "named": true
         },
@@ -834,7 +927,15 @@
           "named": true
         },
         {
+          "type": "n_string",
+          "named": true
+        },
+        {
           "type": "negative_exp",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -848,9 +949,18 @@
         {
           "type": "sub_exp",
           "named": true
+        },
+        {
+          "type": "x_string",
+          "named": true
         }
       ]
     }
+  },
+  {
+    "type": "h_string",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "identification_division",
@@ -919,10 +1029,6 @@
             "named": true
           },
           {
-            "type": "LITERAL_",
-            "named": true
-          },
-          {
             "type": "LOW_VALUE_",
             "named": true
           },
@@ -959,6 +1065,10 @@
             "named": true
           },
           {
+            "type": "h_string",
+            "named": true
+          },
+          {
             "type": "linage_counter",
             "named": true
           },
@@ -967,7 +1077,15 @@
             "named": true
           },
           {
+            "type": "n_string",
+            "named": true
+          },
+          {
             "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "number",
             "named": true
           },
           {
@@ -981,12 +1099,16 @@
           {
             "type": "sub_exp",
             "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
           }
         ]
       },
       "src": {
         "multiple": true,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "&",
@@ -1017,10 +1139,6 @@
             "named": true
           },
           {
-            "type": "LITERAL_",
-            "named": true
-          },
-          {
             "type": "LOW_VALUE_",
             "named": true
           },
@@ -1057,6 +1175,10 @@
             "named": true
           },
           {
+            "type": "h_string",
+            "named": true
+          },
+          {
             "type": "linage_counter",
             "named": true
           },
@@ -1065,7 +1187,15 @@
             "named": true
           },
           {
+            "type": "n_string",
+            "named": true
+          },
+          {
             "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "number",
             "named": true
           },
           {
@@ -1078,6 +1208,10 @@
           },
           {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "x_string",
             "named": true
           }
         ]
@@ -1117,10 +1251,6 @@
             "named": true
           },
           {
-            "type": "LITERAL_",
-            "named": true
-          },
-          {
             "type": "LOW_VALUE_",
             "named": true
           },
@@ -1157,6 +1287,10 @@
             "named": true
           },
           {
+            "type": "h_string",
+            "named": true
+          },
+          {
             "type": "linage_counter",
             "named": true
           },
@@ -1165,7 +1299,15 @@
             "named": true
           },
           {
+            "type": "n_string",
+            "named": true
+          },
+          {
             "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "number",
             "named": true
           },
           {
@@ -1178,6 +1320,10 @@
           },
           {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "x_string",
             "named": true
           }
         ]
@@ -1211,10 +1357,6 @@
             "named": true
           },
           {
-            "type": "LITERAL_",
-            "named": true
-          },
-          {
             "type": "LOW_VALUE_",
             "named": true
           },
@@ -1251,6 +1393,10 @@
             "named": true
           },
           {
+            "type": "h_string",
+            "named": true
+          },
+          {
             "type": "linage_counter",
             "named": true
           },
@@ -1259,7 +1405,15 @@
             "named": true
           },
           {
+            "type": "n_string",
+            "named": true
+          },
+          {
             "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "number",
             "named": true
           },
           {
@@ -1273,10 +1427,19 @@
           {
             "type": "sub_exp",
             "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
           }
         ]
       }
     }
+  },
+  {
+    "type": "n_string",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "negative_exp",
@@ -1311,10 +1474,6 @@
             "named": true
           },
           {
-            "type": "LITERAL_",
-            "named": true
-          },
-          {
             "type": "LOW_VALUE_",
             "named": true
           },
@@ -1351,6 +1510,10 @@
             "named": true
           },
           {
+            "type": "h_string",
+            "named": true
+          },
+          {
             "type": "linage_counter",
             "named": true
           },
@@ -1359,7 +1522,15 @@
             "named": true
           },
           {
+            "type": "n_string",
+            "named": true
+          },
+          {
             "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "number",
             "named": true
           },
           {
@@ -1372,6 +1543,10 @@
           },
           {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "x_string",
             "named": true
           }
         ]
@@ -1435,10 +1610,6 @@
             "named": true
           },
           {
-            "type": "LITERAL_",
-            "named": true
-          },
-          {
             "type": "LOW_VALUE_",
             "named": true
           },
@@ -1475,6 +1646,10 @@
             "named": true
           },
           {
+            "type": "h_string",
+            "named": true
+          },
+          {
             "type": "linage_counter",
             "named": true
           },
@@ -1483,7 +1658,15 @@
             "named": true
           },
           {
+            "type": "n_string",
+            "named": true
+          },
+          {
             "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "number",
             "named": true
           },
           {
@@ -1496,6 +1679,10 @@
           },
           {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "x_string",
             "named": true
           }
         ]
@@ -1535,10 +1722,6 @@
             "named": true
           },
           {
-            "type": "LITERAL_",
-            "named": true
-          },
-          {
             "type": "LOW_VALUE_",
             "named": true
           },
@@ -1575,6 +1758,10 @@
             "named": true
           },
           {
+            "type": "h_string",
+            "named": true
+          },
+          {
             "type": "linage_counter",
             "named": true
           },
@@ -1583,7 +1770,15 @@
             "named": true
           },
           {
+            "type": "n_string",
+            "named": true
+          },
+          {
             "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "number",
             "named": true
           },
           {
@@ -1596,6 +1791,10 @@
           },
           {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "x_string",
             "named": true
           }
         ]
@@ -1629,10 +1828,6 @@
             "named": true
           },
           {
-            "type": "LITERAL_",
-            "named": true
-          },
-          {
             "type": "LOW_VALUE_",
             "named": true
           },
@@ -1669,6 +1864,10 @@
             "named": true
           },
           {
+            "type": "h_string",
+            "named": true
+          },
+          {
             "type": "linage_counter",
             "named": true
           },
@@ -1677,7 +1876,15 @@
             "named": true
           },
           {
+            "type": "n_string",
+            "named": true
+          },
+          {
             "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "number",
             "named": true
           },
           {
@@ -1690,6 +1897,10 @@
           },
           {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "x_string",
             "named": true
           }
         ]
@@ -1756,10 +1967,26 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "WORD",
+          "named": true
+        },
+        {
+          "type": "h_string",
+          "named": true
+        },
+        {
+          "type": "n_string",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "x_string",
           "named": true
         }
       ]
@@ -1779,10 +2006,6 @@
         },
         {
           "type": "LENGTH_",
-          "named": true
-        },
-        {
-          "type": "LITERAL_",
           "named": true
         },
         {
@@ -1822,6 +2045,10 @@
           "named": true
         },
         {
+          "type": "h_string",
+          "named": true
+        },
+        {
           "type": "linage_counter",
           "named": true
         },
@@ -1830,7 +2057,15 @@
           "named": true
         },
         {
+          "type": "n_string",
+          "named": true
+        },
+        {
           "type": "negative_exp",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -1843,6 +2078,10 @@
         },
         {
           "type": "sub_exp",
+          "named": true
+        },
+        {
+          "type": "x_string",
           "named": true
         }
       ]
@@ -1901,10 +2140,6 @@
             "named": true
           },
           {
-            "type": "LITERAL_",
-            "named": true
-          },
-          {
             "type": "LOW_VALUE_",
             "named": true
           },
@@ -1941,6 +2176,10 @@
             "named": true
           },
           {
+            "type": "h_string",
+            "named": true
+          },
+          {
             "type": "linage_counter",
             "named": true
           },
@@ -1949,7 +2188,15 @@
             "named": true
           },
           {
+            "type": "n_string",
+            "named": true
+          },
+          {
             "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "number",
             "named": true
           },
           {
@@ -1962,6 +2209,10 @@
           },
           {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "x_string",
             "named": true
           }
         ]
@@ -1995,10 +2246,6 @@
             "named": true
           },
           {
-            "type": "LITERAL_",
-            "named": true
-          },
-          {
             "type": "LOW_VALUE_",
             "named": true
           },
@@ -2035,6 +2282,10 @@
             "named": true
           },
           {
+            "type": "h_string",
+            "named": true
+          },
+          {
             "type": "linage_counter",
             "named": true
           },
@@ -2043,7 +2294,15 @@
             "named": true
           },
           {
+            "type": "n_string",
+            "named": true
+          },
+          {
             "type": "negative_exp",
+            "named": true
+          },
+          {
+            "type": "number",
             "named": true
           },
           {
@@ -2056,6 +2315,10 @@
           },
           {
             "type": "sub_exp",
+            "named": true
+          },
+          {
+            "type": "x_string",
             "named": true
           }
         ]
@@ -2076,6 +2339,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "x_string",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "&",
@@ -2292,6 +2560,10 @@
   {
     "type": "null",
     "named": false
+  },
+  {
+    "type": "number",
+    "named": true
   },
   {
     "type": "occurs_clause",
