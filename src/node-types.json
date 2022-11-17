@@ -5,6 +5,11 @@
     "fields": {}
   },
   {
+    "type": "AUTO_",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "BACKGROUND_COLOR_",
     "named": true,
     "fields": {}
@@ -30,6 +35,11 @@
     "fields": {}
   },
   {
+    "type": "CHAINING_",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "CONCATENATE_FUNC_",
     "named": true,
     "fields": {}
@@ -41,6 +51,11 @@
   },
   {
     "type": "CURRENT_DATE_FUNC_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "DEFAULT_",
     "named": true,
     "fields": {}
   },
@@ -145,6 +160,11 @@
     "fields": {}
   },
   {
+    "type": "OPTIONAL_",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "OVERLINE_",
     "named": true,
     "fields": {}
@@ -160,6 +180,11 @@
     "fields": {}
   },
   {
+    "type": "REFERENCE_",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "REVERSE_FUNC_",
     "named": true,
     "fields": {}
@@ -171,6 +196,11 @@
   },
   {
     "type": "SCROLL_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "SIZE_",
     "named": true,
     "fields": {}
   },
@@ -205,6 +235,11 @@
     "fields": {}
   },
   {
+    "type": "UNSIGNED_",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "UPON_",
     "named": true,
     "fields": {}
@@ -216,6 +251,16 @@
   },
   {
     "type": "UP_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "USING_",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "VALUE_",
     "named": true,
     "fields": {}
   },
@@ -1838,6 +1883,25 @@
     }
   },
   {
+    "type": "number",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "decimal",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "on_disp_exception",
     "named": true,
     "fields": {},
@@ -1853,6 +1917,44 @@
           "type": "NOT_EXCEPTION_",
           "named": true
         },
+        {
+          "type": "display_statement",
+          "named": true
+        },
+        {
+          "type": "move_statement",
+          "named": true
+        },
+        {
+          "type": "stop_run_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "paragraph_block",
+    "named": true,
+    "fields": {
+      "title": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": ".",
+            "named": false
+          },
+          {
+            "type": "WORD",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
         {
           "type": "display_statement",
           "named": true
@@ -2235,7 +2337,7 @@
     }
   },
   {
-    "type": "procedure_division",
+    "type": "procedure_body",
     "named": true,
     "fields": {},
     "children": {
@@ -2251,7 +2353,141 @@
           "named": true
         },
         {
+          "type": "paragraph_block",
+          "named": true
+        },
+        {
+          "type": "section_block",
+          "named": true
+        },
+        {
           "type": "stop_run_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "procedure_declaratives",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "procedure_body",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "procedure_division",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "procedure_body",
+          "named": true
+        },
+        {
+          "type": "procedure_declaratives",
+          "named": true
+        },
+        {
+          "type": "procedure_returning",
+          "named": true
+        },
+        {
+          "type": "procedure_using_chaining",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "procedure_param",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "OPTIONAL_",
+          "named": true
+        },
+        {
+          "type": "WORD",
+          "named": true
+        },
+        {
+          "type": "procedure_type",
+          "named": true
+        },
+        {
+          "type": "size",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "procedure_returning",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "WORD",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "procedure_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "REFERENCE_",
+          "named": true
+        },
+        {
+          "type": "VALUE_",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "procedure_using_chaining",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "CHAINING_",
+          "named": true
+        },
+        {
+          "type": "USING_",
+          "named": true
+        },
+        {
+          "type": "procedure_param",
           "named": true
         }
       ]
@@ -2494,6 +2730,79 @@
         },
         {
           "type": "subref",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "section_block",
+    "named": true,
+    "fields": {
+      "title": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": ".",
+            "named": false
+          },
+          {
+            "type": "WORD",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "display_statement",
+          "named": true
+        },
+        {
+          "type": "move_statement",
+          "named": true
+        },
+        {
+          "type": "paragraph_block",
+          "named": true
+        },
+        {
+          "type": "stop_run_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "size",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "AUTO_",
+          "named": true
+        },
+        {
+          "type": "DEFAULT_",
+          "named": true
+        },
+        {
+          "type": "SIZE_",
+          "named": true
+        },
+        {
+          "type": "UNSIGNED_",
+          "named": true
+        },
+        {
+          "type": "integer",
           "named": true
         }
       ]
@@ -3036,6 +3345,10 @@
     "named": true
   },
   {
+    "type": "decimal",
+    "named": true
+  },
+  {
     "type": "end_program",
     "named": true
   },
@@ -3070,6 +3383,10 @@
   {
     "type": "high-value",
     "named": false
+  },
+  {
+    "type": "integer",
+    "named": true
   },
   {
     "type": "justified_clause",
@@ -3110,10 +3427,6 @@
   {
     "type": "null",
     "named": false
-  },
-  {
-    "type": "number",
-    "named": true
   },
   {
     "type": "occurs_clause",

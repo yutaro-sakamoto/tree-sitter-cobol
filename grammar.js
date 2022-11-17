@@ -249,10 +249,76 @@ module.exports = grammar({
 
     //todo
     procedure_division: $ => seq(
-      $._PROCEDURE, $._DIVISION, '.',
-      repeat(
-        seq($._statement, '.')
-      )
+      $._PROCEDURE, $._DIVISION,
+      optional($.procedure_using_chaining),
+      optional($.procedure_returning),
+      '.',
+      optional($.procedure_declaratives),
+      $.procedure_body,
+    ),
+
+    procedure_using_chaining: $ => seq(
+      choice($.USING_, $.CHAINING_),
+      repeat($.procedure_param),
+    ),
+
+    procedure_param: $ => seq(
+      optional($.procedure_type),
+      optional($.size),
+      optional($.OPTIONAL_),
+      $.WORD
+    ),
+
+    procedure_type: $ => seq(
+      optional($._BY),
+      choice($.VALUE_, $.REFERENCE_)
+    ),
+
+    size: $ => choice(
+      seq($.SIZE_, optional($._IS), $.AUTO_),
+      seq($.SIZE_, optional($._IS), $.DEFAULT_),
+      seq($.UNSIGNED_, $.SIZE_, optional($._IS), $.integer),
+      seq($.SIZE_, optional($._IS), $.integer),
+    ),
+
+    procedure_type: $ => seq(
+      optional($._BY),
+      choice($.REFERENCE_, $.VALUE_)
+    ),
+
+    procedure_returning: $ => seq(
+      $._RETURNING,
+      $.WORD
+    ),
+
+    procedure_declaratives: $ => seq(
+      $._DECLARATIVES, '.',
+      repeat($.procedure_body),
+      $._END, $._DECLARATIVES, '.'
+    ),
+
+    procedure_body: $ => prec.left(choice(
+      seq($._anonymous_section_block, repeat($.section_block)),
+      repeat1($.section_block)
+    )),
+
+    _anonymous_section_block: $ => prec.left(choice(
+      seq($._statements1, repeat($.paragraph_block)),
+      repeat1($.paragraph_block)
+    )),
+
+    _statements1: $ => repeat1(
+      seq($._statement, '.')
+    ),
+
+    paragraph_block: $ => prec.left(seq(
+      field('title', seq($.WORD, '.')),
+      repeat(seq($._statement, '.'))
+    )),
+
+    section_block: $ => seq(
+      field('title', seq($.WORD, $._SECTION, '.')),
+      $._anonymous_section_block
     ),
 
     nested_prog: $ => /todo_nested_prog/,
@@ -458,7 +524,9 @@ module.exports = grammar({
     ),
 
     //todo
-    number: $ => /[+-]?[0-9]+(\.[0-9]+)?/,
+    number: $ => choice($.integer, $.decimal),
+    integer: $ => /[+-]?[0-9]+/,
+    decimal: $ => /[+-]?[0-9]+\.[0-9]+/,
     _string: $ => choice(
       $.x_string,
       $.n_string,
