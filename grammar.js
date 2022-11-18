@@ -4,7 +4,7 @@ function sepBy(pattern, separator) {
 
 module.exports = grammar({
   name: 'COBOL',
-  word: $ => $.WORD,
+  word: $ => $._WORD,
 
   rules: {
     start: $ => repeat(
@@ -32,7 +32,7 @@ module.exports = grammar({
     ),
 
     program_name: $ => choice(
-      $.WORD,
+      $._WORD,
       $._LITERAL
     ),
 
@@ -76,7 +76,7 @@ module.exports = grammar({
 
     entry_name: $ => choice(
       $._FILLER,
-      $.WORD
+      $._WORD
     ),
 
     constant_entry: $ => /todo_constant_entry/,
@@ -111,7 +111,7 @@ module.exports = grammar({
     ),
 
     qualified_word: $ => sepBy(
-      $.WORD, $._in_of
+      $._WORD, $._in_of
     ),
 
     _in_of: $ => choice(
@@ -266,7 +266,7 @@ module.exports = grammar({
       optional($.procedure_type),
       optional($.size),
       optional($.OPTIONAL),
-      $.WORD
+      $._WORD
     ),
 
     procedure_type: $ => seq(
@@ -288,7 +288,7 @@ module.exports = grammar({
 
     procedure_returning: $ => seq(
       $._RETURNING,
-      $.WORD
+      $._WORD
     ),
 
     procedure_declaratives: $ => seq(
@@ -305,19 +305,19 @@ module.exports = grammar({
     ),
 
     section_header: $ => seq(
-      field('name', $.WORD),
+      field('name', $._WORD),
       $._SECTION,
       optional($._LITERAL),
       '.'
     ),
 
     paragraph_header: $ => seq(
-      field('name', $.WORD),
+      field('name', $._WORD),
       '.'
     ),
 
     invalid_statement: $ => seq(
-      field('name', $.WORD)
+      field('name', $._WORD)
     ),
 
     nested_prog: $ => /todo_nested_prog/,
@@ -395,7 +395,7 @@ module.exports = grammar({
       seq($._id_or_lit, $._UPON_COMMAND_LINE, optional($.on_disp_exception)),
       seq(repeat1($._x), optional($.at_line_column), optional($.with_clause), optional($.on_disp_exception)),
       seq(repeat1($._x), optional($.at_line_column), $.UPON, $.MNEMONIC_NAME, optional($.with_clause), optional($.on_disp_exception)),
-      seq(repeat1($._x), optional($.at_line_column), $.UPON, $.WORD, optional($.with_clause), optional($.on_disp_exception)),
+      seq(repeat1($._x), optional($.at_line_column), $.UPON, $._WORD, optional($.with_clause), optional($.on_disp_exception)),
       seq(repeat1($._x), optional($.at_line_column), $.UPON, $.PRINTER, optional($.with_clause), optional($.on_disp_exception)),
       seq(repeat1($._x), optional($.at_line_column), $.UPON, $.CRT, optional($.with_clause), optional($.on_disp_exception)),
     ),
@@ -557,7 +557,7 @@ module.exports = grammar({
 
     linage_counter: $ => seq(
       $._LINAGE_COUNTER,
-      optional(seq($._in_of, $.WORD))
+      optional(seq($._in_of, $._WORD))
     ),
 
     _func_args: $ => seq(
@@ -1048,7 +1048,7 @@ module.exports = grammar({
     _WHEN_COMPILED_FUNC: $ => /[wW][hH][eE][nN]-[cC][oO][mM][pP][iI][lL][eE][dD]-[fF][uU][nN][cC]/,
     _WHEN_OTHER: $ => /[wW][hH][eE][nN]-[oO][tT][hH][eE][rR]/,
     _WITH: $ => /[wW][iI][tT][hH]/,
-    WORD: $ => /[a-zA-z_][a-zA-Z0-9_\-]*/,
+    _WORD: $ => /[a-zA-z_][a-zA-Z0-9_\-]*/,
     _WORDS: $ => /[wW][oO][rR][dD][sS]/,
     _WORKING_STORAGE: $ => /[wW][oO][rR][kK][iI][nN][gG]-[sS][tT][oO][rR][aA][gG][eE]/,
     _WRITE: $ => /[wW][rR][iI][tT][eE]/,

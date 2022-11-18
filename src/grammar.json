@@ -1,6 +1,6 @@
 {
   "name": "COBOL",
-  "word": "WORD",
+  "word": "_WORD",
   "rules": {
     "start": {
       "type": "REPEAT",
@@ -125,7 +125,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "WORD"
+          "name": "_WORD"
         },
         {
           "type": "SYMBOL",
@@ -351,7 +351,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "WORD"
+          "name": "_WORD"
         }
       ]
     },
@@ -494,7 +494,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "WORD"
+          "name": "_WORD"
         },
         {
           "type": "REPEAT",
@@ -507,7 +507,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "WORD"
+                "name": "_WORD"
               }
             ]
           }
@@ -1207,7 +1207,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "WORD"
+          "name": "_WORD"
         }
       ]
     },
@@ -1359,7 +1359,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "WORD"
+          "name": "_WORD"
         }
       ]
     },
@@ -1433,7 +1433,7 @@
           "name": "name",
           "content": {
             "type": "SYMBOL",
-            "name": "WORD"
+            "name": "_WORD"
           }
         },
         {
@@ -1466,7 +1466,7 @@
           "name": "name",
           "content": {
             "type": "SYMBOL",
-            "name": "WORD"
+            "name": "_WORD"
           }
         },
         {
@@ -1483,7 +1483,7 @@
           "name": "name",
           "content": {
             "type": "SYMBOL",
-            "name": "WORD"
+            "name": "_WORD"
           }
         }
       ]
@@ -1790,7 +1790,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "WORD"
+              "name": "_WORD"
             },
             {
               "type": "CHOICE",
@@ -3051,7 +3051,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "WORD"
+                  "name": "_WORD"
                 }
               ]
             },
@@ -5070,7 +5070,7 @@
       "type": "PATTERN",
       "value": "[wW][iI][tT][hH]"
     },
-    "WORD": {
+    "_WORD": {
       "type": "PATTERN",
       "value": "[a-zA-z_][a-zA-Z0-9_\\-]*"
     },
