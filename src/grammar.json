@@ -1501,19 +1501,19 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "stop_run_statement"
-        },
-        {
-          "type": "SYMBOL",
           "name": "display_statement"
         },
         {
           "type": "SYMBOL",
           "name": "move_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "stop_statement"
         }
       ]
     },
-    "stop_run_statement": {
+    "stop_statement": {
       "type": "SEQ",
       "members": [
         {

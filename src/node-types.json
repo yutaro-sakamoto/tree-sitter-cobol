@@ -1942,7 +1942,7 @@
           "named": true
         },
         {
-          "type": "stop_run_statement",
+          "type": "stop_statement",
           "named": true
         }
       ]
@@ -2359,7 +2359,7 @@
           "named": true
         },
         {
-          "type": "stop_run_statement",
+          "type": "stop_statement",
           "named": true
         }
       ]
@@ -2406,7 +2406,7 @@
           "named": true
         },
         {
-          "type": "stop_run_statement",
+          "type": "stop_statement",
           "named": true
         }
       ]
@@ -2823,7 +2823,7 @@
     }
   },
   {
-    "type": "stop_run_statement",
+    "type": "stop_statement",
     "named": true,
     "fields": {}
   },
