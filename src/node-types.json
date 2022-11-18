@@ -1404,6 +1404,22 @@
     }
   },
   {
+    "type": "invalid_statement",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "WORD",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "linage_counter",
     "named": true,
     "fields": {},
@@ -1933,41 +1949,19 @@
     }
   },
   {
-    "type": "paragraph_block",
+    "type": "paragraph_header",
     "named": true,
     "fields": {
-      "title": {
-        "multiple": true,
+      "name": {
+        "multiple": false,
         "required": true,
         "types": [
-          {
-            "type": ".",
-            "named": false
-          },
           {
             "type": "WORD",
             "named": true
           }
         ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "display_statement",
-          "named": true
-        },
-        {
-          "type": "move_statement",
-          "named": true
-        },
-        {
-          "type": "stop_run_statement",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -2337,7 +2331,7 @@
     }
   },
   {
-    "type": "procedure_body",
+    "type": "procedure_declaratives",
     "named": true,
     "fields": {},
     "children": {
@@ -2349,34 +2343,23 @@
           "named": true
         },
         {
+          "type": "invalid_statement",
+          "named": true
+        },
+        {
           "type": "move_statement",
           "named": true
         },
         {
-          "type": "paragraph_block",
+          "type": "paragraph_header",
           "named": true
         },
         {
-          "type": "section_block",
+          "type": "section_header",
           "named": true
         },
         {
           "type": "stop_run_statement",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "procedure_declaratives",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "procedure_body",
           "named": true
         }
       ]
@@ -2388,10 +2371,22 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "procedure_body",
+          "type": "display_statement",
+          "named": true
+        },
+        {
+          "type": "invalid_statement",
+          "named": true
+        },
+        {
+          "type": "move_statement",
+          "named": true
+        },
+        {
+          "type": "paragraph_header",
           "named": true
         },
         {
@@ -2404,6 +2399,14 @@
         },
         {
           "type": "procedure_using_chaining",
+          "named": true
+        },
+        {
+          "type": "section_header",
+          "named": true
+        },
+        {
+          "type": "stop_run_statement",
           "named": true
         }
       ]
@@ -2736,17 +2739,13 @@
     }
   },
   {
-    "type": "section_block",
+    "type": "section_header",
     "named": true,
     "fields": {
-      "title": {
-        "multiple": true,
+      "name": {
+        "multiple": false,
         "required": true,
         "types": [
-          {
-            "type": ".",
-            "named": false
-          },
           {
             "type": "WORD",
             "named": true
@@ -2755,23 +2754,23 @@
       }
     },
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "types": [
         {
-          "type": "display_statement",
+          "type": "h_string",
           "named": true
         },
         {
-          "type": "move_statement",
+          "type": "n_string",
           "named": true
         },
         {
-          "type": "paragraph_block",
+          "type": "number",
           "named": true
         },
         {
-          "type": "stop_run_statement",
+          "type": "x_string",
           "named": true
         }
       ]

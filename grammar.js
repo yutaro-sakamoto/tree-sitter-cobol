@@ -254,7 +254,7 @@ module.exports = grammar({
       optional($.procedure_returning),
       '.',
       optional($.procedure_declaratives),
-      $.procedure_body,
+      repeat($._procedure),
     ),
 
     procedure_using_chaining: $ => seq(
@@ -293,32 +293,31 @@ module.exports = grammar({
 
     procedure_declaratives: $ => seq(
       $._DECLARATIVES, '.',
-      repeat($.procedure_body),
+      repeat($._procedure),
       $._END, $._DECLARATIVES, '.'
     ),
 
-    procedure_body: $ => prec.left(choice(
-      seq($._anonymous_section_block, repeat($.section_block)),
-      repeat1($.section_block)
-    )),
-
-    _anonymous_section_block: $ => prec.left(choice(
-      seq($._statements1, repeat($.paragraph_block)),
-      repeat1($.paragraph_block)
-    )),
-
-    _statements1: $ => repeat1(
+    _procedure: $ => choice(
+      $.section_header,
+      $.paragraph_header,
+      $.invalid_statement,
       seq($._statement, '.')
     ),
 
-    paragraph_block: $ => prec.left(seq(
-      field('title', seq($.WORD, '.')),
-      repeat(seq($._statement, '.'))
-    )),
+    section_header: $ => seq(
+      field('name', $.WORD),
+      $._SECTION,
+      optional($._LITERAL),
+      '.'
+    ),
 
-    section_block: $ => seq(
-      field('title', seq($.WORD, $._SECTION, '.')),
-      $._anonymous_section_block
+    paragraph_header: $ => seq(
+      field('name', $.WORD),
+      '.'
+    ),
+
+    invalid_statement: $ => seq(
+      field('name', $.WORD)
     ),
 
     nested_prog: $ => /todo_nested_prog/,
