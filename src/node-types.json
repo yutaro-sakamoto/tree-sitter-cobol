@@ -275,6 +275,11 @@
     "fields": {}
   },
   {
+    "type": "WORD",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "ZERO",
     "named": true,
     "fields": {}
@@ -2501,7 +2506,17 @@
   {
     "type": "qualified_word",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "WORD",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "redefines_clause",

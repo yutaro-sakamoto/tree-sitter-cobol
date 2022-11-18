@@ -111,7 +111,7 @@ module.exports = grammar({
     ),
 
     qualified_word: $ => sepBy(
-      $._WORD, $._in_of
+      $.WORD, $._in_of
     ),
 
     _in_of: $ => choice(
@@ -1497,6 +1497,7 @@ module.exports = grammar({
     WHEN_COMPILED_FUNC: $ => $._WHEN_COMPILED_FUNC,
     WHEN_OTHER: $ => $._WHEN_OTHER,
     WITH: $ => $._WITH,
+    WORD: $ => $._WORD,
     WORDS: $ => $._WORDS,
     WORKING_STORAGE: $ => $._WORKING_STORAGE,
     WRITE: $ => $._WRITE,

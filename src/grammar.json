@@ -494,7 +494,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_WORD"
+          "name": "WORD"
         },
         {
           "type": "REPEAT",
@@ -507,7 +507,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "_WORD"
+                "name": "WORD"
               }
             ]
           }
@@ -6870,6 +6870,10 @@
     "WITH": {
       "type": "SYMBOL",
       "name": "_WITH"
+    },
+    "WORD": {
+      "type": "SYMBOL",
+      "name": "_WORD"
     },
     "WORDS": {
       "type": "SYMBOL",
