@@ -1,281 +1,281 @@
 [
   {
-    "type": "ALL_",
+    "type": "ALL",
     "named": true,
     "fields": {}
   },
   {
-    "type": "AUTO_",
+    "type": "AUTO",
     "named": true,
     "fields": {}
   },
   {
-    "type": "BACKGROUND_COLOR_",
+    "type": "BACKGROUND_COLOR",
     "named": true,
     "fields": {}
   },
   {
-    "type": "BELL_",
+    "type": "BELL",
     "named": true,
     "fields": {}
   },
   {
-    "type": "BLANK_LINE_",
+    "type": "BLANK_LINE",
     "named": true,
     "fields": {}
   },
   {
-    "type": "BLANK_SCREEN_",
+    "type": "BLANK_SCREEN",
     "named": true,
     "fields": {}
   },
   {
-    "type": "BLINK_",
+    "type": "BLINK",
     "named": true,
     "fields": {}
   },
   {
-    "type": "CHAINING_",
+    "type": "CHAINING",
     "named": true,
     "fields": {}
   },
   {
-    "type": "CONCATENATE_FUNC_",
+    "type": "CONCATENATE_FUNC",
     "named": true,
     "fields": {}
   },
   {
-    "type": "CRT_",
+    "type": "CRT",
     "named": true,
     "fields": {}
   },
   {
-    "type": "CURRENT_DATE_FUNC_",
+    "type": "CURRENT_DATE_FUNC",
     "named": true,
     "fields": {}
   },
   {
-    "type": "DEFAULT_",
+    "type": "DEFAULT",
     "named": true,
     "fields": {}
   },
   {
-    "type": "DOWN_",
+    "type": "DOWN",
     "named": true,
     "fields": {}
   },
   {
-    "type": "EOL_",
+    "type": "EOL",
     "named": true,
     "fields": {}
   },
   {
-    "type": "EOS_",
+    "type": "EOS",
     "named": true,
     "fields": {}
   },
   {
-    "type": "ERASE_",
+    "type": "ERASE",
     "named": true,
     "fields": {}
   },
   {
-    "type": "EXCEPTION_",
+    "type": "EXCEPTION",
     "named": true,
     "fields": {}
   },
   {
-    "type": "FOREGROUND_COLOR_",
+    "type": "FOREGROUND_COLOR",
     "named": true,
     "fields": {}
   },
   {
-    "type": "FUNCTION_NAME_",
+    "type": "FUNCTION_NAME",
     "named": true,
     "fields": {}
   },
   {
-    "type": "HIGHLIGHT_",
+    "type": "HIGHLIGHT",
     "named": true,
     "fields": {}
   },
   {
-    "type": "HIGH_VALUE_",
+    "type": "HIGH_VALUE",
     "named": true,
     "fields": {}
   },
   {
-    "type": "LENGTH_",
+    "type": "LENGTH",
     "named": true,
     "fields": {}
   },
   {
-    "type": "LINES_",
+    "type": "LINE",
     "named": true,
     "fields": {}
   },
   {
-    "type": "LINE_",
+    "type": "LINES",
     "named": true,
     "fields": {}
   },
   {
-    "type": "LOCALE_DT_FUNC_",
+    "type": "LOCALE_DT_FUNC",
     "named": true,
     "fields": {}
   },
   {
-    "type": "LOWER_CASE_FUNC_",
+    "type": "LOWER_CASE_FUNC",
     "named": true,
     "fields": {}
   },
   {
-    "type": "LOWLIGHT_",
+    "type": "LOWLIGHT",
     "named": true,
     "fields": {}
   },
   {
-    "type": "LOW_VALUE_",
+    "type": "LOW_VALUE",
     "named": true,
     "fields": {}
   },
   {
-    "type": "MNEMONIC_NAME_",
+    "type": "MNEMONIC_NAME",
     "named": true,
     "fields": {}
   },
   {
-    "type": "NOT_EXCEPTION_",
+    "type": "NOT_EXCEPTION",
     "named": true,
     "fields": {}
   },
   {
-    "type": "NO_ADVANCING_",
+    "type": "NO_ADVANCING",
     "named": true,
     "fields": {}
   },
   {
-    "type": "NUMVALC_FUNC_",
+    "type": "NUMVALC_FUNC",
     "named": true,
     "fields": {}
   },
   {
-    "type": "OPTIONAL_",
+    "type": "OPTIONAL",
     "named": true,
     "fields": {}
   },
   {
-    "type": "OVERLINE_",
+    "type": "OVERLINE",
     "named": true,
     "fields": {}
   },
   {
-    "type": "PRINTER_",
+    "type": "PRINTER",
     "named": true,
     "fields": {}
   },
   {
-    "type": "QUOTE_",
+    "type": "QUOTE",
     "named": true,
     "fields": {}
   },
   {
-    "type": "REFERENCE_",
+    "type": "REFERENCE",
     "named": true,
     "fields": {}
   },
   {
-    "type": "REVERSE_FUNC_",
+    "type": "REVERSE_FUNC",
     "named": true,
     "fields": {}
   },
   {
-    "type": "REVERSE_VIDEO_",
+    "type": "REVERSE_VIDEO",
     "named": true,
     "fields": {}
   },
   {
-    "type": "SCROLL_",
+    "type": "SCROLL",
     "named": true,
     "fields": {}
   },
   {
-    "type": "SIZE_",
+    "type": "SIZE",
     "named": true,
     "fields": {}
   },
   {
-    "type": "SPACE_",
+    "type": "SPACE",
     "named": true,
     "fields": {}
   },
   {
-    "type": "SUBSTITUTE_CASE_FUNC_",
+    "type": "SUBSTITUTE_CASE_FUNC",
     "named": true,
     "fields": {}
   },
   {
-    "type": "SUBSTITUTE_FUNC_",
+    "type": "SUBSTITUTE_FUNC",
     "named": true,
     "fields": {}
   },
   {
-    "type": "TOK_NULL_",
+    "type": "TOK_NULL",
     "named": true,
     "fields": {}
   },
   {
-    "type": "TRIM_FUNCTION_",
+    "type": "TRIM_FUNCTION",
     "named": true,
     "fields": {}
   },
   {
-    "type": "UNDERLINE_",
+    "type": "UNDERLINE",
     "named": true,
     "fields": {}
   },
   {
-    "type": "UNSIGNED_",
+    "type": "UNSIGNED",
     "named": true,
     "fields": {}
   },
   {
-    "type": "UPON_",
+    "type": "UP",
     "named": true,
     "fields": {}
   },
   {
-    "type": "UPPER_CASE_FUNC_",
+    "type": "UPON",
     "named": true,
     "fields": {}
   },
   {
-    "type": "UP_",
+    "type": "UPPER_CASE_FUNC",
     "named": true,
     "fields": {}
   },
   {
-    "type": "USING_",
+    "type": "USING",
     "named": true,
     "fields": {}
   },
   {
-    "type": "VALUE_",
+    "type": "VALUE",
     "named": true,
     "fields": {}
   },
   {
-    "type": "WHEN_COMPILED_FUNC_",
+    "type": "WHEN_COMPILED_FUNC",
     "named": true,
     "fields": {}
   },
   {
-    "type": "WITH_",
+    "type": "WITH",
     "named": true,
     "fields": {}
   },
   {
-    "type": "ZERO_",
+    "type": "ZERO",
     "named": true,
     "fields": {}
   },
@@ -300,31 +300,31 @@
             "named": false
           },
           {
-            "type": "HIGH_VALUE_",
+            "type": "HIGH_VALUE",
             "named": true
           },
           {
-            "type": "LENGTH_",
+            "type": "LENGTH",
             "named": true
           },
           {
-            "type": "LOW_VALUE_",
+            "type": "LOW_VALUE",
             "named": true
           },
           {
-            "type": "QUOTE_",
+            "type": "QUOTE",
             "named": true
           },
           {
-            "type": "SPACE_",
+            "type": "SPACE",
             "named": true
           },
           {
-            "type": "TOK_NULL_",
+            "type": "TOK_NULL",
             "named": true
           },
           {
-            "type": "ZERO_",
+            "type": "ZERO",
             "named": true
           },
           {
@@ -410,31 +410,31 @@
             "named": false
           },
           {
-            "type": "HIGH_VALUE_",
+            "type": "HIGH_VALUE",
             "named": true
           },
           {
-            "type": "LENGTH_",
+            "type": "LENGTH",
             "named": true
           },
           {
-            "type": "LOW_VALUE_",
+            "type": "LOW_VALUE",
             "named": true
           },
           {
-            "type": "QUOTE_",
+            "type": "QUOTE",
             "named": true
           },
           {
-            "type": "SPACE_",
+            "type": "SPACE",
             "named": true
           },
           {
-            "type": "TOK_NULL_",
+            "type": "TOK_NULL",
             "named": true
           },
           {
-            "type": "ZERO_",
+            "type": "ZERO",
             "named": true
           },
           {
@@ -679,75 +679,75 @@
       "required": true,
       "types": [
         {
-          "type": "BACKGROUND_COLOR_",
+          "type": "BACKGROUND_COLOR",
           "named": true
         },
         {
-          "type": "BELL_",
+          "type": "BELL",
           "named": true
         },
         {
-          "type": "BLANK_LINE_",
+          "type": "BLANK_LINE",
           "named": true
         },
         {
-          "type": "BLANK_SCREEN_",
+          "type": "BLANK_SCREEN",
           "named": true
         },
         {
-          "type": "BLINK_",
+          "type": "BLINK",
           "named": true
         },
         {
-          "type": "DOWN_",
+          "type": "DOWN",
           "named": true
         },
         {
-          "type": "EOL_",
+          "type": "EOL",
           "named": true
         },
         {
-          "type": "EOS_",
+          "type": "EOS",
           "named": true
         },
         {
-          "type": "ERASE_",
+          "type": "ERASE",
           "named": true
         },
         {
-          "type": "FOREGROUND_COLOR_",
+          "type": "FOREGROUND_COLOR",
           "named": true
         },
         {
-          "type": "HIGHLIGHT_",
+          "type": "HIGHLIGHT",
           "named": true
         },
         {
-          "type": "LOWLIGHT_",
+          "type": "LOWLIGHT",
           "named": true
         },
         {
-          "type": "OVERLINE_",
+          "type": "OVERLINE",
           "named": true
         },
         {
-          "type": "REVERSE_VIDEO_",
+          "type": "REVERSE_VIDEO",
           "named": true
         },
         {
-          "type": "SCROLL_",
+          "type": "SCROLL",
           "named": true
         },
         {
-          "type": "UNDERLINE_",
+          "type": "UNDERLINE",
           "named": true
         },
         {
-          "type": "UP_",
+          "type": "UP",
           "named": true
         },
         {
-          "type": "ZERO_",
+          "type": "ZERO",
           "named": true
         },
         {
@@ -782,43 +782,43 @@
       "required": false,
       "types": [
         {
-          "type": "ALL_",
+          "type": "ALL",
           "named": true
         },
         {
-          "type": "CRT_",
+          "type": "CRT",
           "named": true
         },
         {
-          "type": "HIGH_VALUE_",
+          "type": "HIGH_VALUE",
           "named": true
         },
         {
-          "type": "LOW_VALUE_",
+          "type": "LOW_VALUE",
           "named": true
         },
         {
-          "type": "MNEMONIC_NAME_",
+          "type": "MNEMONIC_NAME",
           "named": true
         },
         {
-          "type": "PRINTER_",
+          "type": "PRINTER",
           "named": true
         },
         {
-          "type": "QUOTE_",
+          "type": "QUOTE",
           "named": true
         },
         {
-          "type": "SPACE_",
+          "type": "SPACE",
           "named": true
         },
         {
-          "type": "TOK_NULL_",
+          "type": "TOK_NULL",
           "named": true
         },
         {
-          "type": "UPON_",
+          "type": "UPON",
           "named": true
         },
         {
@@ -826,7 +826,7 @@
           "named": true
         },
         {
-          "type": "ZERO_",
+          "type": "ZERO",
           "named": true
         },
         {
@@ -901,31 +901,31 @@
             "named": false
           },
           {
-            "type": "HIGH_VALUE_",
+            "type": "HIGH_VALUE",
             "named": true
           },
           {
-            "type": "LENGTH_",
+            "type": "LENGTH",
             "named": true
           },
           {
-            "type": "LOW_VALUE_",
+            "type": "LOW_VALUE",
             "named": true
           },
           {
-            "type": "QUOTE_",
+            "type": "QUOTE",
             "named": true
           },
           {
-            "type": "SPACE_",
+            "type": "SPACE",
             "named": true
           },
           {
-            "type": "TOK_NULL_",
+            "type": "TOK_NULL",
             "named": true
           },
           {
-            "type": "ZERO_",
+            "type": "ZERO",
             "named": true
           },
           {
@@ -1011,31 +1011,31 @@
             "named": false
           },
           {
-            "type": "HIGH_VALUE_",
+            "type": "HIGH_VALUE",
             "named": true
           },
           {
-            "type": "LENGTH_",
+            "type": "LENGTH",
             "named": true
           },
           {
-            "type": "LOW_VALUE_",
+            "type": "LOW_VALUE",
             "named": true
           },
           {
-            "type": "QUOTE_",
+            "type": "QUOTE",
             "named": true
           },
           {
-            "type": "SPACE_",
+            "type": "SPACE",
             "named": true
           },
           {
-            "type": "TOK_NULL_",
+            "type": "TOK_NULL",
             "named": true
           },
           {
-            "type": "ZERO_",
+            "type": "ZERO",
             "named": true
           },
           {
@@ -1130,31 +1130,31 @@
       "required": false,
       "types": [
         {
-          "type": "HIGH_VALUE_",
+          "type": "HIGH_VALUE",
           "named": true
         },
         {
-          "type": "LENGTH_",
+          "type": "LENGTH",
           "named": true
         },
         {
-          "type": "LOW_VALUE_",
+          "type": "LOW_VALUE",
           "named": true
         },
         {
-          "type": "QUOTE_",
+          "type": "QUOTE",
           "named": true
         },
         {
-          "type": "SPACE_",
+          "type": "SPACE",
           "named": true
         },
         {
-          "type": "TOK_NULL_",
+          "type": "TOK_NULL",
           "named": true
         },
         {
-          "type": "ZERO_",
+          "type": "ZERO",
           "named": true
         },
         {
@@ -1233,79 +1233,79 @@
       "required": true,
       "types": [
         {
-          "type": "CONCATENATE_FUNC_",
+          "type": "CONCATENATE_FUNC",
           "named": true
         },
         {
-          "type": "CURRENT_DATE_FUNC_",
+          "type": "CURRENT_DATE_FUNC",
           "named": true
         },
         {
-          "type": "FUNCTION_NAME_",
+          "type": "FUNCTION_NAME",
           "named": true
         },
         {
-          "type": "HIGH_VALUE_",
+          "type": "HIGH_VALUE",
           "named": true
         },
         {
-          "type": "LENGTH_",
+          "type": "LENGTH",
           "named": true
         },
         {
-          "type": "LOCALE_DT_FUNC_",
+          "type": "LOCALE_DT_FUNC",
           "named": true
         },
         {
-          "type": "LOWER_CASE_FUNC_",
+          "type": "LOWER_CASE_FUNC",
           "named": true
         },
         {
-          "type": "LOW_VALUE_",
+          "type": "LOW_VALUE",
           "named": true
         },
         {
-          "type": "NUMVALC_FUNC_",
+          "type": "NUMVALC_FUNC",
           "named": true
         },
         {
-          "type": "QUOTE_",
+          "type": "QUOTE",
           "named": true
         },
         {
-          "type": "REVERSE_FUNC_",
+          "type": "REVERSE_FUNC",
           "named": true
         },
         {
-          "type": "SPACE_",
+          "type": "SPACE",
           "named": true
         },
         {
-          "type": "SUBSTITUTE_CASE_FUNC_",
+          "type": "SUBSTITUTE_CASE_FUNC",
           "named": true
         },
         {
-          "type": "SUBSTITUTE_FUNC_",
+          "type": "SUBSTITUTE_FUNC",
           "named": true
         },
         {
-          "type": "TOK_NULL_",
+          "type": "TOK_NULL",
           "named": true
         },
         {
-          "type": "TRIM_FUNCTION_",
+          "type": "TRIM_FUNCTION",
           "named": true
         },
         {
-          "type": "UPPER_CASE_FUNC_",
+          "type": "UPPER_CASE_FUNC",
           "named": true
         },
         {
-          "type": "WHEN_COMPILED_FUNC_",
+          "type": "WHEN_COMPILED_FUNC",
           "named": true
         },
         {
-          "type": "ZERO_",
+          "type": "ZERO",
           "named": true
         },
         {
@@ -1443,11 +1443,11 @@
       "required": true,
       "types": [
         {
-          "type": "LINES_",
+          "type": "LINE",
           "named": true
         },
         {
-          "type": "LINE_",
+          "type": "LINES",
           "named": true
         }
       ]
@@ -1484,31 +1484,31 @@
             "named": false
           },
           {
-            "type": "ALL_",
+            "type": "ALL",
             "named": true
           },
           {
-            "type": "HIGH_VALUE_",
+            "type": "HIGH_VALUE",
             "named": true
           },
           {
-            "type": "LOW_VALUE_",
+            "type": "LOW_VALUE",
             "named": true
           },
           {
-            "type": "QUOTE_",
+            "type": "QUOTE",
             "named": true
           },
           {
-            "type": "SPACE_",
+            "type": "SPACE",
             "named": true
           },
           {
-            "type": "TOK_NULL_",
+            "type": "TOK_NULL",
             "named": true
           },
           {
-            "type": "ZERO_",
+            "type": "ZERO",
             "named": true
           },
           {
@@ -1572,31 +1572,31 @@
             "named": false
           },
           {
-            "type": "HIGH_VALUE_",
+            "type": "HIGH_VALUE",
             "named": true
           },
           {
-            "type": "LENGTH_",
+            "type": "LENGTH",
             "named": true
           },
           {
-            "type": "LOW_VALUE_",
+            "type": "LOW_VALUE",
             "named": true
           },
           {
-            "type": "QUOTE_",
+            "type": "QUOTE",
             "named": true
           },
           {
-            "type": "SPACE_",
+            "type": "SPACE",
             "named": true
           },
           {
-            "type": "TOK_NULL_",
+            "type": "TOK_NULL",
             "named": true
           },
           {
-            "type": "ZERO_",
+            "type": "ZERO",
             "named": true
           },
           {
@@ -1682,31 +1682,31 @@
             "named": false
           },
           {
-            "type": "HIGH_VALUE_",
+            "type": "HIGH_VALUE",
             "named": true
           },
           {
-            "type": "LENGTH_",
+            "type": "LENGTH",
             "named": true
           },
           {
-            "type": "LOW_VALUE_",
+            "type": "LOW_VALUE",
             "named": true
           },
           {
-            "type": "QUOTE_",
+            "type": "QUOTE",
             "named": true
           },
           {
-            "type": "SPACE_",
+            "type": "SPACE",
             "named": true
           },
           {
-            "type": "TOK_NULL_",
+            "type": "TOK_NULL",
             "named": true
           },
           {
-            "type": "ZERO_",
+            "type": "ZERO",
             "named": true
           },
           {
@@ -1803,31 +1803,31 @@
             "named": false
           },
           {
-            "type": "HIGH_VALUE_",
+            "type": "HIGH_VALUE",
             "named": true
           },
           {
-            "type": "LENGTH_",
+            "type": "LENGTH",
             "named": true
           },
           {
-            "type": "LOW_VALUE_",
+            "type": "LOW_VALUE",
             "named": true
           },
           {
-            "type": "QUOTE_",
+            "type": "QUOTE",
             "named": true
           },
           {
-            "type": "SPACE_",
+            "type": "SPACE",
             "named": true
           },
           {
-            "type": "TOK_NULL_",
+            "type": "TOK_NULL",
             "named": true
           },
           {
-            "type": "ZERO_",
+            "type": "ZERO",
             "named": true
           },
           {
@@ -1926,11 +1926,11 @@
       "required": true,
       "types": [
         {
-          "type": "EXCEPTION_",
+          "type": "EXCEPTION",
           "named": true
         },
         {
-          "type": "NOT_EXCEPTION_",
+          "type": "NOT_EXCEPTION",
           "named": true
         },
         {
@@ -2009,31 +2009,31 @@
             "named": false
           },
           {
-            "type": "HIGH_VALUE_",
+            "type": "HIGH_VALUE",
             "named": true
           },
           {
-            "type": "LENGTH_",
+            "type": "LENGTH",
             "named": true
           },
           {
-            "type": "LOW_VALUE_",
+            "type": "LOW_VALUE",
             "named": true
           },
           {
-            "type": "QUOTE_",
+            "type": "QUOTE",
             "named": true
           },
           {
-            "type": "SPACE_",
+            "type": "SPACE",
             "named": true
           },
           {
-            "type": "TOK_NULL_",
+            "type": "TOK_NULL",
             "named": true
           },
           {
-            "type": "ZERO_",
+            "type": "ZERO",
             "named": true
           },
           {
@@ -2125,31 +2125,31 @@
             "named": false
           },
           {
-            "type": "HIGH_VALUE_",
+            "type": "HIGH_VALUE",
             "named": true
           },
           {
-            "type": "LENGTH_",
+            "type": "LENGTH",
             "named": true
           },
           {
-            "type": "LOW_VALUE_",
+            "type": "LOW_VALUE",
             "named": true
           },
           {
-            "type": "QUOTE_",
+            "type": "QUOTE",
             "named": true
           },
           {
-            "type": "SPACE_",
+            "type": "SPACE",
             "named": true
           },
           {
-            "type": "TOK_NULL_",
+            "type": "TOK_NULL",
             "named": true
           },
           {
-            "type": "ZERO_",
+            "type": "ZERO",
             "named": true
           },
           {
@@ -2235,31 +2235,31 @@
             "named": false
           },
           {
-            "type": "HIGH_VALUE_",
+            "type": "HIGH_VALUE",
             "named": true
           },
           {
-            "type": "LENGTH_",
+            "type": "LENGTH",
             "named": true
           },
           {
-            "type": "LOW_VALUE_",
+            "type": "LOW_VALUE",
             "named": true
           },
           {
-            "type": "QUOTE_",
+            "type": "QUOTE",
             "named": true
           },
           {
-            "type": "SPACE_",
+            "type": "SPACE",
             "named": true
           },
           {
-            "type": "TOK_NULL_",
+            "type": "TOK_NULL",
             "named": true
           },
           {
-            "type": "ZERO_",
+            "type": "ZERO",
             "named": true
           },
           {
@@ -2421,7 +2421,7 @@
       "required": true,
       "types": [
         {
-          "type": "OPTIONAL_",
+          "type": "OPTIONAL",
           "named": true
         },
         {
@@ -2463,11 +2463,11 @@
       "required": true,
       "types": [
         {
-          "type": "REFERENCE_",
+          "type": "REFERENCE",
           "named": true
         },
         {
-          "type": "VALUE_",
+          "type": "VALUE",
           "named": true
         }
       ]
@@ -2482,11 +2482,11 @@
       "required": true,
       "types": [
         {
-          "type": "CHAINING_",
+          "type": "CHAINING",
           "named": true
         },
         {
-          "type": "USING_",
+          "type": "USING",
           "named": true
         },
         {
@@ -2609,31 +2609,31 @@
       "required": false,
       "types": [
         {
-          "type": "HIGH_VALUE_",
+          "type": "HIGH_VALUE",
           "named": true
         },
         {
-          "type": "LENGTH_",
+          "type": "LENGTH",
           "named": true
         },
         {
-          "type": "LOW_VALUE_",
+          "type": "LOW_VALUE",
           "named": true
         },
         {
-          "type": "QUOTE_",
+          "type": "QUOTE",
           "named": true
         },
         {
-          "type": "SPACE_",
+          "type": "SPACE",
           "named": true
         },
         {
-          "type": "TOK_NULL_",
+          "type": "TOK_NULL",
           "named": true
         },
         {
-          "type": "ZERO_",
+          "type": "ZERO",
           "named": true
         },
         {
@@ -2712,7 +2712,7 @@
       "required": true,
       "types": [
         {
-          "type": "ZERO_",
+          "type": "ZERO",
           "named": true
         },
         {
@@ -2785,19 +2785,19 @@
       "required": true,
       "types": [
         {
-          "type": "AUTO_",
+          "type": "AUTO",
           "named": true
         },
         {
-          "type": "DEFAULT_",
+          "type": "DEFAULT",
           "named": true
         },
         {
-          "type": "SIZE_",
+          "type": "SIZE",
           "named": true
         },
         {
-          "type": "UNSIGNED_",
+          "type": "UNSIGNED",
           "named": true
         },
         {
@@ -2848,31 +2848,31 @@
             "named": false
           },
           {
-            "type": "HIGH_VALUE_",
+            "type": "HIGH_VALUE",
             "named": true
           },
           {
-            "type": "LENGTH_",
+            "type": "LENGTH",
             "named": true
           },
           {
-            "type": "LOW_VALUE_",
+            "type": "LOW_VALUE",
             "named": true
           },
           {
-            "type": "QUOTE_",
+            "type": "QUOTE",
             "named": true
           },
           {
-            "type": "SPACE_",
+            "type": "SPACE",
             "named": true
           },
           {
-            "type": "TOK_NULL_",
+            "type": "TOK_NULL",
             "named": true
           },
           {
-            "type": "ZERO_",
+            "type": "ZERO",
             "named": true
           },
           {
@@ -2958,31 +2958,31 @@
             "named": false
           },
           {
-            "type": "HIGH_VALUE_",
+            "type": "HIGH_VALUE",
             "named": true
           },
           {
-            "type": "LENGTH_",
+            "type": "LENGTH",
             "named": true
           },
           {
-            "type": "LOW_VALUE_",
+            "type": "LOW_VALUE",
             "named": true
           },
           {
-            "type": "QUOTE_",
+            "type": "QUOTE",
             "named": true
           },
           {
-            "type": "SPACE_",
+            "type": "SPACE",
             "named": true
           },
           {
-            "type": "TOK_NULL_",
+            "type": "TOK_NULL",
             "named": true
           },
           {
-            "type": "ZERO_",
+            "type": "ZERO",
             "named": true
           },
           {
@@ -3062,31 +3062,31 @@
       "required": false,
       "types": [
         {
-          "type": "HIGH_VALUE_",
+          "type": "HIGH_VALUE",
           "named": true
         },
         {
-          "type": "LENGTH_",
+          "type": "LENGTH",
           "named": true
         },
         {
-          "type": "LOW_VALUE_",
+          "type": "LOW_VALUE",
           "named": true
         },
         {
-          "type": "QUOTE_",
+          "type": "QUOTE",
           "named": true
         },
         {
-          "type": "SPACE_",
+          "type": "SPACE",
           "named": true
         },
         {
-          "type": "TOK_NULL_",
+          "type": "TOK_NULL",
           "named": true
         },
         {
-          "type": "ZERO_",
+          "type": "ZERO",
           "named": true
         },
         {
@@ -3165,11 +3165,11 @@
       "required": true,
       "types": [
         {
-          "type": "NO_ADVANCING_",
+          "type": "NO_ADVANCING",
           "named": true
         },
         {
-          "type": "WITH_",
+          "type": "WITH",
           "named": true
         },
         {
