@@ -346,7 +346,7 @@ module.exports = grammar({
       //$.generate_statement,
       //$.goto_statement,
       //$.goback_statement,
-      //$.if_statement,
+      $.if_statement,
       //$.initialize_statement,
       //$.initiate_statement,
       //$.inspect_statement,
@@ -452,6 +452,105 @@ module.exports = grammar({
     ),
 
     line_or_lines: $ => choice($.LINE, $.LINES),
+
+    //todo add error if statement (see cobc/parser.y)
+    if_statement: $ => prec.left(seq(
+      $._IF,
+      field('condition', $.expr),
+      optional($._THEN),
+      field('statements', repeat($._statement)),
+      field('else_statements', optional($._if_else_sentense)),
+      optional($._END_IF)
+    )),
+
+    _if_else_sentense: $ => prec.left(seq(
+      $._ELSE,
+      repeat($._statement)
+    )),
+
+    expr: $ => $._expr_logic,
+
+    _expr_data: $ => $._x,
+
+    _expr_calc: $ => choice(
+      $._expr_calc_binary,
+      $._expr_calc_unary,
+      $._expr_data
+    ),
+
+    _expr_calc_binary: $ => choice(
+      prec.left(1, seq($._expr_calc, '+', $._expr_calc)),
+      prec.left(1, seq($._expr_calc, '-', $._expr_calc)),
+      prec.left(2, seq($._expr_calc, '*', $._expr_calc)),
+      prec.left(2, seq($._expr_calc, '/', $._expr_calc)),
+      prec.left(3, seq($._expr_calc, '^', $._expr_calc)),
+    ),
+
+    _expr_calc_unary: $ => prec(4, choice(
+      seq('+', $._expr_calc),
+      seq('-', $._expr_calc),
+      seq('^', $._expr_calc),
+    )),
+
+    _expr_compare: $ => choice(
+      prec.left(-1, seq($._expr_calc, $.eq, $._expr_calc)),
+      prec.left(-1, seq($._expr_calc, $.gt, $._expr_calc)),
+      prec.left(-1, seq($._expr_calc, $.lt, $._expr_calc)),
+      prec.left(-1, seq($._expr_calc, $.ge, $._expr_calc)),
+      prec.left(-1, seq($._expr_calc, $.lt, $._expr_calc)),
+      prec.left(-1, seq($._expr_calc, $.NE, $._expr_calc)),
+    ),
+
+    _expr_is: $ => choice(
+      seq($._expr_calc, optional($._IS), choice(
+        $.OMITTED,
+        $.NUMERIC,
+        $.ALPHABETIC,
+        $.ALPHABETIC_LOWER,
+        $.ALPHABETIC_UPPER,
+        $.CLASS_NAME,
+        $.POSITIVE,
+        $.NEGATIVE,
+        $.ZERO
+      ))
+    ),
+
+    _expr_bool: $ => choice(
+      $._expr_is,
+      $._expr_compare,
+    ),
+
+    _expr_logic: $ => prec.left(choice(
+      seq($.NOT, $._expr_logic),
+      seq($._expr_logic, choice($.AND, $.OR), $._expr_logic),
+      $._expr_bool
+    )),
+
+    eq: $ => choice(
+      '=',
+      seq($._EQUAL, optional($._TO)),
+      $._EQUALS
+    ),
+
+    gt: $ => choice(
+      '>',
+      seq($.GREATER, optional($._THAN))
+    ),
+
+    lt: $ => choice(
+      '<',
+      seq($.LESS, optional($._THAN))
+    ),
+
+    ge: $ => choice(
+      '>=',
+      seq($.GREATER, optional($._THAN), optional($._OR), $._EQUAL, optional($._TO)),
+    ),
+
+    le: $ => choice(
+      '<=',
+      seq($.LESS, optional($._THAN), optional($._OR), $._EQUAL, optional($._TO)),
+    ),
 
     move_statement: $ => seq(
       $._MOVE,

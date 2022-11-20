@@ -9,13 +9,7 @@
            05 date-month pic 9(02).
            05 date-day pic 9(02).
        procedure division.
-           MOVE ZERO TO date-year.
-       label1.
-           MOVE 1 TO date-year.
-       sec1 section.
-           MOVE QUOTE TO date-month.
-       label2.
-           MOVE 3 TO date-year of date-r.
-           MOVE HIGH-VALUE TO date-month.
-       label3.
-           MOVE 4 TO date-year of date-r.
+         IF 1 + 1 = 2
+           THEN DISPLAY "hello"
+           ELSE DISPLAY "WORLD"
+         END-IF.
