@@ -16,8 +16,8 @@ module.exports = grammar({
 
     program_definition: $ => seq(
       $.identification_division,
-      optional($.environment_division), //todo
-      optional($.data_division), //todo
+      optional($.environment_division),
+      optional($.data_division),
       $.procedure_division, //todo
       optional($.nested_prog), //todo
       optional($.end_program) //todo
@@ -43,7 +43,146 @@ module.exports = grammar({
 
     function_definition: $ => /todo_function_definition/,
 
-    environment_division: $ => /todo_environment_division/,
+    environment_division: $ => seq(
+      $._ENVIRONMENT,
+      $._DIVISION,
+      optional($.configuration_section),
+      optional($.input_output_section),
+    ),
+
+    configuration_section: $ => seq(
+      $._CONFIGURATION,
+      $._SECTION,
+      '.',
+      repeat($._configuration_paragraph)
+    ),
+
+    _configuration_paragraph: $ => choice(
+      $.source_computer_paragraph,
+      $.object_computer_paragraph,
+      $.special_names_paragraph,
+      $.repository_paragraph,
+    ),
+
+    source_computer_paragraph: $ => seq(
+      $._SOURCE_COMPUTER,
+      '.',
+      optional($._source_computer_entry),
+    ),
+
+    _source_computer_entry: $ => choice(
+      seq($.WORD, '.'),
+      seq($.WORD, $.with_debugging_mode, '.'),
+      seq($.with_debugging_mode, '.')
+    ),
+
+    with_debugging_mode: $ => seq(
+      optional($._WITH),
+      $._DEBUGGING,
+      $._MODE
+    ),
+
+    object_computer_paragraph: $ => seq(
+      $._OBJECT_COMPUTER,
+      '.',
+      optional($._object_computer_entry)
+    ),
+
+    _object_computer_entry: $ => choice(
+      seq($.WORD, '.'),
+      seq($.WORD, repeat1($.object_clause), '.'),
+      seq(repeat1($.object_clause), '.')
+    ),
+
+    object_clause: $ => choice(
+      $.object_computer_memory,
+      $.object_computer_sequence,
+      $.object_computer_segment
+    ),
+
+    object_computer_memory: $ => seq(
+      $._MEMORY,
+      $._SIZE,
+      optional($._IS),
+      $.integer,
+      choice(
+        $._CHARACTERS,
+        $._WORDS
+      )
+    ),
+
+    object_computer_sequence: $ => seq(
+      optional($._PROGRAM),
+      $._coll_sequence,
+      optional($._IS),
+      $.qualified_word
+    ),
+
+    _coll_sequence: $ => seq(
+      optional($._COLLATING),
+      $._SEQUENCE
+    ),
+
+    object_computer_segment: $ => seq(
+      $._SEGMENT_LIMIT,
+      optional($._IS),
+      $.integer
+    ),
+
+    special_names_paragraph: $ => seq(
+      $._SPECIAL_NAMES,
+      '.',
+      repeat($.special_name),
+      optional('.')
+    ),
+
+    special_name: $ => choice(
+      $.mnemonic_name_clause,
+      $.alphabet_name_clause,
+      $.symbolic_characters_clause,
+      $.locale_clause,
+      $.class_name_clause,
+      $.currency_sign_clause,
+      $.decimal_point_clause,
+      $.cursor_clause,
+      $.crt_status_clause,
+      $.screen_control,
+      $.event_status,
+    ),
+
+    mnemonic_name_clause: $ => /todo_mnemonic_name/,
+    alphabet_name_clause: $ => /todo_alphabet_name/,
+    symbolic_characters_clause: $ => /todo_symbolic_character_name/,
+    locale_clause: $ => /todo_locale_name/,
+    class_name_clause: $ => /todo_class_name/,
+    currency_sign_clause: $ => /todo_currency_sign_name/,
+    decimal_point_clause: $ => /todo_decimal_point_name/,
+    cursor_clause: $ => /todo_cursor_name/,
+    crt_status_clause: $ => /todo_crt_status_name/,
+    screen_control: $ => /todo_screen_control_name/,
+    event_status: $ => /todo_event_status_name/,
+
+    repository_paragraph: $ => seq(
+      $._REPOSITORY,
+      '.',
+      optional($._repository)
+    ),
+
+    _repository: $ => seq(
+      repeat1($.repository_name),
+      '.'
+    ),
+
+    repository_name: $ => seq(
+      $._FUNCTION,
+      choice(
+        repeat1($.LITERAL),
+        $.ALL
+      ),
+      $._INTRINSIC
+    ),
+
+    input_output_section: $ => /todo_input_output_section/,
     data_division: $ => seq(
       $._DATA, $._DIVISION, '.',
       optional($.file_section),

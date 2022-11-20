@@ -155,6 +155,33 @@
     "fields": {}
   },
   {
+    "type": "LITERAL",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "h_string",
+          "named": true
+        },
+        {
+          "type": "n_string",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "x_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "LOCALE_DT_FUNC",
     "named": true,
     "fields": {}
@@ -602,6 +629,33 @@
         },
         {
           "type": "x_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "configuration_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "object_computer_paragraph",
+          "named": true
+        },
+        {
+          "type": "repository_paragraph",
+          "named": true
+        },
+        {
+          "type": "source_computer_paragraph",
+          "named": true
+        },
+        {
+          "type": "special_names_paragraph",
           "named": true
         }
       ]
@@ -1181,6 +1235,25 @@
     "type": "entry_name",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "environment_division",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "configuration_section",
+          "named": true
+        },
+        {
+          "type": "input_output_section",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "eq",
@@ -2207,6 +2280,93 @@
     }
   },
   {
+    "type": "object_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "object_computer_memory",
+          "named": true
+        },
+        {
+          "type": "object_computer_segment",
+          "named": true
+        },
+        {
+          "type": "object_computer_sequence",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "object_computer_memory",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "object_computer_paragraph",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "WORD",
+          "named": true
+        },
+        {
+          "type": "object_clause",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "object_computer_segment",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "object_computer_sequence",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "qualified_word",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "on_disp_exception",
     "named": true,
     "fields": {},
@@ -2976,6 +3136,40 @@
     }
   },
   {
+    "type": "repository_name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ALL",
+          "named": true
+        },
+        {
+          "type": "LITERAL",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "repository_paragraph",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "repository_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "scroll_lines",
     "named": true,
     "fields": {},
@@ -3063,6 +3257,95 @@
         },
         {
           "type": "integer",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "source_computer_paragraph",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "WORD",
+          "named": true
+        },
+        {
+          "type": "with_debugging_mode",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "special_name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "alphabet_name_clause",
+          "named": true
+        },
+        {
+          "type": "class_name_clause",
+          "named": true
+        },
+        {
+          "type": "crt_status_clause",
+          "named": true
+        },
+        {
+          "type": "currency_sign_clause",
+          "named": true
+        },
+        {
+          "type": "cursor_clause",
+          "named": true
+        },
+        {
+          "type": "decimal_point_clause",
+          "named": true
+        },
+        {
+          "type": "event_status",
+          "named": true
+        },
+        {
+          "type": "locale_clause",
+          "named": true
+        },
+        {
+          "type": "mnemonic_name_clause",
+          "named": true
+        },
+        {
+          "type": "screen_control",
+          "named": true
+        },
+        {
+          "type": "symbolic_characters_clause",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "special_names_paragraph",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "special_name",
           "named": true
         }
       ]
@@ -3441,6 +3724,11 @@
     }
   },
   {
+    "type": "with_debugging_mode",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "working_storage_section",
     "named": true,
     "fields": {},
@@ -3601,6 +3889,10 @@
     "named": false
   },
   {
+    "type": "alphabet_name_clause",
+    "named": true
+  },
+  {
     "type": "any_length_clause",
     "named": true
   },
@@ -3617,7 +3909,23 @@
     "named": true
   },
   {
+    "type": "class_name_clause",
+    "named": true
+  },
+  {
     "type": "constant_entry",
+    "named": true
+  },
+  {
+    "type": "crt_status_clause",
+    "named": true
+  },
+  {
+    "type": "currency_sign_clause",
+    "named": true
+  },
+  {
+    "type": "cursor_clause",
     "named": true
   },
   {
@@ -3625,15 +3933,19 @@
     "named": true
   },
   {
+    "type": "decimal_point_clause",
+    "named": true
+  },
+  {
     "type": "end_program",
     "named": true
   },
   {
-    "type": "environment_division",
+    "type": "error",
     "named": true
   },
   {
-    "type": "error",
+    "type": "event_status",
     "named": true
   },
   {
@@ -3661,6 +3973,10 @@
     "named": false
   },
   {
+    "type": "input_output_section",
+    "named": true
+  },
+  {
     "type": "integer",
     "named": true
   },
@@ -3685,6 +4001,10 @@
     "named": true
   },
   {
+    "type": "locale_clause",
+    "named": true
+  },
+  {
     "type": "low-VALUE",
     "named": false
   },
@@ -3695,6 +4015,10 @@
   {
     "type": "low-value",
     "named": false
+  },
+  {
+    "type": "mnemonic_name_clause",
+    "named": true
   },
   {
     "type": "nested_prog",
@@ -3725,6 +4049,10 @@
     "named": true
   },
   {
+    "type": "screen_control",
+    "named": true
+  },
+  {
     "type": "screen_section",
     "named": true
   },
@@ -3735,6 +4063,10 @@
   {
     "type": "space",
     "named": false
+  },
+  {
+    "type": "symbolic_characters_clause",
+    "named": true
   },
   {
     "type": "synchronized_clause",
