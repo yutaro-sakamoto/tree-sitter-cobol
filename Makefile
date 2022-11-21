@@ -10,3 +10,8 @@ test:
 
 q:
 	node_modules/.bin/tree-sitter query queries/sample.scm sample/a.cbl
+
+nist:
+	sh run_nist_cobol85.sh
+
+.PHONY: nist all q test ck
