@@ -19,10 +19,12 @@ jobs:
         run: npm install
 
       - name: Generating a parser
-        run: node_modules/.bin/tree-sitter generate
+        run: |
+            node_modules/.bin/tree-sitter init-config
+            node_modules/.bin/tree-sitter generate
 
       - name: Run NIST COBOL85 tests
-        run: make test
+        run: make nist
 
       - name: Upload results of NIST COBOL85 tests
         uses: actions/upload-artifact@v3
