@@ -31,7 +31,8 @@ Redefines
           (level_number)
           (entry_name)
           (redefines_clause
-            (qualified_word)))
+            (qualified_word
+              (WORD))))
         (data_description
           (level_number)
           (entry_name)
