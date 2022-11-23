@@ -247,7 +247,35 @@ module.exports = grammar({
       $.nominal_key_clause,
     ),
 
-    assign_clause: $ => /todo_assign_clause/,
+    assign_clause: $ => seq(
+      $._ASSIGN,
+      optional($._TO),
+      optional($._ext_clause),
+      choice(
+        $.DISK,
+        $.PRINTER,
+        seq(optional($._device), $.assignment_name),
+      )
+    ),
+
+    _ext_clause: $ => choice(
+      $.EXTERNAL,
+      $.DYNAMIC
+    ),
+
+    _device: $ => choice(
+      $.DISK,
+      $.PRINTER,
+    ),
+
+    assignment_name: $ => choice(
+      $._literal,
+      $.DISPLAY,
+      seq(
+        optional($._literal), repeat1($.qualified_word)
+      )
+    ),
+
     access_mode_clause: $ => /todo_access_mode_clause/,
     alternative_record_key: $ => /todo_alternative_record_key/,
     collating_sequence_clause: $ => /todo_collating_sequence_clause/,

@@ -85,7 +85,22 @@
     "fields": {}
   },
   {
+    "type": "DISK",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "DISPLAY",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "DOWN",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "DYNAMIC",
     "named": true,
     "fields": {}
   },
@@ -106,6 +121,11 @@
   },
   {
     "type": "EXCEPTION",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "EXTERNAL",
     "named": true,
     "fields": {}
   },
@@ -630,6 +650,100 @@
         },
         {
           "type": "number",
+          "named": true
+        },
+        {
+          "type": "x_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "assign_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "DISK",
+          "named": true
+        },
+        {
+          "type": "DYNAMIC",
+          "named": true
+        },
+        {
+          "type": "EXTERNAL",
+          "named": true
+        },
+        {
+          "type": "PRINTER",
+          "named": true
+        },
+        {
+          "type": "assignment_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "assignment_name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "ALL",
+          "named": true
+        },
+        {
+          "type": "DISPLAY",
+          "named": true
+        },
+        {
+          "type": "HIGH_VALUE",
+          "named": true
+        },
+        {
+          "type": "LOW_VALUE",
+          "named": true
+        },
+        {
+          "type": "QUOTE",
+          "named": true
+        },
+        {
+          "type": "SPACE",
+          "named": true
+        },
+        {
+          "type": "TOK_NULL",
+          "named": true
+        },
+        {
+          "type": "ZERO",
+          "named": true
+        },
+        {
+          "type": "h_string",
+          "named": true
+        },
+        {
+          "type": "n_string",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "qualified_word",
           "named": true
         },
         {
@@ -4051,10 +4165,6 @@
   },
   {
     "type": "apply_clause",
-    "named": true
-  },
-  {
-    "type": "assign_clause",
     "named": true
   },
   {

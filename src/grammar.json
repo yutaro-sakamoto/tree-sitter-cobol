@@ -1042,8 +1042,134 @@
       ]
     },
     "assign_clause": {
-      "type": "PATTERN",
-      "value": "todo_assign_clause"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_ASSIGN"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_TO"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_ext_clause"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "DISK"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "PRINTER"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_device"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "assignment_name"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "_ext_clause": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "EXTERNAL"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "DYNAMIC"
+        }
+      ]
+    },
+    "_device": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "DISK"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "PRINTER"
+        }
+      ]
+    },
+    "assignment_name": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "DISPLAY"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_literal"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "REPEAT1",
+              "content": {
+                "type": "SYMBOL",
+                "name": "qualified_word"
+              }
+            }
+          ]
+        }
+      ]
     },
     "access_mode_clause": {
       "type": "PATTERN",
