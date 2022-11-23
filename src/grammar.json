@@ -747,8 +747,359 @@
       ]
     },
     "input_output_section": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_INPUT_OUTPUT"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_SECTION"
+            },
+            {
+              "type": "STRING",
+              "value": "."
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_file_control_paragraph"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_i_o_control_paragraph"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_FILE_CONTROL"
+            },
+            {
+              "type": "STRING",
+              "value": "."
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "file_control_entry"
+              }
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_I_O_CONTROL"
+            },
+            {
+              "type": "STRING",
+              "value": "."
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "i_o_control"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "_file_control_paragraph": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_FILE_CONTROL"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "file_control_entry"
+          }
+        }
+      ]
+    },
+    "file_control_entry": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "SELECT"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "OPTIONAL"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "WORD"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_select_clause"
+          }
+        }
+      ]
+    },
+    "_i_o_control_paragraph": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_I_O_CONTROL"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "i_o_control"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "i_o_control": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "REPEAT1",
+              "content": {
+                "type": "SYMBOL",
+                "name": "i_o_control_clause"
+              }
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "."
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "REPEAT1",
+              "content": {
+                "type": "SYMBOL",
+                "name": "apply_clause"
+              }
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "."
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "i_o_control_clause": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "same_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "multiple_file_tape_clause"
+        }
+      ]
+    },
+    "same_clause": {
       "type": "PATTERN",
-      "value": "todo_input_output_section"
+      "value": "todo_same_clause"
+    },
+    "multiple_file_tape_clause": {
+      "type": "PATTERN",
+      "value": "todo_multiple_file_tape_clause"
+    },
+    "apply_clause": {
+      "type": "PATTERN",
+      "value": "todo_apply_clause"
+    },
+    "_select_clause": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "assign_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "access_mode_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "alternative_record_key"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "collating_sequence_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "file_status_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "lock_mode_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "organization_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "padding_character_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "record_delimiter_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "record_key_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "relative_key_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "reserve_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "sharing_clause"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "error"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "nominal_key_clause"
+        }
+      ]
+    },
+    "assign_clause": {
+      "type": "PATTERN",
+      "value": "todo_assign_clause"
+    },
+    "access_mode_clause": {
+      "type": "PATTERN",
+      "value": "todo_access_mode_clause"
+    },
+    "alternative_record_key": {
+      "type": "PATTERN",
+      "value": "todo_alternative_record_key"
+    },
+    "collating_sequence_clause": {
+      "type": "PATTERN",
+      "value": "todo_collating_sequence_clause"
+    },
+    "file_status_clause": {
+      "type": "PATTERN",
+      "value": "todo_file_status_clause"
+    },
+    "lock_mode_clause": {
+      "type": "PATTERN",
+      "value": "todo_lock_mode_clause"
+    },
+    "organization_clause": {
+      "type": "PATTERN",
+      "value": "todo_organization_clause"
+    },
+    "padding_character_clause": {
+      "type": "PATTERN",
+      "value": "todo_padding_character_clause"
+    },
+    "record_delimiter_clause": {
+      "type": "PATTERN",
+      "value": "todo_record_delimiter_clause"
+    },
+    "record_key_clause": {
+      "type": "PATTERN",
+      "value": "todo_record_key_clause"
+    },
+    "relative_key_clause": {
+      "type": "PATTERN",
+      "value": "todo_relative_key_clause"
+    },
+    "reserve_clause": {
+      "type": "PATTERN",
+      "value": "todo_reserve_clause"
+    },
+    "sharing_clause": {
+      "type": "PATTERN",
+      "value": "todo_sharing_clause"
+    },
+    "error": {
+      "type": "PATTERN",
+      "value": "todo_error"
+    },
+    "nominal_key_clause": {
+      "type": "PATTERN",
+      "value": "todo_nominal_key_clause"
     },
     "data_division": {
       "type": "SEQ",
@@ -1656,10 +2007,6 @@
     "any_length_clause": {
       "type": "PATTERN",
       "value": "todo_any_length"
-    },
-    "error": {
-      "type": "PATTERN",
-      "value": "todo_error"
     },
     "local_storage_section": {
       "type": "PATTERN",

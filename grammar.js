@@ -182,7 +182,87 @@ module.exports = grammar({
       $._INTRINSIC
     ),
 
-    input_output_section: $ => /todo_input_output_section/,
+    input_output_section: $ => choice(
+      seq(
+        $._INPUT_OUTPUT, $._SECTION, '.',
+        $._file_control_paragraph,
+        $._i_o_control_paragraph
+      ),
+      seq(
+        $._FILE_CONTROL, '.',
+        repeat($.file_control_entry)
+      ),
+      seq(
+        $._I_O_CONTROL, '.',
+        optional($.i_o_control)
+      ),
+    ),
+
+    _file_control_paragraph: $ => seq(
+      $._FILE_CONTROL, '.',
+      repeat($.file_control_entry)
+    ),
+
+    file_control_entry: $ => seq(
+      $.SELECT,
+      optional($.OPTIONAL),
+      $.WORD,
+      repeat($._select_clause),
+    ),
+
+    _i_o_control_paragraph: $ => seq(
+      $._I_O_CONTROL, '.', optional($.i_o_control),
+    ),
+
+    i_o_control: $ => choice(
+      seq(repeat1($.i_o_control_clause), optional('.')),
+      seq(repeat1($.apply_clause), optional('.')),
+    ),
+
+    i_o_control_clause: $ => choice(
+      $.same_clause,
+      $.multiple_file_tape_clause
+    ),
+
+    same_clause: $ => /todo_same_clause/,
+    multiple_file_tape_clause: $ => /todo_multiple_file_tape_clause/,
+
+    apply_clause: $ => /todo_apply_clause/,
+
+    _select_clause: $ => choice(
+      $.assign_clause,
+      $.access_mode_clause,
+      $.alternative_record_key,
+      $.collating_sequence_clause,
+      $.file_status_clause,
+      $.lock_mode_clause,
+      $.organization_clause,
+      $.padding_character_clause,
+      $.record_delimiter_clause,
+      $.record_key_clause,
+      $.relative_key_clause,
+      $.reserve_clause,
+      $.sharing_clause,
+      $.error,
+      $.nominal_key_clause,
+    ),
+
+    assign_clause: $ => /todo_assign_clause/,
+    access_mode_clause: $ => /todo_access_mode_clause/,
+    alternative_record_key: $ => /todo_alternative_record_key/,
+    collating_sequence_clause: $ => /todo_collating_sequence_clause/,
+    file_status_clause: $ => /todo_file_status_clause/,
+    lock_mode_clause: $ => /todo_lock_mode_clause/,
+    organization_clause: $ => /todo_organization_clause/,
+    padding_character_clause: $ => /todo_padding_character_clause/,
+    record_delimiter_clause: $ => /todo_record_delimiter_clause/,
+    record_key_clause: $ => /todo_record_key_clause/,
+    relative_key_clause: $ => /todo_relative_key_clause/,
+    reserve_clause: $ => /todo_reserve_clause/,
+    sharing_clause: $ => /todo_sharing_clause/,
+    error: $ => /todo_error/,
+    nominal_key_clause: $ => /todo_nominal_key_clause/,
+
     data_division: $ => seq(
       $._DATA, $._DIVISION, '.',
       optional($.file_section),

@@ -297,6 +297,11 @@
     "fields": {}
   },
   {
+    "type": "SELECT",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "SIZE",
     "named": true,
     "fields": {}
@@ -1400,6 +1405,89 @@
     }
   },
   {
+    "type": "file_control_entry",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "OPTIONAL",
+          "named": true
+        },
+        {
+          "type": "SELECT",
+          "named": true
+        },
+        {
+          "type": "WORD",
+          "named": true
+        },
+        {
+          "type": "access_mode_clause",
+          "named": true
+        },
+        {
+          "type": "alternative_record_key",
+          "named": true
+        },
+        {
+          "type": "assign_clause",
+          "named": true
+        },
+        {
+          "type": "collating_sequence_clause",
+          "named": true
+        },
+        {
+          "type": "error",
+          "named": true
+        },
+        {
+          "type": "file_status_clause",
+          "named": true
+        },
+        {
+          "type": "lock_mode_clause",
+          "named": true
+        },
+        {
+          "type": "nominal_key_clause",
+          "named": true
+        },
+        {
+          "type": "organization_clause",
+          "named": true
+        },
+        {
+          "type": "padding_character_clause",
+          "named": true
+        },
+        {
+          "type": "record_delimiter_clause",
+          "named": true
+        },
+        {
+          "type": "record_key_clause",
+          "named": true
+        },
+        {
+          "type": "relative_key_clause",
+          "named": true
+        },
+        {
+          "type": "reserve_clause",
+          "named": true
+        },
+        {
+          "type": "sharing_clause",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "func_refmod",
     "named": true,
     "fields": {},
@@ -1693,6 +1781,44 @@
     "fields": {}
   },
   {
+    "type": "i_o_control",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "apply_clause",
+          "named": true
+        },
+        {
+          "type": "i_o_control_clause",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "i_o_control_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "multiple_file_tape_clause",
+          "named": true
+        },
+        {
+          "type": "same_clause",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "identification_division",
     "named": true,
     "fields": {},
@@ -1769,6 +1895,25 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "input_output_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "file_control_entry",
+          "named": true
+        },
+        {
+          "type": "i_o_control",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -3889,11 +4034,27 @@
     "named": false
   },
   {
+    "type": "access_mode_clause",
+    "named": true
+  },
+  {
     "type": "alphabet_name_clause",
     "named": true
   },
   {
+    "type": "alternative_record_key",
+    "named": true
+  },
+  {
     "type": "any_length_clause",
+    "named": true
+  },
+  {
+    "type": "apply_clause",
+    "named": true
+  },
+  {
+    "type": "assign_clause",
     "named": true
   },
   {
@@ -3910,6 +4071,10 @@
   },
   {
     "type": "class_name_clause",
+    "named": true
+  },
+  {
+    "type": "collating_sequence_clause",
     "named": true
   },
   {
@@ -3957,6 +4122,10 @@
     "named": true
   },
   {
+    "type": "file_status_clause",
+    "named": true
+  },
+  {
     "type": "global_clause",
     "named": true
   },
@@ -3971,10 +4140,6 @@
   {
     "type": "high-value",
     "named": false
-  },
-  {
-    "type": "input_output_section",
-    "named": true
   },
   {
     "type": "integer",
@@ -4005,6 +4170,10 @@
     "named": true
   },
   {
+    "type": "lock_mode_clause",
+    "named": true
+  },
+  {
     "type": "low-VALUE",
     "named": false
   },
@@ -4021,7 +4190,15 @@
     "named": true
   },
   {
+    "type": "multiple_file_tape_clause",
+    "named": true
+  },
+  {
     "type": "nested_prog",
+    "named": true
+  },
+  {
+    "type": "nominal_key_clause",
     "named": true
   },
   {
@@ -4033,12 +4210,32 @@
     "named": true
   },
   {
+    "type": "organization_clause",
+    "named": true
+  },
+  {
+    "type": "padding_character_clause",
+    "named": true
+  },
+  {
     "type": "picture_x",
     "named": true
   },
   {
     "type": "quote",
     "named": false
+  },
+  {
+    "type": "record_delimiter_clause",
+    "named": true
+  },
+  {
+    "type": "record_key_clause",
+    "named": true
+  },
+  {
+    "type": "relative_key_clause",
+    "named": true
   },
   {
     "type": "renames_clause",
@@ -4049,11 +4246,23 @@
     "named": true
   },
   {
+    "type": "reserve_clause",
+    "named": true
+  },
+  {
+    "type": "same_clause",
+    "named": true
+  },
+  {
     "type": "screen_control",
     "named": true
   },
   {
     "type": "screen_section",
+    "named": true
+  },
+  {
+    "type": "sharing_clause",
     "named": true
   },
   {
