@@ -1403,8 +1403,97 @@
       ]
     },
     "lock_mode_clause": {
-      "type": "PATTERN",
-      "value": "todo_lock_mode_clause"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_LOCK"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_MODE"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_IS"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "lock_mode"
+        }
+      ]
+    },
+    "lock_mode": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "MANUAL"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "AUTOMATIC"
+                }
+              ]
+            },
+            {
+              "type": "FIELD",
+              "name": "lock_with",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_lock_with"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "EXCLUSIVE"
+        }
+      ]
+    },
+    "_lock_with": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_WITH"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "RECORD"
+        }
+      ]
     },
     "organization_clause": {
       "type": "PATTERN",

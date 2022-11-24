@@ -30,6 +30,11 @@
     "fields": {}
   },
   {
+    "type": "AUTOMATIC",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "BACKGROUND_COLOR",
     "named": true,
     "fields": {}
@@ -121,6 +126,11 @@
   },
   {
     "type": "EXCEPTION",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "EXCLUSIVE",
     "named": true,
     "fields": {}
   },
@@ -227,6 +237,11 @@
     "fields": {}
   },
   {
+    "type": "MANUAL",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "MNEMONIC_NAME",
     "named": true,
     "fields": {}
@@ -303,6 +318,11 @@
   },
   {
     "type": "RANDOM",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "RECORD",
     "named": true,
     "fields": {}
   },
@@ -2168,6 +2188,55 @@
         },
         {
           "type": "LINES",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "lock_mode",
+    "named": true,
+    "fields": {
+      "lock_with": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "RECORD",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "AUTOMATIC",
+          "named": true
+        },
+        {
+          "type": "EXCLUSIVE",
+          "named": true
+        },
+        {
+          "type": "MANUAL",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "lock_mode_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "lock_mode",
           "named": true
         }
       ]
@@ -4375,10 +4444,6 @@
   },
   {
     "type": "locale_clause",
-    "named": true
-  },
-  {
-    "type": "lock_mode_clause",
     "named": true
   },
   {

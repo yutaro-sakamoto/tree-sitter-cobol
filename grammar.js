@@ -325,7 +325,30 @@ module.exports = grammar({
       $.SORT
     ),
 
-    lock_mode_clause: $ => /todo_lock_mode_clause/,
+    lock_mode_clause: $ => seq(
+      $._LOCK,
+      optional($._MODE),
+      optional($._IS),
+      $.lock_mode
+    ),
+
+    lock_mode: $ => choice(
+      seq(
+        choice($.MANUAL, $.AUTOMATIC),
+        field('lock_with', optional($._lock_with))
+      ),
+      $.EXCLUSIVE
+    ),
+
+    _lock_with: $ => (
+      seq(
+        $._WITH, $._LOCK, $._ON,
+        optional($.MULTIPLE),
+        choice($._RECORD, $._RECORDS)
+      ),
+      seq($._WITH, $.RECORD)
+    ),
+
     organization_clause: $ => /todo_organization_clause/,
     padding_character_clause: $ => /todo_padding_character_clause/,
     record_delimiter_clause: $ => /todo_record_delimiter_clause/,
