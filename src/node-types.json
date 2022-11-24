@@ -2733,6 +2733,21 @@
     }
   },
   {
+    "type": "nominal_key_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "qualified_word",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "number",
     "named": true,
     "fields": {},
@@ -4662,10 +4677,6 @@
   },
   {
     "type": "nested_prog",
-    "named": true
-  },
-  {
-    "type": "nominal_key_clause",
     "named": true
   },
   {

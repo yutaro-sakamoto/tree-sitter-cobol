@@ -412,8 +412,15 @@ module.exports = grammar({
         seq($.READ, $.ONLY),
       )
     ),
+
     error: $ => /todo_error/,
-    nominal_key_clause: $ => /todo_nominal_key_clause/,
+
+    nominal_key_clause: $ => seq(
+      $._NOMINAL,
+      optional($._KEY),
+      optional($._IS),
+      $.qualified_word
+    ),
 
     data_division: $ => seq(
       $._DATA, $._DIVISION, '.',
