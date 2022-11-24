@@ -1329,8 +1329,78 @@
       ]
     },
     "file_status_clause": {
-      "type": "PATTERN",
-      "value": "todo_file_status_clause"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "file_or_sort",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_file_or_sort"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_STATUS"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_IS"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "FIELD",
+          "name": "reference",
+          "content": {
+            "type": "SYMBOL",
+            "name": "qualified_word"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "reference2",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "qualified_word"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "_file_or_sort": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "FILE"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "SORT"
+        }
+      ]
     },
     "lock_mode_clause": {
       "type": "PATTERN",
@@ -6875,7 +6945,7 @@
       "type": "PATTERN",
       "value": "[fF][aA][lL][sS][eE]"
     },
-    "_TOK_FILE": {
+    "_FILE": {
       "type": "PATTERN",
       "value": "[fF][iI][lL][eE]"
     },
@@ -8689,9 +8759,9 @@
       "type": "SYMBOL",
       "name": "_TOK_FALSE"
     },
-    "TOK_FILE": {
+    "FILE": {
       "type": "SYMBOL",
-      "name": "_TOK_FILE"
+      "name": "_FILE"
     },
     "TOK_INITIAL": {
       "type": "SYMBOL",

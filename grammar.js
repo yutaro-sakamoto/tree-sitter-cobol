@@ -312,7 +312,19 @@ module.exports = grammar({
       $._SEQUENCE
     ),
 
-    file_status_clause: $ => /todo_file_status_clause/,
+    file_status_clause: $ => seq(
+      field('file_or_sort', optional($._file_or_sort)),
+      $._STATUS,
+      optional($._IS),
+      field('reference', $.qualified_word),
+      field('reference2', optional($.qualified_word)),
+    ),
+
+    _file_or_sort: $ => choice(
+      $.FILE,
+      $.SORT
+    ),
+
     lock_mode_clause: $ => /todo_lock_mode_clause/,
     organization_clause: $ => /todo_organization_clause/,
     padding_character_clause: $ => /todo_padding_character_clause/,
@@ -1390,7 +1402,7 @@ module.exports = grammar({
     _TIMES: $ => /[tT][iI][mM][eE][sS]/,
     _TO: $ => /[tT][oO]/,
     _TOK_FALSE: $ => /[fF][aA][lL][sS][eE]/,
-    _TOK_FILE: $ => /[fF][iI][lL][eE]/,
+    _FILE: $ => /[fF][iI][lL][eE]/,
     _TOK_INITIAL: $ => /[iI][nN][iI][tT][iI][aA][lL]/,
     _TOK_NULL: $ => choice('null', 'Null', 'NULL'),
     _TOK_TRUE: $ => /[tT][rR][uU][eE]/,
@@ -1839,7 +1851,7 @@ module.exports = grammar({
     TIMES: $ => $._TIMES,
     TO: $ => $._TO,
     TOK_FALSE: $ => $._TOK_FALSE,
-    TOK_FILE: $ => $._TOK_FILE,
+    FILE: $ => $._FILE,
     TOK_INITIAL: $ => $._TOK_INITIAL,
     TOK_NULL: $ => $._TOK_NULL,
     TOK_TRUE: $ => $._TOK_TRUE,
