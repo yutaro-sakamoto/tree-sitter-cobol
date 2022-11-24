@@ -666,6 +666,22 @@
     }
   },
   {
+    "type": "alternative_record_key",
+    "named": true,
+    "fields": {
+      "reference": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "as_literal",
     "named": true,
     "fields": {},
@@ -4182,10 +4198,6 @@
   },
   {
     "type": "alphabet_name_clause",
-    "named": true
-  },
-  {
-    "type": "alternative_record_key",
     "named": true
   },
   {

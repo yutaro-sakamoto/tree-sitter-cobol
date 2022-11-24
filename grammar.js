@@ -287,7 +287,20 @@ module.exports = grammar({
       )
     ),
 
-    alternative_record_key: $ => /todo_alternative_record_key/,
+    alternative_record_key: $ => seq(
+      $._ALTERNATE,
+      $._RECORD,
+      optional($._KEY),
+      optional($._IS),
+      field('reference', $.qualified_word),
+      field('with_dups', optional($._with_dups)),
+    ),
+
+    _with_dups: $ => seq(
+      optional($._WITH),
+      $._DUPLICATES
+    ),
+
     collating_sequence_clause: $ => /todo_collating_sequence_clause/,
     file_status_clause: $ => /todo_file_status_clause/,
     lock_mode_clause: $ => /todo_lock_mode_clause/,
