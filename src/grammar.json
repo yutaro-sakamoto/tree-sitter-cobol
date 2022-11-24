@@ -1618,8 +1618,33 @@
       ]
     },
     "record_delimiter_clause": {
-      "type": "PATTERN",
-      "value": "todo_record_delimiter_clause"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_RECORD"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_DELIMITER"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_IS"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_STANDARD_1"
+        }
+      ]
     },
     "record_key_clause": {
       "type": "PATTERN",

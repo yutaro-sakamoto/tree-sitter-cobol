@@ -3520,6 +3520,11 @@
     }
   },
   {
+    "type": "record_delimiter_clause",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "redefines_clause",
     "named": true,
     "fields": {},
@@ -4557,10 +4562,6 @@
   {
     "type": "quote",
     "named": false
-  },
-  {
-    "type": "record_delimiter_clause",
-    "named": true
   },
   {
     "type": "record_key_clause",

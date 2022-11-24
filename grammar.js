@@ -366,7 +366,12 @@ module.exports = grammar({
       choice($.qualified_word, $._LITERAL)
     ),
 
-    record_delimiter_clause: $ => /todo_record_delimiter_clause/,
+    record_delimiter_clause: $ => seq(
+      $._RECORD,
+      $._DELIMITER,
+      optional($._IS),
+      $._STANDARD_1
+    ),
     record_key_clause: $ => /todo_record_key_clause/,
     relative_key_clause: $ => /todo_relative_key_clause/,
     reserve_clause: $ => /todo_reserve_clause/,
