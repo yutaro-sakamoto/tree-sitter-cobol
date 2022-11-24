@@ -1172,8 +1172,54 @@
       ]
     },
     "access_mode_clause": {
-      "type": "PATTERN",
-      "value": "todo_access_mode_clause"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_ACCESS"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_MODE"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_IS"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "SEQUENTIAL"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "DYNAMIC"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "RANDOM"
+            }
+          ]
+        }
+      ]
     },
     "alternative_record_key": {
       "type": "PATTERN",

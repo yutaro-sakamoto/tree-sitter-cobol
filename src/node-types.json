@@ -297,6 +297,11 @@
     "fields": {}
   },
   {
+    "type": "RANDOM",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "REFERENCE",
     "named": true,
     "fields": {}
@@ -318,6 +323,11 @@
   },
   {
     "type": "SELECT",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "SEQUENTIAL",
     "named": true,
     "fields": {}
   },
@@ -405,6 +415,29 @@
     "type": "ZERO",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "access_mode_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "DYNAMIC",
+          "named": true
+        },
+        {
+          "type": "RANDOM",
+          "named": true
+        },
+        {
+          "type": "SEQUENTIAL",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "add_exp",
@@ -4146,10 +4179,6 @@
   {
     "type": "^",
     "named": false
-  },
-  {
-    "type": "access_mode_clause",
-    "named": true
   },
   {
     "type": "alphabet_name_clause",

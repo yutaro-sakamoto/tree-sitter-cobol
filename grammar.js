@@ -276,7 +276,17 @@ module.exports = grammar({
       )
     ),
 
-    access_mode_clause: $ => /todo_access_mode_clause/,
+    access_mode_clause: $ => seq(
+      $._ACCESS,
+      optional($._MODE),
+      optional($._IS),
+      choice(
+        $.SEQUENTIAL,
+        $.DYNAMIC,
+        $.RANDOM
+      )
+    ),
+
     alternative_record_key: $ => /todo_alternative_record_key/,
     collating_sequence_clause: $ => /todo_collating_sequence_clause/,
     file_status_clause: $ => /todo_file_status_clause/,
