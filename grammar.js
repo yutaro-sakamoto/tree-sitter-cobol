@@ -372,7 +372,21 @@ module.exports = grammar({
       optional($._IS),
       $._STANDARD_1
     ),
-    record_key_clause: $ => /todo_record_key_clause/,
+
+    record_key_clause: $ => seq(
+      $._RECORD,
+      optional($._KEY),
+      optional($._IS),
+      field('reference', $.qualified_word),
+      optional(seq(
+        field('key_is_eq', optional(choice(
+          seq($.SOURCE, $._IS),
+          '='
+        ))
+        ),
+        field('split_key_list', repeat1($.qualified_word))
+      ))
+    ),
     relative_key_clause: $ => /todo_relative_key_clause/,
     reserve_clause: $ => /todo_reserve_clause/,
     sharing_clause: $ => /todo_sharing_clause/,

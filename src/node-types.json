@@ -377,6 +377,11 @@
     "fields": {}
   },
   {
+    "type": "SOURCE",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "SPACE",
     "named": true,
     "fields": {}
@@ -3525,6 +3530,46 @@
     "fields": {}
   },
   {
+    "type": "record_key_clause",
+    "named": true,
+    "fields": {
+      "key_is_eq": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "=",
+            "named": false
+          },
+          {
+            "type": "SOURCE",
+            "named": true
+          }
+        ]
+      },
+      "reference": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          }
+        ]
+      },
+      "split_key_list": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "redefines_clause",
     "named": true,
     "fields": {},
@@ -4562,10 +4607,6 @@
   {
     "type": "quote",
     "named": false
-  },
-  {
-    "type": "record_key_clause",
-    "named": true
   },
   {
     "type": "relative_key_clause",
