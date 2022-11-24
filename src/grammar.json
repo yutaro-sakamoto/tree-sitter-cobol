@@ -1783,8 +1783,43 @@
       ]
     },
     "reserve_clause": {
-      "type": "PATTERN",
-      "value": "todo_reserve_clause"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_RESERVE"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "integer"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_AREA"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "NO"
+            }
+          ]
+        }
+      ]
     },
     "sharing_clause": {
       "type": "PATTERN",

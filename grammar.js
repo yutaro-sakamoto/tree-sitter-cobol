@@ -395,7 +395,14 @@ module.exports = grammar({
       $.qualified_word
     ),
 
-    reserve_clause: $ => /todo_reserve_clause/,
+    reserve_clause: $ => seq(
+      $._RESERVE,
+      choice(
+        seq($.integer, optional($._AREA)),
+        $.NO
+      )
+    ),
+
     sharing_clause: $ => /todo_sharing_clause/,
     error: $ => /todo_error/,
     nominal_key_clause: $ => /todo_nominal_key_clause/,
