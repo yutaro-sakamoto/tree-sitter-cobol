@@ -803,6 +803,21 @@
     }
   },
   {
+    "type": "collating_sequence_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "WORD",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "configuration_section",
     "named": true,
     "fields": {},
@@ -4222,10 +4237,6 @@
   },
   {
     "type": "class_name_clause",
-    "named": true
-  },
-  {
-    "type": "collating_sequence_clause",
     "named": true
   },
   {

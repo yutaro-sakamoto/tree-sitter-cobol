@@ -1304,8 +1304,29 @@
       ]
     },
     "collating_sequence_clause": {
-      "type": "PATTERN",
-      "value": "todo_collating_sequence_clause"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_coll_sequence"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_IS"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "WORD"
+        }
+      ]
     },
     "file_status_clause": {
       "type": "PATTERN",

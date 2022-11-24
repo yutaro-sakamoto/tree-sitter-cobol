@@ -301,7 +301,17 @@ module.exports = grammar({
       $._DUPLICATES
     ),
 
-    collating_sequence_clause: $ => /todo_collating_sequence_clause/,
+    collating_sequence_clause: $ => seq(
+      $._coll_sequence,
+      optional($._IS),
+      $.WORD
+    ),
+
+    _coll_sequence: $ => seq(
+      optional($._COLLATING),
+      $._SEQUENCE
+    ),
+
     file_status_clause: $ => /todo_file_status_clause/,
     lock_mode_clause: $ => /todo_lock_mode_clause/,
     organization_clause: $ => /todo_organization_clause/,
