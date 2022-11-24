@@ -403,7 +403,15 @@ module.exports = grammar({
       )
     ),
 
-    sharing_clause: $ => /todo_sharing_clause/,
+    sharing_clause: $ => seq(
+      $._SHARING,
+      optional($._WITH),
+      choice(
+        seq($.ALL, optional($._OTHER)),
+        seq($.NO, optional($._OTHER)),
+        seq($.READ, $.ONLY),
+      )
+    ),
     error: $ => /todo_error/,
     nominal_key_clause: $ => /todo_nominal_key_clause/,
 
