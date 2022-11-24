@@ -387,7 +387,14 @@ module.exports = grammar({
         field('split_key_list', repeat1($.qualified_word))
       ))
     ),
-    relative_key_clause: $ => /todo_relative_key_clause/,
+
+    relative_key_clause: $ => seq(
+      $._RELATIVE,
+      optional($._KEY),
+      optional($._IS),
+      $.qualified_word
+    ),
+
     reserve_clause: $ => /todo_reserve_clause/,
     sharing_clause: $ => /todo_sharing_clause/,
     error: $ => /todo_error/,

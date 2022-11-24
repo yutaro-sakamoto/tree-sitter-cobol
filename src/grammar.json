@@ -1746,8 +1746,41 @@
       ]
     },
     "relative_key_clause": {
-      "type": "PATTERN",
-      "value": "todo_relative_key_clause"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_RELATIVE"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_KEY"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_IS"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "qualified_word"
+        }
+      ]
     },
     "reserve_clause": {
       "type": "PATTERN",

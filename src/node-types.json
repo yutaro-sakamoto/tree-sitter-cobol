@@ -3696,6 +3696,21 @@
     }
   },
   {
+    "type": "relative_key_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "qualified_word",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "repository_name",
     "named": true,
     "fields": {},
@@ -4607,10 +4622,6 @@
   {
     "type": "quote",
     "named": false
-  },
-  {
-    "type": "relative_key_clause",
-    "named": true
   },
   {
     "type": "renames_clause",
