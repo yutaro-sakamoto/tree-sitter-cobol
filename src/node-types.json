@@ -170,6 +170,11 @@
     "fields": {}
   },
   {
+    "type": "INDEXED",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "LENGTH",
     "named": true,
     "fields": {}
@@ -328,6 +333,11 @@
   },
   {
     "type": "REFERENCE",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "RELATIVE",
     "named": true,
     "fields": {}
   },
@@ -2844,6 +2854,64 @@
     }
   },
   {
+    "type": "organization_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "INDEXED",
+          "named": true
+        },
+        {
+          "type": "RECORD",
+          "named": true
+        },
+        {
+          "type": "RELATIVE",
+          "named": true
+        },
+        {
+          "type": "SEQUENTIAL",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "padding_character_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "h_string",
+          "named": true
+        },
+        {
+          "type": "n_string",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "qualified_word",
+          "named": true
+        },
+        {
+          "type": "x_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "paragraph_header",
     "named": true,
     "fields": {}
@@ -4480,14 +4548,6 @@
   },
   {
     "type": "occurs_clause",
-    "named": true
-  },
-  {
-    "type": "organization_clause",
-    "named": true
-  },
-  {
-    "type": "padding_character_clause",
     "named": true
   },
   {

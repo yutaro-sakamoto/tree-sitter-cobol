@@ -1496,12 +1496,126 @@
       ]
     },
     "organization_clause": {
-      "type": "PATTERN",
-      "value": "todo_organization_clause"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_ORGANIZATION"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_IS"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "INDEXED"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "RECORD"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_BINARY"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "SEQUENTIAL"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "SEQUENTIAL"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "RELATIVE"
+            }
+          ]
+        }
+      ]
     },
     "padding_character_clause": {
-      "type": "PATTERN",
-      "value": "todo_padding_character_clause"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_PADDING"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_CHARACTER"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_IS"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "qualified_word"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_LITERAL"
+            }
+          ]
+        }
+      ]
     },
     "record_delimiter_clause": {
       "type": "PATTERN",

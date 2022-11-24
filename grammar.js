@@ -349,8 +349,23 @@ module.exports = grammar({
       seq($._WITH, $.RECORD)
     ),
 
-    organization_clause: $ => /todo_organization_clause/,
-    padding_character_clause: $ => /todo_padding_character_clause/,
+    organization_clause: $ => seq(
+      optional(seq($._ORGANIZATION, optional($._IS))),
+      choice(
+        $.INDEXED,
+        seq($.RECORD, optional($._BINARY), $.SEQUENTIAL),
+        $.SEQUENTIAL,
+        $.RELATIVE,
+      )
+    ),
+
+    padding_character_clause: $ => seq(
+      $._PADDING,
+      optional($._CHARACTER),
+      optional($._IS),
+      choice($.qualified_word, $._LITERAL)
+    ),
+
     record_delimiter_clause: $ => /todo_record_delimiter_clause/,
     record_key_clause: $ => /todo_record_key_clause/,
     relative_key_clause: $ => /todo_relative_key_clause/,
