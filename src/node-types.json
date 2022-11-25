@@ -372,11 +372,6 @@
     "fields": {}
   },
   {
-    "type": "SELECT",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "SEQUENTIAL",
     "named": true,
     "fields": {}
@@ -1643,89 +1638,6 @@
     }
   },
   {
-    "type": "file_control_entry",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "OPTIONAL",
-          "named": true
-        },
-        {
-          "type": "SELECT",
-          "named": true
-        },
-        {
-          "type": "WORD",
-          "named": true
-        },
-        {
-          "type": "access_mode_clause",
-          "named": true
-        },
-        {
-          "type": "alternative_record_key",
-          "named": true
-        },
-        {
-          "type": "assign_clause",
-          "named": true
-        },
-        {
-          "type": "collating_sequence_clause",
-          "named": true
-        },
-        {
-          "type": "error",
-          "named": true
-        },
-        {
-          "type": "file_status_clause",
-          "named": true
-        },
-        {
-          "type": "lock_mode_clause",
-          "named": true
-        },
-        {
-          "type": "nominal_key_clause",
-          "named": true
-        },
-        {
-          "type": "organization_clause",
-          "named": true
-        },
-        {
-          "type": "padding_character_clause",
-          "named": true
-        },
-        {
-          "type": "record_delimiter_clause",
-          "named": true
-        },
-        {
-          "type": "record_key_clause",
-          "named": true
-        },
-        {
-          "type": "relative_key_clause",
-          "named": true
-        },
-        {
-          "type": "reserve_clause",
-          "named": true
-        },
-        {
-          "type": "sharing_clause",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "file_status_clause",
     "named": true,
     "fields": {
@@ -2184,11 +2096,11 @@
       "required": false,
       "types": [
         {
-          "type": "file_control_entry",
+          "type": "i_o_control",
           "named": true
         },
         {
-          "type": "i_o_control",
+          "type": "select_statement",
           "named": true
         }
       ]
@@ -3850,6 +3762,98 @@
         },
         {
           "type": "x_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "select_statement",
+    "named": true,
+    "fields": {
+      "file_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "WORD",
+            "named": true
+          }
+        ]
+      },
+      "optional": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "OPTIONAL",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "access_mode_clause",
+          "named": true
+        },
+        {
+          "type": "alternative_record_key",
+          "named": true
+        },
+        {
+          "type": "assign_clause",
+          "named": true
+        },
+        {
+          "type": "collating_sequence_clause",
+          "named": true
+        },
+        {
+          "type": "error",
+          "named": true
+        },
+        {
+          "type": "file_status_clause",
+          "named": true
+        },
+        {
+          "type": "lock_mode_clause",
+          "named": true
+        },
+        {
+          "type": "nominal_key_clause",
+          "named": true
+        },
+        {
+          "type": "organization_clause",
+          "named": true
+        },
+        {
+          "type": "padding_character_clause",
+          "named": true
+        },
+        {
+          "type": "record_delimiter_clause",
+          "named": true
+        },
+        {
+          "type": "record_key_clause",
+          "named": true
+        },
+        {
+          "type": "relative_key_clause",
+          "named": true
+        },
+        {
+          "type": "reserve_clause",
+          "named": true
+        },
+        {
+          "type": "sharing_clause",
           "named": true
         }
       ]

@@ -18,7 +18,7 @@ module.exports = grammar({
       $.identification_division,
       optional($.environment_division),
       optional($.data_division),
-      $.procedure_division, //todo
+      optional($.procedure_division), //todo
       optional($.nested_prog), //todo
       optional($.end_program) //todo
     ),
@@ -46,6 +46,7 @@ module.exports = grammar({
     environment_division: $ => seq(
       $._ENVIRONMENT,
       $._DIVISION,
+      '.',
       optional($.configuration_section),
       optional($.input_output_section),
     ),
@@ -185,29 +186,24 @@ module.exports = grammar({
     input_output_section: $ => choice(
       seq(
         $._INPUT_OUTPUT, $._SECTION, '.',
-        $._file_control_paragraph,
-        $._i_o_control_paragraph
+        optional($._file_control_paragraph),
+        optional($._i_o_control_paragraph)
       ),
-      seq(
-        $._FILE_CONTROL, '.',
-        repeat($.file_control_entry)
-      ),
-      seq(
-        $._I_O_CONTROL, '.',
-        optional($.i_o_control)
-      ),
+      $._file_control_paragraph,
+      $._i_o_control_paragraph,
     ),
 
     _file_control_paragraph: $ => seq(
       $._FILE_CONTROL, '.',
-      repeat($.file_control_entry)
+      repeat($.select_statement)
     ),
 
-    file_control_entry: $ => seq(
-      $.SELECT,
-      optional($.OPTIONAL),
-      $.WORD,
+    select_statement: $ => seq(
+      $._SELECT,
+      field('optional', optional($.OPTIONAL)),
+      field('file_name', $.WORD),
       repeat($._select_clause),
+      '.'
     ),
 
     _i_o_control_paragraph: $ => seq(

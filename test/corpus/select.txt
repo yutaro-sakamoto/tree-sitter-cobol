@@ -1,0 +1,41 @@
+====================================
+assign
+====================================
+      identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f assign PRINTER.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (assign_clause
+            (PRINTER)))))))
+
+====================================
+assign to
+====================================
+      identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f assign to  PRINTER.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (assign_clause
+            (PRINTER)))))))
