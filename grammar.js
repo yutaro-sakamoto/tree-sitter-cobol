@@ -246,12 +246,12 @@ module.exports = grammar({
     assign_clause: $ => seq(
       $._ASSIGN,
       optional($._TO),
-      optional($._ext_clause),
-      choice(
+      field('external_or_dynamic', optional($._ext_clause)),
+      field('to', choice(
         $.DISK,
         $.PRINTER,
-        seq(optional($._device), $.assignment_name),
-      )
+        seq(optional($._device), $._assignment_name),
+      ))
     ),
 
     _ext_clause: $ => choice(
@@ -264,11 +264,11 @@ module.exports = grammar({
       $.PRINTER,
     ),
 
-    assignment_name: $ => choice(
-      $._literal,
+    _assignment_name: $ => choice(
+      $._LITERAL,
       $.DISPLAY,
       seq(
-        optional($._literal), repeat1($.qualified_word)
+        optional($._LITERAL), repeat1($.qualified_word)
       )
     ),
 
@@ -1047,14 +1047,20 @@ module.exports = grammar({
     integer: $ => /[+-]?[0-9]+/,
     decimal: $ => /[+-]?[0-9]+\.[0-9]+/,
     _string: $ => choice(
+      $.string,
       $.x_string,
       $.n_string,
       $.h_string
     ),
 
-    x_string: $ => choice(
+    string: $ => choice(
       /'[^'\n]*'/,
       /"[^"\n]*"/,
+    ),
+
+    x_string: $ => choice(
+      /X'[^'\n]*'/,
+      /X"[^"\n]*"/,
     ),
 
     h_string: $ => choice(

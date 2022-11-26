@@ -1,6 +1,5 @@
 all:
 	node_modules/.bin/tree-sitter generate
-	node_modules/.bin/tree-sitter parse sample/a.cbl
 
 ck:
 	cobc -fsyntax-only sample/a.cbl

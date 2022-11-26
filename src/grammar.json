@@ -1064,50 +1064,58 @@
           ]
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "_ext_clause"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "FIELD",
+          "name": "external_or_dynamic",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_ext_clause"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "DISK"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "PRINTER"
-            },
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "SYMBOL",
-                      "name": "_device"
-                    },
-                    {
-                      "type": "BLANK"
-                    }
-                  ]
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "assignment_name"
-                }
-              ]
-            }
-          ]
+          "type": "FIELD",
+          "name": "to",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "DISK"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "PRINTER"
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "_device"
+                      },
+                      {
+                        "type": "BLANK"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_assignment_name"
+                  }
+                ]
+              }
+            ]
+          }
         }
       ]
     },
@@ -1137,12 +1145,12 @@
         }
       ]
     },
-    "assignment_name": {
+    "_assignment_name": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_literal"
+          "name": "_LITERAL"
         },
         {
           "type": "SYMBOL",
@@ -1156,7 +1164,7 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "_literal"
+                  "name": "_LITERAL"
                 },
                 {
                   "type": "BLANK"
@@ -5666,6 +5674,10 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "string"
+        },
+        {
+          "type": "SYMBOL",
           "name": "x_string"
         },
         {
@@ -5678,7 +5690,7 @@
         }
       ]
     },
-    "x_string": {
+    "string": {
       "type": "CHOICE",
       "members": [
         {
@@ -5688,6 +5700,19 @@
         {
           "type": "PATTERN",
           "value": "\"[^\"\\n]*\""
+        }
+      ]
+    },
+    "x_string": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "X'[^'\\n]*'"
+        },
+        {
+          "type": "PATTERN",
+          "value": "X\"[^\"\\n]*\""
         }
       ]
     },

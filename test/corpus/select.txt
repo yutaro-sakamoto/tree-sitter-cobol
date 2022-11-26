@@ -1,7 +1,7 @@
 ====================================
 assign
 ====================================
-      identification division.
+       identification division.
        program-id. a.
        environment division.
        input-output section.
@@ -17,12 +17,12 @@ assign
         (select_statement
           file_name: (WORD)
           (assign_clause
-            (PRINTER)))))))
+            to: (PRINTER)))))))
 
 ====================================
 assign to
 ====================================
-      identification division.
+       identification division.
        program-id. a.
        environment division.
        input-output section.
@@ -38,4 +38,162 @@ assign to
         (select_statement
           file_name: (WORD)
           (assign_clause
-            (PRINTER)))))))
+            to: (PRINTER)))))))
+
+====================================
+assign to DISK
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f assign to DISK.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (assign_clause
+            to: (DISK)))))))
+
+====================================
+assign to string_literal
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f assign to "file.txt".
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (assign_clause
+            to: (string)))))))
+
+====================================
+assign to external
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f assign to external PRINTER.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (assign_clause
+            external_or_dynamic: (EXTERNAL)
+            to: (PRINTER)))))))
+
+====================================
+assign to dynamic
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f assign to dynamic PRINTER.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (assign_clause
+            external_or_dynamic: (DYNAMIC)
+            to: (PRINTER)))))))
+
+====================================
+assign to dynamic DISPLAY
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f assign to dynamic DISPLAY.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (assign_clause
+            external_or_dynamic: (DYNAMIC)
+            to: (DISPLAY)))))))
+
+====================================
+assign to PRINTER string_literal
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f assign to PRINTER "file.txt".
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (assign_clause
+            to: (PRINTER)
+            to: (string)))))))
+
+====================================
+assign to PRINTER string_literal qualified_word
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f assign to PRINTER "file.txt" a of b c of d.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (assign_clause
+            to: (PRINTER)
+            to: (string)
+            to: (qualified_word
+              (WORD)
+              (WORD))
+            to: (qualified_word
+              (WORD)
+              (WORD))))))))
