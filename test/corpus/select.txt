@@ -197,3 +197,123 @@ assign to PRINTER string_literal qualified_word
             to: (qualified_word
               (WORD)
               (WORD))))))))
+====================================
+access SEQUENTIAL
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f access SEQUENTIAL.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (access_mode_clause
+            (SEQUENTIAL)))))))
+====================================
+access mode SEQUENTIAL
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f access mode SEQUENTIAL.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (access_mode_clause
+            (SEQUENTIAL)))))))
+====================================
+access is SEQUENTIAL
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f access is SEQUENTIAL.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (access_mode_clause
+            (SEQUENTIAL)))))))
+====================================
+access mode is SEQUENTIAL
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f access mode is SEQUENTIAL.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (access_mode_clause
+            (SEQUENTIAL)))))))
+====================================
+access mode is DYNAMIC
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f access mode is DYNAMIC.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (access_mode_clause
+            (DYNAMIC)))))))
+====================================
+access mode is RANDOM
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f access mode is RANDOM.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (access_mode_clause
+            (RANDOM)))))))
