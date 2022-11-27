@@ -7,6 +7,8 @@ ck:
 test:
 	node_modules/.bin/tree-sitter test
 
+t:
+	node_modules/.bin/tree-sitter parse a.cbl
 q:
 	node_modules/.bin/tree-sitter query queries/sample.scm sample/a.cbl
 

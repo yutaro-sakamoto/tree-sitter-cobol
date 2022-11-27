@@ -7,14 +7,15 @@ enum TokenType {
     WHITE_SPACES,
 };
 
-void *tree_sitter_python_external_scanner_create() {
+void *tree_sitter_COBOL_external_scanner_create() {
     return NULL;
 }
 
-bool tree_sitter_python_external_scanner_scan(void *payload, TSLexer *lexer,
+bool tree_sitter_COBOL_external_scanner_scan(void *payload, TSLexer *lexer,
                                             const bool *valid_symbols) {
     if(valid_symbols[LINE_PREFIX_COMMENT]) {
         while(lexer->get_column(lexer) <= 6) {
+            puts("aaaa");
             lexer->advance(lexer, true);
         }
         lexer->result_symbol = LINE_PREFIX_COMMENT;
@@ -25,6 +26,7 @@ bool tree_sitter_python_external_scanner_scan(void *payload, TSLexer *lexer,
         if(lexer->get_column(lexer) == 7) {
             if(lexer->lookahead == '*') {
                 while(lexer->lookahead != '\n' && lexer->lookahead != 0) {
+                    puts("bbbb");
                     lexer->advance(lexer, true);
                 }
                 lexer->result_symbol = COMMENT;
@@ -38,6 +40,7 @@ bool tree_sitter_python_external_scanner_scan(void *payload, TSLexer *lexer,
     if(valid_symbols[LINE_SUFFIX_COMMENT]) {
         if(lexer->get_column(lexer) >= 73) {
             while(lexer->lookahead != '\n' && lexer->lookahead != 0) {
+                puts("cccc");
                 lexer->advance(lexer, true);
             }
             lexer->result_symbol = LINE_SUFFIX_COMMENT;
@@ -53,6 +56,8 @@ bool tree_sitter_python_external_scanner_scan(void *payload, TSLexer *lexer,
         while(c == ' ' || c == '\t' || c == '\r') {
                 ret = true;
                 lexer->advance(lexer, true);
+                puts("dd");
+                c = lexer->lookahead;
         }
         if(ret) {
             lexer->result_symbol = WHITE_SPACES;
@@ -62,12 +67,12 @@ bool tree_sitter_python_external_scanner_scan(void *payload, TSLexer *lexer,
     return false;
 }
 
-unsigned tree_sitter_python_external_scanner_serialize(void *payload, char *buffer) {
+unsigned tree_sitter_COBOL_external_scanner_serialize(void *payload, char *buffer) {
     return 0;
 }
 
-void tree_sitter_python_external_scanner_deserialize(void *payload, const char *buffer, unsigned length) {
+void tree_sitter_COBOL_external_scanner_deserialize(void *payload, const char *buffer, unsigned length) {
 }
 
-void tree_sitter_python_external_scanner_destroy(void *payload) {
+void tree_sitter_COBOL_external_scanner_destroy(void *payload) {
 }

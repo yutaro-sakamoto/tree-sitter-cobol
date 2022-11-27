@@ -5,10 +5,11 @@ function sepBy(pattern, separator) {
 module.exports = grammar({
   name: 'COBOL',
   word: $ => $._WORD,
-  exernals: $ => [
+  externals: $ => [
     $.LINE_PREFIX_COMMENT,
     $.LINE_SUFFIX_COMMENT,
     $.COMMENT,
+    $.WHITE_SPACES
   ],
 
   extras: $ => [

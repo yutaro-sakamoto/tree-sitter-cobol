@@ -9467,13 +9467,42 @@
   },
   "extras": [
     {
-      "type": "PATTERN",
-      "value": "\\s"
+      "type": "SYMBOL",
+      "name": "LINE_PREFIX_COMMENT"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "LINE_SUFFIX_COMMENT"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "COMMENT"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "WHITE_SPACES"
     }
   ],
   "conflicts": [],
   "precedences": [],
-  "externals": [],
+  "externals": [
+    {
+      "type": "SYMBOL",
+      "name": "LINE_PREFIX_COMMENT"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "LINE_SUFFIX_COMMENT"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "COMMENT"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "WHITE_SPACES"
+    }
+  ],
   "inline": [],
   "supertypes": []
 }
