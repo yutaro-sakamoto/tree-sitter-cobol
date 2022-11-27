@@ -428,7 +428,106 @@ module.exports = grammar({
       optional($.screen_section),
     ),
 
-    file_section: $ => /todo_file_section/,
+    file_section: $ => choice(
+      seq(
+        $._FILE,
+        $._SECTION,
+        repeat($.file_description)
+      ),
+      seq(
+        $.file_type,
+        seq(
+          $.file_description_entry,
+          $.record_description_list,
+          repeat1($.file_description)
+        )
+      )
+    ),
+
+    file_description: $ => seq(
+      $.file_type,
+      $.file_description_entry,
+      $.record_description_list
+    ),
+
+    file_type: $ => choice(
+      $.FD,
+      $.SD
+    ),
+
+    file_description_entry: $ => seq(
+      $.WORD,
+      repeat($.file_description_clause)
+    ),
+
+    file_description_clause: $ => choice(
+      seq(optional($._IS), $.EXTERNAL),
+      seq(optional($._IS), $.GLOBAL),
+      $.block_contains_clause,
+      $.record_clause,
+      $.label_records_clause,
+      $.value_of_clause,
+      $.data_records_clause,
+      $.linage_clause,
+      $.recording_mode_clause,
+      $.code_set_clause,
+      $.report_clase,
+      $.error,
+    ),
+
+    block_contains_clause: $ => prec.left(seq(
+      $._BLOCK,
+      optional($._CONTAINS),
+      field('num', $.integer),
+      field('to', optional(seq($._TO, $.integer))),
+      optional(choice($._RECORD, $._RECORDS))
+    )),
+
+    record_clause: $ => choice(
+      seq(
+        $._RECORD,
+        optional($._CONTAINS),
+        field('num', $.integer),
+        field('to', optional(seq($._TO, $.integer))),
+        optional($._CHARACTERS)
+      ),
+      seq(
+        $._RECORD,
+        optional($._IS),
+        $.VARYING,
+        optional($._IN),
+        optional($._SIZE),
+        field('from', optional(seq($._FROM, $.integer))),
+        field('to', optional(seq($._TO, $.integer))),
+        optional($._CHARACTERS),
+        field('depend', optional(seq($._DEPENDING, optional($._ON), $.qualified_word))),
+      )
+    ),
+    label_records_clause: $ => seq(
+      $._LABEL,
+      $.records,
+      optional(choice($.STANDARD, $.OMITTED))
+    ),
+    records: $ => prec.left(choice(
+      seq($._RECORD, optional($._IS)),
+      seq($._RECORDS, optional($._ARE)),
+    )),
+    value_of_clause: $ => seq(
+      $._VALUE, $._OF,
+      field('name', choice($.WORD, $.FILE_ID)),
+      optional($._IS),
+      field('value', choice($._LITERAL, $.qualified_word))
+    ),
+    data_records_clause: $ => prec.left(choice(
+      $._DATA,
+      $.records,
+      repeat1($.qualified_word),
+    )),
+    linage_clause: $ => /todo_linage_clause/,
+    recording_mode_clause: $ => /todo_recording_mode_clause/,
+    code_set_clause: $ => /todo_code_set_clause/,
+    report_clase: $ => /todo_report_clause/,
+    record_description_list: $ => /todo_record_description_list/,
     working_storage_section: $ => seq(
       $._WORKING_STORAGE, $._SECTION, '.',
       repeat(seq($.data_description, '.'))

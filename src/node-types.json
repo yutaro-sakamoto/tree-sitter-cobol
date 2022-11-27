@@ -140,7 +140,17 @@
     "fields": {}
   },
   {
+    "type": "FD",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "FILE",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "FILE_ID",
     "named": true,
     "fields": {}
   },
@@ -151,6 +161,11 @@
   },
   {
     "type": "FUNCTION_NAME",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "GLOBAL",
     "named": true,
     "fields": {}
   },
@@ -376,6 +391,11 @@
     "fields": {}
   },
   {
+    "type": "SD",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "SEQUENTIAL",
     "named": true,
     "fields": {}
@@ -397,6 +417,11 @@
   },
   {
     "type": "SPACE",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "STANDARD",
     "named": true,
     "fields": {}
   },
@@ -452,6 +477,11 @@
   },
   {
     "type": "VALUE",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "VARYING",
     "named": true,
     "fields": {}
   },
@@ -852,6 +882,32 @@
     }
   },
   {
+    "type": "block_contains_clause",
+    "named": true,
+    "fields": {
+      "num": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      },
+      "to": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "collating_sequence_clause",
     "named": true,
     "fields": {},
@@ -1030,6 +1086,25 @@
         },
         {
           "type": "working_storage_section",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "data_records_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "qualified_word",
+          "named": true
+        },
+        {
+          "type": "records",
           "named": true
         }
       ]
@@ -1652,6 +1727,134 @@
     }
   },
   {
+    "type": "file_description",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "file_description_entry",
+          "named": true
+        },
+        {
+          "type": "file_type",
+          "named": true
+        },
+        {
+          "type": "record_description_list",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "file_description_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "EXTERNAL",
+          "named": true
+        },
+        {
+          "type": "GLOBAL",
+          "named": true
+        },
+        {
+          "type": "block_contains_clause",
+          "named": true
+        },
+        {
+          "type": "code_set_clause",
+          "named": true
+        },
+        {
+          "type": "data_records_clause",
+          "named": true
+        },
+        {
+          "type": "error",
+          "named": true
+        },
+        {
+          "type": "label_records_clause",
+          "named": true
+        },
+        {
+          "type": "linage_clause",
+          "named": true
+        },
+        {
+          "type": "record_clause",
+          "named": true
+        },
+        {
+          "type": "recording_mode_clause",
+          "named": true
+        },
+        {
+          "type": "report_clase",
+          "named": true
+        },
+        {
+          "type": "value_of_clause",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "file_description_entry",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "WORD",
+          "named": true
+        },
+        {
+          "type": "file_description_clause",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "file_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "file_description",
+          "named": true
+        },
+        {
+          "type": "file_description_entry",
+          "named": true
+        },
+        {
+          "type": "file_type",
+          "named": true
+        },
+        {
+          "type": "record_description_list",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "file_status_clause",
     "named": true,
     "fields": {
@@ -1689,6 +1892,25 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "file_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "FD",
+          "named": true
+        },
+        {
+          "type": "SD",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -2132,6 +2354,29 @@
     "type": "invalid_statement",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "label_records_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "OMITTED",
+          "named": true
+        },
+        {
+          "type": "STANDARD",
+          "named": true
+        },
+        {
+          "type": "records",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "linage_counter",
@@ -3525,6 +3770,62 @@
     }
   },
   {
+    "type": "record_clause",
+    "named": true,
+    "fields": {
+      "depend": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          }
+        ]
+      },
+      "from": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      },
+      "num": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      },
+      "to": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "VARYING",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "record_delimiter_clause",
     "named": true,
     "fields": {}
@@ -3568,6 +3869,11 @@
         ]
       }
     }
+  },
+  {
+    "type": "records",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "redefines_clause",
@@ -4439,6 +4745,56 @@
     }
   },
   {
+    "type": "value_of_clause",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "FILE_ID",
+            "named": true
+          },
+          {
+            "type": "WORD",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "with_clause",
     "named": true,
     "fields": {},
@@ -4660,6 +5016,10 @@
     "named": true
   },
   {
+    "type": "code_set_clause",
+    "named": true
+  },
+  {
     "type": "constant_entry",
     "named": true
   },
@@ -4700,10 +5060,6 @@
     "named": true
   },
   {
-    "type": "file_section",
-    "named": true
-  },
-  {
     "type": "global_clause",
     "named": true
   },
@@ -4733,6 +5089,10 @@
   },
   {
     "type": "level_number_88",
+    "named": true
+  },
+  {
+    "type": "linage_clause",
     "named": true
   },
   {
@@ -4788,7 +5148,19 @@
     "named": false
   },
   {
+    "type": "record_description_list",
+    "named": true
+  },
+  {
+    "type": "recording_mode_clause",
+    "named": true
+  },
+  {
     "type": "renames_clause",
+    "named": true
+  },
+  {
+    "type": "report_clase",
     "named": true
   },
   {
