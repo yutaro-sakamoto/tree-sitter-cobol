@@ -438,7 +438,7 @@ module.exports = grammar({
         $.file_type,
         seq(
           $.file_description_entry,
-          $.record_description_list,
+          optional($.record_description_list),
           repeat1($.file_description)
         )
       )
@@ -503,31 +503,89 @@ module.exports = grammar({
         field('depend', optional(seq($._DEPENDING, optional($._ON), $.qualified_word))),
       )
     ),
+
     label_records_clause: $ => seq(
       $._LABEL,
       $.records,
       optional(choice($.STANDARD, $.OMITTED))
     ),
+
     records: $ => prec.left(choice(
       seq($._RECORD, optional($._IS)),
       seq($._RECORDS, optional($._ARE)),
     )),
+
     value_of_clause: $ => seq(
       $._VALUE, $._OF,
       field('name', choice($.WORD, $.FILE_ID)),
       optional($._IS),
       field('value', choice($._LITERAL, $.qualified_word))
     ),
+
     data_records_clause: $ => prec.left(choice(
       $._DATA,
       $.records,
       repeat1($.qualified_word),
     )),
-    linage_clause: $ => /todo_linage_clause/,
-    recording_mode_clause: $ => /todo_recording_mode_clause/,
-    code_set_clause: $ => /todo_code_set_clause/,
-    report_clase: $ => /todo_report_clause/,
-    record_description_list: $ => /todo_record_description_list/,
+
+    linage_clause: $ => seq(
+      $._LINAGE,
+      optional($._IS),
+      field('reference', choice($.qualified_word, $._LITERAL)),
+      optional($._LINES),
+      field('lines', repeat($.linage_lines)),
+    ),
+
+    linage_lines: $ => choice(
+      $.linage_footing,
+      $.linage_top,
+      $.linage_bottom
+    ),
+
+    linage_footing: $ => seq(
+      optional($._WITH),
+      $._FOOTING,
+      optional($._AT),
+      field('reference', choice($.qualified_word, $._LITERAL)),
+      $._LINES
+    ),
+
+    linage_top: $ => seq(
+      optional($._AT),
+      $._TOP,
+      field('reference', choice($.qualified_word, $._LITERAL)),
+      $._LINES
+    ),
+
+    linage_bottom: $ => seq(
+      optional($._AT),
+      $._BOTTOM,
+      field('reference', choice($.qualified_word, $._LITERAL)),
+    ),
+
+    recording_mode_clause: $ => seq(
+      $._RECORDING,
+      optional($._MODE),
+      optional($._IS),
+      field('mode', $.WORD)
+    ),
+
+    code_set_clause: $ => seq(
+      $._CODE_SET,
+      optional($._IS),
+      field('code_set', $.WORD)
+    ),
+
+    report_clase: $ => choice(
+      seq($._REPORT, optional($._IS), field('name', $.WORD)),
+      seq($._REPORTS, optional($._ARE), field('name', $.WORD)),
+    ),
+
+    record_description_list: $ => seq(
+      repeat1($.data_description),
+      optional('.')
+    ),
+
     working_storage_section: $ => seq(
       $._WORKING_STORAGE, $._SECTION, '.',
       repeat(seq($.data_description, '.'))

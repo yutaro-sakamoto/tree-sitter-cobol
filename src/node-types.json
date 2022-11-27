@@ -908,6 +908,22 @@
     }
   },
   {
+    "type": "code_set_clause",
+    "named": true,
+    "fields": {
+      "code_set": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "WORD",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "collating_sequence_clause",
     "named": true,
     "fields": {},
@@ -2379,9 +2395,186 @@
     }
   },
   {
+    "type": "linage_bottom",
+    "named": true,
+    "fields": {
+      "reference": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "linage_clause",
+    "named": true,
+    "fields": {
+      "lines": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "linage_lines",
+            "named": true
+          }
+        ]
+      },
+      "reference": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "linage_counter",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "linage_footing",
+    "named": true,
+    "fields": {
+      "reference": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "linage_lines",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "linage_bottom",
+          "named": true
+        },
+        {
+          "type": "linage_footing",
+          "named": true
+        },
+        {
+          "type": "linage_top",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "linage_top",
+    "named": true,
+    "fields": {
+      "reference": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "line_or_lines",
@@ -3831,6 +4024,21 @@
     "fields": {}
   },
   {
+    "type": "record_description_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "data_description",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "record_key_clause",
     "named": true,
     "fields": {
@@ -3864,6 +4072,22 @@
         "types": [
           {
             "type": "qualified_word",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "recording_mode_clause",
+    "named": true,
+    "fields": {
+      "mode": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "WORD",
             "named": true
           }
         ]
@@ -4018,6 +4242,22 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "report_clase",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "WORD",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -5016,10 +5256,6 @@
     "named": true
   },
   {
-    "type": "code_set_clause",
-    "named": true
-  },
-  {
     "type": "constant_entry",
     "named": true
   },
@@ -5092,10 +5328,6 @@
     "named": true
   },
   {
-    "type": "linage_clause",
-    "named": true
-  },
-  {
     "type": "linkage_section",
     "named": true
   },
@@ -5148,19 +5380,7 @@
     "named": false
   },
   {
-    "type": "record_description_list",
-    "named": true
-  },
-  {
-    "type": "recording_mode_clause",
-    "named": true
-  },
-  {
     "type": "renames_clause",
-    "named": true
-  },
-  {
-    "type": "report_clase",
     "named": true
   },
   {
