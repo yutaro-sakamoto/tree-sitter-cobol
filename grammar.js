@@ -289,10 +289,10 @@ module.exports = grammar({
       optional($._KEY),
       optional($._IS),
       field('reference', $.qualified_word),
-      field('with_dups', optional($._with_dups)),
+      field('with_dups', optional($.with_dups)),
     ),
 
-    _with_dups: $ => seq(
+    with_dups: $ => seq(
       optional($._WITH),
       $._DUPLICATES
     ),

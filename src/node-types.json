@@ -745,6 +745,16 @@
             "named": true
           }
         ]
+      },
+      "with_dups": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "with_dups",
+            "named": true
+          }
+        ]
       }
     }
   },
@@ -4453,6 +4463,11 @@
   },
   {
     "type": "with_debugging_mode",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "with_dups",
     "named": true,
     "fields": {}
   },

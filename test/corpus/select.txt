@@ -317,3 +317,137 @@ access mode is RANDOM
           file_name: (WORD)
           (access_mode_clause
             (RANDOM)))))))
+====================================
+alternate record
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f alternate record a of b.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (alternative_record_key
+            reference: (qualified_word
+              (WORD)
+              (WORD))))))))
+====================================
+alternate record key
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f alternate record key a of b.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (alternative_record_key
+            reference: (qualified_word
+              (WORD)
+              (WORD))))))))
+====================================
+alternate record is
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f alternate record is a of b.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (alternative_record_key
+            reference: (qualified_word
+              (WORD)
+              (WORD))))))))
+====================================
+alternate record key is
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f alternate record key is a of b.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (alternative_record_key
+            reference: (qualified_word
+              (WORD)
+              (WORD))))))))
+====================================
+alternate record duplicates
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f alternate record a of b duplicates.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (alternative_record_key
+            reference: (qualified_word
+              (WORD)
+              (WORD))
+            with_dups: (with_dups)))))))
+====================================
+alternate record with duplicates
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f alternate record a of b with duplicates.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (alternative_record_key
+            reference: (qualified_word
+              (WORD)
+              (WORD))
+            with_dups: (with_dups)))))))

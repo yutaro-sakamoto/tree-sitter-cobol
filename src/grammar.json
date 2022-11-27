@@ -1283,7 +1283,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "_with_dups"
+                "name": "with_dups"
               },
               {
                 "type": "BLANK"
@@ -1293,7 +1293,7 @@
         }
       ]
     },
-    "_with_dups": {
+    "with_dups": {
       "type": "SEQ",
       "members": [
         {
