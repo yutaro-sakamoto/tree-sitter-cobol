@@ -4533,6 +4533,10 @@
     "named": false
   },
   {
+    "type": "COMMENT",
+    "named": true
+  },
+  {
     "type": "HIGH-VALUE",
     "named": false
   },
@@ -4555,6 +4559,14 @@
   {
     "type": "High-value",
     "named": false
+  },
+  {
+    "type": "LINE_PREFIX_COMMENT",
+    "named": true
+  },
+  {
+    "type": "LINE_SUFFIX_COMMENT",
+    "named": true
   },
   {
     "type": "LOW-VALUE",
@@ -4603,6 +4615,10 @@
   {
     "type": "Space",
     "named": false
+  },
+  {
+    "type": "WHITE_SPACES",
+    "named": true
   },
   {
     "type": "ZERO",

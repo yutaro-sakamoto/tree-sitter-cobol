@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/yutaro-sakamoto/tree-sitter-cobol#readme",
   "dependencies": {
-    "nan": "^2.16.0"
+    "nan": "^2.15.0"
   },
   "devDependencies": {
     "tree-sitter-cli": "^0.20.7"
