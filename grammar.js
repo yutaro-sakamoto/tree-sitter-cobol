@@ -862,7 +862,7 @@ module.exports = grammar({
       //$.alter_statement,
       //$.call_statement,
       //$.cancel_statement,
-      //$.close_statement,
+      $.close_statement,
       //$.commit_statement,
       //$.compute_statement,
       //$.continue_statement,
@@ -911,6 +911,22 @@ module.exports = grammar({
     //todo
     stop_statement: $ => seq(
       $._STOP, $._RUN
+    ),
+    close_statement: $ => seq(
+      $._CLOSE,
+      repeat($.close_arg),
+    ),
+
+    close_arg: $ => seq(
+      field('file_handler', $.WORD),
+      field('option', optional(choice(
+        seq(
+          choice($.REEL, $.UNIT),
+          optional(seq(optional($._FOR), $.REMOVAL))
+        ),
+        seq(optional($._WITH), $.NO, $.REWIND),
+        seq(optional($._WITH), $.LOCK),
+      )))
     ),
 
     display_statement: $ => prec.right(0, seq(

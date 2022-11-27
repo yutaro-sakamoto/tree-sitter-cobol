@@ -391,12 +391,22 @@
     "fields": {}
   },
   {
+    "type": "REEL",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "REFERENCE",
     "named": true,
     "fields": {}
   },
   {
     "type": "RELATIVE",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "REMOVAL",
     "named": true,
     "fields": {}
   },
@@ -477,6 +487,11 @@
   },
   {
     "type": "UNDERLINE",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "UNIT",
     "named": true,
     "fields": {}
   },
@@ -935,6 +950,67 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "close_arg",
+    "named": true,
+    "fields": {
+      "file_handler": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "WORD",
+            "named": true
+          }
+        ]
+      },
+      "option": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "LOCK",
+            "named": true
+          },
+          {
+            "type": "NO",
+            "named": true
+          },
+          {
+            "type": "REEL",
+            "named": true
+          },
+          {
+            "type": "REMOVAL",
+            "named": true
+          },
+          {
+            "type": "REWIND",
+            "named": true
+          },
+          {
+            "type": "UNIT",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "close_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "close_arg",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -2336,6 +2412,10 @@
         "required": false,
         "types": [
           {
+            "type": "close_statement",
+            "named": true
+          },
+          {
             "type": "display_statement",
             "named": true
           },
@@ -2357,6 +2437,10 @@
         "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": "close_statement",
+            "named": true
+          },
           {
             "type": "display_statement",
             "named": true
@@ -3288,6 +3372,10 @@
           "named": true
         },
         {
+          "type": "close_statement",
+          "named": true
+        },
+        {
           "type": "display_statement",
           "named": true
         },
@@ -3307,7 +3395,7 @@
     }
   },
   {
-    "type": "open_info",
+    "type": "open_arg",
     "named": true,
     "fields": {
       "file_name_list": {
@@ -3838,6 +3926,10 @@
       "required": false,
       "types": [
         {
+          "type": "close_statement",
+          "named": true
+        },
+        {
           "type": "display_statement",
           "named": true
         },
@@ -3876,6 +3968,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "close_statement",
+          "named": true
+        },
         {
           "type": "display_statement",
           "named": true
