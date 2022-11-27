@@ -884,7 +884,7 @@ module.exports = grammar({
       //$.merge_statement,
       $.move_statement,
       //$.multiply_statement,
-      //$.open_statement,
+      $.open_statement,
       //$.perform_statement,
       //$.read_statement,
       //$.release_statement,

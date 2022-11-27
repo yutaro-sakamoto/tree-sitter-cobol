@@ -1,0 +1,108 @@
+====================================
+open input
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f assign PRINTER.
+       procedure division.
+       open input f.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (assign_clause
+            to: (PRINTER)))))
+    (procedure_division
+      (open_statement
+        (open_arg
+          mode: (INPUT)
+          file_name_list: (WORD))))))
+====================================
+open output
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f assign PRINTER.
+       procedure division.
+       open output f.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (assign_clause
+            to: (PRINTER)))))
+    (procedure_division
+      (open_statement
+        (open_arg
+          mode: (OUTPUT)
+          file_name_list: (WORD))))))
+====================================
+open i-o
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f assign PRINTER.
+       procedure division.
+       open i-o f.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (assign_clause
+            to: (PRINTER)))))
+    (procedure_division
+      (open_statement
+        (open_arg
+          mode: (I_O)
+          file_name_list: (WORD))))))
+====================================
+open extend
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f assign PRINTER.
+       procedure division.
+       open extend f.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (assign_clause
+            to: (PRINTER)))))
+    (procedure_division
+      (open_statement
+        (open_arg
+          mode: (EXTEND)
+          file_name_list: (WORD))))))
