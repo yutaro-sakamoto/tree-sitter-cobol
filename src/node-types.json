@@ -135,6 +135,11 @@
     "fields": {}
   },
   {
+    "type": "EXTEND",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "EXTERNAL",
     "named": true,
     "fields": {}
@@ -186,6 +191,16 @@
   },
   {
     "type": "INDEXED",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "INPUT",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "I_O",
     "named": true,
     "fields": {}
   },
@@ -242,6 +257,11 @@
   },
   {
     "type": "LOCALE_DT_FUNC",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "LOCK",
     "named": true,
     "fields": {}
   },
@@ -331,6 +351,11 @@
     "fields": {}
   },
   {
+    "type": "OUTPUT",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "OVERLINE",
     "named": true,
     "fields": {}
@@ -382,6 +407,11 @@
   },
   {
     "type": "REVERSE_VIDEO",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "REWIND",
     "named": true,
     "fields": {}
   },
@@ -3274,6 +3304,84 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "open_info",
+    "named": true,
+    "fields": {
+      "file_name_list": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "WORD",
+            "named": true
+          }
+        ]
+      },
+      "mode": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "EXTEND",
+            "named": true
+          },
+          {
+            "type": "INPUT",
+            "named": true
+          },
+          {
+            "type": "I_O",
+            "named": true
+          },
+          {
+            "type": "OUTPUT",
+            "named": true
+          }
+        ]
+      },
+      "option": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "LOCK",
+            "named": true
+          },
+          {
+            "type": "NO",
+            "named": true
+          },
+          {
+            "type": "REWIND",
+            "named": true
+          }
+        ]
+      },
+      "sharing": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "ALL",
+            "named": true
+          },
+          {
+            "type": "NO",
+            "named": true
+          },
+          {
+            "type": "ONLY",
+            "named": true
+          },
+          {
+            "type": "READ",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {

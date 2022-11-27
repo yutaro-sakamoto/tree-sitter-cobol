@@ -1119,6 +1119,29 @@ module.exports = grammar({
       seq($._ADDRESS, optional($._OF), $._identifier)
     ),
 
+    open_statement: $ => seq(
+      $._OPEN,
+      repeat1($.open_arg)
+    ),
+
+    open_arg: $ => seq(
+      field('mode', choice($.INPUT, $.OUTPUT, $.I_O, $.EXTEND)),
+      field('sharing', optional(seq(
+        $._SHARING,
+        optional($._WITH),
+        choice(
+          seq($.ALL, optional($._OTHER)),
+          seq($.NO, optional($._OTHER)),
+          seq($.READ, $.ONLY),
+        )
+      ))),
+      field('file_name_list', repeat1($.WORD)),
+      field('option', optional(choice(
+        seq(optional($._WITH), $.NO, $.REWIND),
+        seq(optional($._WITH), $.LOCK)
+      )))
+    ),
+
     _basic_literal: $ => sepBy(
       $._basic_value,
       '&'
