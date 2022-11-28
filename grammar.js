@@ -5,6 +5,18 @@ function sepBy(pattern, separator) {
 module.exports = grammar({
   name: 'COBOL',
   word: $ => $._WORD,
+  externals: $ => [
+    $._LINE_PREFIX_COMMENT,
+    $._LINE_SUFFIX_COMMENT,
+    $._LINE_COMMENT,
+  ],
+
+  extras: $ => [
+    $._LINE_PREFIX_COMMENT,
+    $._LINE_SUFFIX_COMMENT,
+    $._LINE_COMMENT,
+    /[ \t\r\n]+/
+  ],
 
   rules: {
     start: $ => repeat(
@@ -20,7 +32,8 @@ module.exports = grammar({
       optional($.data_division),
       optional($.procedure_division), //todo
       optional($.nested_prog), //todo
-      optional($.end_program) //todo
+      optional($.end_program), //todo
+      //optional($.LINE_PREFIX_COMMENT),
     ),
 
     identification_division: $ => seq(
