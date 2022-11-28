@@ -26,11 +26,11 @@ jobs:
       - name: Run NIST COBOL85 tests
         run: make nist
 
-      - name: Upload results of NIST COBOL85 tests
-        uses: actions/upload-artifact@v3
-        with:
-          name: NIST_COBOL85_test
-          path: test/cobol85
+      #- name: Upload results of NIST COBOL85 tests
+      #  uses: actions/upload-artifact@v3
+      #  with:
+      #    name: NIST_COBOL85_test
+      #    path: test/cobol85
 
       - name: Run tests
         run: node_modules/.bin/tree-sitter test
