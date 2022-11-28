@@ -9468,19 +9468,19 @@
   "extras": [
     {
       "type": "SYMBOL",
-      "name": "LINE_PREFIX_COMMENT"
+      "name": "_LINE_PREFIX_COMMENT"
     },
     {
       "type": "SYMBOL",
-      "name": "LINE_SUFFIX_COMMENT"
+      "name": "_LINE_SUFFIX_COMMENT"
     },
     {
       "type": "SYMBOL",
-      "name": "COMMENT"
+      "name": "_LINE_COMMENT"
     },
     {
-      "type": "SYMBOL",
-      "name": "WHITE_SPACES"
+      "type": "PATTERN",
+      "value": "[ \\t\\r\\n]+"
     }
   ],
   "conflicts": [],
@@ -9488,19 +9488,15 @@
   "externals": [
     {
       "type": "SYMBOL",
-      "name": "LINE_PREFIX_COMMENT"
+      "name": "_LINE_PREFIX_COMMENT"
     },
     {
       "type": "SYMBOL",
-      "name": "LINE_SUFFIX_COMMENT"
+      "name": "_LINE_SUFFIX_COMMENT"
     },
     {
       "type": "SYMBOL",
-      "name": "COMMENT"
-    },
-    {
-      "type": "SYMBOL",
-      "name": "WHITE_SPACES"
+      "name": "_LINE_COMMENT"
     }
   ],
   "inline": [],

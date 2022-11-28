@@ -6,17 +6,16 @@ module.exports = grammar({
   name: 'COBOL',
   word: $ => $._WORD,
   externals: $ => [
-    $.LINE_PREFIX_COMMENT,
-    $.LINE_SUFFIX_COMMENT,
-    $.COMMENT,
-    $.WHITE_SPACES
+    $._LINE_PREFIX_COMMENT,
+    $._LINE_SUFFIX_COMMENT,
+    $._LINE_COMMENT,
   ],
 
   extras: $ => [
-    $.LINE_PREFIX_COMMENT,
-    $.LINE_SUFFIX_COMMENT,
-    $.COMMENT,
-    $.WHITE_SPACES
+    $._LINE_PREFIX_COMMENT,
+    $._LINE_SUFFIX_COMMENT,
+    $._LINE_COMMENT,
+    /[ \t\r\n]+/
   ],
 
   rules: {

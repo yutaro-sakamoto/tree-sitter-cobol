@@ -3,8 +3,7 @@
 enum TokenType {
     LINE_PREFIX_COMMENT,
     LINE_SUFFIX_COMMENT,
-    COMMENT,
-    WHITE_SPACES,
+    LINE_COMMENT,
 };
 
 void *tree_sitter_COBOL_external_scanner_create() {
@@ -13,57 +12,55 @@ void *tree_sitter_COBOL_external_scanner_create() {
 
 bool tree_sitter_COBOL_external_scanner_scan(void *payload, TSLexer *lexer,
                                             const bool *valid_symbols) {
-    if(valid_symbols[LINE_PREFIX_COMMENT]) {
-        while(lexer->get_column(lexer) <= 6) {
-            puts("aaaa");
+
+    if(lexer->lookahead == '\n') {
+        lexer->advance(lexer, true);
+    }
+
+    if(lexer->lookahead == 0) {
+        return false;
+    }
+
+    if(valid_symbols[LINE_PREFIX_COMMENT] && lexer->get_column(lexer) <= 5) {
+        while(lexer->get_column(lexer) <= 5) {
             lexer->advance(lexer, true);
         }
         lexer->result_symbol = LINE_PREFIX_COMMENT;
+        lexer->advance(lexer, true);
+        lexer->mark_end(lexer);
         return true;
     }
 
-    if(valid_symbols[COMMENT]) {
-        if(lexer->get_column(lexer) == 7) {
+    /*if(valid_symbols[LINE_COMMENT]) {
+        if(lexer->get_column(lexer) == 6) {
             if(lexer->lookahead == '*') {
                 while(lexer->lookahead != '\n' && lexer->lookahead != 0) {
-                    puts("bbbb");
                     lexer->advance(lexer, true);
                 }
-                lexer->result_symbol = COMMENT;
+                lexer->result_symbol = LINE_COMMENT;
+                lexer->advance(lexer, true);
+                lexer->mark_end(lexer);
                 return true;
             } else {
                 lexer->advance(lexer, true);
+                lexer->mark_end(lexer);
                 return false;
             }
         }
-    }
-    if(valid_symbols[LINE_SUFFIX_COMMENT]) {
-        if(lexer->get_column(lexer) >= 73) {
+    }*/
+
+    /*if(valid_symbols[LINE_SUFFIX_COMMENT]) {
+        if(lexer->get_column(lexer) >= 72) {
             while(lexer->lookahead != '\n' && lexer->lookahead != 0) {
-                puts("cccc");
                 lexer->advance(lexer, true);
             }
             lexer->result_symbol = LINE_SUFFIX_COMMENT;
+            lexer->advance(lexer, true);
+            lexer->mark_end(lexer);
+            puts("return true 3");
             return true;
-        } else {
-            return false;
         }
-    }
-
-    if(valid_symbols[LINE_SUFFIX_COMMENT]) {
-        int32_t c = lexer->lookahead;
-        bool ret = false;
-        while(c == ' ' || c == '\t' || c == '\r') {
-                ret = true;
-                lexer->advance(lexer, true);
-                puts("dd");
-                c = lexer->lookahead;
-        }
-        if(ret) {
-            lexer->result_symbol = WHITE_SPACES;
-        }
-        return ret;
-    }
+    }*/
     return false;
 }
 
