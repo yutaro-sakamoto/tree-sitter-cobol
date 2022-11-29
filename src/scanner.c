@@ -26,19 +26,17 @@ bool tree_sitter_COBOL_external_scanner_scan(void *payload, TSLexer *lexer,
             lexer->advance(lexer, true);
         }
         lexer->result_symbol = LINE_PREFIX_COMMENT;
-        lexer->advance(lexer, true);
         lexer->mark_end(lexer);
         return true;
     }
 
-    /*if(valid_symbols[LINE_COMMENT]) {
+    if(valid_symbols[LINE_COMMENT]) {
         if(lexer->get_column(lexer) == 6) {
             if(lexer->lookahead == '*') {
                 while(lexer->lookahead != '\n' && lexer->lookahead != 0) {
                     lexer->advance(lexer, true);
                 }
                 lexer->result_symbol = LINE_COMMENT;
-                lexer->advance(lexer, true);
                 lexer->mark_end(lexer);
                 return true;
             } else {
@@ -47,7 +45,7 @@ bool tree_sitter_COBOL_external_scanner_scan(void *payload, TSLexer *lexer,
                 return false;
             }
         }
-    }*/
+    }
 
     /*if(valid_symbols[LINE_SUFFIX_COMMENT]) {
         if(lexer->get_column(lexer) >= 72) {
@@ -55,12 +53,11 @@ bool tree_sitter_COBOL_external_scanner_scan(void *payload, TSLexer *lexer,
                 lexer->advance(lexer, true);
             }
             lexer->result_symbol = LINE_SUFFIX_COMMENT;
-            lexer->advance(lexer, true);
             lexer->mark_end(lexer);
-            puts("return true 3");
             return true;
         }
     }*/
+
     return false;
 }
 
