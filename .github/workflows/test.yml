@@ -32,5 +32,47 @@ jobs:
       #    name: NIST_COBOL85_test
       #    path: test/cobol85
 
+      - name: Install dependencies of opensource COBOL
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libncurses5 libncurses5-dev libgmp-dev bison flex gettext automake autoconf
+
+      # Cache the directory 'opensource-cobol-1.5.2J'
+      - name: Cache opnesource COBOL v1.5.2J
+        id: opensource_cobol_cache_id
+        uses: actions/cache@v2
+        with:
+          path: opensource-cobol-1.5.2J
+          key: opensource-cobol-1.5.2J-key
+          
+      # Build opensource COBOL if the cache is not found
+      - name: Download and Build opensource COBOL v1.5.2J
+        if: steps.opensource_cobol_cache_id.outputs.cache-hit != 'true'
+        run: |
+          curl -L -o opensource-cobol-1.5.2J.tar.gz https://github.com/opensourcecobol/opensource-cobol/archive/refs/tags/v1.5.2J.tar.gz
+          tar zxvf opensource-cobol-1.5.2J.tar.gz
+          cd opensource-cobol-1.5.2J/vbisam
+          ./configure --prefix=/usr/
+          make
+          sudo make install
+          cd ../
+          ./configure --prefix=/usr/ --with-vbisam
+          make
+          cd ../
+      
+      # Install opensource COBOL
+      - name: Install opensource COBOL v1.5.2J
+        run: |
+          cd opensource-cobol-1.5.2J/vbisam
+          sudo make install
+          cd ../
+          sudo make install
+          cd ../
+
+      - name: Check tests
+        run: |
+          cd test
+          bash check_tests.sh
+
       - name: Run tests
         run: node_modules/.bin/tree-sitter test
