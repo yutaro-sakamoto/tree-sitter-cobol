@@ -326,6 +326,10 @@ alternate record
        input-output section.
        FILE-CONTROL.
        select f alternate record a of b.
+       data division.
+       working-storage section.
+       01 b.
+           03 a PIC X.
 ---
 (start
   (program_definition
@@ -338,7 +342,17 @@ alternate record
           (alternative_record_key
             reference: (qualified_word
               (WORD)
-              (WORD))))))))
+              (WORD))))))
+    (data_division
+      (working_storage_section
+        (data_description
+          (level_number)
+          (entry_name))
+        (data_description
+          (level_number)
+          (entry_name)
+          (picture_clause
+            (picture_x)))))))
 ====================================
 alternate record key
 ====================================
@@ -348,6 +362,10 @@ alternate record key
        input-output section.
        FILE-CONTROL.
        select f alternate record key a of b.
+       data division.
+       working-storage section.
+       01 b.
+           03 a PIC X.
 ---
 (start
   (program_definition
@@ -360,7 +378,17 @@ alternate record key
           (alternative_record_key
             reference: (qualified_word
               (WORD)
-              (WORD))))))))
+              (WORD))))))
+    (data_division
+      (working_storage_section
+        (data_description
+          (level_number)
+          (entry_name))
+        (data_description
+          (level_number)
+          (entry_name)
+          (picture_clause
+            (picture_x)))))))
 ====================================
 alternate record is
 ====================================
@@ -370,6 +398,10 @@ alternate record is
        input-output section.
        FILE-CONTROL.
        select f alternate record is a of b.
+       data division.
+       working-storage section.
+       01 b.
+           03 a PIC X.
 ---
 (start
   (program_definition
@@ -382,7 +414,17 @@ alternate record is
           (alternative_record_key
             reference: (qualified_word
               (WORD)
-              (WORD))))))))
+              (WORD))))))
+    (data_division
+      (working_storage_section
+        (data_description
+          (level_number)
+          (entry_name))
+        (data_description
+          (level_number)
+          (entry_name)
+          (picture_clause
+            (picture_x)))))))
 ====================================
 alternate record key is
 ====================================
@@ -392,6 +434,10 @@ alternate record key is
        input-output section.
        FILE-CONTROL.
        select f alternate record key is a of b.
+       data division.
+       working-storage section.
+       01 b.
+           03 a PIC X.
 ---
 (start
   (program_definition
@@ -404,7 +450,17 @@ alternate record key is
           (alternative_record_key
             reference: (qualified_word
               (WORD)
-              (WORD))))))))
+              (WORD))))))
+      (data_division
+      (working_storage_section
+        (data_description
+          (level_number)
+          (entry_name))
+        (data_description
+          (level_number)
+          (entry_name)
+          (picture_clause
+            (picture_x)))))))
 ====================================
 alternate record duplicates
 ====================================
@@ -414,6 +470,10 @@ alternate record duplicates
        input-output section.
        FILE-CONTROL.
        select f alternate record a of b duplicates.
+       data division.
+       working-storage section.
+       01 b.
+           03 a PIC X.
 ---
 (start
   (program_definition
@@ -427,7 +487,17 @@ alternate record duplicates
             reference: (qualified_word
               (WORD)
               (WORD))
-            with_dups: (with_dups)))))))
+            with_dups: (with_dups)))))
+    (data_division
+      (working_storage_section
+        (data_description
+          (level_number)
+          (entry_name))
+        (data_description
+          (level_number)
+          (entry_name)
+          (picture_clause
+            (picture_x)))))))
 ====================================
 alternate record with duplicates
 ====================================
@@ -437,6 +507,10 @@ alternate record with duplicates
        input-output section.
        FILE-CONTROL.
        select f alternate record a of b with duplicates.
+       data division.
+       working-storage section.
+       01 b.
+           03 a PIC X.
 ---
 (start
   (program_definition
@@ -450,4 +524,14 @@ alternate record with duplicates
             reference: (qualified_word
               (WORD)
               (WORD))
-            with_dups: (with_dups)))))))
+            with_dups: (with_dups)))))
+    (data_division
+      (working_storage_section
+        (data_description
+          (level_number)
+          (entry_name))
+        (data_description
+          (level_number)
+          (entry_name)
+          (picture_clause
+            (picture_x)))))))
