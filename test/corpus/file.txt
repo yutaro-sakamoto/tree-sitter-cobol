@@ -106,3 +106,257 @@ open extend
         (open_arg
           mode: (EXTEND)
           file_name_list: (WORD))))))
+====================================
+close
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f assign PRINTER.
+       procedure division.
+       close f.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (assign_clause
+            to: (PRINTER)))))
+    (procedure_division
+      (close_statement
+        (close_arg
+          file_handler: (WORD))))))
+====================================
+close reel
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f assign PRINTER.
+       procedure division.
+       close f reel.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (assign_clause
+            to: (PRINTER)))))
+    (procedure_division
+      (close_statement
+        (close_arg
+          file_handler: (WORD)
+          (close_option
+            (REEL)))))))
+====================================
+close unit
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f assign PRINTER.
+       procedure division.
+       close f UNIT.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (assign_clause
+            to: (PRINTER)))))
+    (procedure_division
+      (close_statement
+        (close_arg
+          file_handler: (WORD)
+          (close_option
+            (UNIT)))))))
+====================================
+close unit removal
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f assign PRINTER.
+       procedure division.
+       close f unit removal.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (assign_clause
+            to: (PRINTER)))))
+    (procedure_division
+      (close_statement
+        (close_arg
+          file_handler: (WORD)
+          (close_option
+            (UNIT)
+            (REMOVAL)))))))
+====================================
+close unit for removal
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f assign PRINTER.
+       procedure division.
+       close f unit for removal.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (assign_clause
+            to: (PRINTER)))))
+    (procedure_division
+      (close_statement
+        (close_arg
+          file_handler: (WORD)
+          (close_option
+            (UNIT)
+            (REMOVAL)))))))
+====================================
+close unit no rewind
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f assign PRINTER.
+       procedure division.
+       close f no rewind. 
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (assign_clause
+            to: (PRINTER)))))
+    (procedure_division
+      (close_statement
+        (close_arg
+          file_handler: (WORD)
+          (close_option
+            (NO)
+            (REWIND)))))))
+====================================
+close unit with no rewind
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f assign PRINTER.
+       procedure division.
+       close f with no rewind. 
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (assign_clause
+            to: (PRINTER)))))
+    (procedure_division
+      (close_statement
+        (close_arg
+          file_handler: (WORD)
+          (close_option
+            (NO)
+            (REWIND)))))))
+====================================
+close unit lock
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f assign PRINTER.
+       procedure division.
+       close f lock. 
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (assign_clause
+            to: (PRINTER)))))
+    (procedure_division
+      (close_statement
+        (close_arg
+          file_handler: (WORD)
+          (close_option
+            (LOCK)))))))
+====================================
+close unit with lock
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f assign PRINTER.
+       procedure division.
+       close f with lock. 
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (assign_clause
+            to: (PRINTER)))))
+    (procedure_division
+      (close_statement
+        (close_arg
+          file_handler: (WORD)
+          (close_option
+            (LOCK)))))))

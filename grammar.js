@@ -932,14 +932,21 @@ module.exports = grammar({
 
     close_arg: $ => seq(
       field('file_handler', $.WORD),
-      field('option', optional(choice(
-        seq(
-          choice($.REEL, $.UNIT),
-          optional(seq(optional($._FOR), $.REMOVAL))
-        ),
-        seq(optional($._WITH), $.NO, $.REWIND),
-        seq(optional($._WITH), $.LOCK),
-      )))
+      optional($.close_option)
+    ),
+
+    close_option: $ => choice(
+      seq(
+        choice($.REEL, $.UNIT),
+        optional($._close_removal)
+      ),
+      seq(optional($._WITH), $.NO, $.REWIND),
+      seq(optional($._WITH), $.LOCK),
+    ),
+
+    _close_removal: $ => seq(
+      optional($._FOR),
+      $.REMOVAL
     ),
 
     display_statement: $ => prec.right(0, seq(

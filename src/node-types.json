@@ -965,37 +965,52 @@
             "named": true
           }
         ]
-      },
-      "option": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "LOCK",
-            "named": true
-          },
-          {
-            "type": "NO",
-            "named": true
-          },
-          {
-            "type": "REEL",
-            "named": true
-          },
-          {
-            "type": "REMOVAL",
-            "named": true
-          },
-          {
-            "type": "REWIND",
-            "named": true
-          },
-          {
-            "type": "UNIT",
-            "named": true
-          }
-        ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "close_option",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "close_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "LOCK",
+          "named": true
+        },
+        {
+          "type": "NO",
+          "named": true
+        },
+        {
+          "type": "REEL",
+          "named": true
+        },
+        {
+          "type": "REMOVAL",
+          "named": true
+        },
+        {
+          "type": "REWIND",
+          "named": true
+        },
+        {
+          "type": "UNIT",
+          "named": true
+        }
+      ]
     }
   },
   {
