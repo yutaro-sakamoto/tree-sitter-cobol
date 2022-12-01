@@ -445,6 +445,7 @@ module.exports = grammar({
       seq(
         $._FILE,
         $._SECTION,
+        '.',
         repeat($.file_description)
       ),
       seq(
@@ -470,7 +471,8 @@ module.exports = grammar({
 
     file_description_entry: $ => seq(
       $.WORD,
-      repeat($.file_description_clause)
+      repeat($.file_description_clause),
+      '.'
     ),
 
     file_description_clause: $ => choice(
@@ -843,26 +845,26 @@ module.exports = grammar({
 
     _procedure: $ => choice(
       $.section_header,
-      $.paragraph_header,
-      $.invalid_statement,
+      //$.paragraph_header,
+      //$.invalid_statement,
       seq($._statement, '.')
     ),
 
     section_header: $ => seq(
-      field('name', $._WORD),
+      field('name', $.WORD),
       $._SECTION,
       optional($._LITERAL),
       '.'
     ),
 
-    paragraph_header: $ => seq(
-      field('name', $._WORD),
+    paragraph_header: $ => prec(-1, seq(
+      field('name', $.WORD),
       '.'
-    ),
+    )),
 
-    invalid_statement: $ => seq(
-      field('name', $._WORD)
-    ),
+    //invalid_statement: $ => seq(
+    //field('name', $._WORD)
+    //),
 
     nested_prog: $ => /todo_nested_prog/,
     end_program: $ => /todo_end_program/,
@@ -917,7 +919,7 @@ module.exports = grammar({
       //$.unlock_statement,
       //$.unstring_statement,
       //$.use_statement,
-      //$.write_statement,
+      $.write_statement,
       //$.NEXT_SENTENCE,
     ),
 
@@ -925,10 +927,11 @@ module.exports = grammar({
     stop_statement: $ => seq(
       $._STOP, $._RUN
     ),
-    close_statement: $ => seq(
+
+    close_statement: $ => prec.right(seq(
       $._CLOSE,
       repeat($.close_arg),
-    ),
+    )),
 
     close_arg: $ => seq(
       field('file_handler', $.WORD),
@@ -955,7 +958,7 @@ module.exports = grammar({
       optional($._END_DISPLAY)
     )),
 
-    _display_body: $ => choice(
+    _display_body: $ => prec.right(choice(
       seq($._id_or_lit, $._UPON_ENVIRONMENT_NAME, optional($.on_disp_exception)),
       seq($._id_or_lit, $._UPON_ENVIRONMENT_VALUE, optional($.on_disp_exception)),
       seq($._id_or_lit, $._UPON_ARGUMENT_NUMBER, optional($.on_disp_exception)),
@@ -965,7 +968,7 @@ module.exports = grammar({
       seq(repeat1($._x), optional($.at_line_column), $.UPON, $._WORD, optional($.with_clause), optional($.on_disp_exception)),
       seq(repeat1($._x), optional($.at_line_column), $.UPON, $.PRINTER, optional($.with_clause), optional($.on_disp_exception)),
       seq(repeat1($._x), optional($.at_line_column), $.UPON, $.CRT, optional($.with_clause), optional($.on_disp_exception)),
-    ),
+    )),
 
     at_line_column: $ => /todo_at_line_column/,
 
@@ -984,7 +987,7 @@ module.exports = grammar({
       seq($.WITH, repeat1($.disp_attr))
     ),
 
-    disp_attr: $ => choice(
+    disp_attr: $ => prec.left(choice(
       $.BELL,
       $.BLINK,
       seq($.ERASE, $.EOL),
@@ -1004,7 +1007,7 @@ module.exports = grammar({
         optional($._IS), optional($.scroll_lines)),
       $.BLANK_LINE,
       $.BLANK_SCREEN,
-    ),
+    )),
 
     _num_or_id_or_lit: $ => choice(
       $._identifier,
@@ -1124,12 +1127,12 @@ module.exports = grammar({
       $._move_body
     ),
 
-    _move_body: $ => seq(
+    _move_body: $ => prec.right(seq(
       optional($._CORRESPONDING),
       field('src', $._x),
       $._TO,
       field('dst', $._target_x_list)
-    ),
+    )),
 
     _x: $ => choice(
       seq($._LENGTH, optional($._OF), choice(
@@ -1160,7 +1163,7 @@ module.exports = grammar({
       repeat1($.open_arg)
     ),
 
-    open_arg: $ => seq(
+    open_arg: $ => prec.left(seq(
       field('mode', choice($.INPUT, $.OUTPUT, $.I_O, $.EXTEND)),
       field('sharing', optional(seq(
         $._SHARING,
@@ -1176,7 +1179,75 @@ module.exports = grammar({
         seq(optional($._WITH), $.NO, $.REWIND),
         seq(optional($._WITH), $.LOCK)
       )))
+    )),
+
+    write_statement: $ => prec.right(seq(
+      $._WRITE,
+      /*field('record', $.qualified_word),
+      field('from', optional(seq(
+        optional($._FROM),
+        choice($._identifier, $._LITERAL)))),
+      field('lock', optional($.write_lock)),
+      field('option', optional($.write_option)),
+      field('handler', optional(choice($._at_eop, $._invalid_key))),
+      optional($._END_WRITE)*/
+    )),
+
+    write_lock: $ => choice(
+      seq(optional($._WITH), $.LOCK),
+      seq(optional($._WITH), $.NO, $.LOCK),
     ),
+
+    write_option: $ => seq(
+      choice($.BEFORE, $.AFTER),
+      optional($._ADVANCING),
+      choice(
+        seq($.num_id_or_lit, $._line_or_lines),
+        $.MNEMONIC_NAME,
+        $.PAGE
+      )
+    ),
+
+    _at_eop: $ => prec.left(choice(
+      $.at_eop_sentence,
+      $.not_at_eop_sentence,
+      seq(
+        $.at_eop_sentence,
+        $.not_at_eop_sentence,
+      )
+    )),
+
+    at_eop_sentence: $ => prec.right(seq(
+      $._EOP,
+      repeat($._statement)
+    )),
+
+    not_at_eop_sentence: $ => prec.right(seq(
+      $._NOT_EOP,
+      repeat($._statement)
+    )),
+
+    _invalid_key: $ => prec.right(choice(
+      $.invalid_key_sentence,
+      $.not_invalid_key_sentence,
+      seq(
+        $.invalid_key_sentence,
+        $.not_invalid_key_sentence,
+      )
+    )),
+
+    invalid_key_sentence: $ => prec.right(seq(
+      $._INVALID_KEY,
+      repeat($._statement)
+    )),
+
+    not_invalid_key_sentence: $ => prec.right(seq(
+      $._NOT_INVALID_KEY,
+      repeat($._statement)
+    )),
+
+    num_id_or_lit: $ => choice($.integer, $._identifier, $.ZERO),
+    _line_or_lines: $ => choice($._LINE, $._LINES),
 
     _basic_literal: $ => sepBy(
       $._basic_value,
