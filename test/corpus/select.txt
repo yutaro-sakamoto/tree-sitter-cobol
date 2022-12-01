@@ -535,3 +535,83 @@ alternate record with duplicates
           (entry_name)
           (picture_clause
             (picture_x)))))))
+====================================
+sequence
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f sequence aa.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (collating_sequence_clause
+            (WORD)))))))
+====================================
+collating sequence
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f collating sequence aa.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (collating_sequence_clause
+            (WORD)))))))
+====================================
+sequence is
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f sequence is aa.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (collating_sequence_clause
+            (WORD)))))))
+====================================
+collating sequence is
+====================================
+       identification division.
+       program-id. a.
+       environment division.
+       input-output section.
+       FILE-CONTROL.
+       select f collating sequence is aa.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (environment_division
+      (input_output_section
+        (select_statement
+          file_name: (WORD)
+          (collating_sequence_clause
+            (WORD)))))))
