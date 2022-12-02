@@ -1,0 +1,131 @@
+====================================
+go
+====================================
+       identification division.
+       program-id. a.
+       procedure division.
+       aa.
+         go aa.
+       bb.
+---
+(start 
+  (program_definition
+    (identification_division
+      (program_name))
+    (procedure_division
+      (paragraph_header)
+      (goto_statement
+        to: (label
+          (qualified_word
+            (WORD))))
+      (paragraph_header))))
+====================================
+go to
+====================================
+       identification division.
+       program-id. a.
+       procedure division.
+       aa.
+         go to aa.
+       bb.
+---
+(start 
+  (program_definition
+    (identification_division
+      (program_name))
+    (procedure_division
+      (paragraph_header)
+      (goto_statement
+        to: (label
+          (qualified_word
+            (WORD))))
+      (paragraph_header))))
+====================================
+go to depending
+====================================
+       identification division.
+       program-id. a.
+       procedure division.
+       aa.
+         go to aa depending bb.
+       bb.
+---
+(start 
+  (program_definition
+    (identification_division
+      (program_name))
+    (procedure_division
+      (paragraph_header)
+      (goto_statement
+        to: (label
+          (qualified_word
+            (WORD)))
+        depending: (qualified_word
+          (WORD)))
+      (paragraph_header))))
+====================================
+go to depending on
+====================================
+       identification division.
+       program-id. a.
+       procedure division.
+       aa.
+         go to aa depending on bb.
+       bb.
+---
+(start 
+  (program_definition
+    (identification_division
+      (program_name))
+    (procedure_division
+      (paragraph_header)
+      (goto_statement
+        to: (label
+          (qualified_word
+            (WORD)))
+        depending: (qualified_word
+          (WORD)))
+      (paragraph_header))))
+====================================
+go string
+====================================
+       identification division.
+       program-id. a.
+       procedure division.
+       aa.
+         go "bb".
+       bb.
+---
+(start 
+  (program_definition
+    (identification_division
+      (program_name))
+    (procedure_division
+      (paragraph_header)
+      (goto_statement
+        to: (label
+          (string)))
+      (paragraph_header))))
+====================================
+go string of string
+====================================
+       identification division.
+       program-id. a.
+       procedure division.
+       aa.
+         go "bb" of "cc".
+       cc section.
+       bb.
+---
+(start 
+  (program_definition
+    (identification_division
+      (program_name))
+    (procedure_division
+      (paragraph_header)
+      (goto_statement
+        to: (label
+          (string)
+          (string)))
+      (section_header)
+      (paragraph_header))))

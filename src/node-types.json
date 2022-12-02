@@ -2332,6 +2332,40 @@
     }
   },
   {
+    "type": "goto_statement",
+    "named": true,
+    "fields": {
+      "depending": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          }
+        ]
+      },
+      "to": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "label",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "gt",
     "named": true,
     "fields": {},
@@ -2435,6 +2469,10 @@
             "named": true
           },
           {
+            "type": "goto_statement",
+            "named": true
+          },
+          {
             "type": "if_statement",
             "named": true
           },
@@ -2462,6 +2500,10 @@
           },
           {
             "type": "display_statement",
+            "named": true
+          },
+          {
+            "type": "goto_statement",
             "named": true
           },
           {
@@ -2507,6 +2549,41 @@
     "type": "invalid_statement",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "label",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "h_string",
+          "named": true
+        },
+        {
+          "type": "n_string",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "qualified_word",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "x_string",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "label_records_clause",
@@ -3403,6 +3480,10 @@
           "named": true
         },
         {
+          "type": "goto_statement",
+          "named": true
+        },
+        {
           "type": "if_statement",
           "named": true
         },
@@ -3976,6 +4057,10 @@
           "named": true
         },
         {
+          "type": "goto_statement",
+          "named": true
+        },
+        {
           "type": "if_statement",
           "named": true
         },
@@ -4020,6 +4105,10 @@
         },
         {
           "type": "display_statement",
+          "named": true
+        },
+        {
+          "type": "goto_statement",
           "named": true
         },
         {

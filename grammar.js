@@ -888,7 +888,7 @@ module.exports = grammar({
       //$.exit_statement,
       //$.free_statement,
       //$.generate_statement,
-      //$.goto_statement,
+      $.goto_statement,
       //$.goback_statement,
       $.if_statement,
       //$.initialize_statement,
@@ -1019,6 +1019,17 @@ module.exports = grammar({
     ),
 
     line_or_lines: $ => choice($.LINE, $.LINES),
+
+    goto_statement: $ => seq(
+      $._GO, optional($._TO),
+      field('to', repeat($.label)),
+      field('depending', optional(seq($._DEPENDING, optional($._ON), $._identifier)))
+    ),
+
+    label: $ => choice(
+      $.qualified_word,
+      seq($._LITERAL, optional(seq($._in_of, $._LITERAL)))
+    ),
 
     //todo add error if statement (see cobc/parser.y)
     if_statement: $ => prec.left(seq(
