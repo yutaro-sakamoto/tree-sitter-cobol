@@ -1,0 +1,194 @@
+====================================
+evaluate when
+====================================
+       identification division.
+       program-id. a.
+       procedure division.
+       evaluate 1
+       when 1
+         go to aa
+       end-evaluate.
+       aa.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (procedure_division
+      (evaluate_statement
+        subjects: (evaluate_subject
+          (expr
+            (number
+              (integer))))
+        cases: (evaluate_case
+          when: (expr
+            (number
+              (integer)))
+          statements: (goto_statement
+            to: (label
+              (qualified_word
+                (WORD))))))
+      (paragraph_header))))
+====================================
+evaluate when 2
+====================================
+       identification division.
+       program-id. a.
+       procedure division.
+       evaluate 1
+       when 1
+         go to aa
+       when 2
+         go to aa
+       end-evaluate.
+       aa.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (procedure_division
+      (evaluate_statement
+        subjects: (evaluate_subject
+          (expr
+            (number
+              (integer))))
+        cases: (evaluate_case
+          when: (expr
+            (number
+              (integer)))
+          statements: (goto_statement
+            to: (label
+              (qualified_word
+                (WORD)))))
+        cases: (evaluate_case
+          when: (expr
+            (number
+              (integer)))
+          statements: (goto_statement
+            to: (label
+              (qualified_word
+                (WORD))))))
+      (paragraph_header))))
+====================================
+evaluate when other
+====================================
+       identification division.
+       program-id. a.
+       procedure division.
+       evaluate 1
+       when 1
+         go to aa
+       when 2
+         go to aa
+       when other
+         go to aa
+       end-evaluate.
+       aa.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (procedure_division
+      (evaluate_statement
+        subjects: (evaluate_subject
+          (expr
+            (number
+              (integer))))
+        cases: (evaluate_case
+          when: (expr
+            (number
+              (integer)))
+          statements: (goto_statement
+            to: (label
+              (qualified_word
+                (WORD)))))
+        cases: (evaluate_case
+          when: (expr
+            (number
+              (integer)))
+          statements: (goto_statement
+            to: (label
+              (qualified_word
+                (WORD)))))
+        other: (evaluate_other
+          statement: (goto_statement
+            to: (label
+              (qualified_word
+                (WORD))))))
+      (paragraph_header))))
+====================================
+evaluate when when
+====================================
+       identification division.
+       program-id. a.
+       procedure division.
+       evaluate 1
+       when 1
+       when 2
+         go to aa
+       end-evaluate.
+       aa.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (procedure_division
+      (evaluate_statement
+        subjects: (evaluate_subject
+          (expr
+            (number
+              (integer))))
+        cases: (evaluate_case
+          when: (expr
+            (number
+              (integer))))
+        cases: (evaluate_case
+          when: (expr
+            (number
+              (integer)))
+          statements: (goto_statement
+            to: (label
+              (qualified_word
+                (WORD))))))
+      (paragraph_header))))
+====================================
+evaluate when also
+====================================
+       identification division.
+       program-id. a.
+       procedure division.
+       evaluate 1 also 2
+       when 1 also 2
+         go to aa
+       end-evaluate.
+       aa.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (procedure_division
+      (evaluate_statement
+        subjects: (evaluate_subject
+          (expr
+            (number
+              (integer))))
+        subjects: (evaluate_subject
+          (expr
+            (number
+              (integer))))
+        cases: (evaluate_case
+          when: (expr
+            (number
+              (integer)))
+          when: (expr
+            (number
+              (integer)))
+          statements: (goto_statement
+            to: (label
+              (qualified_word
+                (WORD))))))
+      (paragraph_header))))

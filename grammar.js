@@ -884,7 +884,7 @@ module.exports = grammar({
       $.display_statement,
       //$.divide_statement,
       //$.entry_statement,
-      //$.evaluate_statement,
+      $.evaluate_statement,
       //$.exit_statement,
       //$.free_statement,
       //$.generate_statement,
@@ -1020,6 +1020,43 @@ module.exports = grammar({
 
     line_or_lines: $ => choice($.LINE, $.LINES),
 
+    evaluate_statement: $ => prec.left(seq(
+      $._EVALUATE,
+      field('subjects', sepBy($.evaluate_subject, optional($._ALSO))),
+      field('cases', repeat($.evaluate_case)),
+      field('other', optional($.evaluate_other)),
+      optional($._END_EVALUATE)
+    )),
+
+    evaluate_subject: $ => choice(
+      $.expr,
+      $.TRUE,
+      $.FALSE,
+    ),
+
+    evaluate_case: $ => prec.left(seq(
+      field('when', repeat1(seq($._WHEN, $._evaluate_object_list))),
+      field('statements', repeat($._statement)),
+    )),
+
+    _evaluate_object_list: $ => sepBy($._evaluate_object, optional($._ALSO)),
+
+    _evaluate_object: $ => choice(
+      /*seq(
+        $.expr,
+        optional(seq($.THRU, $.expr))
+      ),*/
+      $.expr,
+      $.ANY,
+      $.TRUE,
+      $.FALSE
+    ),
+
+    evaluate_other: $ => prec.left(seq(
+      $._WHEN_OTHER,
+      field('statement', repeat($._statement))
+    )),
+
     goto_statement: $ => seq(
       $._GO, optional($._TO),
       field('to', repeat($.label)),
@@ -1046,7 +1083,7 @@ module.exports = grammar({
       repeat($._statement)
     )),
 
-    expr: $ => $._expr_logic,
+    expr: $ => prec.left(choice($._expr_logic, $._expr_calc)),
 
     _expr_data: $ => $._x,
 
@@ -1716,11 +1753,11 @@ module.exports = grammar({
     _TIME: $ => /[tT][iI][mM][eE]/,
     _TIMES: $ => /[tT][iI][mM][eE][sS]/,
     _TO: $ => /[tT][oO]/,
-    _TOK_FALSE: $ => /[fF][aA][lL][sS][eE]/,
+    _FALSE: $ => /[fF][aA][lL][sS][eE]/,
     _FILE: $ => /[fF][iI][lL][eE]/,
     _TOK_INITIAL: $ => /[iI][nN][iI][tT][iI][aA][lL]/,
     _TOK_NULL: $ => choice('null', 'Null', 'NULL'),
-    _TOK_TRUE: $ => /[tT][rR][uU][eE]/,
+    _TRUE: $ => /[tT][rR][uU][eE]/,
     _TOP: $ => /[tT][oO][pP]/,
     _TRACKS: $ => /[tT][rR][aA][cC][kK][sS]/,
     _TRAILING: $ => /[tT][rR][aA][iI][lL][iI][nN][gG]/,
@@ -1752,7 +1789,7 @@ module.exports = grammar({
     _WAIT: $ => /[wW][aA][iI][tT]/,
     _WHEN: $ => /[wW][hH][eE][nN]/,
     _WHEN_COMPILED_FUNC: $ => /[wW][hH][eE][nN]-[cC][oO][mM][pP][iI][lL][eE][dD]-[fF][uU][nN][cC]/,
-    _WHEN_OTHER: $ => /[wW][hH][eE][nN]-[oO][tT][hH][eE][rR]/,
+    _WHEN_OTHER: $ => /[wW][hH][eE][nN][ \t\n]+[oO][tT][hH][eE][rR]/,
     _WITH: $ => /[wW][iI][tT][hH]/,
     _WORD: $ => /[a-zA-z_][a-zA-Z0-9_\-]*/,
     _WORDS: $ => /[wW][oO][rR][dD][sS]/,
@@ -2165,11 +2202,11 @@ module.exports = grammar({
     TIME: $ => $._TIME,
     TIMES: $ => $._TIMES,
     TO: $ => $._TO,
-    TOK_FALSE: $ => $._TOK_FALSE,
+    FALSE: $ => $._FALSE,
     FILE: $ => $._FILE,
     TOK_INITIAL: $ => $._TOK_INITIAL,
     TOK_NULL: $ => $._TOK_NULL,
-    TOK_TRUE: $ => $._TOK_TRUE,
+    TRUE: $ => $._TRUE,
     TOP: $ => $._TOP,
     TRACKS: $ => $._TRACKS,
     TRAILING: $ => $._TRAILING,
