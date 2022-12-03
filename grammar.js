@@ -105,11 +105,11 @@ module.exports = grammar({
 
     _object_computer_entry: $ => choice(
       seq($.WORD, '.'),
-      seq($.WORD, repeat1($.object_clause), '.'),
-      seq(repeat1($.object_clause), '.')
+      seq($.WORD, repeat1($._object_clause), '.'),
+      seq(repeat1($._object_clause), '.')
     ),
 
-    object_clause: $ => choice(
+    _object_clause: $ => choice(
       $.object_computer_memory,
       $.object_computer_sequence,
       $.object_computer_segment
@@ -121,8 +121,8 @@ module.exports = grammar({
       optional($._IS),
       $.integer,
       choice(
-        $._CHARACTERS,
-        $._WORDS
+        $.CHARACTERS,
+        $.WORDS
       )
     ),
 
@@ -166,7 +166,35 @@ module.exports = grammar({
     ),
 
     mnemonic_name_clause: $ => /todo_mnemonic_name/,
-    alphabet_name_clause: $ => /todo_alphabet_name/,
+    alphabet_name_clause: $ => seq(
+      $._ALPHABET,
+      field('word', $.WORD),
+      optional($._IS),
+      field('value', $._alphabet_definition),
+    ),
+
+    _alphabet_definition: $ => choice(
+      $.NATIVE,
+      $.STANDARD_1,
+      $.STANDARD_2,
+      $.EBCDIC,
+      repeat1($.alphabet_literal),
+    ),
+
+    alphabet_literal: $ => choice(
+      sepBy($._alphabet_lits, $.ALSO),
+      seq($._alphabet_lits, $.THRU, $._alphabet_lits),
+    ),
+
+    _alphabet_lits: $ => choice(
+      $.LITERAL,
+      $.SPACE,
+      $.ZERO,
+      $.QUOTE,
+      $.HIGH_VALUE,
+      $.LOW_VALUE
+    ),
+
     symbolic_characters_clause: $ => /todo_symbolic_character_name/,
     locale_clause: $ => /todo_locale_name/,
     class_name_clause: $ => /todo_class_name/,

@@ -20,6 +20,11 @@
     "fields": {}
   },
   {
+    "type": "ALSO",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "AND",
     "named": true,
     "fields": {}
@@ -70,6 +75,11 @@
     "fields": {}
   },
   {
+    "type": "CHARACTERS",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "CLASS_NAME",
     "named": true,
     "fields": {}
@@ -111,6 +121,11 @@
   },
   {
     "type": "DYNAMIC",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "EBCDIC",
     "named": true,
     "fields": {}
   },
@@ -301,6 +316,11 @@
     "fields": {}
   },
   {
+    "type": "NATIVE",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "NE",
     "named": true,
     "fields": {}
@@ -476,12 +496,27 @@
     "fields": {}
   },
   {
+    "type": "STANDARD_1",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "STANDARD_2",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "SUBSTITUTE_CASE_FUNC",
     "named": true,
     "fields": {}
   },
   {
     "type": "SUBSTITUTE_FUNC",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "THRU",
     "named": true,
     "fields": {}
   },
@@ -557,6 +592,11 @@
   },
   {
     "type": "WORD",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "WORDS",
     "named": true,
     "fields": {}
   },
@@ -816,6 +856,91 @@
           },
           {
             "type": "x_string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "alphabet_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ALSO",
+          "named": true
+        },
+        {
+          "type": "HIGH_VALUE",
+          "named": true
+        },
+        {
+          "type": "LITERAL",
+          "named": true
+        },
+        {
+          "type": "LOW_VALUE",
+          "named": true
+        },
+        {
+          "type": "QUOTE",
+          "named": true
+        },
+        {
+          "type": "SPACE",
+          "named": true
+        },
+        {
+          "type": "THRU",
+          "named": true
+        },
+        {
+          "type": "ZERO",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "alphabet_name_clause",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "EBCDIC",
+            "named": true
+          },
+          {
+            "type": "NATIVE",
+            "named": true
+          },
+          {
+            "type": "STANDARD_1",
+            "named": true
+          },
+          {
+            "type": "STANDARD_2",
+            "named": true
+          },
+          {
+            "type": "alphabet_literal",
+            "named": true
+          }
+        ]
+      },
+      "word": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "WORD",
             "named": true
           }
         ]
@@ -3561,36 +3686,21 @@
     }
   },
   {
-    "type": "object_clause",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "object_computer_memory",
-          "named": true
-        },
-        {
-          "type": "object_computer_segment",
-          "named": true
-        },
-        {
-          "type": "object_computer_sequence",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "object_computer_memory",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "CHARACTERS",
+          "named": true
+        },
+        {
+          "type": "WORDS",
+          "named": true
+        },
         {
           "type": "integer",
           "named": true
@@ -3611,7 +3721,15 @@
           "named": true
         },
         {
-          "type": "object_clause",
+          "type": "object_computer_memory",
+          "named": true
+        },
+        {
+          "type": "object_computer_segment",
+          "named": true
+        },
+        {
+          "type": "object_computer_sequence",
           "named": true
         }
       ]
@@ -5773,10 +5891,6 @@
   {
     "type": "^",
     "named": false
-  },
-  {
-    "type": "alphabet_name_clause",
-    "named": true
   },
   {
     "type": "any_length_clause",

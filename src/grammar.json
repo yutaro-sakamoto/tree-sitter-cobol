@@ -394,7 +394,7 @@
               "type": "REPEAT1",
               "content": {
                 "type": "SYMBOL",
-                "name": "object_clause"
+                "name": "_object_clause"
               }
             },
             {
@@ -410,7 +410,7 @@
               "type": "REPEAT1",
               "content": {
                 "type": "SYMBOL",
-                "name": "object_clause"
+                "name": "_object_clause"
               }
             },
             {
@@ -421,7 +421,7 @@
         }
       ]
     },
-    "object_clause": {
+    "_object_clause": {
       "type": "CHOICE",
       "members": [
         {
@@ -470,11 +470,11 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_CHARACTERS"
+              "name": "CHARACTERS"
             },
             {
               "type": "SYMBOL",
-              "name": "_WORDS"
+              "name": "WORDS"
             }
           ]
         }
@@ -649,8 +649,145 @@
       "value": "todo_mnemonic_name"
     },
     "alphabet_name_clause": {
-      "type": "PATTERN",
-      "value": "todo_alphabet_name"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_ALPHABET"
+        },
+        {
+          "type": "FIELD",
+          "name": "word",
+          "content": {
+            "type": "SYMBOL",
+            "name": "WORD"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_IS"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_alphabet_definition"
+          }
+        }
+      ]
+    },
+    "_alphabet_definition": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "NATIVE"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "STANDARD_1"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "STANDARD_2"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "EBCDIC"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "alphabet_literal"
+          }
+        }
+      ]
+    },
+    "alphabet_literal": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_alphabet_lits"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "ALSO"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_alphabet_lits"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_alphabet_lits"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "THRU"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_alphabet_lits"
+            }
+          ]
+        }
+      ]
+    },
+    "_alphabet_lits": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "LITERAL"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "SPACE"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "ZERO"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "QUOTE"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "HIGH_VALUE"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "LOW_VALUE"
+        }
+      ]
     },
     "symbolic_characters_clause": {
       "type": "PATTERN",
