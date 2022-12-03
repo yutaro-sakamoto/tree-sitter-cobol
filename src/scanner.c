@@ -1,6 +1,8 @@
 #include <tree_sitter/parser.h>
+#include <ctype.h>
 
 enum TokenType {
+    WHITE_SPACES,
     LINE_PREFIX_COMMENT,
     LINE_SUFFIX_COMMENT,
     LINE_COMMENT,
@@ -12,13 +14,19 @@ void *tree_sitter_COBOL_external_scanner_create() {
 
 bool tree_sitter_COBOL_external_scanner_scan(void *payload, TSLexer *lexer,
                                             const bool *valid_symbols) {
-
-    if(lexer->lookahead == '\n') {
-        lexer->advance(lexer, true);
-    }
-
     if(lexer->lookahead == 0) {
         return false;
+    }
+
+    if(valid_symbols[WHITE_SPACES]) {
+        if(isspace(lexer->lookahead)) {
+            while(isspace(lexer->lookahead)) {
+                lexer->advance(lexer, true);
+            }
+            lexer->result_symbol = WHITE_SPACES;
+            lexer->mark_end(lexer);
+            return true;
+        }
     }
 
     if(valid_symbols[LINE_PREFIX_COMMENT] && lexer->get_column(lexer) <= 5) {
@@ -47,7 +55,7 @@ bool tree_sitter_COBOL_external_scanner_scan(void *payload, TSLexer *lexer,
         }
     }
 
-    /*if(valid_symbols[LINE_SUFFIX_COMMENT]) {
+    if(valid_symbols[LINE_SUFFIX_COMMENT]) {
         if(lexer->get_column(lexer) >= 72) {
             while(lexer->lookahead != '\n' && lexer->lookahead != 0) {
                 lexer->advance(lexer, true);
@@ -56,7 +64,7 @@ bool tree_sitter_COBOL_external_scanner_scan(void *payload, TSLexer *lexer,
             lexer->mark_end(lexer);
             return true;
         }
-    }*/
+    }
 
     return false;
 }

@@ -8,7 +8,8 @@
     "build": "tree-sitter generate && node-gyp build",
     "t": "tree-sitter parse a.cbl",
     "c": "cobc -fsyntax-only a.cbl",
-    "nist": "sh run_nist_cobol85.sh"
+    "nist": "sh run_nist_cobol85.sh",
+    "ct": "cd test && bash check_tests.sh"
   },
   "repository": {
     "type": "git",

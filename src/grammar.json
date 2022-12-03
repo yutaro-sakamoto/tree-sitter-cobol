@@ -11211,6 +11211,10 @@
   "extras": [
     {
       "type": "SYMBOL",
+      "name": "_WHITE_SPACES"
+    },
+    {
+      "type": "SYMBOL",
       "name": "_LINE_PREFIX_COMMENT"
     },
     {
@@ -11220,15 +11224,15 @@
     {
       "type": "SYMBOL",
       "name": "_LINE_COMMENT"
-    },
-    {
-      "type": "PATTERN",
-      "value": "[ \\t\\r\\n]+"
     }
   ],
   "conflicts": [],
   "precedences": [],
   "externals": [
+    {
+      "type": "SYMBOL",
+      "name": "_WHITE_SPACES"
+    },
     {
       "type": "SYMBOL",
       "name": "_LINE_PREFIX_COMMENT"
