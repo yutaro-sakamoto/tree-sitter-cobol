@@ -4,8 +4,11 @@
   "description": "COBOL grammar for tree-sitter",
   "main": "bindings/node",
   "scripts": {
-    "test": "tree-sitter parse a.cbl",
-    "build": "tree-sitter generate && node-gyp build"
+    "test": "tree-sitter test",
+    "build": "tree-sitter generate && node-gyp build",
+    "t": "tree-sitter parse a.cbl",
+    "c": "cobc -fsyntax-only a.cbl",
+    "nist": "sh run_nist_cobol85.sh"
   },
   "repository": {
     "type": "git",
