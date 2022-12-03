@@ -1,8 +1,9 @@
        identification division.
        program-id. a.
+       data division.
+       working-storage section.
+       01 n pic 9.
        procedure division.
-       evaluate 1 also 2
-       when 1 also 2
-         go to aa
-       end-evaluate.
-       aa.
+         go to bb-1 bb-2 depending on n.
+       bb-1.
+       bb-2.
