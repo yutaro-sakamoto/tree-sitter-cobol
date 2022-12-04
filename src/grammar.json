@@ -7046,7 +7046,7 @@
               "name": "times",
               "content": {
                 "type": "SYMBOL",
-                "name": "id_or_lit_or_func"
+                "name": "_id_or_lit_or_func"
               }
             },
             {
@@ -7144,7 +7144,7 @@
         }
       ]
     },
-    "id_or_lit_or_func": {
+    "_id_or_lit_or_func": {
       "type": "CHOICE",
       "members": [
         {

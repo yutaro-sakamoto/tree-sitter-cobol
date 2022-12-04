@@ -2756,53 +2756,6 @@
     }
   },
   {
-    "type": "id_or_lit_or_func",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "function_",
-          "named": true
-        },
-        {
-          "type": "h_string",
-          "named": true
-        },
-        {
-          "type": "n_string",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "qualified_word",
-          "named": true
-        },
-        {
-          "type": "refmod",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "subref",
-          "named": true
-        },
-        {
-          "type": "x_string",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "identification_division",
     "named": true,
     "fields": {},
@@ -4073,11 +4026,43 @@
         ]
       },
       "times": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
           {
-            "type": "id_or_lit_or_func",
+            "type": "function_",
+            "named": true
+          },
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          },
+          {
+            "type": "x_string",
             "named": true
           }
         ]

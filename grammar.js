@@ -1263,12 +1263,8 @@ module.exports = grammar({
           field('option', optional($.perform_option))
         ),
         seq(
-          field('option', $.perform_option),
+          field('option', optional($.perform_option)),
           field('statements', repeat($._statement)),
-          optional($._END_PERFORM)
-        ),
-        seq(
-          field('statements', repeat1($._statement)),
           optional($._END_PERFORM)
         ),
         seq(
@@ -1285,12 +1281,12 @@ module.exports = grammar({
 
     perform_option: $ => choice(
       $.FOREVER,
-      seq(field('times', $.id_or_lit_or_func), $._TIMES),
+      seq(field('times', $._id_or_lit_or_func), $._TIMES),
       seq(field('test', optional($.perform_test)), $._UNTIL, field('until', $.expr)),
       seq(field('test', optional($.perform_test)), $._VARYING, field('varying', sepBy($.perform_varying, $._AFTER)))
     ),
 
-    id_or_lit_or_func: $ => choice(
+    _id_or_lit_or_func: $ => choice(
       $._identifier,
       $._LITERAL,
       $.function_
