@@ -927,7 +927,7 @@ module.exports = grammar({
       $.move_statement,
       //$.multiply_statement,
       $.open_statement,
-      //$.perform_statement,
+      $.perform_statement,
       //$.read_statement,
       //$.release_statement,
       //$.return_statement,
@@ -1253,6 +1253,63 @@ module.exports = grammar({
         seq(optional($._WITH), $.NO, $.REWIND),
         seq(optional($._WITH), $.LOCK)
       )))
+    ),
+
+    perform_statement: $ => prec.right(seq(
+      $._PERFORM,
+      choice(
+        seq(
+          field('procedure', $.perform_procedure),
+          field('option', optional($.perform_option))
+        ),
+        seq(
+          field('option', $.perform_option),
+          field('statements', repeat($._statement)),
+          optional($._END_PERFORM)
+        ),
+        seq(
+          field('statements', repeat1($._statement)),
+          optional($._END_PERFORM)
+        ),
+        seq(
+          field('option', $.perform_option),
+          $._END_PERFORM
+        )
+      )
+    )),
+
+    perform_procedure: $ => seq(
+      $.label,
+      optional(seq($.THRU, $.label)),
+    ),
+
+    perform_option: $ => choice(
+      $.FOREVER,
+      seq(field('times', $.id_or_lit_or_func), $._TIMES),
+      seq(field('test', optional($.perform_test)), $._UNTIL, field('until', $.expr)),
+      seq(field('test', optional($.perform_test)), $._VARYING, field('varying', sepBy($.perform_varying, $._AFTER)))
+    ),
+
+    id_or_lit_or_func: $ => choice(
+      $._identifier,
+      $._LITERAL,
+      $.function_
+    ),
+
+    perform_test: $ => seq(
+      optional($._WITH),
+      $._TEST,
+      choice($.BEFORE, $.AFTER)
+    ),
+
+    perform_varying: $ => seq(
+      $._identifier,
+      $._FROM,
+      field('from', $._x),
+      $._BY,
+      field('by', $._x),
+      $._UNTIL,
+      field('until', $.expr),
     ),
 
     _basic_literal: $ => sepBy(

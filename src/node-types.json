@@ -1,5 +1,10 @@
 [
   {
+    "type": "AFTER",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "ALL",
     "named": true,
     "fields": {}
@@ -46,6 +51,11 @@
   },
   {
     "type": "BACKGROUND_COLOR",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "BEFORE",
     "named": true,
     "fields": {}
   },
@@ -186,6 +196,11 @@
   },
   {
     "type": "FOREGROUND_COLOR",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "FOREVER",
     "named": true,
     "fields": {}
   },
@@ -1897,6 +1912,10 @@
             "named": true
           },
           {
+            "type": "perform_statement",
+            "named": true
+          },
+          {
             "type": "stop_statement",
             "named": true
           }
@@ -1960,6 +1979,10 @@
           },
           {
             "type": "open_statement",
+            "named": true
+          },
+          {
+            "type": "perform_statement",
             "named": true
           },
           {
@@ -2733,6 +2756,53 @@
     }
   },
   {
+    "type": "id_or_lit_or_func",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "function_",
+          "named": true
+        },
+        {
+          "type": "h_string",
+          "named": true
+        },
+        {
+          "type": "n_string",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "qualified_word",
+          "named": true
+        },
+        {
+          "type": "refmod",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "subref",
+          "named": true
+        },
+        {
+          "type": "x_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "identification_division",
     "named": true,
     "fields": {},
@@ -2798,6 +2868,10 @@
             "named": true
           },
           {
+            "type": "perform_statement",
+            "named": true
+          },
+          {
             "type": "stop_statement",
             "named": true
           }
@@ -2833,6 +2907,10 @@
           },
           {
             "type": "open_statement",
+            "named": true
+          },
+          {
+            "type": "perform_statement",
             "named": true
           },
           {
@@ -3810,6 +3888,10 @@
           "named": true
         },
         {
+          "type": "perform_statement",
+          "named": true
+        },
+        {
           "type": "stop_statement",
           "named": true
         }
@@ -3975,6 +4057,358 @@
     "type": "paragraph_header",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "perform_option",
+    "named": true,
+    "fields": {
+      "test": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "perform_test",
+            "named": true
+          }
+        ]
+      },
+      "times": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "id_or_lit_or_func",
+            "named": true
+          }
+        ]
+      },
+      "until": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "varying": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "perform_varying",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "FOREVER",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "perform_procedure",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "THRU",
+          "named": true
+        },
+        {
+          "type": "label",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "perform_statement",
+    "named": true,
+    "fields": {
+      "option": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "perform_option",
+            "named": true
+          }
+        ]
+      },
+      "procedure": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "perform_procedure",
+            "named": true
+          }
+        ]
+      },
+      "statements": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "close_statement",
+            "named": true
+          },
+          {
+            "type": "display_statement",
+            "named": true
+          },
+          {
+            "type": "evaluate_statement",
+            "named": true
+          },
+          {
+            "type": "goto_statement",
+            "named": true
+          },
+          {
+            "type": "if_statement",
+            "named": true
+          },
+          {
+            "type": "move_statement",
+            "named": true
+          },
+          {
+            "type": "open_statement",
+            "named": true
+          },
+          {
+            "type": "perform_statement",
+            "named": true
+          },
+          {
+            "type": "stop_statement",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "perform_test",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "AFTER",
+          "named": true
+        },
+        {
+          "type": "BEFORE",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "perform_varying",
+    "named": true,
+    "fields": {
+      "by": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "ALL",
+            "named": true
+          },
+          {
+            "type": "HIGH_VALUE",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE",
+            "named": true
+          },
+          {
+            "type": "QUOTE",
+            "named": true
+          },
+          {
+            "type": "SPACE",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL",
+            "named": true
+          },
+          {
+            "type": "ZERO",
+            "named": true
+          },
+          {
+            "type": "function_",
+            "named": true
+          },
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "linage_counter",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
+          }
+        ]
+      },
+      "from": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "ALL",
+            "named": true
+          },
+          {
+            "type": "HIGH_VALUE",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE",
+            "named": true
+          },
+          {
+            "type": "QUOTE",
+            "named": true
+          },
+          {
+            "type": "SPACE",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL",
+            "named": true
+          },
+          {
+            "type": "ZERO",
+            "named": true
+          },
+          {
+            "type": "function_",
+            "named": true
+          },
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "linage_counter",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
+          }
+        ]
+      },
+      "until": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "qualified_word",
+          "named": true
+        },
+        {
+          "type": "refmod",
+          "named": true
+        },
+        {
+          "type": "subref",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "picture_9",
@@ -4399,6 +4833,10 @@
           "named": true
         },
         {
+          "type": "perform_statement",
+          "named": true
+        },
+        {
           "type": "section_header",
           "named": true
         },
@@ -4451,6 +4889,10 @@
         },
         {
           "type": "paragraph_header",
+          "named": true
+        },
+        {
+          "type": "perform_statement",
           "named": true
         },
         {
