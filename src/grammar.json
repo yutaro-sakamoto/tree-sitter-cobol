@@ -2195,6 +2195,10 @@
               "name": "_SECTION"
             },
             {
+              "type": "STRING",
+              "value": "."
+            },
+            {
               "type": "REPEAT",
               "content": {
                 "type": "SYMBOL",
@@ -2285,6 +2289,10 @@
             "type": "SYMBOL",
             "name": "file_description_clause"
           }
+        },
+        {
+          "type": "STRING",
+          "value": "."
         }
       ]
     },
@@ -6922,8 +6930,16 @@
                     "type": "FIELD",
                     "name": "option",
                     "content": {
-                      "type": "SYMBOL",
-                      "name": "perform_option"
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "perform_option"
+                        },
+                        {
+                          "type": "BLANK"
+                        }
+                      ]
                     }
                   },
                   {
@@ -6931,34 +6947,6 @@
                     "name": "statements",
                     "content": {
                       "type": "REPEAT",
-                      "content": {
-                        "type": "SYMBOL",
-                        "name": "_statement"
-                      }
-                    }
-                  },
-                  {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "SYMBOL",
-                        "name": "_END_PERFORM"
-                      },
-                      {
-                        "type": "BLANK"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "FIELD",
-                    "name": "statements",
-                    "content": {
-                      "type": "REPEAT1",
                       "content": {
                         "type": "SYMBOL",
                         "name": "_statement"

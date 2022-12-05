@@ -474,6 +474,7 @@ module.exports = grammar({
       seq(
         $._FILE,
         $._SECTION,
+        '.',
         repeat($.file_description)
       ),
       seq(
@@ -499,7 +500,8 @@ module.exports = grammar({
 
     file_description_entry: $ => seq(
       $.WORD,
-      repeat($.file_description_clause)
+      repeat($.file_description_clause),
+      '.'
     ),
 
     file_description_clause: $ => choice(
