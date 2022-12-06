@@ -875,7 +875,6 @@ module.exports = grammar({
     _procedure: $ => choice(
       $.section_header,
       $.paragraph_header,
-      $.invalid_statement,
       seq($._statement, '.')
     ),
 
@@ -889,10 +888,6 @@ module.exports = grammar({
     paragraph_header: $ => seq(
       field('name', $._WORD),
       '.'
-    ),
-
-    invalid_statement: $ => seq(
-      field('name', $._WORD)
     ),
 
     nested_prog: $ => /todo_nested_prog/,
@@ -948,7 +943,7 @@ module.exports = grammar({
       //$.unlock_statement,
       //$.unstring_statement,
       //$.use_statement,
-      //$.write_statement,
+      $.write_statement,
       //$.NEXT_SENTENCE,
     ),
 
@@ -1083,7 +1078,7 @@ module.exports = grammar({
       $.FALSE
     ),
 
-    evaluate_other: $ => prec.left(seq(
+    evaluate_other: $ => prec.right(seq(
       $._WHEN_OTHER,
       field('statement', repeat($._statement))
     )),
@@ -1100,7 +1095,7 @@ module.exports = grammar({
     ),
 
     //todo add error if statement (see cobc/parser.y)
-    if_statement: $ => prec.left(seq(
+    if_statement: $ => prec.right(seq(
       $._IF,
       field('condition', $.expr),
       optional($._THEN),
@@ -1109,7 +1104,7 @@ module.exports = grammar({
       optional($._END_IF)
     )),
 
-    _if_else_sentense: $ => prec.left(seq(
+    _if_else_sentense: $ => prec.right(seq(
       $._ELSE,
       repeat($._statement)
     )),
@@ -1310,6 +1305,68 @@ module.exports = grammar({
       field('until', $.expr),
     ),
 
+    write_statement: $ => prec.right(seq(
+      $._WRITE,
+      field('record_name', $.qualified_word),
+      field('from', optional(seq($._FROM, $._id_or_lit))),
+      field('lock', optional(choice($.write_lock, $.write_no_lock))),
+      field('option', optional($.write_option)),
+      // TODO: if add the handler syntax, the compilation time increases rapidly
+      // field('handler', optional($._write_handler)),
+      optional($._END_WRITE)
+    )),
+
+    write_lock: $ => seq(
+      optional($._WITH),
+      $._LOCK
+    ),
+
+    write_no_lock: $ => seq(
+      optional($._WITH),
+      $._NO,
+      $._LOCK
+    ),
+
+    write_option: $ => choice(
+      seq(
+        choice($.BEFORE, $.AFTER),
+        optional($._ADVANCING),
+        $._num_or_id_or_lit,
+        optional(choice($._LINE, $._LINES))
+      ),
+      seq(
+        choice($.BEFORE, $.AFTER),
+        optional($._ADVANCING),
+        $.MNEMONIC_NAME,
+      ),
+      seq(
+        choice($.BEFORE, $.AFTER),
+        optional($._ADVANCING),
+        $.PAGE,
+      ),
+    ),
+
+    /*_write_handler: $ => choice(
+      $._at_eop,
+      $._invalid_key,
+    ),
+
+    _at_eop: $ => prec.right(choice(
+      seq($.eop, optional($.not_eop)),
+      $.not_eop,
+    )),
+
+    eop: $ => prec.right(seq($._EOP, repeat($._statement))),
+    not_eop: $ => prec.right(seq($._NOT_EOP, repeat($._statement))),
+
+    _invalid_key: $ => prec.right(choice(
+      seq($.invalid_key, optional($.not_invalid_key)),
+      $.not_invalid_key,
+    )),
+
+    invalid_key: $ => prec.right(seq($._INVALID_KEY, repeat($._statement))),
+    not_invalid_key: $ => prec.right(seq($._NOT_INVALID_KEY, repeat($._statement))),*/
+
     _basic_literal: $ => sepBy(
       $._basic_value,
       '&'
@@ -1427,6 +1484,7 @@ module.exports = grammar({
       /NX"[^"\n]*"/,
     ),
 
+    _WRITE: $ => /[wW][rR][iI][tT][eE]/,
     _ACCEPT: $ => /[aA][cC][cC][eE][pP][tT]/,
     _ACCESS: $ => /[aA][cC][cC][eE][sS][sS]/,
     _ADD: $ => /[aA][dD][dD]/,
@@ -1578,7 +1636,7 @@ module.exports = grammar({
     _ENVIRONMENT_NAME: $ => /[eE][nN][vV][iI][rR][oO][nN][mM][eE][nN][tT]-[nN][aA][mM][eE]/,
     _ENVIRONMENT_VALUE: $ => /[eE][nN][vV][iI][rR][oO][nN][mM][eE][nN][tT]-[vV][aA][lL][uU][eE]/,
     _EOL: $ => /[eE][oO][lL]/,
-    _EOP: $ => /[eE][oO][pP]/,
+    _EOP: $ => /([aA][tT][ \t\n]+)?([eE][oO][pP]|[eE][nN][dD]-[oO][fF]-[pP][aA][gG][eE])/,
     _EOS: $ => /[eE][oO][sS]/,
     _EQUAL: $ => /[eE][qQ][uU][aA][lL]/,
     _EQUALS: $ => /[eE][qQ][uU][aA][lL][sS]/,
@@ -1696,7 +1754,7 @@ module.exports = grammar({
     _NOMINAL: $ => /[nN][oO][mM][iI][nN][aA][lL]/,
     _NOT: $ => /[nN][oO][tT]/,
     _NOT_END: $ => /[nN][oO][tT]-[eE][nN][dD]/,
-    _NOT_EOP: $ => /[nN][oO][tT]-[eE][oO][pP]/,
+    _NOT_EOP: $ => /[nN][oO][tT][ \t\n]+([aA][tT][ \t\n]+)?([eE][oO][pP]|[eE][nN][dD]-[oO][fF]-[pP][aA][gG][eE])/,
     _NOT_EXCEPTION: $ => /[nN][oO][tT]-[eE][xX][cC][eE][pP][tT][iI][oO][nN]/,
     _NOT_INVALID_KEY: $ => /[nN][oO][tT]-[iI][nN][vV][aA][lL][iI][dD]-[kK][eE][yY]/,
     _NOT_OVERFLOW: $ => /[nN][oO][tT]-[oO][vV][eE][rR][fF][lL][oO][wW]/,
@@ -1878,7 +1936,6 @@ module.exports = grammar({
     _WORD: $ => /[a-zA-z_][a-zA-Z0-9_\-]*/,
     _WORDS: $ => /[wW][oO][rR][dD][sS]/,
     _WORKING_STORAGE: $ => /[wW][oO][rR][kK][iI][nN][gG]-[sS][tT][oO][rR][aA][gG][eE]/,
-    _WRITE: $ => /[wW][rR][iI][tT][eE]/,
     _YYYYDDD: $ => /[yY][yY][yY][yY][dD][dD][dD]/,
     _YYYYMMDD: $ => /[yY][yY][yY][yY][mM][mM][dD][dD]/,
     _ZERO: $ => choice('zero', 'ZERO', 'Zero'),
