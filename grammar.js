@@ -799,10 +799,12 @@ module.exports = grammar({
 
     picture_9: $ => choice(
       $._picture_9_z,
-      $._picture_9_v,
+      $._picture_9_v_1,
+      $._picture_9_v_2,
     ),
     _picture_9_z: $ => /[sS]?(9(\([0-9]+\))?)+([zZ](\([0-9]+\))?)+/,
-    _picture_9_v: $ => /[sS]?(9(\([0-9]+\))?)+([vV](9(\([0-9]+\))?)+)?/,
+    _picture_9_v_1: $ => /[sS]?([pP9](\([0-9]+\))?)+([vV]([pP9](\([0-9]+\))?)+)?/,
+    _picture_9_v_2: $ => /[sS]?[vV]([pP9](\([0-9]+\))?)+/,
 
     usage_clause: $ => /todo_usage_clause/,
     sign_clause: $ => /todo_sign_clause/,

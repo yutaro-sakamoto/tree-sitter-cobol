@@ -3977,7 +3977,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_picture_9_v"
+          "name": "_picture_9_v_1"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_picture_9_v_2"
         }
       ]
     },
@@ -3985,9 +3989,13 @@
       "type": "PATTERN",
       "value": "[sS]?(9(\\([0-9]+\\))?)+([zZ](\\([0-9]+\\))?)+"
     },
-    "_picture_9_v": {
+    "_picture_9_v_1": {
       "type": "PATTERN",
-      "value": "[sS]?(9(\\([0-9]+\\))?)+([vV](9(\\([0-9]+\\))?)+)?"
+      "value": "[sS]?([pP9](\\([0-9]+\\))?)+([vV]([pP9](\\([0-9]+\\))?)+)?"
+    },
+    "_picture_9_v_2": {
+      "type": "PATTERN",
+      "value": "[sS]?[vV]([pP9](\\([0-9]+\\))?)+"
     },
     "usage_clause": {
       "type": "PATTERN",
