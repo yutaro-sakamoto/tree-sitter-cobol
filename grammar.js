@@ -626,8 +626,7 @@ module.exports = grammar({
     ),
 
     record_description_list: $ => seq(
-      repeat1($.data_description),
-      optional('.')
+      repeat1(seq($.data_description, '.'))
     ),
 
     working_storage_section: $ => seq(
@@ -802,8 +801,8 @@ module.exports = grammar({
       $._picture_9_z,
       $._picture_9_v,
     ),
-    _picture_9_z: $ => /(9(\([0-9]+\))?)+([zZ](\([0-9]+\))?)+/,
-    _picture_9_v: $ => /(9(\([0-9]+\))?)+([vV](9(\([0-9]+\))?)+)?/,
+    _picture_9_z: $ => /[sS]?(9(\([0-9]+\))?)+([zZ](\([0-9]+\))?)+/,
+    _picture_9_v: $ => /[sS]?(9(\([0-9]+\))?)+([vV](9(\([0-9]+\))?)+)?/,
 
     usage_clause: $ => /todo_usage_clause/,
     sign_clause: $ => /todo_sign_clause/,

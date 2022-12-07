@@ -3200,21 +3200,18 @@
         {
           "type": "REPEAT1",
           "content": {
-            "type": "SYMBOL",
-            "name": "data_description"
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "data_description"
+              },
+              {
+                "type": "STRING",
+                "value": "."
+              }
+            ]
           }
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "."
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
         }
       ]
     },
@@ -3986,11 +3983,11 @@
     },
     "_picture_9_z": {
       "type": "PATTERN",
-      "value": "(9(\\([0-9]+\\))?)+([zZ](\\([0-9]+\\))?)+"
+      "value": "[sS]?(9(\\([0-9]+\\))?)+([zZ](\\([0-9]+\\))?)+"
     },
     "_picture_9_v": {
       "type": "PATTERN",
-      "value": "(9(\\([0-9]+\\))?)+([vV](9(\\([0-9]+\\))?)+)?"
+      "value": "[sS]?(9(\\([0-9]+\\))?)+([vV](9(\\([0-9]+\\))?)+)?"
     },
     "usage_clause": {
       "type": "PATTERN",
