@@ -3998,8 +3998,277 @@
       "value": "[sS]?[vV]([pP9](\\([0-9]+\\))?)+"
     },
     "usage_clause": {
-      "type": "PATTERN",
-      "value": "todo_usage_clause"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_USAGE"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_IS"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_usage"
+        }
+      ]
+    },
+    "_usage": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "BINARY"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "COMPUTATIONAL"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "COMP_1"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "COMP_2"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "COMP_3"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "COMP_4"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "COMP_5"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "COMP_X"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "DISPLAY"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "INDEX"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "PACKED_DECIMAL"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "POINTER"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "PROGRAM_POINTER"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "SIGNED_SHORT"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "SIGNED_INT"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "SIGNED_LONG"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "UNSIGNED_SHORT"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "UNSIGNED_INT"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "UNSIGNED_LONG"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "BINARY_CHAR"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "SIGNED"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "BINARY_CHAR"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "UNSIGNED"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "BINARY_CHAR"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "BINARY_SHORT"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "SIGNED"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "BINARY_SHORT"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "UNSIGNED"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "BINARY_SHORT"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "BINARY_LONG"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "SIGNED"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "BINARY_LONG"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "UNSIGNED"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "BINARY_LONG"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "BINARY_DOUBLE"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "SIGNED"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "BINARY_DOUBLE"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "UNSIGNED"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "BINARY_DOUBLE"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "BINARY_C_LONG"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "SIGNED"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "BINARY_C_LONG"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "UNSIGNED"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "BINARY_C_LONG"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "NATIONAL"
+        }
+      ]
     },
     "sign_clause": {
       "type": "PATTERN",
@@ -11988,6 +12257,14 @@
     "ZERO": {
       "type": "SYMBOL",
       "name": "_ZERO"
+    },
+    "COMPUTATIONAL": {
+      "type": "SYMBOL",
+      "name": "_COMPUTATIONAL"
+    },
+    "_COMPUTATIONAL": {
+      "type": "PATTERN",
+      "value": "[cC][oO][mM][pP][uU][tT][aA][tT][iI][oO][nN][aA][lL]"
     }
   },
   "extras": [

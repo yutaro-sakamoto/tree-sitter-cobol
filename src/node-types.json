@@ -65,6 +65,36 @@
     "fields": {}
   },
   {
+    "type": "BINARY",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "BINARY_CHAR",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "BINARY_C_LONG",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "BINARY_DOUBLE",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "BINARY_LONG",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "BINARY_SHORT",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "BLANK_LINE",
     "named": true,
     "fields": {}
@@ -91,6 +121,41 @@
   },
   {
     "type": "CLASS_NAME",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "COMPUTATIONAL",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "COMP_1",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "COMP_2",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "COMP_3",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "COMP_4",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "COMP_5",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "COMP_X",
     "named": true,
     "fields": {}
   },
@@ -230,6 +295,11 @@
     "fields": {}
   },
   {
+    "type": "INDEX",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "INDEXED",
     "named": true,
     "fields": {}
@@ -331,6 +401,11 @@
     "fields": {}
   },
   {
+    "type": "NATIONAL",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "NATIVE",
     "named": true,
     "fields": {}
@@ -406,7 +481,17 @@
     "fields": {}
   },
   {
+    "type": "PACKED_DECIMAL",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "PAGE",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "POINTER",
     "named": true,
     "fields": {}
   },
@@ -417,6 +502,11 @@
   },
   {
     "type": "PRINTER",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "PROGRAM_POINTER",
     "named": true,
     "fields": {}
   },
@@ -487,6 +577,26 @@
   },
   {
     "type": "SEQUENTIAL",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "SIGNED",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "SIGNED_INT",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "SIGNED_LONG",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "SIGNED_SHORT",
     "named": true,
     "fields": {}
   },
@@ -567,6 +677,21 @@
   },
   {
     "type": "UNSIGNED",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "UNSIGNED_INT",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "UNSIGNED_LONG",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "UNSIGNED_SHORT",
     "named": true,
     "fields": {}
   },
@@ -6101,6 +6226,125 @@
     }
   },
   {
+    "type": "usage_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "BINARY",
+          "named": true
+        },
+        {
+          "type": "BINARY_CHAR",
+          "named": true
+        },
+        {
+          "type": "BINARY_C_LONG",
+          "named": true
+        },
+        {
+          "type": "BINARY_DOUBLE",
+          "named": true
+        },
+        {
+          "type": "BINARY_LONG",
+          "named": true
+        },
+        {
+          "type": "BINARY_SHORT",
+          "named": true
+        },
+        {
+          "type": "COMPUTATIONAL",
+          "named": true
+        },
+        {
+          "type": "COMP_1",
+          "named": true
+        },
+        {
+          "type": "COMP_2",
+          "named": true
+        },
+        {
+          "type": "COMP_3",
+          "named": true
+        },
+        {
+          "type": "COMP_4",
+          "named": true
+        },
+        {
+          "type": "COMP_5",
+          "named": true
+        },
+        {
+          "type": "COMP_X",
+          "named": true
+        },
+        {
+          "type": "DISPLAY",
+          "named": true
+        },
+        {
+          "type": "INDEX",
+          "named": true
+        },
+        {
+          "type": "NATIONAL",
+          "named": true
+        },
+        {
+          "type": "PACKED_DECIMAL",
+          "named": true
+        },
+        {
+          "type": "POINTER",
+          "named": true
+        },
+        {
+          "type": "PROGRAM_POINTER",
+          "named": true
+        },
+        {
+          "type": "SIGNED",
+          "named": true
+        },
+        {
+          "type": "SIGNED_INT",
+          "named": true
+        },
+        {
+          "type": "SIGNED_LONG",
+          "named": true
+        },
+        {
+          "type": "SIGNED_SHORT",
+          "named": true
+        },
+        {
+          "type": "UNSIGNED",
+          "named": true
+        },
+        {
+          "type": "UNSIGNED_INT",
+          "named": true
+        },
+        {
+          "type": "UNSIGNED_LONG",
+          "named": true
+        },
+        {
+          "type": "UNSIGNED_SHORT",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "value_clause",
     "named": true,
     "fields": {},
@@ -6751,10 +6995,6 @@
   },
   {
     "type": "synchronized_clause",
-    "named": true
-  },
-  {
-    "type": "usage_clause",
     "named": true
   },
   {

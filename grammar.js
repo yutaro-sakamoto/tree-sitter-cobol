@@ -806,7 +806,49 @@ module.exports = grammar({
     _picture_9_v_1: $ => /[sS]?([pP9](\([0-9]+\))?)+([vV]([pP9](\([0-9]+\))?)+)?/,
     _picture_9_v_2: $ => /[sS]?[vV]([pP9](\([0-9]+\))?)+/,
 
-    usage_clause: $ => /todo_usage_clause/,
+    usage_clause: $ => seq(
+      optional(seq($._USAGE, optional($._IS))),
+      $._usage
+    ),
+
+    _usage: $ => choice(
+      $.BINARY,
+      $.COMPUTATIONAL,
+      $.COMP_1,
+      $.COMP_2,
+      $.COMP_3,
+      $.COMP_4,
+      $.COMP_5,
+      $.COMP_X,
+      $.DISPLAY,
+      $.INDEX,
+      $.PACKED_DECIMAL,
+      $.POINTER,
+      $.PROGRAM_POINTER,
+      $.SIGNED_SHORT,
+      $.SIGNED_INT,
+      $.SIGNED_LONG,
+      $.UNSIGNED_SHORT,
+      $.UNSIGNED_INT,
+      $.UNSIGNED_LONG,
+      seq($.BINARY_CHAR, $.SIGNED),
+      seq($.BINARY_CHAR, $.UNSIGNED),
+      $.BINARY_CHAR,
+      seq($.BINARY_SHORT, $.SIGNED),
+      seq($.BINARY_SHORT, $.UNSIGNED),
+      $.BINARY_SHORT,
+      seq($.BINARY_LONG, $.SIGNED),
+      seq($.BINARY_LONG, $.UNSIGNED),
+      $.BINARY_LONG,
+      seq($.BINARY_DOUBLE, $.SIGNED),
+      seq($.BINARY_DOUBLE, $.UNSIGNED),
+      $.BINARY_DOUBLE,
+      seq($.BINARY_C_LONG, $.SIGNED),
+      seq($.BINARY_C_LONG, $.UNSIGNED),
+      $.BINARY_C_LONG,
+      $.NATIONAL
+    ),
+
     sign_clause: $ => /todo_sign_clause/,
     occurs_clause: $ => /todo_occurs_clause/,
     justified_clause: $ => /todo_justified_clause/,
@@ -2390,5 +2432,8 @@ module.exports = grammar({
     YYYYMMDD: $ => $._YYYYMMDD,
     ZERO: $ => $._ZERO,
 
+
+    COMPUTATIONAL: $ => $._COMPUTATIONAL,
+    _COMPUTATIONAL: $ => /[cC][oO][mM][pP][uU][tT][aA][tT][iI][oO][nN][aA][lL]/,
   }
 });

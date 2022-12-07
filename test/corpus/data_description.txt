@@ -107,3 +107,27 @@ picture decimal
             (number
               (decimal))))))
     (procedure_division)))
+====================================
+computational
+====================================
+       identification division.
+       program-id. a.
+       DATA DIVISION.                                                   
+       WORKING-STORAGE SECTION.                                         
+       77  A06THREES-DS-03V03     PICTURE SV9(5) COMPUTATIONAL.
+       PROCEDURE DIVISION.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (data_division
+      (working_storage_section
+        (data_description
+          (level_number)
+          (entry_name)
+          (picture_clause
+            (picture_9))
+          (usage_clause
+            (COMPUTATIONAL)))))
+    (procedure_division)))
