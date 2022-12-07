@@ -793,6 +793,7 @@ module.exports = grammar({
     _picture_string: $ => choice(
       $.picture_x,
       $.picture_9,
+      $.picture_a,
     ),
 
     picture_x: $ => /([xX](\([0-9]+\))?)+/,
@@ -805,6 +806,8 @@ module.exports = grammar({
     _picture_9_z: $ => /[sS]?(9(\([0-9]+\))?)+([zZ](\([0-9]+\))?)+/,
     _picture_9_v_1: $ => /[sS]?([pP9](\([0-9]+\))?)+([vV]([pP9](\([0-9]+\))?)+)?/,
     _picture_9_v_2: $ => /[sS]?[vV]([pP9](\([0-9]+\))?)+/,
+
+    picture_a: $ => /([aA](\([0-9]+\))?)+/,
 
     usage_clause: $ => seq(
       optional(seq($._USAGE, optional($._IS))),

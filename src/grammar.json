@@ -3961,6 +3961,10 @@
         {
           "type": "SYMBOL",
           "name": "picture_9"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "picture_a"
         }
       ]
     },
@@ -3996,6 +4000,10 @@
     "_picture_9_v_2": {
       "type": "PATTERN",
       "value": "[sS]?[vV]([pP9](\\([0-9]+\\))?)+"
+    },
+    "picture_a": {
+      "type": "PATTERN",
+      "value": "([aA](\\([0-9]+\\))?)+"
     },
     "usage_clause": {
       "type": "SEQ",
