@@ -2,7 +2,7 @@
 comment
 ====================================
 aaaaaa identification division.
-aaaaaa program-id. a.                                                   aaaaa
+aaaaaa program-id. a.  ,,, ;;;                                          aaaaa
       *aaaa
 ---
 (start

@@ -12,6 +12,10 @@ void *tree_sitter_COBOL_external_scanner_create() {
     return NULL;
 }
 
+bool is_white_space(int c) {
+    return isspace(c) || c == ';' || c == ',';
+}
+
 bool tree_sitter_COBOL_external_scanner_scan(void *payload, TSLexer *lexer,
                                             const bool *valid_symbols) {
     if(lexer->lookahead == 0) {
@@ -19,8 +23,8 @@ bool tree_sitter_COBOL_external_scanner_scan(void *payload, TSLexer *lexer,
     }
 
     if(valid_symbols[WHITE_SPACES]) {
-        if(isspace(lexer->lookahead)) {
-            while(isspace(lexer->lookahead)) {
+        if(is_white_space(lexer->lookahead)) {
+            while(is_white_space(lexer->lookahead)) {
                 lexer->advance(lexer, true);
             }
             lexer->result_symbol = WHITE_SPACES;
