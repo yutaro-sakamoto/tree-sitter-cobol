@@ -811,7 +811,7 @@ module.exports = grammar({
     synchronized_clause: $ => /todo_synchronized_clause/,
     blank_clause: $ => /todo_blank_clause/,
     based_clause: $ => /todo_based_clause/,
-    value_clause: $ => /todo_value_clause/,
+    value_clause: $ => seq($._VALUE, optional($._IS), $._literal),
     renames_clause: $ => /todo_renames_clause/,
     any_length_clause: $ => /todo_any_length/,
     error: $ => /todo_error/,
@@ -1449,7 +1449,7 @@ module.exports = grammar({
     //todo
     number: $ => choice($.integer, $.decimal),
     integer: $ => /[+-]?[0-9]+/,
-    decimal: $ => /[+-]?[0-9]+\.[0-9]+/,
+    decimal: $ => /[+-]?[0-9]*\.[0-9]+/,
     _string: $ => choice(
       $.string,
       $.x_string,

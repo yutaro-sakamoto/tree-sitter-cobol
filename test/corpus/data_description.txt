@@ -56,3 +56,28 @@ file-section
       (display_statement
         (number
           (integer))))))
+====================================
+value clause
+====================================
+       identification division.
+       program-id. a.
+       DATA DIVISION.                                                   
+       WORKING-STORAGE SECTION.                                         
+       77  A06THREES-DS-03V03          PICTURE S999V999 VALUE 333.333.  
+       PROCEDURE DIVISION.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (data_division
+      (working_storage_section
+        (data_description
+          (level_number)
+          (entry_name)
+          (picture_clause
+            (picture_9))
+          (value_clause
+            (number
+              (decimal))))))
+    (procedure_division)))
