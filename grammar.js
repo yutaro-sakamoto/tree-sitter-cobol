@@ -852,7 +852,13 @@ module.exports = grammar({
       $.NATIONAL
     ),
 
-    sign_clause: $ => /todo_sign_clause/,
+    sign_clause: $ => seq(
+      optional($._SIGN),
+      optional($._IS),
+      choice($.LEADING, $.TRAILING),
+      optional(seq($.SEPARATE, optional($._CHARACTER)))
+    ),
+
     occurs_clause: $ => /todo_occurs_clause/,
     justified_clause: $ => /todo_justified_clause/,
     synchronized_clause: $ => /todo_synchronized_clause/,
