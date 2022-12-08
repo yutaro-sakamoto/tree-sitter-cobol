@@ -3953,6 +3953,52 @@
     }
   },
   {
+    "type": "occurs_clause",
+    "named": true,
+    "fields": {
+      "depending": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          }
+        ]
+      },
+      "key_spec": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "occurs_key_spec",
+            "named": true
+          }
+        ]
+      },
+      "num": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      },
+      "to": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "on_disp_exception",
     "named": true,
     "fields": {},
@@ -6992,7 +7038,7 @@
     "named": false
   },
   {
-    "type": "occurs_clause",
+    "type": "occurs_key_spec",
     "named": true
   },
   {

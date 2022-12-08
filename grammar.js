@@ -859,7 +859,17 @@ module.exports = grammar({
       optional(seq($.SEPARATE, optional($._CHARACTER)))
     ),
 
-    occurs_clause: $ => /todo_occurs_clause/,
+    occurs_clause: $ => seq(
+      $._OCCURS,
+      field('num', $.integer),
+      field('to', optional(seq($._TO, $.integer))),
+      optional($._TIMES),
+      field('depending', optional(seq($._DEPENDING, optional($._ON), $.qualified_word))),
+      field('key_spec', optional($.occurs_key_spec)),
+    ),
+
+    occurs_key_spec: $ => /todo_occurs_key_spec/,
+
     justified_clause: $ => /todo_justified_clause/,
     synchronized_clause: $ => /todo_synchronized_clause/,
     blank_clause: $ => /todo_blank_clause/,

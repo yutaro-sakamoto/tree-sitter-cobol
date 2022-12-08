@@ -4350,8 +4350,115 @@
       ]
     },
     "occurs_clause": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_OCCURS"
+        },
+        {
+          "type": "FIELD",
+          "name": "num",
+          "content": {
+            "type": "SYMBOL",
+            "name": "integer"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "to",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_TO"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "integer"
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_TIMES"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "FIELD",
+          "name": "depending",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_DEPENDING"
+                  },
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "_ON"
+                      },
+                      {
+                        "type": "BLANK"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "qualified_word"
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "key_spec",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "occurs_key_spec"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "occurs_key_spec": {
       "type": "PATTERN",
-      "value": "todo_occurs_clause"
+      "value": "todo_occurs_key_spec"
     },
     "justified_clause": {
       "type": "PATTERN",
