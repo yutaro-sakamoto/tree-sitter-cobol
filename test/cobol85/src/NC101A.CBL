@@ -812,7 +812,7 @@
 081200     PERFORM PRINT-DETAIL.                                        NC1014.2
 081300     GO TO MPY-INIT-F1-14.                                        NC1014.2
 081400 MPY-TEST-F1-13-1.                                                NC1014.2
-081500     MOVE   "MPY-TEST-F1-13-1" TO PAR-NAME                        NC1014.2
+081500     MOVE   "MPY-TEST-F1-13-1" TO PAR-NAME.                       NC1014.2
 081600     IF      WRK-XN-00001 = "0"                                   NC1014.2
 081700             PERFORM PASS                                         NC1014.2
 081800             PERFORM PRINT-DETAIL                                 NC1014.2
@@ -824,7 +824,7 @@
 082400             PERFORM PRINT-DETAIL.                                NC1014.2
 082500     ADD     1 TO REC-CT.                                         NC1014.2
 082600 MPY-TEST-F1-13-2.                                                NC1014.2
-082700     MOVE   "MPY-TEST-F1-13-2" TO PAR-NAME                        NC1014.2
+082700     MOVE   "MPY-TEST-F1-13-2" TO PAR-NAME.                       NC1014.2
 082800     IF      WRK-DS-10V00 = 1111111111                            NC1014.2
 082900             PERFORM PASS                                         NC1014.2
 083000             PERFORM PRINT-DETAIL                                 NC1014.2
@@ -1410,7 +1410,7 @@
 141000*    ==-->EXPLICIT SCOPE TERMINATOR <--==                         NC1014.2
 141100*    ==-->   SIZE ERROR CONDITION   <--==                         NC1014.2
 141200     MOVE   "IV-41 6.4.3" TO ANSI-REFERENCE.                      NC1014.2
-141300     MOVE   "MPY-TEST-F1-24" TO PAR-NAME                          NC1014.2
+141300     MOVE   "MPY-TEST-F1-24" TO PAR-NAME.                         NC1014.2
 141400     MOVE   "0" TO WRK-XN-00001.                                  NC1014.2
 141500     MOVE    A10ONES-DS-10V00 TO WRK-DS-10V00.                    NC1014.2
 141600     MOVE    0  TO WRK-DS-05V00.                                  NC1014.2
@@ -1493,7 +1493,7 @@
 149300 MPY-INIT-F1-25.                                                  NC1014.2
 149400*    ==-->EXPLICIT SCOPE TERMINATOR <--==                         NC1014.2
 149500     MOVE   "IV-41 6.4.3" TO ANSI-REFERENCE.                      NC1014.2
-149600     MOVE   "MPY-TEST-F1-25" TO PAR-NAME                          NC1014.2
+149600     MOVE   "MPY-TEST-F1-25" TO PAR-NAME.                         NC1014.2
 149700     MOVE   "1" TO WRK-XN-00001.                                  NC1014.2
 149800     MOVE   -99 TO WRK-DS-02V00.                                  NC1014.2
 149900     MOVE    0  TO WRK-DS-10V00.                                  NC1014.2
@@ -1576,7 +1576,7 @@
 157600 MPY-INIT-F1-26.                                                  NC1014.2
 157700*    ==-->EXPLICIT SCOPE TERMINATOR <--==                         NC1014.2
 157800     MOVE   "IV-41 6.4.3" TO ANSI-REFERENCE.                      NC1014.2
-157900     MOVE   "MPY-TEST-F1-26" TO PAR-NAME                          NC1014.2
+157900     MOVE   "MPY-TEST-F1-26" TO PAR-NAME.                         NC1014.2
 158000     MOVE   "0" TO WRK-XN-00001.                                  NC1014.2
 158100     MOVE    A10ONES-DS-10V00        TO WRK-DS-10V00.             NC1014.2
 158200     MOVE    0  TO WRK-DS-05V00.                                  NC1014.2
@@ -1738,7 +1738,7 @@
 173800             PERFORM PRINT-DETAIL.                                NC1014.2
 173900     ADD 1 TO REC-CT.                                             NC1014.2
 174000 MPY-TEST-F1-27-5.                                                NC1014.2
-174100     MOVE   "MPY-TEST-F1-27-5" TO PAR-NAME                        NC1014.2
+174100     MOVE   "MPY-TEST-F1-27-5" TO PAR-NAME.                       NC1014.2
 174200     IF      WRK-CS-18V00 = 000000000000000099                    NC1014.2
 174300             PERFORM PASS                                         NC1014.2
 174400             PERFORM PRINT-DETAIL                                 NC1014.2
