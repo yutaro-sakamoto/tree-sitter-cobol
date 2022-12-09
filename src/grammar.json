@@ -4964,6 +4964,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "multiply_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "open_statement"
         },
         {
@@ -7437,6 +7441,104 @@
             {
               "type": "SYMBOL",
               "name": "_identifier"
+            }
+          ]
+        }
+      ]
+    },
+    "multiply_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_MULTIPLY"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_multiply_body"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_END_MULTIPLY"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_multiply_body": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "val1",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_x"
+              }
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_BY"
+            },
+            {
+              "type": "FIELD",
+              "name": "val2",
+              "content": {
+                "type": "REPEAT1",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "arithmetic_x"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "val1",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_x"
+              }
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_BY"
+            },
+            {
+              "type": "FIELD",
+              "name": "val2",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_x"
+              }
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_GIVING"
+            },
+            {
+              "type": "FIELD",
+              "name": "giving",
+              "content": {
+                "type": "REPEAT1",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "arithmetic_x"
+                }
+              }
             }
           ]
         }

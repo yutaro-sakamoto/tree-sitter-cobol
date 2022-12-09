@@ -989,7 +989,7 @@ module.exports = grammar({
       //$.inspect_statement,
       //$.merge_statement,
       $.move_statement,
-      //$.multiply_statement,
+      $.multiply_statement,
       $.open_statement,
       $.perform_statement,
       //$.read_statement,
@@ -1347,6 +1347,31 @@ module.exports = grammar({
     _target_x: $ => choice(
       $._identifier,
       seq($._ADDRESS, optional($._OF), $._identifier)
+    ),
+
+    multiply_statement: $ => seq(
+      $._MULTIPLY,
+      $._multiply_body,
+      optional($._END_MULTIPLY)
+    ),
+
+    _multiply_body: $ => choice(
+      seq(
+        field('val1', $._x),
+        $._BY,
+        field('val2', repeat1($.arithmetic_x)),
+        //optional($.on_size_error),
+        //optional($.not_on_size_error)
+      ),
+      seq(
+        field('val1', $._x),
+        $._BY,
+        field('val2', $._x),
+        $._GIVING,
+        field('giving', repeat1($.arithmetic_x)),
+        //optional($.on_size_error),
+        //optional($.not_on_size_error)
+      )
     ),
 
     open_statement: $ => seq(
