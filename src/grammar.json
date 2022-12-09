@@ -3965,6 +3965,10 @@
         {
           "type": "SYMBOL",
           "name": "picture_a"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "picture_edit"
         }
       ]
     },
@@ -4004,6 +4008,10 @@
     "picture_a": {
       "type": "PATTERN",
       "value": "([aA](\\([0-9]+\\))?)+"
+    },
+    "picture_edit": {
+      "type": "PATTERN",
+      "value": "([aAxX9bBvVzZpP0-9()$/,*+-]|[cC][rR]|[dD][bB]|\\.[^ \\n\\t])+"
     },
     "usage_clause": {
       "type": "SEQ",

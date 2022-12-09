@@ -4627,6 +4627,10 @@
           "named": true
         },
         {
+          "type": "picture_edit",
+          "named": true
+        },
+        {
           "type": "picture_x",
           "named": true
         }
@@ -7043,6 +7047,10 @@
   },
   {
     "type": "picture_a",
+    "named": true
+  },
+  {
+    "type": "picture_edit",
     "named": true
   },
   {

@@ -330,6 +330,7 @@ alternate record
        working-storage section.
        01 b.
            03 a PIC X.
+
 ---
 (start
   (program_definition
@@ -366,6 +367,7 @@ alternate record key
        working-storage section.
        01 b.
            03 a PIC X.
+
 ---
 (start
   (program_definition
@@ -402,6 +404,7 @@ alternate record is
        working-storage section.
        01 b.
            03 a PIC X.
+
 ---
 (start
   (program_definition
@@ -438,6 +441,7 @@ alternate record key is
        working-storage section.
        01 b.
            03 a PIC X.
+
 ---
 (start
   (program_definition
@@ -474,6 +478,7 @@ alternate record duplicates
        working-storage section.
        01 b.
            03 a PIC X.
+
 ---
 (start
   (program_definition
@@ -511,6 +516,7 @@ alternate record with duplicates
        working-storage section.
        01 b.
            03 a PIC X.
+
 ---
 (start
   (program_definition
