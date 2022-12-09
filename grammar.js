@@ -1249,7 +1249,7 @@ module.exports = grammar({
       prec.left(-1, seq($._expr_calc, $.lt, $._expr_calc)),
       prec.left(-1, seq($._expr_calc, $.ge, $._expr_calc)),
       prec.left(-1, seq($._expr_calc, $.lt, $._expr_calc)),
-      prec.left(-1, seq($._expr_calc, $.NE, $._expr_calc)),
+      prec.left(-1, seq($._expr_calc, $.ne, $._expr_calc)),
     ),
 
     _expr_is: $ => choice(
@@ -1279,28 +1279,33 @@ module.exports = grammar({
 
     eq: $ => choice(
       '=',
-      seq($._EQUAL, optional($._TO)),
+      seq(optional($._IS), $._EQUAL, optional($._TO)),
       $._EQUALS
     ),
 
     gt: $ => choice(
       '>',
-      seq($.GREATER, optional($._THAN))
+      seq(optional($._IS), $.GREATER, optional($._THAN))
     ),
 
     lt: $ => choice(
       '<',
-      seq($.LESS, optional($._THAN))
+      seq(optional($._IS), $.LESS, optional($._THAN))
     ),
 
     ge: $ => choice(
       '>=',
-      seq($.GREATER, optional($._THAN), optional($._OR), $._EQUAL, optional($._TO)),
+      seq(optional($._IS), $.GREATER, optional($._THAN), optional($._OR), $._EQUAL, optional($._TO)),
     ),
 
     le: $ => choice(
       '<=',
-      seq($.LESS, optional($._THAN), optional($._OR), $._EQUAL, optional($._TO)),
+      seq(optional($._IS), $.LESS, optional($._THAN), optional($._OR), $._EQUAL, optional($._TO)),
+    ),
+
+    ne: $ => choice(
+      '!=',
+      seq(optional($._IS), $._NOT, $._EQUAL, optional($._TO)),
     ),
 
     move_statement: $ => seq(
@@ -1862,7 +1867,6 @@ module.exports = grammar({
     _NATIONAL: $ => /[nN][aA][tT][iI][oO][nN][aA][lL]/,
     _NATIONAL_EDITED: $ => /[nN][aA][tT][iI][oO][nN][aA][lL]-[eE][dD][iI][tT][eE][dD]/,
     _NATIVE: $ => /[nN][aA][tT][iI][vV][eE]/,
-    _NE: $ => /[nN][eE]/,
     _NEGATIVE: $ => /[nN][eE][gG][aA][tT][iI][vV][eE]/,
     _NEXT: $ => /[nN][eE][xX][tT]/,
     _NEXT_SENTENCE: $ => /[nN][eE][xX][tT]-[sS][eE][nN][tT][eE][nN][cC][eE]/,
@@ -2310,7 +2314,7 @@ module.exports = grammar({
     NATIONAL: $ => $._NATIONAL,
     NATIONAL_EDITED: $ => $._NATIONAL_EDITED,
     NATIVE: $ => $._NATIVE,
-    NE: $ => $._NE,
+    //NE: $ => $._NE,
     NEGATIVE: $ => $._NEGATIVE,
     NEXT: $ => $._NEXT,
     NEXT_SENTENCE: $ => $._NEXT_SENTENCE,

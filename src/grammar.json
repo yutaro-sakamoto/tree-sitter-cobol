@@ -6751,7 +6751,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "NE"
+                "name": "ne"
               },
               {
                 "type": "SYMBOL",
@@ -6905,6 +6905,18 @@
           "type": "SEQ",
           "members": [
             {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_IS"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
               "type": "SYMBOL",
               "name": "_EQUAL"
             },
@@ -6939,6 +6951,18 @@
           "type": "SEQ",
           "members": [
             {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_IS"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
               "type": "SYMBOL",
               "name": "GREATER"
             },
@@ -6969,6 +6993,18 @@
           "type": "SEQ",
           "members": [
             {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_IS"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
               "type": "SYMBOL",
               "name": "LESS"
             },
@@ -6998,6 +7034,18 @@
         {
           "type": "SEQ",
           "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_IS"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
             {
               "type": "SYMBOL",
               "name": "GREATER"
@@ -7057,6 +7105,18 @@
           "type": "SEQ",
           "members": [
             {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_IS"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
               "type": "SYMBOL",
               "name": "LESS"
             },
@@ -7083,6 +7143,52 @@
                   "type": "BLANK"
                 }
               ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_EQUAL"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_TO"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "ne": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "!="
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_IS"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_NOT"
             },
             {
               "type": "SYMBOL",
@@ -10036,10 +10142,6 @@
       "type": "PATTERN",
       "value": "[nN][aA][tT][iI][vV][eE]"
     },
-    "_NE": {
-      "type": "PATTERN",
-      "value": "[nN][eE]"
-    },
     "_NEGATIVE": {
       "type": "PATTERN",
       "value": "[nN][eE][gG][aA][tT][iI][vV][eE]"
@@ -11883,10 +11985,6 @@
     "NATIVE": {
       "type": "SYMBOL",
       "name": "_NATIVE"
-    },
-    "NE": {
-      "type": "SYMBOL",
-      "name": "_NE"
     },
     "NEGATIVE": {
       "type": "SYMBOL",

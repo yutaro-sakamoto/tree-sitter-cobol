@@ -421,11 +421,6 @@
     "fields": {}
   },
   {
-    "type": "NE",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "NEGATIVE",
     "named": true,
     "fields": {}
@@ -2537,10 +2532,6 @@
           "named": true
         },
         {
-          "type": "NE",
-          "named": true
-        },
-        {
           "type": "NEGATIVE",
           "named": true
         },
@@ -2610,6 +2601,10 @@
         },
         {
           "type": "n_string",
+          "named": true
+        },
+        {
+          "type": "ne",
           "named": true
         },
         {
@@ -4014,6 +4009,11 @@
   },
   {
     "type": "n_string",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "ne",
     "named": true,
     "fields": {}
   },
@@ -7079,6 +7079,10 @@
     "type": "x_string",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "!=",
+    "named": false
   },
   {
     "type": "&",
