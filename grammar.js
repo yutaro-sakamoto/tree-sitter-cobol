@@ -10,6 +10,7 @@ module.exports = grammar({
     $._LINE_PREFIX_COMMENT,
     $._LINE_SUFFIX_COMMENT,
     $._LINE_COMMENT,
+    $._multiline_string,
   ],
 
   extras: $ => [
@@ -1527,6 +1528,7 @@ module.exports = grammar({
     string: $ => choice(
       /'[^'\n]*'/,
       /"[^"\n]*"/,
+      $._multiline_string,
     ),
 
     x_string: $ => choice(

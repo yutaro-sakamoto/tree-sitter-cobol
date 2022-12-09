@@ -6,6 +6,7 @@ enum TokenType {
     LINE_PREFIX_COMMENT,
     LINE_SUFFIX_COMMENT,
     LINE_COMMENT,
+    multiline_string,
 };
 
 void *tree_sitter_COBOL_external_scanner_create() {
@@ -67,6 +68,47 @@ bool tree_sitter_COBOL_external_scanner_scan(void *payload, TSLexer *lexer,
             lexer->result_symbol = LINE_SUFFIX_COMMENT;
             lexer->mark_end(lexer);
             return true;
+        }
+    }
+
+    if(valid_symbols[multiline_string]) {
+        while(true) {
+            if(lexer->lookahead != '"') {
+                return false;
+            }
+            lexer->advance(lexer, false);
+            while(lexer->lookahead != '"' && lexer->lookahead != 0 && lexer->get_column(lexer) < 72) {
+                lexer->advance(lexer, false);
+            }
+            if(lexer->lookahead == '"') {
+                lexer->result_symbol = multiline_string;
+                lexer->advance(lexer, false);
+                lexer->mark_end(lexer);
+                return true;
+            }
+            while(lexer->lookahead != 0 && lexer->lookahead != '\n') {
+                lexer->advance(lexer, true);
+            }
+            if(lexer->lookahead == 0) {
+                return false;
+            }
+            lexer->advance(lexer, true);
+            int i;
+            for(i=0; i<=5; ++i) {
+                if(lexer->lookahead == 0 || lexer->lookahead == '\n') {
+                    return false;
+                }
+                lexer->advance(lexer, true);
+            }
+
+            if(lexer->lookahead != '-') {
+                return false;
+            }
+
+            lexer->advance(lexer, true);
+            while(lexer->lookahead == ' ' && lexer->get_column(lexer) < 72) {
+                lexer->advance(lexer, true);
+            }
         }
     }
 
