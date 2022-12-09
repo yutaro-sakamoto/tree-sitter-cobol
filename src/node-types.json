@@ -6890,7 +6890,15 @@
     "named": false
   },
   {
+    "type": "SPACES",
+    "named": false
+  },
+  {
     "type": "Space",
+    "named": false
+  },
+  {
+    "type": "Spaces",
     "named": false
   },
   {
@@ -7083,6 +7091,10 @@
   },
   {
     "type": "space",
+    "named": false
+  },
+  {
+    "type": "spaces",
     "named": false
   },
   {

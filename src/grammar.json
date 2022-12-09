@@ -10359,6 +10359,18 @@
         {
           "type": "STRING",
           "value": "Space"
+        },
+        {
+          "type": "STRING",
+          "value": "spaces"
+        },
+        {
+          "type": "STRING",
+          "value": "SPACES"
+        },
+        {
+          "type": "STRING",
+          "value": "Spaces"
         }
       ]
     },
