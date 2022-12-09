@@ -963,7 +963,7 @@ module.exports = grammar({
     //todo
     _statement: $ => choice(
       //$.accept_statement,
-      //$.add_statement,
+      $.add_statement,
       //$.allocate_statement,
       //$.alter_statement,
       //$.call_statement,
@@ -1018,6 +1018,49 @@ module.exports = grammar({
     stop_statement: $ => seq(
       $._STOP, $._RUN
     ),
+
+    add_statement: $ => prec.left(seq(
+      $._ADD,
+      $._add_body,
+      optional($._END_ADD)
+    )),
+
+    _add_body: $ => prec.left(choice(
+      seq(
+        field('from', repeat1($._x)),
+        $._TO,
+        field('to', repeat1($.arithmetic_x)),
+        //optional($.on_size_error),
+        //optional($.not_on_size_error)
+      ),
+      seq(
+        field('from', repeat1($._x)),
+        field('to', optional(seq($._TO, $._x))),
+        $._GIVING,
+        field('giving', repeat1($.arithmetic_x)),
+        //optional($.on_size_error),
+        //optional($.not_on_size_error)
+      ),
+      seq(
+        $.CORRESPONDING,
+        field('from', $._identifier),
+        $._TO,
+        field('to', seq($._identifier, optional($.ROUNDED))),
+        //optional($.on_size_error),
+        //optional($.not_on_size_error)
+      )
+    )),
+
+    //on_size_error: $ => prec.left(seq(
+    //  $._SIZE_ERROR,
+    //  repeat1($._statement)
+    //)),
+
+    //not_on_size_error: $ => prec.left(seq(
+    //  $._NOT_SIZE_ERROR,
+    //  repeat1($._statement)
+    //)),
+
     close_statement: $ => seq(
       $._CLOSE,
       repeat($.close_arg),
@@ -1288,6 +1331,11 @@ module.exports = grammar({
       $.function_,
       $.linage_counter,
       $._identifier,
+    ),
+
+    arithmetic_x: $ => seq(
+      $._x,
+      optional($.ROUNDED)
     ),
 
     _target_x_list: $ => repeat1($._target_x),
