@@ -1017,7 +1017,7 @@ module.exports = grammar({
     //todo
     _statement: $ => choice(
       //$.accept_statement,
-      $.add_statement,
+      $.add_statement_in_block,
       //$.allocate_statement,
       //$.alter_statement,
       //$.call_statement,
@@ -1043,7 +1043,7 @@ module.exports = grammar({
       //$.inspect_statement,
       //$.merge_statement,
       $.move_statement,
-      $.multiply_statement,
+      $.multiply_statement_in_block,
       $.open_statement,
       $.perform_statement,
       //$.read_statement,
@@ -1068,6 +1068,8 @@ module.exports = grammar({
       //$.NEXT_SENTENCE,
     ),
 
+    _statements1: $ => repeat1($._statement),
+
     //todo
     stop_statement: $ => seq(
       $._STOP, $._RUN
@@ -1076,7 +1078,17 @@ module.exports = grammar({
     add_statement: $ => prec.left(seq(
       $._ADD,
       $._add_body,
+      optional($._size_error_block),
       optional($._END_ADD)
+    )),
+
+    add_statement_in_block: $ => prec.left(seq(
+      $._ADD,
+      $._add_body,
+      optional(seq(
+        optional($._size_error_block),
+        $._END_ADD
+      ))
     )),
 
     _add_body: $ => prec.left(seq(
@@ -1099,18 +1111,18 @@ module.exports = grammar({
           field('to', seq($._identifier, optional($.ROUNDED))),
         )
       ),
-      optional(seq(
-        optional($.on_size_error),
-        optional($.not_on_size_error),
-        $._END_ADD
-      ))
     )),
+
+    _size_error_block: $ => choice(
+      seq($.on_size_error, optional($.not_on_size_error)),
+      $.not_on_size_error,
+    ),
 
     on_size_error: $ => prec.left(seq(
       $._ON,
       $._SIZE,
       $._ERROR,
-      repeat1($._statement)
+      $._statements1
     )),
 
     not_on_size_error: $ => prec.left(seq(
@@ -1118,7 +1130,7 @@ module.exports = grammar({
       $._ON,
       $._SIZE,
       $._ERROR,
-      repeat1($._statement)
+      $._statements1
     )),
 
     close_statement: $ => seq(
@@ -1175,7 +1187,7 @@ module.exports = grammar({
 
     on_disp_exception: $ => seq(
       choice($.EXCEPTION, $.NOT_EXCEPTION),
-      repeat1($._statement),
+      $._statements1,
       $._END_DISPLAY
     ),
 
@@ -1235,7 +1247,7 @@ module.exports = grammar({
 
     evaluate_case: $ => prec.left(seq(
       field('when', repeat1(seq($._WHEN, $._evaluate_object_list))),
-      field('statements', repeat1($._statement)),
+      field('statements', $._statements1),
     )),
 
     _evaluate_object_list: $ => sepBy($._evaluate_object, optional($._ALSO)),
@@ -1253,7 +1265,7 @@ module.exports = grammar({
 
     evaluate_other: $ => prec.right(seq(
       $._WHEN_OTHER,
-      field('statement', repeat1($._statement))
+      field('statement', $._statements1)
     )),
 
     goto_statement: $ => seq(
@@ -1272,13 +1284,13 @@ module.exports = grammar({
       $._IF,
       field('condition', $.expr),
       optional($._THEN),
-      field('statements', repeat1($._statement)),
+      field('statements', $._statements1),
       field('else_statements', optional($._if_else_sentense)),
     )),
 
     _if_else_sentense: $ => prec.right(seq(
       $._ELSE,
-      repeat1($._statement)
+      $._statements1
     )),
 
     expr: $ => prec.left(choice($._expr_logic, $._expr_calc)),
@@ -1411,11 +1423,21 @@ module.exports = grammar({
       seq($._ADDRESS, optional($._OF), $._identifier)
     ),
 
-    multiply_statement: $ => seq(
+    multiply_statement: $ => prec.right(seq(
       $._MULTIPLY,
       $._multiply_body,
+      optional($._size_error_block),
       optional($._END_MULTIPLY)
-    ),
+    )),
+
+    multiply_statement_in_block: $ => prec.right(seq(
+      $._MULTIPLY,
+      $._multiply_body,
+      optional(seq(
+        optional($._size_error_block),
+        $._END_MULTIPLY
+      ))
+    )),
 
     _multiply_body: $ => prec.right(seq(
       choice(
@@ -1432,13 +1454,9 @@ module.exports = grammar({
           field('giving', repeat1($.arithmetic_x)),
         )
       ),
-      choice(
-        optional($._END_MULTIPLY),
-        seq(
-          optional($.on_size_error),
-          optional($.not_on_size_error),
-          $._END_PERFORM
-        )
+      seq(
+        optional($.on_size_error),
+        optional($.not_on_size_error),
       )
     )),
 
@@ -1475,7 +1493,7 @@ module.exports = grammar({
         ),
         seq(
           field('option', optional($.perform_option)),
-          field('statements', repeat1($._statement)),
+          field('statements', $._statements1),
           $._END_PERFORM
         ),
         seq(
@@ -1564,20 +1582,20 @@ module.exports = grammar({
       $._at_eop,
       $._invalid_key,
     ),
-
+ 
     _at_eop: $ => prec.right(choice(
       seq($.eop, optional($.not_eop)),
       $.not_eop,
     )),
-
+ 
     eop: $ => prec.right(seq($._EOP, repeat($._statement))),
     not_eop: $ => prec.right(seq($._NOT_EOP, repeat($._statement))),
-
+ 
     _invalid_key: $ => prec.right(choice(
       seq($.invalid_key, optional($.not_invalid_key)),
       $.not_invalid_key,
     )),
-
+ 
     invalid_key: $ => prec.right(seq($._INVALID_KEY, repeat($._statement))),
     not_invalid_key: $ => prec.right(seq($._NOT_INVALID_KEY, repeat($._statement))),*/
 
