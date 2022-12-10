@@ -2,6 +2,13 @@ function sepBy(pattern, separator) {
   return seq(pattern, repeat(seq(separator, pattern)))
 }
 
+function nonempty(pattern1, pattern2) {
+  return choice(
+    seq(pattern1, optional(pattern2)),
+    pattern2
+  )
+}
+
 module.exports = grammar({
   name: 'COBOL',
   word: $ => $._WORD,
@@ -962,7 +969,7 @@ module.exports = grammar({
 
     _procedure_division_statement: $ => choice(
       //$.accept_statement,
-      seq($.add_statement, '.'),
+      seq($.add_statement, nonempty($._END_ADD, '.')),
       //$.allocate_statement,
       //$.alter_statement,
       //$.call_statement,
@@ -973,24 +980,24 @@ module.exports = grammar({
       //$.continue_statement,
       //$.delete_statement,
       //$.delete_file_statement,
-      seq($.display_statement, '.'),
+      seq($.display_statement, nonempty($._END_DISPLAY, '.')),
       //$.divide_statement,
       //$.entry_statement,
-      seq($.evaluate_statement, optional($._END_EVALUATE), '.'),
+      seq($.evaluate_statement, nonempty($._END_EVALUATE, '.')),
       //$.exit_statement,
       //$.free_statement,
       //$.generate_statement,
       seq($.goto_statement, '.'),
       //$.goback_statement,
-      seq($.if_statement, optional($._END_IF), '.'),
+      seq($.if_statement, nonempty($._END_IF, '.')),
       //$.initialize_statement,
       //$.initiate_statement,
       //$.inspect_statement,
       //$.merge_statement,
       seq($.move_statement, '.'),
-      seq($.multiply_statement, '.'),
+      seq($.multiply_statement, nonempty($._END_MULTIPLY, '.')),
       seq($.open_statement, '.'),
-      seq($.perform_statement, '.'),
+      seq($.perform_statement),
       //$.read_statement,
       //$.release_statement,
       //$.return_statement,
@@ -1028,7 +1035,7 @@ module.exports = grammar({
       //$.continue_statement,
       //$.delete_statement,
       //$.delete_file_statement,
-      $.display_statement,
+      $.display_statement_in_block,
       //$.divide_statement,
       //$.entry_statement,
       seq($.evaluate_statement, $._END_EVALUATE),
@@ -1045,7 +1052,7 @@ module.exports = grammar({
       $.move_statement,
       $.multiply_statement_in_block,
       $.open_statement,
-      $.perform_statement,
+      $.perform_statement_in_block,
       //$.read_statement,
       //$.release_statement,
       //$.return_statement,
@@ -1079,7 +1086,6 @@ module.exports = grammar({
       $._ADD,
       $._add_body,
       optional($._size_error_block),
-      optional($._END_ADD)
     )),
 
     add_statement_in_block: $ => prec.left(seq(
@@ -1162,7 +1168,15 @@ module.exports = grammar({
       $._display_body,
       choice(
         optional($.on_disp_exception),
-        optional($._END_IF)
+      )
+    )),
+
+    display_statement_in_block: $ => prec.right(seq(
+      $._DISPLAY,
+      $._display_body,
+      choice(
+        optional($.on_disp_exception),
+        $._END_DISPLAY
       )
     )),
 
@@ -1185,11 +1199,10 @@ module.exports = grammar({
       $._literal
     ),
 
-    on_disp_exception: $ => seq(
+    on_disp_exception: $ => prec.right(seq(
       choice($.EXCEPTION, $.NOT_EXCEPTION),
       $._statements1,
-      $._END_DISPLAY
-    ),
+    )),
 
     with_clause: $ => choice(
       seq(optional($.WITH), $.NO_ADVANCING),
@@ -1427,7 +1440,6 @@ module.exports = grammar({
       $._MULTIPLY,
       $._multiply_body,
       optional($._size_error_block),
-      optional($._END_MULTIPLY)
     )),
 
     multiply_statement_in_block: $ => prec.right(seq(
@@ -1484,6 +1496,26 @@ module.exports = grammar({
     ),
 
     perform_statement: $ => prec.right(seq(
+      $._PERFORM,
+      choice(
+        seq(
+          field('procedure', $.perform_procedure),
+          field('option', optional($.perform_option)),
+          nonempty($._END_PERFORM, '.')
+        ),
+        seq(
+          field('option', optional($.perform_option)),
+          field('statements', $._statements1),
+          $._END_PERFORM,
+          optional('.')
+        ),
+        seq(
+          field('option', $.perform_option),
+          nonempty($._END_PERFORM, '.')
+        )
+      )
+    )),
+    perform_statement_in_block: $ => prec.right(seq(
       $._PERFORM,
       choice(
         seq(
