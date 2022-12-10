@@ -4982,6 +4982,19 @@
           "members": [
             {
               "type": "SYMBOL",
+              "name": "continue_statement"
+            },
+            {
+              "type": "STRING",
+              "value": "."
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
               "name": "display_statement"
             },
             {
@@ -5245,6 +5258,10 @@
         {
           "type": "SYMBOL",
           "name": "close_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "continue_statement"
         },
         {
           "type": "SYMBOL",
@@ -5774,6 +5791,10 @@
           "name": "REMOVAL"
         }
       ]
+    },
+    "continue_statement": {
+      "type": "SYMBOL",
+      "name": "_CONTINUE"
     },
     "display_statement": {
       "type": "PREC_RIGHT",

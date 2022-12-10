@@ -977,7 +977,7 @@ module.exports = grammar({
       seq($.close_statement, '.'),
       //$.commit_statement,
       //$.compute_statement,
-      //$.continue_statement,
+      seq($.continue_statement, '.'),
       //$.delete_statement,
       //$.delete_file_statement,
       seq($.display_statement, nonempty($._END_DISPLAY, '.')),
@@ -1032,7 +1032,7 @@ module.exports = grammar({
       $.close_statement,
       //$.commit_statement,
       //$.compute_statement,
-      //$.continue_statement,
+      $.continue_statement,
       //$.delete_statement,
       //$.delete_file_statement,
       $.display_statement_in_block,
@@ -1162,6 +1162,8 @@ module.exports = grammar({
       optional($._FOR),
       $.REMOVAL
     ),
+
+    continue_statement: $ => $._CONTINUE,
 
     display_statement: $ => prec.right(seq(
       $._DISPLAY,

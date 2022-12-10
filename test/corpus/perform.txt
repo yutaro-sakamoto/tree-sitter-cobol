@@ -67,6 +67,25 @@ perform label FOREVER
           (FOREVER)))
       (paragraph_header))))
 ====================================
+perform continue
+====================================
+       identification division.
+       program-id. a.
+       procedure division.
+       perform forever
+         continue
+       end-perform.
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (procedure_division
+      (perform_statement
+        option: (perform_option
+          (FOREVER))
+        statements: (continue_statement)))))
+====================================
 perform label times
 ====================================
        identification division.
