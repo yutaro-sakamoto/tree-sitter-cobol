@@ -144,8 +144,7 @@ evaluate when when
         cases: (evaluate_case
           when: (expr
             (number
-              (integer))))
-        cases: (evaluate_case
+              (integer)))
           when: (expr
             (number
               (integer)))

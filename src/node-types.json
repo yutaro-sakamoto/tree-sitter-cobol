@@ -1207,11 +1207,19 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
           "type": "CORRESPONDING",
+          "named": true
+        },
+        {
+          "type": "not_on_size_error",
+          "named": true
+        },
+        {
+          "type": "on_size_error",
           "named": true
         }
       ]
@@ -2304,7 +2312,7 @@
     "fields": {
       "statements": {
         "multiple": true,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "add_statement",
@@ -2386,7 +2394,7 @@
     "fields": {
       "statement": {
         "multiple": true,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "add_statement",
@@ -3291,7 +3299,7 @@
       },
       "statements": {
         "multiple": true,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "add_statement",
@@ -4345,6 +4353,65 @@
     }
   },
   {
+    "type": "not_on_size_error",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "add_statement",
+          "named": true
+        },
+        {
+          "type": "close_statement",
+          "named": true
+        },
+        {
+          "type": "display_statement",
+          "named": true
+        },
+        {
+          "type": "evaluate_statement",
+          "named": true
+        },
+        {
+          "type": "goto_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "move_statement",
+          "named": true
+        },
+        {
+          "type": "multiply_statement",
+          "named": true
+        },
+        {
+          "type": "open_statement",
+          "named": true
+        },
+        {
+          "type": "perform_statement",
+          "named": true
+        },
+        {
+          "type": "stop_statement",
+          "named": true
+        },
+        {
+          "type": "write_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "number",
     "named": true,
     "fields": {},
@@ -4505,6 +4572,65 @@
           "type": "NOT_EXCEPTION",
           "named": true
         },
+        {
+          "type": "add_statement",
+          "named": true
+        },
+        {
+          "type": "close_statement",
+          "named": true
+        },
+        {
+          "type": "display_statement",
+          "named": true
+        },
+        {
+          "type": "evaluate_statement",
+          "named": true
+        },
+        {
+          "type": "goto_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "move_statement",
+          "named": true
+        },
+        {
+          "type": "multiply_statement",
+          "named": true
+        },
+        {
+          "type": "open_statement",
+          "named": true
+        },
+        {
+          "type": "perform_statement",
+          "named": true
+        },
+        {
+          "type": "stop_statement",
+          "named": true
+        },
+        {
+          "type": "write_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "on_size_error",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
         {
           "type": "add_statement",
           "named": true
