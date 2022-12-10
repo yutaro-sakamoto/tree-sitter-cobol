@@ -5416,7 +5416,15 @@
         "members": [
           {
             "type": "SYMBOL",
-            "name": "_SIZE_ERROR"
+            "name": "_ON"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_SIZE"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_ERROR"
           },
           {
             "type": "REPEAT1",
@@ -5436,7 +5444,19 @@
         "members": [
           {
             "type": "SYMBOL",
-            "name": "_NOT_SIZE_ERROR"
+            "name": "_NOT"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_ON"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_SIZE"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_ERROR"
           },
           {
             "type": "REPEAT1",
@@ -7637,77 +7657,136 @@
       ]
     },
     "_multiply_body": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "FIELD",
-              "name": "val1",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_x"
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "FIELD",
+                    "name": "val1",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_x"
+                    }
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_BY"
+                  },
+                  {
+                    "type": "FIELD",
+                    "name": "val2",
+                    "content": {
+                      "type": "REPEAT1",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "arithmetic_x"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "FIELD",
+                    "name": "val1",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_x"
+                    }
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_BY"
+                  },
+                  {
+                    "type": "FIELD",
+                    "name": "val2",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_x"
+                    }
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_GIVING"
+                  },
+                  {
+                    "type": "FIELD",
+                    "name": "giving",
+                    "content": {
+                      "type": "REPEAT1",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "arithmetic_x"
+                      }
+                    }
+                  }
+                ]
               }
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_BY"
-            },
-            {
-              "type": "FIELD",
-              "name": "val2",
-              "content": {
-                "type": "REPEAT1",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "arithmetic_x"
-                }
+            ]
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_END_MULTIPLY"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "on_size_error"
+                      },
+                      {
+                        "type": "BLANK"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "not_on_size_error"
+                      },
+                      {
+                        "type": "BLANK"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_END_PERFORM"
+                  }
+                ]
               }
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "FIELD",
-              "name": "val1",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_x"
-              }
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_BY"
-            },
-            {
-              "type": "FIELD",
-              "name": "val2",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_x"
-              }
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_GIVING"
-            },
-            {
-              "type": "FIELD",
-              "name": "giving",
-              "content": {
-                "type": "REPEAT1",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "arithmetic_x"
-                }
-              }
-            }
-          ]
-        }
-      ]
+            ]
+          }
+        ]
+      }
     },
     "open_statement": {
       "type": "SEQ",

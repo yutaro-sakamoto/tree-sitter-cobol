@@ -1107,12 +1107,17 @@ module.exports = grammar({
     )),
 
     on_size_error: $ => prec.left(seq(
-      $._SIZE_ERROR,
+      $._ON,
+      $._SIZE,
+      $._ERROR,
       repeat1($._statement)
     )),
 
     not_on_size_error: $ => prec.left(seq(
-      $._NOT_SIZE_ERROR,
+      $._NOT,
+      $._ON,
+      $._SIZE,
+      $._ERROR,
       repeat1($._statement)
     )),
 
@@ -1412,24 +1417,30 @@ module.exports = grammar({
       optional($._END_MULTIPLY)
     ),
 
-    _multiply_body: $ => choice(
-      seq(
-        field('val1', $._x),
-        $._BY,
-        field('val2', repeat1($.arithmetic_x)),
-        //optional($.on_size_error),
-        //optional($.not_on_size_error)
+    _multiply_body: $ => prec.right(seq(
+      choice(
+        seq(
+          field('val1', $._x),
+          $._BY,
+          field('val2', repeat1($.arithmetic_x)),
+        ),
+        seq(
+          field('val1', $._x),
+          $._BY,
+          field('val2', $._x),
+          $._GIVING,
+          field('giving', repeat1($.arithmetic_x)),
+        )
       ),
-      seq(
-        field('val1', $._x),
-        $._BY,
-        field('val2', $._x),
-        $._GIVING,
-        field('giving', repeat1($.arithmetic_x)),
-        //optional($.on_size_error),
-        //optional($.not_on_size_error)
+      choice(
+        optional($._END_MULTIPLY),
+        seq(
+          optional($.on_size_error),
+          optional($.not_on_size_error),
+          $._END_PERFORM
+        )
       )
-    ),
+    )),
 
     open_statement: $ => seq(
       $._OPEN,
