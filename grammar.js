@@ -1016,7 +1016,7 @@ module.exports = grammar({
       //$.unlock_statement,
       //$.unstring_statement,
       //$.use_statement,
-      seq($.write_statement, '.'),
+      seq($.write_statement, nonempty($._END_MULTIPLY, '.')),
       //$.NEXT_SENTENCE,
     ),
 
@@ -1071,7 +1071,7 @@ module.exports = grammar({
       //$.unlock_statement,
       //$.unstring_statement,
       //$.use_statement,
-      $.write_statement,
+      $.write_statement_in_block,
       //$.NEXT_SENTENCE,
     ),
 
@@ -1570,14 +1570,24 @@ module.exports = grammar({
     ),
 
     write_statement: $ => prec.right(seq(
+      $._write_statement_header,
+      field('handler', optional($._write_handler)),
+    )),
+
+    write_statement_in_block: $ => prec.right(seq(
+      $._write_statement_header,
+      choice(
+        field('handler', optional(seq($._write_handler, $._END_WRITE))),
+        optional($._END_WRITE)
+      )
+    )),
+
+    _write_statement_header: $ => prec.right(seq(
       $._WRITE,
       field('record_name', $.qualified_word),
       field('from', optional(seq($._FROM, $._id_or_lit))),
       field('lock', optional(choice($.write_lock, $.write_no_lock))),
-      field('option', optional($.write_option)),
-      // TODO: if add the handler syntax, the compilation time increases rapidly
-      // field('handler', optional($._write_handler)),
-      optional($._END_WRITE)
+      field('option', optional($.write_option))
     )),
 
     write_lock: $ => seq(
@@ -1610,26 +1620,36 @@ module.exports = grammar({
       ),
     ),
 
-    /*_write_handler: $ => choice(
-      $._at_eop,
-      $._invalid_key,
+    _write_handler: $ => nonempty(
+      nonempty($.eop, $.not_eop),
+      nonempty($.invalid_key, $.not_invalid_key),
     ),
- 
-    _at_eop: $ => prec.right(choice(
-      seq($.eop, optional($.not_eop)),
-      $.not_eop,
+
+    eop: $ => prec.right(seq(
+      $._AT,
+      choice($._EOP, $._END_OF_PAGE),
+      $._statements1
     )),
- 
-    eop: $ => prec.right(seq($._EOP, repeat($._statement))),
-    not_eop: $ => prec.right(seq($._NOT_EOP, repeat($._statement))),
- 
-    _invalid_key: $ => prec.right(choice(
-      seq($.invalid_key, optional($.not_invalid_key)),
-      $.not_invalid_key,
+
+    not_eop: $ => prec.right(seq(
+      $._NOT,
+      $._AT,
+      choice($._EOP, $._END_OF_PAGE),
+      $._statements1
     )),
- 
-    invalid_key: $ => prec.right(seq($._INVALID_KEY, repeat($._statement))),
-    not_invalid_key: $ => prec.right(seq($._NOT_INVALID_KEY, repeat($._statement))),*/
+
+    invalid_key: $ => prec.right(seq(
+      $._INVALID,
+      $._KEY,
+      $._statements1
+    )),
+
+    not_invalid_key: $ => prec.right(seq(
+      $._NOT,
+      $._INVALID,
+      $._KEY,
+      $._statements1
+    )),
 
     _basic_literal: $ => sepBy(
       $._basic_value,
@@ -1885,6 +1905,7 @@ module.exports = grammar({
     _END_FUNCTION: $ => /[eE][nN][dD]-[fF][uU][nN][cC][tT][iI][oO][nN]/,
     _END_IF: $ => /[eE][nN][dD]-[iI][fF]/,
     _END_MULTIPLY: $ => /[eE][nN][dD]-[mM][uU][lL][tT][iI][pP][lL][yY]/,
+    _END_OF_PAGE: $ => /[eE][nN][dD]-[oO][fF]-[pP][aA][gG][eE]/,
     _END_PERFORM: $ => /[eE][nN][dD]-[pP][eE][rR][fF][oO][rR][mM]/,
     _END_PROGRAM: $ => /[eE][nN][dD]-[pP][rR][oO][gG][rR][aA][mM]/,
     _END_READ: $ => /[eE][nN][dD]-[rR][eE][aA][dD]/,
@@ -2340,6 +2361,7 @@ module.exports = grammar({
     END_FUNCTION: $ => $._END_FUNCTION,
     END_IF: $ => $._END_IF,
     END_MULTIPLY: $ => $._END_MULTIPLY,
+    END_OF_PAGE: $ => $._END_OF_PAGE,
     END_PERFORM: $ => $._END_PERFORM,
     END_PROGRAM: $ => $._END_PROGRAM,
     END_READ: $ => $._END_READ,

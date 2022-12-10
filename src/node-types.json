@@ -2607,6 +2607,65 @@
     }
   },
   {
+    "type": "eop",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "add_statement_in_block",
+          "named": true
+        },
+        {
+          "type": "close_statement",
+          "named": true
+        },
+        {
+          "type": "display_statement_in_block",
+          "named": true
+        },
+        {
+          "type": "evaluate_statement",
+          "named": true
+        },
+        {
+          "type": "goto_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "move_statement",
+          "named": true
+        },
+        {
+          "type": "multiply_statement_in_block",
+          "named": true
+        },
+        {
+          "type": "open_statement",
+          "named": true
+        },
+        {
+          "type": "perform_statement_in_block",
+          "named": true
+        },
+        {
+          "type": "stop_statement",
+          "named": true
+        },
+        {
+          "type": "write_statement_in_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "eq",
     "named": true,
     "fields": {}
@@ -2664,7 +2723,7 @@
             "named": true
           },
           {
-            "type": "write_statement",
+            "type": "write_statement_in_block",
             "named": true
           }
         ]
@@ -2746,7 +2805,7 @@
             "named": true
           },
           {
-            "type": "write_statement",
+            "type": "write_statement_in_block",
             "named": true
           }
         ]
@@ -3597,7 +3656,7 @@
             "named": true
           },
           {
-            "type": "write_statement",
+            "type": "write_statement_in_block",
             "named": true
           }
         ]
@@ -3651,7 +3710,7 @@
             "named": true
           },
           {
-            "type": "write_statement",
+            "type": "write_statement_in_block",
             "named": true
           }
         ]
@@ -3672,6 +3731,65 @@
         },
         {
           "type": "select_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "invalid_key",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "add_statement_in_block",
+          "named": true
+        },
+        {
+          "type": "close_statement",
+          "named": true
+        },
+        {
+          "type": "display_statement_in_block",
+          "named": true
+        },
+        {
+          "type": "evaluate_statement",
+          "named": true
+        },
+        {
+          "type": "goto_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "move_statement",
+          "named": true
+        },
+        {
+          "type": "multiply_statement_in_block",
+          "named": true
+        },
+        {
+          "type": "open_statement",
+          "named": true
+        },
+        {
+          "type": "perform_statement_in_block",
+          "named": true
+        },
+        {
+          "type": "stop_statement",
+          "named": true
+        },
+        {
+          "type": "write_statement_in_block",
           "named": true
         }
       ]
@@ -4862,6 +4980,124 @@
     }
   },
   {
+    "type": "not_eop",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "add_statement_in_block",
+          "named": true
+        },
+        {
+          "type": "close_statement",
+          "named": true
+        },
+        {
+          "type": "display_statement_in_block",
+          "named": true
+        },
+        {
+          "type": "evaluate_statement",
+          "named": true
+        },
+        {
+          "type": "goto_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "move_statement",
+          "named": true
+        },
+        {
+          "type": "multiply_statement_in_block",
+          "named": true
+        },
+        {
+          "type": "open_statement",
+          "named": true
+        },
+        {
+          "type": "perform_statement_in_block",
+          "named": true
+        },
+        {
+          "type": "stop_statement",
+          "named": true
+        },
+        {
+          "type": "write_statement_in_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "not_invalid_key",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "add_statement_in_block",
+          "named": true
+        },
+        {
+          "type": "close_statement",
+          "named": true
+        },
+        {
+          "type": "display_statement_in_block",
+          "named": true
+        },
+        {
+          "type": "evaluate_statement",
+          "named": true
+        },
+        {
+          "type": "goto_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "move_statement",
+          "named": true
+        },
+        {
+          "type": "multiply_statement_in_block",
+          "named": true
+        },
+        {
+          "type": "open_statement",
+          "named": true
+        },
+        {
+          "type": "perform_statement_in_block",
+          "named": true
+        },
+        {
+          "type": "stop_statement",
+          "named": true
+        },
+        {
+          "type": "write_statement_in_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "not_on_size_error",
     "named": true,
     "fields": {},
@@ -4914,7 +5150,7 @@
           "named": true
         },
         {
-          "type": "write_statement",
+          "type": "write_statement_in_block",
           "named": true
         }
       ]
@@ -5126,7 +5362,7 @@
           "named": true
         },
         {
-          "type": "write_statement",
+          "type": "write_statement_in_block",
           "named": true
         }
       ]
@@ -5185,7 +5421,7 @@
           "named": true
         },
         {
-          "type": "write_statement",
+          "type": "write_statement_in_block",
           "named": true
         }
       ]
@@ -5531,7 +5767,7 @@
             "named": true
           },
           {
-            "type": "write_statement",
+            "type": "write_statement_in_block",
             "named": true
           }
         ]
@@ -5611,7 +5847,7 @@
             "named": true
           },
           {
-            "type": "write_statement",
+            "type": "write_statement_in_block",
             "named": true
           }
         ]
@@ -7958,6 +8194,160 @@
           },
           {
             "type": "x_string",
+            "named": true
+          }
+        ]
+      },
+      "handler": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "eop",
+            "named": true
+          },
+          {
+            "type": "invalid_key",
+            "named": true
+          },
+          {
+            "type": "not_eop",
+            "named": true
+          },
+          {
+            "type": "not_invalid_key",
+            "named": true
+          }
+        ]
+      },
+      "lock": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "write_lock",
+            "named": true
+          },
+          {
+            "type": "write_no_lock",
+            "named": true
+          }
+        ]
+      },
+      "option": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "write_option",
+            "named": true
+          }
+        ]
+      },
+      "record_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "write_statement_in_block",
+    "named": true,
+    "fields": {
+      "from": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "ALL",
+            "named": true
+          },
+          {
+            "type": "HIGH_VALUE",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE",
+            "named": true
+          },
+          {
+            "type": "QUOTE",
+            "named": true
+          },
+          {
+            "type": "SPACE",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL",
+            "named": true
+          },
+          {
+            "type": "ZERO",
+            "named": true
+          },
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
+          }
+        ]
+      },
+      "handler": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "eop",
+            "named": true
+          },
+          {
+            "type": "invalid_key",
+            "named": true
+          },
+          {
+            "type": "not_eop",
+            "named": true
+          },
+          {
+            "type": "not_invalid_key",
             "named": true
           }
         ]
