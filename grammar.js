@@ -55,8 +55,8 @@ module.exports = grammar({
     ),
 
     identification_division: $ => seq(
-      $._IDENTIFICATION, $._DIVISION, '.',
-      $._PROGRAM_ID, '.',
+      k('identification'), k('division'), '.',
+      k('program_id'), '.',
       $.program_name,
       optional($.as_literal),
       '.'
@@ -68,23 +68,23 @@ module.exports = grammar({
     ),
 
     as_literal: $ => seq(
-      $._AS,
+      k('AS'),
       $._LITERAL
     ),
 
     function_definition: $ => /todo_function_definition/,
 
     environment_division: $ => seq(
-      $._ENVIRONMENT,
-      $._DIVISION,
+      k('environment'),
+      k('division'),
       '.',
       optional($.configuration_section),
       optional($.input_output_section),
     ),
 
     configuration_section: $ => seq(
-      $._CONFIGURATION,
-      $._SECTION,
+      k('configuration'),
+      k('section'),
       '.',
       repeat($._configuration_paragraph)
     ),
@@ -97,7 +97,7 @@ module.exports = grammar({
     ),
 
     source_computer_paragraph: $ => seq(
-      $._SOURCE_COMPUTER,
+      k('source-computer'),
       '.',
       optional($._source_computer_entry),
     ),
@@ -109,13 +109,13 @@ module.exports = grammar({
     ),
 
     with_debugging_mode: $ => seq(
-      optional($._WITH),
-      $._DEBUGGING,
-      $._MODE
+      optional(k('with')),
+      k('debugging'),
+      k('mode')
     ),
 
     object_computer_paragraph: $ => seq(
-      $._OBJECT_COMPUTER,
+      k('object_computer'),
       '.',
       optional($._object_computer_entry)
     ),
@@ -133,36 +133,36 @@ module.exports = grammar({
     ),
 
     object_computer_memory: $ => seq(
-      $._MEMORY,
-      $._SIZE,
-      optional($._IS),
+      k('memory'),
+      k('size'),
+      optional(k('is')),
       $.integer,
       choice(
-        $.CHARACTERS,
-        $.WORDS
+        alias(k('characters'), $.CHARACTERS),
+        alias(k('words'), $.WORDS)
       )
     ),
 
     object_computer_sequence: $ => seq(
-      optional($._PROGRAM),
+      optional(k('program')),
       $._coll_sequence,
-      optional($._IS),
+      optional(k('is')),
       $.qualified_word
     ),
 
     _coll_sequence: $ => seq(
-      optional($._COLLATING),
-      $._SEQUENCE
+      optional(k('collating')),
+      k('sequence')
     ),
 
     object_computer_segment: $ => seq(
-      $._SEGMENT_LIMIT,
-      optional($._IS),
+      k('segment_limit'),
+      optional(k('is')),
       $.integer
     ),
 
     special_names_paragraph: $ => seq(
-      $._SPECIAL_NAMES,
+      k('special_names'),
       '.',
       repeat($.special_name),
       optional('.')
@@ -184,24 +184,26 @@ module.exports = grammar({
 
     mnemonic_name_clause: $ => /todo_mnemonic_name/,
     alphabet_name_clause: $ => seq(
-      $._ALPHABET,
+      k('alphabet'),
       field('word', $.WORD),
-      optional($._IS),
+      optional(k('is')),
       field('value', $._alphabet_definition),
     ),
 
     _alphabet_definition: $ => choice(
-      $.NATIVE,
-      $.STANDARD_1,
-      $.STANDARD_2,
-      $.EBCDIC,
+      alias(k('native'), $.NATIVE),
+      alias(k('standard_1', $.STANDARD_1)),
+      alias(k('standard_2', $.STANDARD_2)),
+      alias(k('ebcdic', $.EBCDIC)),
       repeat1($.alphabet_literal),
     ),
 
     alphabet_literal: $ => choice(
-      sepBy($._alphabet_lits, $.ALSO),
-      seq($._alphabet_lits, $.THRU, $._alphabet_lits),
+      sepBy($._alphabet_lits, k('also')),
+      seq($._alphabet_lits, k('thru'), $._alphabet_lits),
     ),
+
+    LITERAL: $ => _LITERAL,
 
     _alphabet_lits: $ => choice(
       $.LITERAL,
@@ -223,7 +225,7 @@ module.exports = grammar({
     event_status: $ => /todo_event_status_name/,
 
     repository_paragraph: $ => seq(
-      $._REPOSITORY,
+      k('repository'),
       '.',
       optional($._repository)
     ),
@@ -234,17 +236,17 @@ module.exports = grammar({
     ),
 
     repository_name: $ => seq(
-      $._FUNCTION,
+      k('function'),
       choice(
         repeat1($.LITERAL),
-        $.ALL
+        k('all')
       ),
-      $._INTRINSIC
+      k('intrinsic')
     ),
 
     input_output_section: $ => choice(
       seq(
-        $._INPUT_OUTPUT, $._SECTION, '.',
+        k('input_output'), k('section'), '.',
         optional($._file_control_paragraph),
         optional($._i_o_control_paragraph)
       ),
@@ -253,13 +255,13 @@ module.exports = grammar({
     ),
 
     _file_control_paragraph: $ => seq(
-      $._FILE_CONTROL, '.',
+      k('file_control'), '.',
       repeat($.select_statement)
     ),
 
     select_statement: $ => seq(
-      $._SELECT,
-      field('optional', optional($.OPTIONAL)),
+      k('select'),
+      field('optional', optional(alias(k('optional'), $.OPTIONAL))),
       field('file_name', $.WORD),
       repeat($._select_clause),
       '.'
@@ -304,138 +306,138 @@ module.exports = grammar({
 
     assign_clause: $ => seq(
       k('assign'),
-      optional($._TO),
+      optional(k('to')),
       field('external_or_dynamic', optional($._ext_clause)),
       field('to', choice(
         alias(k('disk'), $.DISK),
-        $.PRINTER,
+        alias(k('printer'), $.PRINTER),
         seq(optional($._device), $._assignment_name),
       ))
     ),
 
     _ext_clause: $ => choice(
-      $.EXTERNAL,
-      $.DYNAMIC
+      alias(k('external'), $.EXTERNAL),
+      alias(k('dynamic'), $.DYNAMIC)
     ),
 
     _device: $ => choice(
       alias(k('disk'), $.DISK),
-      $.PRINTER
+      alias(k('printer'), $.PRINTER)
     ),
 
     _assignment_name: $ => choice(
       $._LITERAL,
-      $.DISPLAY,
+      alias(k('display'), $.DISPLAY),
       seq(
         optional($._LITERAL), repeat1($.qualified_word)
       )
     ),
 
     access_mode_clause: $ => seq(
-      $._ACCESS,
-      optional($._MODE),
-      optional($._IS),
+      k('access'),
+      optional(k('mode')),
+      optional(k('is')),
       choice(
-        $.SEQUENTIAL,
-        $.DYNAMIC,
-        $.RANDOM
+        alias(k('sequential'), $.SEQUENTIAL),
+        alias(k('dynamic'), $.DYNAMIC),
+        alias(k('random'), $.RANDOM)
       )
     ),
 
     alternative_record_key: $ => seq(
-      $._ALTERNATE,
-      $._RECORD,
-      optional($._KEY),
-      optional($._IS),
+      k('alternate'),
+      k('record'),
+      optional(k('key')),
+      optional(k('is')),
       field('reference', $.qualified_word),
       field('with_dups', optional($.with_dups)),
     ),
 
     with_dups: $ => seq(
-      optional($._WITH),
-      $._DUPLICATES
+      optional(k('with')),
+      k('duplicates')
     ),
 
     collating_sequence_clause: $ => seq(
       $._coll_sequence,
-      optional($._IS),
+      optional(k('is')),
       $.WORD
     ),
 
     _coll_sequence: $ => seq(
-      optional($._COLLATING),
-      $._SEQUENCE
+      optional(k('collating')),
+      k('sequence')
     ),
 
     file_status_clause: $ => seq(
       field('file_or_sort', optional($._file_or_sort)),
-      $._STATUS,
-      optional($._IS),
+      k('status'),
+      optional(k('is')),
       field('reference', $.qualified_word),
       field('reference2', optional($.qualified_word)),
     ),
 
     _file_or_sort: $ => choice(
-      $.FILE,
-      $.SORT
+      alias(k('file'), $.FILE),
+      alias(k('sort'), $.SORT),
     ),
 
     lock_mode_clause: $ => seq(
-      $._LOCK,
-      optional($._MODE),
-      optional($._IS),
+      k('lock'),
+      optional(k('mode')),
+      optional(k('is')),
       $.lock_mode
     ),
 
     lock_mode: $ => choice(
       seq(
-        choice($.MANUAL, $.AUTOMATIC),
+        choice(alias(k('manual'), $.MANUAL), alias(k('automatic'), $.AUTOMATIC)),
         field('lock_with', optional($._lock_with))
       ),
-      $.EXCLUSIVE
+      alias(k('exclusive'), $.EXCLUSIVE)
     ),
 
     _lock_with: $ => (
       seq(
-        $._WITH, $._LOCK, $._ON,
-        optional($.MULTIPLE),
-        choice($._RECORD, $._RECORDS)
+        k('with'), k('lock'), k('on'),
+        optional(alias(k('multiple'), $.MULTIPLE)),
+        choice(k('record'), k('records'))
       ),
-      seq($._WITH, $.RECORD)
+      seq(k('with'), alias(k('record'), $.RECORD))
     ),
 
     organization_clause: $ => seq(
-      optional(seq($._ORGANIZATION, optional($._IS))),
+      optional(seq(k('organization'), optional(k('is')))),
       choice(
-        $.INDEXED,
-        seq($.RECORD, optional($._BINARY), $.SEQUENTIAL),
-        $.SEQUENTIAL,
-        $.RELATIVE,
+        alias(k('indexed', $.INDEXED)),
+        seq(alias(k('record'), $.RECORD), optional(k('binary')), alias(k('sequential'), $.SEQUENTIAL)),
+        alias(k('sequential'), $.SEQUENTIAL),
+        alias(k('relative'), $.RELATIVE),
       )
     ),
 
     padding_character_clause: $ => seq(
-      $._PADDING,
-      optional($._CHARACTER),
-      optional($._IS),
+      k('padding'),
+      optional(k('character')),
+      optional(k('is')),
       choice($.qualified_word, $._LITERAL)
     ),
 
     record_delimiter_clause: $ => seq(
-      $._RECORD,
-      $._DELIMITER,
-      optional($._IS),
-      $._STANDARD_1
+      k('record'),
+      k('delimiter'),
+      optional(k('is')),
+      k('STANDARD_1')
     ),
 
     record_key_clause: $ => seq(
-      $._RECORD,
-      optional($._KEY),
-      optional($._IS),
+      k('record'),
+      optional(k('key')),
+      optional(k('is')),
       field('reference', $.qualified_word),
       optional(seq(
         field('key_is_eq', optional(choice(
-          seq($.SOURCE, $._IS),
+          seq(alias(k('source'), $.SOURCE), $._IS),
           '='
         ))
         ),
@@ -444,41 +446,41 @@ module.exports = grammar({
     ),
 
     relative_key_clause: $ => seq(
-      $._RELATIVE,
-      optional($._KEY),
-      optional($._IS),
+      k('relative'),
+      optional(k('key')),
+      optional(k('is')),
       $.qualified_word
     ),
 
     reserve_clause: $ => seq(
-      $._RESERVE,
+      k('reserve'),
       choice(
-        seq($.integer, optional($._AREA)),
-        $.NO
+        seq($.integer, optional(k('area'))),
+        alias(k('no'), $.NO)
       )
     ),
 
     sharing_clause: $ => seq(
-      $._SHARING,
-      optional($._WITH),
+      k('sharing'),
+      optional(k('with')),
       choice(
-        seq($.ALL, optional($._OTHER)),
-        seq($.NO, optional($._OTHER)),
-        seq($.READ, $.ONLY),
+        seq(alias(k('all'), $.ALL), optional(k('other'))),
+        seq(alias(k('no'), $.NO), optional(k('other'))),
+        seq(alias(k('read'), $.READ), alias(k('only'), $.ONLY)),
       )
     ),
 
     error: $ => /todo_error/,
 
     nominal_key_clause: $ => seq(
-      $._NOMINAL,
-      optional($._KEY),
-      optional($._IS),
+      k('nominal'),
+      optional(k('key')),
+      optional(k('is')),
       $.qualified_word
     ),
 
     data_division: $ => seq(
-      $._DATA, $._DIVISION, '.',
+      k('data'), k('division'), '.',
       optional($.file_section),
       optional($.working_storage_section),
       optional($.local_storage_section),
@@ -489,8 +491,8 @@ module.exports = grammar({
 
     file_section: $ => choice(
       seq(
-        $._FILE,
-        $._SECTION,
+        k('file'),
+        k('section'),
         '.',
         repeat($.file_description)
       ),
@@ -511,19 +513,19 @@ module.exports = grammar({
     ),
 
     file_type: $ => choice(
-      $.FD,
-      $.SD
+      alias(k('fd'), $.FD),
+      alias(k('sd'), $.SD)
     ),
 
     file_description_entry: $ => seq(
-      $.WORD,
+      alias(k('word'), $.WORD),
       repeat($.file_description_clause),
       '.'
     ),
 
     file_description_clause: $ => choice(
-      seq(optional($._IS), $.EXTERNAL),
-      seq(optional($._IS), $.GLOBAL),
+      seq(optional(k('is')), alias(k('external'), $.EXTERNAL)),
+      seq(optional(k('is')), alias(k('global'), $.GLOBAL)),
       $.block_contains_clause,
       $.record_clause,
       $.label_records_clause,
@@ -537,63 +539,63 @@ module.exports = grammar({
     ),
 
     block_contains_clause: $ => prec.left(seq(
-      $._BLOCK,
-      optional($._CONTAINS),
+      k('block'),
+      optional(k('contains')),
       field('num', $.integer),
-      field('to', optional(seq($._TO, $.integer))),
-      optional(choice($._RECORD, $._RECORDS))
+      field('to', optional(seq(k('to'), $.integer))),
+      optional(choice(k('record'), k('records')))
     )),
 
     record_clause: $ => choice(
       seq(
-        $._RECORD,
-        optional($._CONTAINS),
+        k('record'),
+        optional(k('contains')),
         field('num', $.integer),
-        field('to', optional(seq($._TO, $.integer))),
-        optional($._CHARACTERS)
+        field('to', optional(seq(k('to'), $.integer))),
+        optional(k('characters'))
       ),
       seq(
-        $._RECORD,
-        optional($._IS),
-        $.VARYING,
-        optional($._IN),
-        optional($._SIZE),
-        field('from', optional(seq($._FROM, $.integer))),
-        field('to', optional(seq($._TO, $.integer))),
-        optional($._CHARACTERS),
-        field('depend', optional(seq($._DEPENDING, optional($._ON), $.qualified_word))),
+        k('record'),
+        optional(k('is')),
+        alias(k('varying'), $.VARYING),
+        optional(k('in')),
+        optional(k('size')),
+        field('from', optional(seq(k('from'), $.integer))),
+        field('to', optional(seq(k('to'), $.integer))),
+        optional(k('characters')),
+        field('depend', optional(seq(k('depending'), optional(k('on')), $.qualified_word))),
       )
     ),
 
     label_records_clause: $ => seq(
       $._LABEL,
       $.records,
-      optional(choice($.STANDARD, $.OMITTED))
+      optional(choice(alias(k('standard'), $.STANDARD), alias(k('omitted'), $.OMITTED)))
     ),
 
     records: $ => prec.left(choice(
-      seq($._RECORD, optional($._IS)),
-      seq($._RECORDS, optional($._ARE)),
+      seq(k('record'), optional(k('is'))),
+      seq(k('records'), optional(k('are'))),
     )),
 
     value_of_clause: $ => seq(
-      $._VALUE, $._OF,
-      field('name', choice($.WORD, $.FILE_ID)),
-      optional($._IS),
+      k('value'), k('of'),
+      field('name', choice($.WORD, alias(k('file_id'), $.FILE_ID))),
+      optional(k('is')),
       field('value', choice($._LITERAL, $.qualified_word))
     ),
 
     data_records_clause: $ => prec.left(choice(
-      $._DATA,
+      k('data'),
       $.records,
       repeat1($.qualified_word),
     )),
 
     linage_clause: $ => seq(
       $._LINAGE,
-      optional($._IS),
+      optional(k('is')),
       field('reference', choice($.qualified_word, $._LITERAL)),
-      optional($._LINES),
+      optional(k('lines')),
       field('lines', repeat($.linage_lines)),
     ),
 
@@ -604,42 +606,42 @@ module.exports = grammar({
     ),
 
     linage_footing: $ => seq(
-      optional($._WITH),
-      $._FOOTING,
-      optional($._AT),
+      optional(k('with')),
+      k('footing'),
+      optional(k('at')),
       field('reference', choice($.qualified_word, $._LITERAL)),
-      $._LINES
+      k('LINES')
     ),
 
     linage_top: $ => seq(
-      optional($._AT),
-      $._TOP,
+      optional(k('at')),
+      k('top'),
       field('reference', choice($.qualified_word, $._LITERAL)),
-      $._LINES
+      k('LINES')
     ),
 
     linage_bottom: $ => seq(
-      optional($._AT),
-      $._BOTTOM,
+      optional(k('at')),
+      k('bottom'),
       field('reference', choice($.qualified_word, $._LITERAL)),
     ),
 
     recording_mode_clause: $ => seq(
-      $._RECORDING,
-      optional($._MODE),
-      optional($._IS),
+      k('recording'),
+      optional(k('mode')),
+      optional(k('is')),
       field('mode', $.WORD)
     ),
 
     code_set_clause: $ => seq(
-      $._CODE_SET,
-      optional($._IS),
+      k('code_set'),
+      optional(k('is')),
       field('code_set', $.WORD)
     ),
 
     report_clase: $ => choice(
-      seq($._REPORT, optional($._IS), field('name', $.WORD)),
-      seq($._REPORTS, optional($._ARE), field('name', $.WORD)),
+      seq(k('report'), optional(k('is')), field('name', $.WORD)),
+      seq(k('reports'), optional(k('are')), field('name', $.WORD)),
     ),
 
     record_description_list: $ => seq(
@@ -647,7 +649,7 @@ module.exports = grammar({
     ),
 
     working_storage_section: $ => seq(
-      $._WORKING_STORAGE, $._SECTION, '.',
+      k('working_storage'), k('section'), '.',
       repeat(seq($.data_description, '.'))
     ),
 
@@ -666,8 +668,8 @@ module.exports = grammar({
     level_number_88: $ => /88/,
 
     entry_name: $ => choice(
-      $._FILLER,
-      $._WORD
+      k('filler'),
+      k('WORD')
     ),
 
     constant_entry: $ => /todo_constant_entry/,
@@ -691,7 +693,7 @@ module.exports = grammar({
     ),
 
     redefines_clause: $ => seq(
-      $._REDEFINES, $._identifier
+      k('redefines'), $._identifier
     ),
 
     _identifier: $ => choice(
@@ -706,8 +708,8 @@ module.exports = grammar({
     ),
 
     _in_of: $ => choice(
-      $._IN,
-      $._OF
+      k('in'),
+      k('OF')
     ),
 
     subref: $ => seq(
@@ -790,9 +792,9 @@ module.exports = grammar({
     //todo
     _arith_x: $ => choice(
       $._identifier,
-      seq($.LENGTH, optional($._OF), $._identifier),
-      seq($.LENGTH, optional($._OF), $._basic_literal),
-      seq($.LENGTH, optional($._OF), $.function_),
+      seq(alias(k('length'), $.LENGTH), optional(k('of')), $._identifier),
+      seq(alias(k('length'), $.LENGTH), optional(k('of')), $._basic_literal),
+      seq(alias(k('length'), $.LENGTH), optional(k('of')), $.function_),
       $._basic_literal,
       $.function_,
       $.linage_counter,
@@ -801,8 +803,8 @@ module.exports = grammar({
     external_clause: $ => /todo_external_clause/,
     global_clause: $ => /todo_global_clause/,
     picture_clause: $ => seq(
-      choice($._PICTURE, $._PIC),
-      optional($._IS),
+      choice(k('picture'), k('pic')),
+      optional(k('is')),
       $._picture_string
     ),
 
@@ -831,61 +833,62 @@ module.exports = grammar({
     picture_edit: $ => /([aAxX9bBvVzZpP0-9()$/,*+-]|[cC][rR]|[dD][bB]|\.[^ \n\t])+/,
 
     usage_clause: $ => seq(
-      optional(seq($._USAGE, optional($._IS))),
+      optional(seq(k('usage'), optional($._IS))),
       $._usage
     ),
 
     _usage: $ => choice(
-      $.BINARY,
-      $.COMPUTATIONAL,
-      $.COMP_1,
-      $.COMP_2,
-      $.COMP_3,
-      $.COMP_4,
-      $.COMP_5,
-      $.COMP_X,
-      $.DISPLAY,
-      $.INDEX,
-      $.PACKED_DECIMAL,
-      $.POINTER,
-      $.PROGRAM_POINTER,
-      $.SIGNED_SHORT,
-      $.SIGNED_INT,
-      $.SIGNED_LONG,
-      $.UNSIGNED_SHORT,
-      $.UNSIGNED_INT,
-      $.UNSIGNED_LONG,
-      seq($.BINARY_CHAR, $.SIGNED),
-      seq($.BINARY_CHAR, $.UNSIGNED),
-      $.BINARY_CHAR,
-      seq($.BINARY_SHORT, $.SIGNED),
-      seq($.BINARY_SHORT, $.UNSIGNED),
-      $.BINARY_SHORT,
-      seq($.BINARY_LONG, $.SIGNED),
-      seq($.BINARY_LONG, $.UNSIGNED),
-      $.BINARY_LONG,
-      seq($.BINARY_DOUBLE, $.SIGNED),
-      seq($.BINARY_DOUBLE, $.UNSIGNED),
-      $.BINARY_DOUBLE,
-      seq($.BINARY_C_LONG, $.SIGNED),
-      seq($.BINARY_C_LONG, $.UNSIGNED),
-      $.BINARY_C_LONG,
-      $.NATIONAL
+      alias(k('binary'), $.BINARY),
+      alias(k('computational'), $.COMPUTATIONAL),
+      alias(k('comp-1'), $.COMP_1),
+      alias(k('comp-2'), $.COMP_2),
+      alias(k('comp-3'), $.COMP_3),
+      alias(k('comp-4'), $.COMP_4),
+      alias(k('comp-5'), $.COMP_5),
+      alias(k('comp-x'), $.COMP_5),
+      alias(k('display'), $.DISPLAY),
+      alias(k('index'), $.INDEX),
+      alias(k('packed-decimal'), $.PACKED_DECIMAL),
+      alias(k('pointer'), $.POINTER),
+      alias(k('program-pointer'), $.PROGRAM_POINTER),
+      alias(k('signed-short'), $.SIGNED_SHORT),
+      alias(k('signed-int'), $.SIGNED_INT),
+      alias(k('signed-long'), $.SIGNED_LONG),
+      alias(k('unsigned-short'), $.UNSIGNED_SHORT),
+      alias(k('unsigned-int'), $.UNSIGNED_INT),
+      alias(k('unsigned-long'), $.UNSIGNED_LONG),
+      //TODO add alias
+      seq(k('binary_char'), k('signed')),
+      seq(k('binary_char'), k('unsigned')),
+      k('binary_char'),
+      seq(k('binary_short'), k('signed')),
+      seq(k('binary_short'), k('unsigned')),
+      k('binary_short'),
+      seq(k('binary_long'), k('signed')),
+      seq(k('binary_long'), k('unsigned')),
+      k('binary_long'),
+      seq(k('binary_double'), k('signed')),
+      seq(k('binary_double'), k('unsigned')),
+      k('binary_double'),
+      seq(k('binary_c_long'), k('signed')),
+      seq(k('binary_c_long'), k('unsigned')),
+      k('binary_c_long'),
+      k('NATIONAL')
     ),
 
     sign_clause: $ => seq(
-      optional($._SIGN),
-      optional($._IS),
-      choice($.LEADING, $.TRAILING),
-      optional(seq($.SEPARATE, optional($._CHARACTER)))
+      optional(k('sign')),
+      optional(k('is')),
+      choice(alias(k('leading'), $.LEADING), alias(k('trailing'), $.TRAILING)),
+      optional(seq(alias('separate', $.SEPARATE), optional(k('character'))))
     ),
 
     occurs_clause: $ => seq(
-      $._OCCURS,
+      k('occurs'),
       field('num', $.integer),
-      field('to', optional(seq($._TO, $.integer))),
-      optional($._TIMES),
-      field('depending', optional(seq($._DEPENDING, optional($._ON), $.qualified_word))),
+      field('to', optional(seq(k('to'), $.integer))),
+      optional(k('times')),
+      field('depending', optional(seq(k('depending'), optional(k('on')), $.qualified_word))),
       field('key_spec', optional($.occurs_key_spec)),
     ),
 
@@ -895,7 +898,7 @@ module.exports = grammar({
     synchronized_clause: $ => /todo_synchronized_clause/,
     blank_clause: $ => /todo_blank_clause/,
     based_clause: $ => /todo_based_clause/,
-    value_clause: $ => seq($._VALUE, optional($._IS), $._literal),
+    value_clause: $ => seq(k('value'), optional(k('is')), $._literal),
     renames_clause: $ => /todo_renames_clause/,
     any_length_clause: $ => /todo_any_length/,
     error: $ => /todo_error/,
@@ -907,7 +910,7 @@ module.exports = grammar({
 
     //todo
     procedure_division: $ => seq(
-      $._PROCEDURE, $._DIVISION,
+      k('procedure'), k('division'),
       optional($.procedure_using_chaining),
       optional($.procedure_returning),
       '.',
@@ -916,43 +919,43 @@ module.exports = grammar({
     ),
 
     procedure_using_chaining: $ => seq(
-      choice($.USING, $.CHAINING),
+      choice(alias(k('using'), $.USING), alias(k('chaining'), $.CHAINING)),
       repeat($.procedure_param),
     ),
 
     procedure_param: $ => seq(
       optional($.procedure_type),
       optional($.size),
-      optional($.OPTIONAL),
+      optional(alias(k('optional'), $.OPTIONAL)),
       $._WORD
     ),
 
     procedure_type: $ => seq(
-      optional($._BY),
-      choice($.VALUE, $.REFERENCE)
+      optional(k('by')),
+      choice(alias(k('value'), $.VALUE), alias(k('reference'), $.REFERENCE))
     ),
 
     size: $ => choice(
-      seq($.SIZE, optional($._IS), $.AUTO),
-      seq($.SIZE, optional($._IS), $.DEFAULT),
-      seq($.UNSIGNED, $.SIZE, optional($._IS), $.integer),
-      seq($.SIZE, optional($._IS), $.integer),
+      seq(alias(k('size'), $.SIZE), optional(k('is')), alias(k('auto'), $.AUTO)),
+      seq(alias(k('size'), $.SIZE), optional(k('is')), alias(k('default'), $.DEFAULT)),
+      seq(alias(k('unsigned'), $.UNSIGNED), alias(k('size'), $.SIZE), optional(k('is')), $.integer),
+      seq(alias(k('size'), $.SIZE), optional(k('is')), $.integer),
     ),
 
     procedure_type: $ => seq(
-      optional($._BY),
-      choice($.REFERENCE, $.VALUE)
+      optional(k('by')),
+      choice(alias(k('reference'), $.REFERENCE), alias(k('value'), $.VALUE))
     ),
 
     procedure_returning: $ => seq(
-      $._RETURNING,
+      k('returning'),
       $._WORD
     ),
 
     procedure_declaratives: $ => seq(
-      $._DECLARATIVES, '.',
+      k('declaratives'), '.',
       repeat($._procedure),
-      $._END, $._DECLARATIVES, '.'
+      k('end'), k('declaratives'), '.'
     ),
 
     _procedure: $ => choice(
@@ -963,7 +966,7 @@ module.exports = grammar({
 
     section_header: $ => seq(
       field('name', $._WORD),
-      $._SECTION,
+      k('section'),
       optional($._LITERAL),
       '.'
     ),
@@ -978,7 +981,7 @@ module.exports = grammar({
 
     _procedure_division_statement: $ => choice(
       //$.accept_statement,
-      seq($.add_statement, nonempty($._END_ADD, '.')),
+      seq($.add_statement, nonempty(k('end_add'), '.')),
       //$.allocate_statement,
       //$.alter_statement,
       //$.call_statement,
@@ -989,22 +992,22 @@ module.exports = grammar({
       seq($.continue_statement, '.'),
       //$.delete_statement,
       //$.delete_file_statement,
-      seq($.display_statement, nonempty($._END_DISPLAY, '.')),
+      seq($.display_statement, nonempty(k('end_display'), '.')),
       //$.divide_statement,
       //$.entry_statement,
-      seq($.evaluate_statement, nonempty($._END_EVALUATE, '.')),
+      seq($.evaluate_statement, nonempty(k('end_evaluate'), '.')),
       //$.exit_statement,
       //$.free_statement,
       //$.generate_statement,
       seq($.goto_statement, '.'),
       //$.goback_statement,
-      seq($.if_statement, nonempty($._END_IF, '.')),
+      seq($.if_statement, nonempty(k('end_if'), '.')),
       //$.initialize_statement,
       //$.initiate_statement,
       //$.inspect_statement,
       //$.merge_statement,
       seq($.move_statement, '.'),
-      seq($.multiply_statement, nonempty($._END_MULTIPLY, '.')),
+      seq($.multiply_statement, nonempty(k('end_multiply'), '.')),
       seq($.open_statement, '.'),
       seq($.perform_statement),
       //$.read_statement,
@@ -1025,7 +1028,7 @@ module.exports = grammar({
       //$.unlock_statement,
       //$.unstring_statement,
       //$.use_statement,
-      seq($.write_statement, nonempty($._END_MULTIPLY, '.')),
+      seq($.write_statement, nonempty(k('end_multiply'), '.')),
       //$.NEXT_SENTENCE,
     ),
 
@@ -1047,13 +1050,13 @@ module.exports = grammar({
       $.display_statement_in_block,
       //$.divide_statement,
       //$.entry_statement,
-      seq($.evaluate_statement, $._END_EVALUATE),
+      seq($.evaluate_statement, k('end_evaluate')),
       //$.exit_statement,
       //$.free_statement,
       //$.generate_statement,
       $.goto_statement,
       //$.goback_statement,
-      seq($.if_statement, $._END_IF),
+      seq($.if_statement, k('end_if')),
       //$.initialize_statement,
       //$.initiate_statement,
       //$.inspect_statement,
@@ -1088,21 +1091,21 @@ module.exports = grammar({
 
     //todo
     stop_statement: $ => seq(
-      $._STOP, $._RUN
+      k('stop'), k('RUN')
     ),
 
     add_statement: $ => prec.left(seq(
-      $._ADD,
+      k('add'),
       $._add_body,
       optional($._size_error_block),
     )),
 
     add_statement_in_block: $ => prec.left(seq(
-      $._ADD,
+      k('add'),
       $._add_body,
       optional(seq(
         optional($._size_error_block),
-        $._END_ADD
+        k('END_ADD')
       ))
     )),
 
@@ -1110,20 +1113,20 @@ module.exports = grammar({
       choice(
         seq(
           field('from', repeat1($._x)),
-          $._TO,
+          k('to'),
           field('to', repeat1($.arithmetic_x)),
         ),
         seq(
           field('from', repeat1($._x)),
-          field('to', optional(seq($._TO, $._x))),
-          $._GIVING,
+          field('to', optional(seq(k('to'), $._x))),
+          k('giving'),
           field('giving', repeat1($.arithmetic_x)),
         ),
         seq(
-          $.CORRESPONDING,
+          alias(k('corresponding'), $.CORRESPONDING),
           field('from', $._identifier),
-          $._TO,
-          field('to', seq($._identifier, optional($.ROUNDED))),
+          k('to'),
+          field('to', seq($._identifier, optional(alias(k('rounded'), $.ROUNDED)))),
         )
       ),
     )),
@@ -1134,22 +1137,22 @@ module.exports = grammar({
     ),
 
     on_size_error: $ => prec.left(seq(
-      $._ON,
-      $._SIZE,
-      $._ERROR,
+      k('on'),
+      k('size'),
+      k('error'),
       $._statements1
     )),
 
     not_on_size_error: $ => prec.left(seq(
-      $._NOT,
-      $._ON,
-      $._SIZE,
-      $._ERROR,
+      k('not'),
+      k('on'),
+      k('size'),
+      k('error'),
       $._statements1
     )),
 
     close_statement: $ => seq(
-      $._CLOSE,
+      k('close'),
       repeat($.close_arg),
     ),
 
@@ -1160,22 +1163,22 @@ module.exports = grammar({
 
     close_option: $ => choice(
       seq(
-        choice($.REEL, $.UNIT),
+        choice(alias(k('reel'), $.REEL), alias(k('unit'), $.UNIT)),
         optional($._close_removal)
       ),
-      seq(optional($._WITH), $.NO, $.REWIND),
-      seq(optional($._WITH), $.LOCK),
+      seq(optional(k('with')), alias(k('no'), $.NO), alias(k('rewind'), $.REWIND)),
+      seq(optional(k('with')), alias(k('lock'), $.LOCK)),
     ),
 
     _close_removal: $ => seq(
-      optional($._FOR),
-      $.REMOVAL
+      optional(k('for')),
+      alias(k('removal'), $.REMOVAL),
     ),
 
-    continue_statement: $ => $._CONTINUE,
+    continue_statement: $ => k('continue'),
 
     display_statement: $ => prec.right(seq(
-      $._DISPLAY,
+      k('display'),
       $._display_body,
       choice(
         optional($.on_disp_exception),
@@ -1183,24 +1186,24 @@ module.exports = grammar({
     )),
 
     display_statement_in_block: $ => prec.right(seq(
-      $._DISPLAY,
+      k('display'),
       $._display_body,
       choice(
         optional($.on_disp_exception),
-        $._END_DISPLAY
+        k('END_DISPLAY')
       )
     )),
 
     _display_body: $ => choice(
-      seq($._id_or_lit, $._UPON_ENVIRONMENT_NAME),
-      seq($._id_or_lit, $._UPON_ENVIRONMENT_VALUE),
-      seq($._id_or_lit, $._UPON_ARGUMENT_NUMBER),
-      seq($._id_or_lit, $._UPON_COMMAND_LINE),
+      seq($._id_or_lit, k('upon-environment-name')),
+      seq($._id_or_lit, k('upon-environment-value')),
+      seq($._id_or_lit, k('upon-argument-number')),
+      seq($._id_or_lit, k('upon-command-line')),
       seq(repeat1($._x), optional($.at_line_column), optional($.with_clause)),
-      seq(repeat1($._x), optional($.at_line_column), $.UPON, $.MNEMONIC_NAME, optional($.with_clause)),
-      seq(repeat1($._x), optional($.at_line_column), $.UPON, $._WORD, optional($.with_clause)),
-      seq(repeat1($._x), optional($.at_line_column), $.UPON, $.PRINTER, optional($.with_clause)),
-      seq(repeat1($._x), optional($.at_line_column), $.UPON, $.CRT, optional($.with_clause)),
+      seq(repeat1($._x), optional($.at_line_column), alias(k('upon'), $.UPON), alias(k('mnemonic-name'), $.MNEMONIC_NAME), optional($.with_clause)),
+      seq(repeat1($._x), optional($.at_line_column), alias(k('upon'), $.UPON), $._WORD, optional($.with_clause)),
+      seq(repeat1($._x), optional($.at_line_column), alias(k('upon'), $.UPON), alias(k('printer'), $.PRINTER), optional($.with_clause)),
+      seq(repeat1($._x), optional($.at_line_column), alias(k('upon'), $.UPON), alias(k('crt'), $.CRT), optional($.with_clause)),
     ),
 
     at_line_column: $ => /todo_at_line_column/,
@@ -1211,35 +1214,38 @@ module.exports = grammar({
     ),
 
     on_disp_exception: $ => prec.right(seq(
-      choice($.EXCEPTION, $.NOT_EXCEPTION),
+      choice(alias(k('exception'), $.EXCEPTION), alias(k('not-exception'), $.NOT_EXCEPTION)),
       $._statements1,
     )),
 
     with_clause: $ => choice(
-      seq(optional($.WITH), $.NO_ADVANCING),
-      seq($.WITH, repeat1($.disp_attr))
+      seq(optional(alias(k('with'), $.WITH)), alias(k('no-advancing'), $.NO_ADVANCING)),
+      seq(alias(k('with'), $.WITH), repeat1($.disp_attr))
     ),
 
     disp_attr: $ => choice(
-      $.BELL,
-      $.BLINK,
-      seq($.ERASE, $.EOL),
-      seq($.ERASE, $.EOS),
-      $.HIGHLIGHT,
-      $.LOWLIGHT,
-      $.REVERSE_VIDEO,
-      $.UNDERLINE,
-      $.OVERLINE,
+      alias(k('bell'), $.BELL),
+      alias(k('blink'), $.BLINK),
+      seq(alias(k('erase'), $.ERASE), alias(k('eol'), $.EOL)),
+      seq(alias(k('erase'), $.ERASE), alias(k('eos'), $.EOS)),
+      alias(k('highlight'), $.HIGHLIGHT),
+      alias(k('lowlight'), $.LOWLIGHT),
+      alias(k('reverse-video'), $.REVERSE_VIDEO),
+      alias(k('underline'), $.UNDERLINE),
+      alias(k('overline'), $.OVERLINE),
       seq(
-        choice($.FOREGROUND_COLOR, $.BACKGROUND_COLOR),
-        optional($._IS),
-        $._num_or_id_or_lit),
+        choice(
+          alias(k('foreground-color', $.FOREGROUND_COLOR)),
+          alias(k('background-color', $.BACKGROUND_COLOR)),
+          optional(k('is')),
+          $._num_or_id_or_lit)
+      ),
       seq(
-        $.SCROLL,
-        choice($.UP, $.DOWN),
-        optional($._IS), optional($.scroll_lines)),
-      $.BLANK_LINE,
-      $.BLANK_SCREEN,
+        alias(k('scroll'), $.SCROLL),
+        choice(alias(k('up'), $.UP), alias(k('down'), $.DOWN)),
+        optional(k('is')), optional($.scroll_lines)),
+      alias(k('blank-line'), $.BLANK_LINE),
+      alias(k('blank-screen'), $.BLANK_SCREEN),
     ),
 
     _num_or_id_or_lit: $ => choice(
@@ -1254,19 +1260,19 @@ module.exports = grammar({
       optional($.line_or_lines),
     ),
 
-    line_or_lines: $ => choice($.LINE, $.LINES),
+    line_or_lines: $ => choice(alias(k('line'), $.LINE), alias(k('lines'), $.LINES)),
 
     evaluate_statement: $ => prec.left(seq(
-      $._EVALUATE,
-      field('subjects', sepBy($.evaluate_subject, optional($._ALSO))),
+      k('evaluate'),
+      field('subjects', sepBy($.evaluate_subject, optional(k('also')))),
       field('cases', repeat($.evaluate_case)),
       field('other', optional($.evaluate_other)),
     )),
 
     evaluate_subject: $ => choice(
       $.expr,
-      $.TRUE,
-      $.FALSE,
+      alias(k('true'), $.TRUE),
+      alias(k('false'), $.FALSE),
     ),
 
     evaluate_case: $ => prec.left(seq(
@@ -1274,7 +1280,7 @@ module.exports = grammar({
       field('statements', $._statements1),
     )),
 
-    _evaluate_object_list: $ => sepBy($._evaluate_object, optional($._ALSO)),
+    _evaluate_object_list: $ => sepBy($._evaluate_object, optional(k('also'))),
 
     _evaluate_object: $ => choice(
       /*seq(
@@ -1282,20 +1288,20 @@ module.exports = grammar({
         optional(seq($.THRU, $.expr))
       ),*/
       $.expr,
-      $.ANY,
-      $.TRUE,
-      $.FALSE
+      alias(k('any'), $.ANY),
+      alias(k('true'), $.TRUE),
+      alias(k('false'), $.FALSE),
     ),
 
     evaluate_other: $ => prec.right(seq(
-      $._WHEN_OTHER,
+      k('when-other'),
       field('statement', $._statements1)
     )),
 
     goto_statement: $ => seq(
-      $._GO, optional($._TO),
+      k('go'), optional(k('to')),
       field('to', repeat($.label)),
-      field('depending', optional(seq($._DEPENDING, optional($._ON), $._identifier)))
+      field('depending', optional(seq(k('depending'), optional(k('on')), $._identifier)))
     ),
 
     label: $ => choice(
@@ -1305,15 +1311,15 @@ module.exports = grammar({
 
     //todo add error if statement (see cobc/parser.y)
     if_statement: $ => prec.right(seq(
-      $._IF,
+      k('if'),
       field('condition', $.expr),
-      optional($._THEN),
+      optional(k('then')),
       field('statements', $._statements1),
       field('else_statements', optional($._if_else_sentense)),
     )),
 
     _if_else_sentense: $ => prec.right(seq(
-      $._ELSE,
+      k('else'),
       $._statements1
     )),
 
@@ -1352,14 +1358,14 @@ module.exports = grammar({
 
     _expr_is: $ => choice(
       seq($._expr_calc, optional($._IS), choice(
-        $.OMITTED,
-        $.NUMERIC,
-        $.ALPHABETIC,
-        $.ALPHABETIC_LOWER,
-        $.ALPHABETIC_UPPER,
-        $.CLASS_NAME,
-        $.POSITIVE,
-        $.NEGATIVE,
+        alias(k('omitted'), $.OMITTED),
+        alias(k('numeric'), $.NUMERIC),
+        alias(k('alphabetic'), $.ALPHABETIC),
+        alias(k('alphabetic-lower'), $.ALPHABETIC_LOWER),
+        alias(k('alphanbetic-upper'), $.ALPHABETIC_UPPER),
+        alias(k('class-name'), $.CLASS_NAME),
+        alias(k('positive'), $.POSITIVE),
+        alias(k('negative'), $.NEGATIVE),
         $.ZERO
       ))
     ),
@@ -1370,63 +1376,69 @@ module.exports = grammar({
     ),
 
     _expr_logic: $ => prec.left(choice(
-      seq($.NOT, $._expr_logic),
-      seq($._expr_logic, choice($.AND, $.OR), $._expr_logic),
+      seq(alias(k('not'), $.NOT), $._expr_logic),
+      seq(
+        $._expr_logic,
+        choice(
+          alias(k('and'), $.AND),
+          alias(k('or'), $.OR)
+        ),
+        $._expr_logic),
       $._expr_bool
     )),
 
     eq: $ => choice(
       '=',
-      seq(optional($._IS), $._EQUAL, optional($._TO)),
-      $._EQUALS
+      seq(optional(k('is')), $._EQUAL, optional(k('to'))),
+      k('EQUALS')
     ),
 
     gt: $ => choice(
       '>',
-      seq(optional($._IS), $.GREATER, optional($._THAN))
+      seq(optional(k('is')), k('greater'), optional(k('than')))
     ),
 
     lt: $ => choice(
       '<',
-      seq(optional($._IS), $.LESS, optional($._THAN))
+      seq(optional(k('is')), k('less'), optional(k('than')))
     ),
 
     ge: $ => choice(
       '>=',
-      seq(optional($._IS), $.GREATER, optional($._THAN), optional($._OR), $._EQUAL, optional($._TO)),
+      seq(optional(k('is')), k('greater'), optional(k('than')), optional(k('or')), k('equal'), optional(k('to'))),
     ),
 
     le: $ => choice(
       '<=',
-      seq(optional($._IS), $.LESS, optional($._THAN), optional($._OR), $._EQUAL, optional($._TO)),
+      seq(optional(k('is')), k('less'), optional(k('than')), optional(k('or')), k('equal'), optional(k('to'))),
     ),
 
     ne: $ => choice(
       '!=',
-      seq(optional($._IS), $._NOT, $._EQUAL, optional($._TO)),
+      seq(optional(k('is')), k('not'), k('equal'), optional(k('to'))),
     ),
 
     move_statement: $ => seq(
-      $._MOVE,
+      k('move'),
       $._move_body
     ),
 
     _move_body: $ => seq(
-      optional($._CORRESPONDING),
+      optional(k('corresponding')),
       field('src', $._x),
-      $._TO,
+      k('to'),
       field('dst', $._target_x_list)
     ),
 
     _x: $ => choice(
-      seq($._LENGTH, optional($._OF), choice(
+      seq(k('length'), optional(k('of')), choice(
         $._identifier,
         $._basic_literal,
         $.function_)
       ),
-      seq($._ADDRESS, optional($._OF), choice(
+      seq(k('address'), optional(k('of')), choice(
         seq(
-          choice($._PROGRAM, $._ENTRY),
+          choice(k('program'), k('entry')),
           choice($._identifier, $._LITERAL)),
         $._identifier,
       )),
@@ -1438,27 +1450,27 @@ module.exports = grammar({
 
     arithmetic_x: $ => seq(
       $._x,
-      optional($.ROUNDED)
+      optional(alias(k('rounded'), $.ROUNDED))
     ),
 
     _target_x_list: $ => repeat1($._target_x),
     _target_x: $ => choice(
       $._identifier,
-      seq($._ADDRESS, optional($._OF), $._identifier)
+      seq(k('address'), optional(k('of')), $._identifier)
     ),
 
     multiply_statement: $ => prec.right(seq(
-      $._MULTIPLY,
+      k('multiply'),
       $._multiply_body,
       optional($._size_error_block),
     )),
 
     multiply_statement_in_block: $ => prec.right(seq(
-      $._MULTIPLY,
+      k('multiply'),
       $._multiply_body,
       optional(seq(
         optional($._size_error_block),
-        $._END_MULTIPLY
+        k('END_MULTIPLY')
       ))
     )),
 
@@ -1466,14 +1478,14 @@ module.exports = grammar({
       choice(
         seq(
           field('val1', $._x),
-          $._BY,
+          k('by'),
           field('val2', repeat1($.arithmetic_x)),
         ),
         seq(
           field('val1', $._x),
-          $._BY,
+          k('by'),
           field('val2', $._x),
-          $._GIVING,
+          k('giving'),
           field('giving', repeat1($.arithmetic_x)),
         )
       ),
@@ -1484,78 +1496,83 @@ module.exports = grammar({
     )),
 
     open_statement: $ => seq(
-      $._OPEN,
+      k('open'),
       repeat1($.open_arg)
     ),
 
     open_arg: $ => seq(
-      field('mode', choice($.INPUT, $.OUTPUT, $.I_O, $.EXTEND)),
+      field('mode', choice(
+        alias(k('input'), $.INPUT),
+        alias(k('output'), $.OUTPUT),
+        alias(k('i-o'), $.I_O),
+        alias(k('extend'), $.EXTEND)
+      )),
       field('sharing', optional(seq(
-        $._SHARING,
-        optional($._WITH),
+        k('sharing'),
+        optional(k('with')),
         choice(
-          seq($.ALL, optional($._OTHER)),
-          seq($.NO, optional($._OTHER)),
-          seq($.READ, $.ONLY),
+          seq(alias(k('all'), $.ALL), optional(k('other'))),
+          seq(alias(k('no'), $.NO), optional(k('other'))),
+          seq(alias(k('read'), $.READ), alias(k('only'), $.ONLY)),
         )
       ))),
       field('file_name_list', repeat1($.WORD)),
       field('option', optional(choice(
-        seq(optional($._WITH), $.NO, $.REWIND),
-        seq(optional($._WITH), $.LOCK)
+        seq(optional($._WITH), alias(k('no'), $.NO), alias(k('rewind'), $.REWIND)),
+        seq(optional($._WITH), alias(k('lock'), $.LOCK))
       )))
     ),
 
     perform_statement: $ => prec.right(seq(
-      $._PERFORM,
+      k('perform'),
       choice(
         seq(
           field('procedure', $.perform_procedure),
           field('option', optional($.perform_option)),
-          nonempty($._END_PERFORM, '.')
+          nonempty(k('end-perform'), '.')
         ),
         seq(
           field('option', optional($.perform_option)),
           field('statements', $._statements1),
-          $._END_PERFORM,
+          k('end-perform'),
           optional('.')
         ),
         seq(
           field('option', $.perform_option),
-          nonempty($._END_PERFORM, '.')
+          nonempty(k('end-perform'), '.')
         )
       )
     )),
     perform_statement_in_block: $ => prec.right(seq(
-      $._PERFORM,
+      k('perform'),
       choice(
         seq(
           field('procedure', $.perform_procedure),
           field('option', optional($.perform_option)),
-          optional($._END_PERFORM)
+          optional(k('end-perform'))
         ),
         seq(
           field('option', optional($.perform_option)),
           field('statements', $._statements1),
-          $._END_PERFORM
+          k('end-perform')
         ),
         seq(
           field('option', $.perform_option),
-          optional($._END_PERFORM)
+          optional(k('end_perform'))
         )
       )
     )),
 
     perform_procedure: $ => seq(
       $.label,
-      optional(seq($.THRU, $.label)),
+      optional(seq(alias(k('thru'), $.THRU), $.label)),
     ),
 
     perform_option: $ => choice(
-      $.FOREVER,
-      seq(field('times', $._id_or_lit_or_func), $._TIMES),
-      seq(field('test', optional($.perform_test)), $._UNTIL, field('until', $.expr)),
-      seq(field('test', optional($.perform_test)), $._VARYING, field('varying', sepBy($.perform_varying, $._AFTER)))
+      alias(k('forever'), $.FOREVER),
+      seq(field('times', $._id_or_lit_or_func), k('times')),
+      seq(field('test', optional($.perform_test)), k('until'), field('until', $.expr)),
+      seq(field('test', optional($.perform_test)), k('varying'), field('varying', sepBy($.perform_varying, k('after'))))
     ),
 
     _id_or_lit_or_func: $ => choice(
@@ -1565,18 +1582,18 @@ module.exports = grammar({
     ),
 
     perform_test: $ => seq(
-      optional($._WITH),
-      $._TEST,
-      choice($.BEFORE, $.AFTER)
+      optional(k('with')),
+      k('test'),
+      choice(alias(k('before'), $.BEFORE), alias(k('after'), $.AFTER))
     ),
 
     perform_varying: $ => seq(
       $._identifier,
-      $._FROM,
+      k('from'),
       field('from', $._x),
-      $._BY,
+      k('by'),
       field('by', $._x),
-      $._UNTIL,
+      k('until'),
       field('until', $.expr),
     ),
 
@@ -1588,46 +1605,46 @@ module.exports = grammar({
     write_statement_in_block: $ => prec.right(seq(
       $._write_statement_header,
       choice(
-        field('handler', optional(seq($._write_handler, $._END_WRITE))),
-        optional($._END_WRITE)
+        field('handler', optional(seq($._write_handler, k('end-write')))),
+        optional(k('end-write'))
       )
     )),
 
     _write_statement_header: $ => prec.right(seq(
-      $._WRITE,
+      k('write'),
       field('record_name', $.qualified_word),
-      field('from', optional(seq($._FROM, $._id_or_lit))),
+      field('from', optional(seq(k('from'), $._id_or_lit))),
       field('lock', optional(choice($.write_lock, $.write_no_lock))),
       field('option', optional($.write_option))
     )),
 
     write_lock: $ => seq(
-      optional($._WITH),
-      $._LOCK
+      optional(k('with')),
+      k('LOCK')
     ),
 
     write_no_lock: $ => seq(
-      optional($._WITH),
-      $._NO,
-      $._LOCK
+      optional(k('with')),
+      k('no'),
+      k('LOCK')
     ),
 
     write_option: $ => choice(
       seq(
-        choice($.BEFORE, $.AFTER),
-        optional($._ADVANCING),
+        choice(alias(k('before'), $.BEFORE), alias(k('after'), $.AFTER)),
+        optional(k('advancing')),
         $._num_or_id_or_lit,
-        optional(choice($._LINE, $._LINES))
+        optional(choice(k('line'), k('lines')))
       ),
       seq(
-        choice($.BEFORE, $.AFTER),
-        optional($._ADVANCING),
-        $.MNEMONIC_NAME,
+        choice(alias(k('before'), $.BEFORE), alias(k('after'), $.AFTER)),
+        optional(k('advancing')),
+        alias(k('mnemonic-name'), $.MNEMONIC_NAME),
       ),
       seq(
-        choice($.BEFORE, $.AFTER),
-        optional($._ADVANCING),
-        $.PAGE,
+        choice(alias(k('before'), $.BEFORE), alias(k('after'), $.AFTER)),
+        optional(k('advancing')),
+        alias(k('page'), $.PAGE),
       ),
     ),
 
@@ -1637,28 +1654,28 @@ module.exports = grammar({
     ),
 
     eop: $ => prec.right(seq(
-      $._AT,
-      choice($._EOP, $._END_OF_PAGE),
+      k('at'),
+      choice(k('eop'), k('end-of-page')),
       $._statements1
     )),
 
     not_eop: $ => prec.right(seq(
-      $._NOT,
-      $._AT,
-      choice($._EOP, $._END_OF_PAGE),
+      k('not'),
+      k('at'),
+      choice(k('eop'), k('end-of-page')),
       $._statements1
     )),
 
     invalid_key: $ => prec.right(seq(
-      $._INVALID,
-      $._KEY,
+      k('invalid'),
+      k('key'),
       $._statements1
     )),
 
     not_invalid_key: $ => prec.right(seq(
-      $._NOT,
-      $._INVALID,
-      $._KEY,
+      k('not'),
+      k('invalid'),
+      k('key'),
       $._statements1
     )),
 
@@ -1679,22 +1696,22 @@ module.exports = grammar({
 
     _literal: $ => choice(
       $._basic_literal,
-      seq($.ALL, $._basic_value)
+      seq(alias(k('all'), $.ALL), $._basic_value)
     ),
 
     function_: $ => choice(
-      seq($.CURRENT_DATE_FUNC, optional($.func_refmod)),
-      seq($.WHEN_COMPILED_FUNC, optional($.func_refmod)),
-      seq($.UPPER_CASE_FUNC, '(', $._exp, ')', optional($.func_refmod)),
-      seq($.LOWER_CASE_FUNC, '(', $._exp, ')', optional($.func_refmod)),
-      seq($.REVERSE_FUNC, '(', $._exp, ')', optional($.func_refmod)),
-      seq($.CONCATENATE_FUNC, '(', $._exp_list, ')', optional($.func_refmod)),
-      seq($.SUBSTITUTE_FUNC, '(', $._exp_list, ')', optional($.func_refmod)),
-      seq($.SUBSTITUTE_CASE_FUNC, '(', $._exp_list, ')', optional($.func_refmod)),
-      seq($.TRIM_FUNCTION, '(', $._trim_args, ')', optional($.func_refmod)),
-      seq($.NUMVALC_FUNC, '(', $._numvalc_args, ')'),
-      seq($.LOCALE_DT_FUNC, '(', $._locale_dt_args, ')', optional($.func_refmod)),
-      seq($.FUNCTION_NAME, optional($._func_args)),
+      seq(alias(k('current-date-func'), $.CURRENT_DATE_FUNC), optional($.func_refmod)),
+      seq(alias(k('when-compiled-func'), $.WHEN_COMPILED_FUNC), optional($.func_refmod)),
+      seq(alias(k('upper-case-func'), $.UPPER_CASE_FUNC), '(', $._exp, ')', optional($.func_refmod)),
+      seq(alias(k('lower-case-func'), $.LOWER_CASE_FUNC), '(', $._exp, ')', optional($.func_refmod)),
+      seq(alias(k('reverse-func'), $.REVERSE_FUNC), '(', $._exp, ')', optional($.func_refmod)),
+      seq(alias(k('concatenate-func'), $.CONCATENATE_FUNC), '(', $._exp_list, ')', optional($.func_refmod)),
+      seq(alias(k('substitute-func'), $.SUBSTITUTE_FUNC), '(', $._exp_list, ')', optional($.func_refmod)),
+      seq(alias(k('substitute-case-func'), $.SUBSTITUTE_CASE_FUNC), '(', $._exp_list, ')', optional($.func_refmod)),
+      seq(alias(k('trim-func'), $.TRIM_FUNCTION), '(', $._trim_args, ')', optional($.func_refmod)),
+      seq(alias(k('numvalc-func'), $.NUMVALC_FUNC), '(', $._numvalc_args, ')'),
+      seq(alias(k('locale-dt-func'), $.LOCALE_DT_FUNC), '(', $._locale_dt_args, ')', optional($.func_refmod)),
+      seq(alias(k('function-name'), $.FUNCTION_NAME), optional($._func_args)),
     ),
 
     func_refmod: $ => choice(
@@ -1707,14 +1724,14 @@ module.exports = grammar({
       optional(
         seq(
           $._e_sep,
-          choice($._LEADING, $._TRAILING)
+          choice(k('leading'), k('trailing'))
         )
       )
     ),
 
     _e_sep: $ => choice(
-      $._COMMA_DELIM,
-      $._SEMI_COLON
+      k('comma-delim'),
+      k('semi-colon')
     ),
 
     _numvalc_args: $ => sepBy(
@@ -1729,7 +1746,7 @@ module.exports = grammar({
     ),
 
     linage_counter: $ => seq(
-      $._LINAGE_COUNTER,
+      k('linage_counter'),
       optional(seq($._in_of, $._WORD))
     ),
 
@@ -1780,914 +1797,22 @@ module.exports = grammar({
       /NX"[^"\n]*"/,
     ),
 
-    _WRITE: $ => /[wW][rR][iI][tT][eE]/,
-    _ACCEPT: $ => /[aA][cC][cC][eE][pP][tT]/,
-    _ACCESS: $ => /[aA][cC][cC][eE][sS][sS]/,
-    _ADD: $ => /[aA][dD][dD]/,
-    _ADDRESS: $ => /[aA][dD][dD][rR][eE][sS][sS]/,
-    _ADVANCING: $ => /[aA][dD][vV][aA][nN][cC][iI][nN][gG]/,
-    _AFTER: $ => /[aA][fF][tT][eE][rR]/,
-    _ALL: $ => /[aA][lL][lL]/,
-    _ALLOCATE: $ => /[aA][lL][lL][oO][cC][aA][tT][eE]/,
-    _ALPHABET: $ => /[aA][lL][pP][hH][aA][bB][eE][tT]/,
-    _ALPHABETIC: $ => /[aA][lL][pP][hH][aA][bB][eE][tT][iI][cC]/,
-    _ALPHABETIC_LOWER: $ => /[aA][lL][pP][hH][aA][bB][eE][tT][iI][cC]-[lL][oO][wW][eE][rR]/,
-    _ALPHABETIC_UPPER: $ => /[aA][lL][pP][hH][aA][bB][eE][tT][iI][cC]-[uU][pP][pP][eE][rR]/,
-    _ALPHANUMERIC: $ => /[aA][lL][pP][hH][aA][nN][uU][mM][eE][rR][iI][cC]/,
-    _ALPHANUMERIC_EDITED: $ => /[aA][lL][pP][hH][aA][nN][uU][mM][eE][rR][iI][cC]-[eE][dD][iI][tT][eE][dD]/,
-    _ALSO: $ => /[aA][lL][sS][oO]/,
-    _ALTER: $ => /[aA][lL][tT][eE][rR]/,
-    _ALTERNATE: $ => /[aA][lL][tT][eE][rR][nN][aA][tT][eE]/,
-    _AND: $ => /[aA][nN][dD]/,
-    _ANY: $ => /[aA][nN][yY]/,
-    _APPLY: $ => /[aA][pP][pP][lL][yY]/,
-    _ARE: $ => /[aA][rR][eE]/,
-    _AREA: $ => /[aA][rR][eE][aA]/,
-    _ARGUMENT_NUMBER: $ => /[aA][rR][gG][uU][mM][eE][nN][tT]-[nN][uU][mM][bB][eE][rR]/,
-    _ARGUMENT_VALUE: $ => /[aA][rR][gG][uU][mM][eE][nN][tT]-[vV][aA][lL][uU][eE]/,
-    _AS: $ => /[aA][sS]/,
-    _ASCENDING: $ => /[aA][sS][cC][eE][nN][dD][iI][nN][gG]/,
-    _ASSIGN: $ => /[aA][sS][sS][iI][gG][nN]/,
-    _AT: $ => /[aA][tT]/,
-    _AUTO: $ => /[aA][uU][tT][oO]/,
-    _AUTOMATIC: $ => /[aA][uU][tT][oO][mM][aA][tT][iI][cC]/,
-    _BACKGROUND_COLOR: $ => /[bB][aA][cC][kK][gG][rR][oO][uU][nN][dD]-[cC][oO][lL][oO][rR]/,
-    _BASED: $ => /[bB][aA][sS][eE][dD]/,
-    _BEFORE: $ => /[bB][eE][fF][oO][rR][eE]/,
-    _BELL: $ => /[bB][eE][lL][lL]/,
-    _BINARY: $ => /[bB][iI][nN][aA][rR][yY]/,
-    _BINARY_C_LONG: $ => /[bB][iI][nN][aA][rR][yY]-[cC]-[lL][oO][nN][gG]/,
-    _BINARY_CHAR: $ => /[bB][iI][nN][aA][rR][yY]-[cC][hH][aA][rR]/,
-    _BINARY_DOUBLE: $ => /[bB][iI][nN][aA][rR][yY]-[dD][oO][uU][bB][lL][eE]/,
-    _BINARY_LONG: $ => /[bB][iI][nN][aA][rR][yY]-[lL][oO][nN][gG]/,
-    _BINARY_SHORT: $ => /[bB][iI][nN][aA][rR][yY]-[sS][hH][oO][rR][tT]/,
-    _BLANK: $ => /[bB][lL][aA][nN][kK]/,
-    _BLANK_LINE: $ => /[bB][lL][aA][nN][kK]-[lL][iI][nN][eE]/,
-    _BLANK_SCREEN: $ => /[bB][lL][aA][nN][kK]-[sS][cC][rR][eE][eE][nN]/,
-    _BLINK: $ => /[bB][lL][iI][nN][kK]/,
-    _BLOCK: $ => /[bB][lL][oO][cC][kK]/,
-    _BOTTOM: $ => /[bB][oO][tT][tT][oO][mM]/,
-    _BY: $ => /[bB][yY]/,
-    _BYTE_LENGTH: $ => /[bB][yY][tT][eE]-[lL][eE][nN][gG][tT][hH]/,
-    _CALL: $ => /[cC][aA][lL][lL]/,
-    _CANCEL: $ => /[cC][aA][nN][cC][eE][lL]/,
-    _CH: $ => /[cC][hH]/,
-    _CHAINING: $ => /[cC][hH][aA][iI][nN][iI][nN][gG]/,
-    _CHARACTER: $ => /[cC][hH][aA][rR][aA][cC][tT][eE][rR]/,
-    _CHARACTERS: $ => /[cC][hH][aA][rR][aA][cC][tT][eE][rR][sS]/,
-    _CLASS: $ => /[cC][lL][aA][sS][sS]/,
-    _CLASS_NAME: $ => /[cC][lL][aA][sS][sS]-[nN][aA][mM][eE]/,
-    _CLOSE: $ => /[cC][lL][oO][sS][eE]/,
-    _CLOSE_NOFEED: $ => /[cC][lL][oO][sS][eE]-[nN][oO][fF][eE][eE][dD]/,
-    _CODE: $ => /[cC][oO][dD][eE]/,
-    _CODE_SET: $ => /[cC][oO][dD][eE]-[sS][eE][tT]/,
-    _COLLATING: $ => /[cC][oO][lL][lL][aA][tT][iI][nN][gG]/,
-    _COL: $ => /[cC][oO][lL]/,
-    _COLS: $ => /[cC][oO][lL][sS]/,
-    _COLUMN: $ => /[cC][oO][lL][uU][mM][nN]/,
-    _COLUMNS: $ => /[cC][oO][lL][uU][mM][nN][sS]/,
-    _COMMA: $ => /[cC][oO][mM][mM][aA]/,
-    _COMMAND_LINE: $ => /[cC][oO][mM][mM][aA][nN][dD]-[lL][iI][nN][eE]/,
-    _COMMA_DELIM: $ => /[cC][oO][mM][mM][aA]-[dD][eE][lL][iI][mM]/,
-    _COMMIT: $ => /[cC][oO][mM][mM][iI][tT]/,
-    _COMMITMENT_CONTROL: $ => /[cC][oO][mM][mM][iI][tT][mM][eE][nN][tT]-[cC][oO][nN][tT][rR][oO][lL]/,
-    _COMMON: $ => /[cC][oO][mM][mM][oO][nN]/,
-    _COMP: $ => /[cC][oO][mM][pP]/,
-    _COMPUTE: $ => /[cC][oO][mM][pP][uU][tT][eE]/,
-    _COMP_1: $ => /[cC][oO][mM][pP]-1/,
-    _COMP_2: $ => /[cC][oO][mM][pP]-2/,
-    _COMP_3: $ => /[cC][oO][mM][pP]-3/,
-    _COMP_4: $ => /[cC][oO][mM][pP]-4/,
-    _COMP_5: $ => /[cC][oO][mM][pP]-5/,
-    _COMP_X: $ => /[cC][oO][mM][pP]-[xX]/,
-    _CONCATENATE_FUNC: $ => /[cC][oO][nN][cC][aA][tT][eE][nN][aA][tT][eE]-[fF][uU][nN][cC]/,
-    _CONFIGURATION: $ => /[cC][oO][nN][fF][iI][gG][uU][rR][aA][tT][iI][oO][nN]/,
-    _CONSTANT: $ => /[cC][oO][nN][sS][tT][aA][nN][tT]/,
-    _CONTAINS: $ => /[cC][oO][nN][tT][aA][iI][nN][sS]/,
-    _CONTENT: $ => /[cC][oO][nN][tT][eE][nN][tT]/,
-    _CONTINUE: $ => /[cC][oO][nN][tT][iI][nN][uU][eE]/,
-    _CONTROL: $ => /[cC][oO][nN][tT][rR][oO][lL]/,
-    _CONTROLS: $ => /[cC][oO][nN][tT][rR][oO][lL][sS]/,
-    _CONTROL_FOOTING: $ => /[cC][oO][nN][tT][rR][oO][lL]-[fF][oO][oO][tT][iI][nN][gG]/,
-    _CONTROL_HEADING: $ => /[cC][oO][nN][tT][rR][oO][lL]-[hH][eE][aA][dD][iI][nN][gG]/,
-    _CONVERTING: $ => /[cC][oO][nN][vV][eE][rR][tT][iI][nN][gG]/,
-    _CORE_INDEX: $ => /[cC][oO][rR][eE]-[iI][nN][dD][eE][xX]/,
-    _CORRESPONDING: $ => /[cC][oO][rR][rR][eE][sS][pP][oO][nN][dD][iI][nN][gG]/,
-    _COUNT: $ => /[cC][oO][uU][nN][tT]/,
-    _CRT: $ => /[cC][rR][tT]/,
-    _CURRENCY: $ => /[cC][uU][rR][rR][eE][nN][cC][yY]/,
-    _CURRENT_DATE_FUNC: $ => /[cC][uU][rR][rR][eE][nN][tT]-[dD][aA][tT][eE]-[fF][uU][nN][cC]/,
-    _CURSOR: $ => /[cC][uU][rR][sS][oO][rR]/,
-    _CYCLE: $ => /[cC][yY][cC][lL][eE]/,
-    _CYL_OVERFLOW: $ => /[cC][yY][lL]-[oO][vV][eE][rR][fF][lL][oO][wW]/,
-    _DATA: $ => /[dD][aA][tT][aA]/,
-    _DATE: $ => /[dD][aA][tT][eE]/,
-    _DAY: $ => /[dD][aA][yY]/,
-    _DAY_OF_WEEK: $ => /[dD][aA][yY]-[oO][fF]-[wW][eE][eE][kK]/,
-    _DE: $ => /[dD][eE]/,
-    _DEBUGGING: $ => /[dD][eE][bB][uU][gG][gG][iI][nN][gG]/,
-    _DECIMAL_POINT: $ => /[dD][eE][cC][iI][mM][aA][lL]-[pP][oO][iI][nN][tT]/,
-    _DECLARATIVES: $ => /[dD][eE][cC][lL][aA][rR][aA][tT][iI][vV][eE][sS]/,
-    _DEFAULT: $ => /[dD][eE][fF][aA][uU][lL][tT]/,
-    _DELETE: $ => /[dD][eE][lL][eE][tT][eE]/,
-    _DELIMITED: $ => /[dD][eE][lL][iI][mM][iI][tT][eE][dD]/,
-    _DELIMITER: $ => /[dD][eE][lL][iI][mM][iI][tT][eE][rR]/,
-    _DEPENDING: $ => /[dD][eE][pP][eE][nN][dD][iI][nN][gG]/,
-    _DESCENDING: $ => /[dD][eE][sS][cC][eE][nN][dD][iI][nN][gG]/,
-    _DETAIL: $ => /[dD][eE][tT][aA][iI][lL]/,
-    //_DISK: $ => /[dD][iI][sS][kK]/,
-    _DISPLAY: $ => /[dD][iI][sS][pP][lL][aA][yY]/,
-    _DIVIDE: $ => /[dD][iI][vV][iI][dD][eE]/,
-    _DIVISION: $ => /[dD][iI][vV][iI][sS][iI][oO][nN]/,
-    _DOWN: $ => /[dD][oO][wW][nN]/,
-    _DUPLICATES: $ => /[dD][uU][pP][lL][iI][cC][aA][tT][eE][sS]/,
-    _DYNAMIC: $ => /[dD][yY][nN][aA][mM][iI][cC]/,
-    _EBCDIC: $ => /[eE][bB][cC][dD][iI][cC]/,
-    _ELSE: $ => /[eE][lL][sS][eE]/,
-    _END: $ => /[eE][nN][dD]/,
-    _END_ACCEPT: $ => /[eE][nN][dD]-[aA][cC][cC][eE][pP][tT]/,
-    _END_ADD: $ => /[eE][nN][dD]-[aA][dD][dD]/,
-    _END_CALL: $ => /[eE][nN][dD]-[cC][aA][lL][lL]/,
-    _END_COMPUTE: $ => /[eE][nN][dD]-[cC][oO][mM][pP][uU][tT][eE]/,
-    _END_DELETE: $ => /[eE][nN][dD]-[dD][eE][lL][eE][tT][eE]/,
-    _END_DISPLAY: $ => /[eE][nN][dD]-[dD][iI][sS][pP][lL][aA][yY]/,
-    _END_DIVIDE: $ => /[eE][nN][dD]-[dD][iI][vV][iI][dD][eE]/,
-    _END_EVALUATE: $ => /[eE][nN][dD]-[eE][vV][aA][lL][uU][aA][tT][eE]/,
-    _END_FUNCTION: $ => /[eE][nN][dD]-[fF][uU][nN][cC][tT][iI][oO][nN]/,
-    _END_IF: $ => /[eE][nN][dD]-[iI][fF]/,
-    _END_MULTIPLY: $ => /[eE][nN][dD]-[mM][uU][lL][tT][iI][pP][lL][yY]/,
-    _END_OF_PAGE: $ => /[eE][nN][dD]-[oO][fF]-[pP][aA][gG][eE]/,
-    _END_PERFORM: $ => /[eE][nN][dD]-[pP][eE][rR][fF][oO][rR][mM]/,
-    _END_PROGRAM: $ => /[eE][nN][dD]-[pP][rR][oO][gG][rR][aA][mM]/,
-    _END_READ: $ => /[eE][nN][dD]-[rR][eE][aA][dD]/,
-    _END_RETURN: $ => /[eE][nN][dD]-[rR][eE][tT][uU][rR][nN]/,
-    _END_REWRITE: $ => /[eE][nN][dD]-[rR][eE][wW][rR][iI][tT][eE]/,
-    _END_SEARCH: $ => /[eE][nN][dD]-[sS][eE][aA][rR][cC][hH]/,
-    _END_START: $ => /[eE][nN][dD]-[sS][tT][aA][rR][tT]/,
-    _END_STRING: $ => /[eE][nN][dD]-[sS][tT][rR][iI][nN][gG]/,
-    _END_SUBTRACT: $ => /[eE][nN][dD]-[sS][uU][bB][tT][rR][aA][cC][tT]/,
-    _END_UNSTRING: $ => /[eE][nN][dD]-[uU][nN][sS][tT][rR][iI][nN][gG]/,
-    _END_WRITE: $ => /[eE][nN][dD]-[wW][rR][iI][tT][eE]/,
-    _ENTRY: $ => /[eE][nN][tT][rR][yY]/,
-    _ENVIRONMENT: $ => /[eE][nN][vV][iI][rR][oO][nN][mM][eE][nN][tT]/,
-    _ENVIRONMENT_NAME: $ => /[eE][nN][vV][iI][rR][oO][nN][mM][eE][nN][tT]-[nN][aA][mM][eE]/,
-    _ENVIRONMENT_VALUE: $ => /[eE][nN][vV][iI][rR][oO][nN][mM][eE][nN][tT]-[vV][aA][lL][uU][eE]/,
-    _EOL: $ => /[eE][oO][lL]/,
-    _EOP: $ => /([aA][tT][ \t\n]+)?([eE][oO][pP]|[eE][nN][dD]-[oO][fF]-[pP][aA][gG][eE])/,
-    _EOS: $ => /[eE][oO][sS]/,
-    _EQUAL: $ => /[eE][qQ][uU][aA][lL]/,
-    _EQUALS: $ => /[eE][qQ][uU][aA][lL][sS]/,
-    _ERASE: $ => /[eE][rR][aA][sS][eE]/,
-    _ERROR: $ => /[eE][rR][rR][oO][rR]/,
-    _ESCAPE: $ => /[eE][sS][cC][aA][pP][eE]/,
-    _EVALUATE: $ => /[eE][vV][aA][lL][uU][aA][tT][eE]/,
-    _EVENT_STATUS: $ => /[eE][vV][eE][nN][tT]-[sS][tT][aA][tT][uU][sS]/,
-    _EXCEPTION: $ => /[eE][xX][cC][eE][pP][tT][iI][oO][nN]/,
-    _EXCLUSIVE: $ => /[eE][xX][cC][lL][uU][sS][iI][vV][eE]/,
-    _EXIT: $ => /[eE][xX][iI][tT]/,
-    _EXTEND: $ => /[eE][xX][tT][eE][nN][dD]/,
-    _EXTERNAL: $ => /[eE][xX][tT][eE][rR][nN][aA][lL]/,
-    _FD: $ => /[fF][dD]/,
-    _FILE_CONTROL: $ => /[fF][iI][lL][eE]-[cC][oO][nN][tT][rR][oO][lL]/,
-    _FILE_ID: $ => /[fF][iI][lL][eE]-[iI][dD]/,
-    _FILLER: $ => /[fF][iI][lL][lL][eE][rR]/,
-    _FINAL: $ => /[fF][iI][nN][aA][lL]/,
-    _FIRST: $ => /[fF][iI][rR][sS][tT]/,
-    _FOOTING: $ => /[fF][oO][oO][tT][iI][nN][gG]/,
-    _FOR: $ => /[fF][oO][rR]/,
-    _FOREGROUND_COLOR: $ => /[fF][oO][rR][eE][gG][rR][oO][uU][nN][dD]-[cC][oO][lL][oO][rR]/,
-    _FOREVER: $ => /[fF][oO][rR][eE][vV][eE][rR]/,
-    _FORMS_OVERLAY: $ => /[fF][oO][rR][mM][sS]-[oO][vV][eE][rR][lL][aA][yY]/,
-    _FREE: $ => /[fF][rR][eE][eE]/,
-    _FROM: $ => /[fF][rR][oO][mM]/,
-    _FULL: $ => /[fF][uU][lL][lL]/,
-    _FUNCTION: $ => /[fF][uU][nN][cC][tT][iI][oO][nN]/,
-    _FUNCTION_ID: $ => /[fF][uU][nN][cC][tT][iI][oO][nN]-[iI][dD]/,
-    _FUNCTION_NAME: $ => /[fF][uU][nN][cC][tT][iI][oO][nN]-[nN][aA][mM][eE]/,
-    _GE: $ => /[gG][eE]/,
-    _GENERATE: $ => /[gG][eE][nN][eE][rR][aA][tT][eE]/,
-    _GIVING: $ => /[gG][iI][vV][iI][nN][gG]/,
-    _GLOBAL: $ => /[gG][lL][oO][bB][aA][lL]/,
-    _GO: $ => /[gG][oO]/,
-    _GOBACK: $ => /[gG][oO][bB][aA][cC][kK]/,
-    _GREATER: $ => /[gG][rR][eE][aA][tT][eE][rR]/,
-    _GROUP: $ => /[gG][rR][oO][uU][pP]/,
-    _HEADING: $ => /[hH][eE][aA][dD][iI][nN][gG]/,
-    _HIGHLIGHT: $ => /[hH][iI][gG][hH][lL][iI][gG][hH][tT]/,
     _HIGH_VALUE: $ => choice(
       'high-value', 'high-Value', 'high-VALUE',
       'High-value', 'High-Value', 'High-VALUE',
       'HIGH-value', 'HIGH-Value', 'HIGH-VALUE'
     ),
-    _IDENTIFICATION: $ => /[iI][dD][eE][nN][tT][iI][fF][iI][cC][aA][tT][iI][oO][nN]/,
-    _IF: $ => /[iI][fF]/,
-    _IGNORE: $ => /[iI][gG][nN][oO][rR][eE]/,
-    _IGNORING: $ => /[iI][gG][nN][oO][rR][iI][nN][gG]/,
-    _IN: $ => /[iI][nN]/,
-    _INDEX: $ => /[iI][nN][dD][eE][xX]/,
-    _INDEXED: $ => /[iI][nN][dD][eE][xX][eE][dD]/,
-    _INDICATE: $ => /[iI][nN][dD][iI][cC][aA][tT][eE]/,
-    _INITIALIZE: $ => /[iI][nN][iI][tT][iI][aA][lL][iI][zZ][eE]/,
-    _INITIALIZED: $ => /[iI][nN][iI][tT][iI][aA][lL][iI][zZ][eE][dD]/,
-    _INITIATE: $ => /[iI][nN][iI][tT][iI][aA][tT][eE]/,
-    _INPUT: $ => /[iI][nN][pP][uU][tT]/,
-    _INPUT_OUTPUT: $ => /[iI][nN][pP][uU][tT]-[oO][uU][tT][pP][uU][tT]/,
-    _INSPECT: $ => /[iI][nN][sS][pP][eE][cC][tT]/,
-    _INTO: $ => /[iI][nN][tT][oO]/,
-    _INTRINSIC: $ => /[iI][nN][tT][rR][iI][nN][sS][iI][cC]/,
-    _INVALID: $ => /[iI][nN][vV][aA][lL][iI][dD]/,
-    _INVALID_KEY: $ => /[iI][nN][vV][aA][lL][iI][dD]-[kK][eE][yY]/,
-    _IS: $ => /[iI][sS]/,
-    _I_O: $ => /[iI]-[oO]/,
-    _I_O_CONTROL: $ => /[iI]-[oO]-[cC][oO][nN][tT][rR][oO][lL]/,
-    _JUSTIFIED: $ => /[jJ][uU][sS][tT][iI][fF][iI][eE][dD]/,
-    _KEY: $ => /[kK][eE][yY]/,
-    _LABEL: $ => /[lL][aA][bB][eE][lL]/,
-    _LAST: $ => /[lL][aA][sS][tT]/,
-    _LAST_DETAIL: $ => /[lL][aA][sS][tT]-[dD][eE][tT][aA][iI][lL]/,
-    _LE: $ => /[lL][eE]/,
-    _LEADING: $ => /[lL][eE][aA][dD][iI][nN][gG]/,
-    _LEFT: $ => /[lL][eE][fF][tT]/,
-    _LENGTH: $ => /[lL][eE][nN][gG][tT][hH]/,
-    _LESS: $ => /[lL][eE][sS][sS]/,
-    _LEVEL_NUMBER_WORD: $ => /[lL][eE][vV][eE][lL]-[nN][uU][mM][bB][eE][rR]-[wW][oO][rR][dD]/,
-    _LEVEL88_NUMBER_WORD: $ => /[lL][eE][vV][eE][lL]88-[nN][uU][mM][bB][eE][rR]-[wW][oO][rR][dD]/,
-    _LIMIT: $ => /[lL][iI][mM][iI][tT]/,
-    _LIMITS: $ => /[lL][iI][mM][iI][tT][sS]/,
-    _LINAGE: $ => /[lL][iI][nN][aA][gG][eE]/,
-    _LINAGE_COUNTER: $ => /[lL][iI][nN][aA][gG][eE]-[cC][oO][uU][nN][tT][eE][rR]/,
-    _LINE: $ => /[lL][iI][nN][eE]/,
-    _LINES: $ => /[lL][iI][nN][eE][sS]/,
-    _LINKAGE: $ => /[lL][iI][nN][kK][aA][gG][eE]/,
-    _LOCALE: $ => /[lL][oO][cC][aA][lL][eE]/,
-    _LOCALE_DT_FUNC: $ => /[lL][oO][cC][aA][lL][eE]-[dD][tT]-[fF][uU][nN][cC]/,
-    _LOCAL_STORAGE: $ => /[lL][oO][cC][aA][lL]-[sS][tT][oO][rR][aA][gG][eE]/,
-    _LOCK: $ => /[lL][oO][cC][kK]/,
-    _LOWER_CASE_FUNC: $ => /[lL][oO][wW][eE][rR]-[cC][aA][sS][eE]-[fF][uU][nN][cC]/,
-    _LOWLIGHT: $ => /[lL][oO][wW][lL][iI][gG][hH][tT]/,
     _LOW_VALUE: $ => choice(
       'low-value', 'low-Value', 'low-VALUE',
       'Low-value', 'Low-Value', 'Low-VALUE',
       'LOW-value', 'LOW-Value', 'LOW-VALUE'
     ),
-    _MANUAL: $ => /[mM][aA][nN][uU][aA][lL]/,
-    _MEMORY: $ => /[mM][eE][mM][oO][rR][yY]/,
-    _MERGE: $ => /[mM][eE][rR][gG][eE]/,
-    _MINUS: $ => /[mM][iI][nN][uU][sS]/,
-    //todo
-    _MNEMONIC_NAME: $ => /[mM][nN][eE][mM][oO][nN][iI][cC]-[nN][aA][mM][eE]/,
-    _MODE: $ => /[mM][oO][dD][eE]/,
-    _MOVE: $ => /[mM][oO][vV][eE]/,
-    _MULTIPLE: $ => /[mM][uU][lL][tT][iI][pP][lL][eE]/,
-    _MULTIPLY: $ => /[mM][uU][lL][tT][iI][pP][lL][yY]/,
-    _NATIONAL: $ => /[nN][aA][tT][iI][oO][nN][aA][lL]/,
-    _NATIONAL_EDITED: $ => /[nN][aA][tT][iI][oO][nN][aA][lL]-[eE][dD][iI][tT][eE][dD]/,
-    _NATIVE: $ => /[nN][aA][tT][iI][vV][eE]/,
-    _NEGATIVE: $ => /[nN][eE][gG][aA][tT][iI][vV][eE]/,
-    _NEXT: $ => /[nN][eE][xX][tT]/,
-    _NEXT_SENTENCE: $ => /[nN][eE][xX][tT]-[sS][eE][nN][tT][eE][nN][cC][eE]/,
-    _NO: $ => /[nN][oO]/,
-    _NOMINAL: $ => /[nN][oO][mM][iI][nN][aA][lL]/,
-    _NOT: $ => /[nN][oO][tT]/,
-    _NOT_END: $ => /[nN][oO][tT]-[eE][nN][dD]/,
-    _NOT_EOP: $ => /[nN][oO][tT][ \t\n]+([aA][tT][ \t\n]+)?([eE][oO][pP]|[eE][nN][dD]-[oO][fF]-[pP][aA][gG][eE])/,
-    _NOT_EXCEPTION: $ => /[nN][oO][tT]-[eE][xX][cC][eE][pP][tT][iI][oO][nN]/,
-    _NOT_INVALID_KEY: $ => /[nN][oO][tT]-[iI][nN][vV][aA][lL][iI][dD]-[kK][eE][yY]/,
-    _NOT_OVERFLOW: $ => /[nN][oO][tT]-[oO][vV][eE][rR][fF][lL][oO][wW]/,
-    _NOT_SIZE_ERROR: $ => /[nN][oO][tT]-[sS][iI][zZ][eE]-[eE][rR][rR][oO][rR]/,
-    _NO_ADVANCING: $ => /[nN][oO]-[aA][dD][vV][aA][nN][cC][iI][nN][gG]/,
-    _NUMBER: $ => /[nN][uU][mM][bB][eE][rR]/,
-    _NUMBERS: $ => /[nN][uU][mM][bB][eE][rR][sS]/,
-    _NUMERIC: $ => /[nN][uU][mM][eE][rR][iI][cC]/,
-    _NUMERIC_EDITED: $ => /[nN][uU][mM][eE][rR][iI][cC]-[eE][dD][iI][tT][eE][dD]/,
-    _NUMVALC_FUNC: $ => /[nN][uU][mM][vV][aA][lL][cC]-[fF][uU][nN][cC]/,
-    _OBJECT_COMPUTER: $ => /[oO][bB][jJ][eE][cC][tT]-[cC][oO][mM][pP][uU][tT][eE][rR]/,
-    _OCCURS: $ => /[oO][cC][cC][uU][rR][sS]/,
-    _OF: $ => /[oO][fF]/,
-    _OFF: $ => /[oO][fF][fF]/,
-    _OMITTED: $ => /[oO][mM][iI][tT][tT][eE][dD]/,
-    _ON: $ => /[oO][nN]/,
-    _ONLY: $ => /[oO][nN][lL][yY]/,
-    _OPEN: $ => /[oO][pP][eE][nN]/,
-    _OPTIONAL: $ => /[oO][pP][tT][iI][oO][nN][aA][lL]/,
-    _OR: $ => /[oO][rR]/,
-    _ORDER: $ => /[oO][rR][dD][eE][rR]/,
-    _ORGANIZATION: $ => /[oO][rR][gG][aA][nN][iI][zZ][aA][tT][iI][oO][nN]/,
-    _OTHER: $ => /[oO][tT][hH][eE][rR]/,
-    _OUTPUT: $ => /[oO][uU][tT][pP][uU][tT]/,
-    _OVERFLOW: $ => /[oO][vV][eE][rR][fF][lL][oO][wW]/,
-    _OVERLINE: $ => /[oO][vV][eE][rR][lL][iI][nN][eE]/,
-    _PACKED_DECIMAL: $ => /[pP][aA][cC][kK][eE][dD]-[dD][eE][cC][iI][mM][aA][lL]/,
-    _PADDING: $ => /[pP][aA][dD][dD][iI][nN][gG]/,
-    _PAGE: $ => /[pP][aA][gG][eE]/,
-    _PAGE_FOOTING: $ => /[pP][aA][gG][eE]-[fF][oO][oO][tT][iI][nN][gG]/,
-    _PAGE_HEADING: $ => /[pP][aA][gG][eE]-[hH][eE][aA][dD][iI][nN][gG]/,
-    _PARAGRAPH: $ => /[pP][aA][rR][aA][gG][rR][aA][pP][hH]/,
-    _PERFORM: $ => /[pP][eE][rR][fF][oO][rR][mM]/,
-    _PIC: $ => /[pP][iI][cC]/,
-    _PICTURE: $ => /[pP][iI][cC][tT][uU][rR][eE]/,
-    _PLUS: $ => /[pP][lL][uU][sS]/,
-    _POINTER: $ => /[pP][oO][iI][nN][tT][eE][rR]/,
-    _POSITION: $ => /[pP][oO][sS][iI][tT][iI][oO][nN]/,
-    _POSITIVE: $ => /[pP][oO][sS][iI][tT][iI][vV][eE]/,
-    _PRESENT: $ => /[pP][rR][eE][sS][eE][nN][tT]/,
-    _PREVIOUS: $ => /[pP][rR][eE][vV][iI][oO][uU][sS]/,
-    _PRINTER: $ => /[pP][rR][iI][nN][tT][eE][rR]/,
-    _PRINTING: $ => /[pP][rR][iI][nN][tT][iI][nN][gG]/,
-    _PROCEDURE: $ => /[pP][rR][oO][cC][eE][dD][uU][rR][eE]/,
-    _PROCEDURES: $ => /[pP][rR][oO][cC][eE][dD][uU][rR][eE][sS]/,
-    _PROCEED: $ => /[pP][rR][oO][cC][eE][eE][dD]/,
-    _PROGRAM: $ => /[pP][rR][oO][gG][rR][aA][mM]/,
-    _PROGRAM_ID: $ => /[pP][rR][oO][gG][rR][aA][mM]-[iI][dD]/,
-    _PROGRAM_NAME: $ => /[pP][rR][oO][gG][rR][aA][mM]-[nN][aA][mM][eE]/,
-    _PROGRAM_POINTER: $ => /[pP][rR][oO][gG][rR][aA][mM]-[pP][oO][iI][nN][tT][eE][rR]/,
-    _PROMPT: $ => /[pP][rR][oO][mM][pP][tT]/,
+    _TOK_NULL: $ => choice('null', 'NULL', 'null'),
+    TOK_NULL: $ => _TOK_NULL,
     _QUOTE: $ => choice('quote', 'QUOTE', 'Quote'),
-    _RANDOM: $ => /[rR][aA][nN][dD][oO][mM]/,
-    _RD: $ => /[rR][dD]/,
-    _READ: $ => /[rR][eE][aA][dD]/,
-    _RECORD: $ => /[rR][eE][cC][oO][rR][dD]/,
-    _RECORDING: $ => /[rR][eE][cC][oO][rR][dD][iI][nN][gG]/,
-    _RECORDS: $ => /[rR][eE][cC][oO][rR][dD][sS]/,
-    _RECURSIVE: $ => /[rR][eE][cC][uU][rR][sS][iI][vV][eE]/,
-    _REDEFINES: $ => /[rR][eE][dD][eE][fF][iI][nN][eE][sS]/,
-    _REEL: $ => /[rR][eE][eE][lL]/,
-    _REFERENCE: $ => /[rR][eE][fF][eE][rR][eE][nN][cC][eE]/,
-    _RELATIVE: $ => /[rR][eE][lL][aA][tT][iI][vV][eE]/,
-    _RELEASE: $ => /[rR][eE][lL][eE][aA][sS][eE]/,
-    _REMAINDER: $ => /[rR][eE][mM][aA][iI][nN][dD][eE][rR]/,
-    _REMOVAL: $ => /[rR][eE][mM][oO][vV][aA][lL]/,
-    _RENAMES: $ => /[rR][eE][nN][aA][mM][eE][sS]/,
-    _REPLACING: $ => /[rR][eE][pP][lL][aA][cC][iI][nN][gG]/,
-    _REPORT: $ => /[rR][eE][pP][oO][rR][tT]/,
-    _REPORTING: $ => /[rR][eE][pP][oO][rR][tT][iI][nN][gG]/,
-    _REPORTS: $ => /[rR][eE][pP][oO][rR][tT][sS]/,
-    _REPORT_FOOTING: $ => /[rR][eE][pP][oO][rR][tT]-[fF][oO][oO][tT][iI][nN][gG]/,
-    _REPORT_HEADING: $ => /[rR][eE][pP][oO][rR][tT]-[hH][eE][aA][dD][iI][nN][gG]/,
-    _REPOSITORY: $ => /[rR][eE][pP][oO][sS][iI][tT][oO][rR][yY]/,
-    _REQUIRED: $ => /[rR][eE][qQ][uU][iI][rR][eE][dD]/,
-    _RESERVE: $ => /[rR][eE][sS][eE][rR][vV][eE]/,
-    _RETURN: $ => /[rR][eE][tT][uU][rR][nN]/,
-    _RETURNING: $ => /[rR][eE][tT][uU][rR][nN][iI][nN][gG]/,
-    _REVERSE_FUNC: $ => /[rR][eE][vV][eE][rR][sS][eE]-[fF][uU][nN][cC]/,
-    _REVERSE_VIDEO: $ => /[rR][eE][vV][eE][rR][sS][eE]-[vV][iI][dD][eE][oO]/,
-    _REWIND: $ => /[rR][eE][wW][iI][nN][dD]/,
-    _REWRITE: $ => /[rR][eE][wW][rR][iI][tT][eE]/,
-    _RIGHT: $ => /[rR][iI][gG][hH][tT]/,
-    _ROLLBACK: $ => /[rR][oO][lL][lL][bB][aA][cC][kK]/,
-    _ROUNDED: $ => /[rR][oO][uU][nN][dD][eE][dD]/,
-    _RUN: $ => /[rR][uU][nN]/,
-    _SAME: $ => /[sS][aA][mM][eE]/,
-    _SCREEN: $ => /[sS][cC][rR][eE][eE][nN]/,
-    _SCREEN_CONTROL: $ => /[sS][cC][rR][eE][eE][nN]-[cC][oO][nN][tT][rR][oO][lL]/,
-    _SCROLL: $ => /[sS][cC][rR][oO][lL][lL]/,
-    _SD: $ => /[sS][dD]/,
-    _SEARCH: $ => /[sS][eE][aA][rR][cC][hH]/,
-    _SECTION: $ => /[sS][eE][cC][tT][iI][oO][nN]/,
-    _SECURE: $ => /[sS][eE][cC][uU][rR][eE]/,
-    _SEGMENT_LIMIT: $ => /[sS][eE][gG][mM][eE][nN][tT]-[lL][iI][mM][iI][tT]/,
-    _SELECT: $ => /[sS][eE][lL][eE][cC][tT]/,
-    _SEMI_COLON: $ => /[sS][eE][mM][iI]-[cC][oO][lL][oO][nN]/,
-    _SENTENCE: $ => /[sS][eE][nN][tT][eE][nN][cC][eE]/,
-    _SEPARATE: $ => /[sS][eE][pP][aA][rR][aA][tT][eE]/,
-    _SEQUENCE: $ => /[sS][eE][qQ][uU][eE][nN][cC][eE]/,
-    _SEQUENTIAL: $ => /[sS][eE][qQ][uU][eE][nN][tT][iI][aA][lL]/,
-    _SET: $ => /[sS][eE][tT]/,
-    _SHARING: $ => /[sS][hH][aA][rR][iI][nN][gG]/,
-    _SIGN: $ => /[sS][iI][gG][nN]/,
-    _SIGNED: $ => /[sS][iI][gG][nN][eE][dD]/,
-    _SIGNED_INT: $ => /[sS][iI][gG][nN][eE][dD]-[iI][nN][tT]/,
-    _SIGNED_LONG: $ => /[sS][iI][gG][nN][eE][dD]-[lL][oO][nN][gG]/,
-    _SIGNED_SHORT: $ => /[sS][iI][gG][nN][eE][dD]-[sS][hH][oO][rR][tT]/,
-    _SIZE: $ => /[sS][iI][zZ][eE]/,
-    _SIZE_ERROR: $ => /[sS][iI][zZ][eE]-[eE][rR][rR][oO][rR]/,
-    _SORT: $ => /[sS][oO][rR][tT]/,
-    _SORT_MERGE: $ => /[sS][oO][rR][tT]-[mM][eE][rR][gG][eE]/,
-    _SOURCE: $ => /[sS][oO][uU][rR][cC][eE]/,
-    _SOURCE_COMPUTER: $ => /[sS][oO][uU][rR][cC][eE]-[cC][oO][mM][pP][uU][tT][eE][rR]/,
-    _SPACE: $ => choice('space', 'SPACE', 'Space', 'spaces', 'SPACES', 'Spaces'),
-    _SPECIAL_NAMES: $ => /[sS][pP][eE][cC][iI][aA][lL]-[nN][aA][mM][eE][sS]/,
-    _STANDARD: $ => /[sS][tT][aA][nN][dD][aA][rR][dD]/,
-    _STANDARD_1: $ => /[sS][tT][aA][nN][dD][aA][rR][dD]-1/,
-    _STANDARD_2: $ => /[sS][tT][aA][nN][dD][aA][rR][dD]-2/,
-    _START: $ => /[sS][tT][aA][rR][tT]/,
-    _STATUS: $ => /[sS][tT][aA][tT][uU][sS]/,
-    _STOP: $ => /[sS][tT][oO][pP]/,
-    _STRING: $ => /[sS][tT][rR][iI][nN][gG]/,
-    _SUBSTITUTE_FUNC: $ => /[sS][uU][bB][sS][tT][iI][tT][uU][tT][eE]-[fF][uU][nN][cC]/,
-    _SUBSTITUTE_CASE_FUNC: $ => /[sS][uU][bB][sS][tT][iI][tT][uU][tT][eE]-[cC][aA][sS][eE]-[fF][uU][nN][cC]/,
-    _SUBTRACT: $ => /[sS][uU][bB][tT][rR][aA][cC][tT]/,
-    _SUM: $ => /[sS][uU][mM]/,
-    _SUPPRESS: $ => /[sS][uU][pP][pP][rR][eE][sS][sS]/,
-    _SYMBOLIC: $ => /[sS][yY][mM][bB][oO][lL][iI][cC]/,
-    _SYNCHRONIZED: $ => /[sS][yY][nN][cC][hH][rR][oO][nN][iI][zZ][eE][dD]/,
-    _TALLYING: $ => /[tT][aA][lL][lL][yY][iI][nN][gG]/,
-    _TAPE: $ => /[tT][aA][pP][eE]/,
-    _TERMINATE: $ => /[tT][eE][rR][mM][iI][nN][aA][tT][eE]/,
-    _TEST: $ => /[tT][eE][sS][tT]/,
-    _THAN: $ => /[tT][hH][aA][nN]/,
-    _THEN: $ => /[tT][hH][eE][nN]/,
-    _THRU: $ => /[tT][hH][rR][uU]/,
-    _TIME: $ => /[tT][iI][mM][eE]/,
-    _TIMES: $ => /[tT][iI][mM][eE][sS]/,
-    _TO: $ => /[tT][oO]/,
-    _FALSE: $ => /[fF][aA][lL][sS][eE]/,
-    _FILE: $ => /[fF][iI][lL][eE]/,
-    _TOK_INITIAL: $ => /[iI][nN][iI][tT][iI][aA][lL]/,
     _TOK_NULL: $ => choice('null', 'Null', 'NULL'),
-    _TRUE: $ => /[tT][rR][uU][eE]/,
-    _TOP: $ => /[tT][oO][pP]/,
-    _TRACKS: $ => /[tT][rR][aA][cC][kK][sS]/,
-    _TRAILING: $ => /[tT][rR][aA][iI][lL][iI][nN][gG]/,
-    _TRANSFORM: $ => /[tT][rR][aA][nN][sS][fF][oO][rR][mM]/,
-    _TRIM_FUNCTION: $ => /[tT][rR][iI][mM]-[fF][uU][nN][cC][tT][iI][oO][nN]/,
-    _TYPE: $ => /[tT][yY][pP][eE]/,
-    _UNDERLINE: $ => /[uU][nN][dD][eE][rR][lL][iI][nN][eE]/,
-    _UNIT: $ => /[uU][nN][iI][tT]/,
-    _UNLOCK: $ => /[uU][nN][lL][oO][cC][kK]/,
-    _UNSIGNED: $ => /[uU][nN][sS][iI][gG][nN][eE][dD]/,
-    _UNSIGNED_INT: $ => /[uU][nN][sS][iI][gG][nN][eE][dD]-[iI][nN][tT]/,
-    _UNSIGNED_LONG: $ => /[uU][nN][sS][iI][gG][nN][eE][dD]-[lL][oO][nN][gG]/,
-    _UNSIGNED_SHORT: $ => /[uU][nN][sS][iI][gG][nN][eE][dD]-[sS][hH][oO][rR][tT]/,
-    _UNSTRING: $ => /[uU][nN][sS][tT][rR][iI][nN][gG]/,
-    _UNTIL: $ => /[uU][nN][tT][iI][lL]/,
-    _UP: $ => /[uU][pP]/,
-    _UPDATE: $ => /[uU][pP][dD][aA][tT][eE]/,
-    _UPON: $ => /[uU][pP][oO][nN]/,
-    _UPON_ARGUMENT_NUMBER: $ => /[uU][pP][oO][nN]-[aA][rR][gG][uU][mM][eE][nN][tT]-[nN][uU][mM][bB][eE][rR]/,
-    _UPON_COMMAND_LINE: $ => /[uU][pP][oO][nN]-[cC][oO][mM][mM][aA][nN][dD]-[lL][iI][nN][eE]/,
-    _UPON_ENVIRONMENT_NAME: $ => /[uU][pP][oO][nN]-[eE][nN][vV][iI][rR][oO][nN][mM][eE][nN][tT]-[nN][aA][mM][eE]/,
-    _UPON_ENVIRONMENT_VALUE: $ => /[uU][pP][oO][nN]-[eE][nN][vV][iI][rR][oO][nN][mM][eE][nN][tT]-[vV][aA][lL][uU][eE]/,
-    _UPPER_CASE_FUNC: $ => /[uU][pP][pP][eE][rR]-[cC][aA][sS][eE]-[fF][uU][nN][cC]/,
-    _USAGE: $ => /[uU][sS][aA][gG][eE]/,
-    _USE: $ => /[uU][sS][eE]/,
-    _USING: $ => /[uU][sS][iI][nN][gG]/,
-    _VALUE: $ => /[vV][aA][lL][uU][eE]/,
-    _VARYING: $ => /[vV][aA][rR][yY][iI][nN][gG]/,
-    _WAIT: $ => /[wW][aA][iI][tT]/,
-    _WHEN: $ => /[wW][hH][eE][nN]/,
-    _WHEN_COMPILED_FUNC: $ => /[wW][hH][eE][nN]-[cC][oO][mM][pP][iI][lL][eE][dD]-[fF][uU][nN][cC]/,
-    _WHEN_OTHER: $ => /[wW][hH][eE][nN][ \t\n]+[oO][tT][hH][eE][rR]/,
-    _WITH: $ => /[wW][iI][tT][hH]/,
-    _WORD: $ => /[a-zA-z_][a-zA-Z0-9_\-]*/,
-    _WORDS: $ => /[wW][oO][rR][dD][sS]/,
-    _WORKING_STORAGE: $ => /[wW][oO][rR][kK][iI][nN][gG]-[sS][tT][oO][rR][aA][gG][eE]/,
-    _YYYYDDD: $ => /[yY][yY][yY][yY][dD][dD][dD]/,
-    _YYYYMMDD: $ => /[yY][yY][yY][yY][mM][mM][dD][dD]/,
     _ZERO: $ => choice('zero', 'ZERO', 'Zero'),
-
-
-    ACCEPT: $ => $._ACCEPT,
-    ACCESS: $ => $._ACCESS,
-    ADD: $ => $._ADD,
-    ADDRESS: $ => $._ADDRESS,
-    ADVANCING: $ => $._ADVANCING,
-    AFTER: $ => $._AFTER,
-    ALL: $ => $._ALL,
-    ALLOCATE: $ => $._ALLOCATE,
-    ALPHABET: $ => $._ALPHABET,
-    ALPHABETIC: $ => $._ALPHABETIC,
-    ALPHABETIC_LOWER: $ => $._ALPHABETIC_LOWER,
-    ALPHABETIC_UPPER: $ => $._ALPHABETIC_UPPER,
-    ALPHANUMERIC: $ => $._ALPHANUMERIC,
-    ALPHANUMERIC_EDITED: $ => $._ALPHANUMERIC_EDITED,
-    ALSO: $ => $._ALSO,
-    ALTER: $ => $._ALTER,
-    ALTERNATE: $ => $._ALTERNATE,
-    AND: $ => $._AND,
-    ANY: $ => $._ANY,
-    APPLY: $ => $._APPLY,
-    ARE: $ => $._ARE,
-    AREA: $ => $._AREA,
-    ARGUMENT_NUMBER: $ => $._ARGUMENT_NUMBER,
-    ARGUMENT_VALUE: $ => $._ARGUMENT_VALUE,
-    AS: $ => $._AS,
-    ASCENDING: $ => $._ASCENDING,
-    ASSIGN: $ => $._ASSIGN,
-    AT: $ => $._AT,
-    AUTO: $ => $._AUTO,
-    AUTOMATIC: $ => $._AUTOMATIC,
-    BACKGROUND_COLOR: $ => $._BACKGROUND_COLOR,
-    BASED: $ => $._BASED,
-    BEFORE: $ => $._BEFORE,
-    BELL: $ => $._BELL,
-    BINARY: $ => $._BINARY,
-    BINARY_C_LONG: $ => $._BINARY_C_LONG,
-    BINARY_CHAR: $ => $._BINARY_CHAR,
-    BINARY_DOUBLE: $ => $._BINARY_DOUBLE,
-    BINARY_LONG: $ => $._BINARY_LONG,
-    BINARY_SHORT: $ => $._BINARY_SHORT,
-    BLANK: $ => $._BLANK,
-    BLANK_LINE: $ => $._BLANK_LINE,
-    BLANK_SCREEN: $ => $._BLANK_SCREEN,
-    BLINK: $ => $._BLINK,
-    BLOCK: $ => $._BLOCK,
-    BOTTOM: $ => $._BOTTOM,
-    BY: $ => $._BY,
-    BYTE_LENGTH: $ => $._BYTE_LENGTH,
-    CALL: $ => $._CALL,
-    CANCEL: $ => $._CANCEL,
-    CH: $ => $._CH,
-    CHAINING: $ => $._CHAINING,
-    CHARACTER: $ => $._CHARACTER,
-    CHARACTERS: $ => $._CHARACTERS,
-    CLASS: $ => $._CLASS,
-    CLASS_NAME: $ => $._CLASS_NAME,
-    CLOSE: $ => $._CLOSE,
-    CLOSE_NOFEED: $ => $._CLOSE_NOFEED,
-    CODE: $ => $._CODE,
-    CODE_SET: $ => $._CODE_SET,
-    COLLATING: $ => $._COLLATING,
-    COL: $ => $._COL,
-    COLS: $ => $._COLS,
-    COLUMN: $ => $._COLUMN,
-    COLUMNS: $ => $._COLUMNS,
-    COMMA: $ => $._COMMA,
-    COMMAND_LINE: $ => $._COMMAND_LINE,
-    COMMA_DELIM: $ => $._COMMA_DELIM,
-    COMMIT: $ => $._COMMIT,
-    COMMITMENT_CONTROL: $ => $._COMMITMENT_CONTROL,
-    COMMON: $ => $._COMMON,
-    COMP: $ => $._COMP,
-    COMPUTE: $ => $._COMPUTE,
-    COMP_1: $ => $._COMP_1,
-    COMP_2: $ => $._COMP_2,
-    COMP_3: $ => $._COMP_3,
-    COMP_4: $ => $._COMP_4,
-    COMP_5: $ => $._COMP_5,
-    COMP_X: $ => $._COMP_X,
-    CONCATENATE_FUNC: $ => $._CONCATENATE_FUNC,
-    CONFIGURATION: $ => $._CONFIGURATION,
-    CONSTANT: $ => $._CONSTANT,
-    CONTAINS: $ => $._CONTAINS,
-    CONTENT: $ => $._CONTENT,
-    CONTINUE: $ => $._CONTINUE,
-    CONTROL: $ => $._CONTROL,
-    CONTROLS: $ => $._CONTROLS,
-    CONTROL_FOOTING: $ => $._CONTROL_FOOTING,
-    CONTROL_HEADING: $ => $._CONTROL_HEADING,
-    CONVERTING: $ => $._CONVERTING,
-    CORE_INDEX: $ => $._CORE_INDEX,
-    CORRESPONDING: $ => $._CORRESPONDING,
-    COUNT: $ => $._COUNT,
-    CRT: $ => $._CRT,
-    CURRENCY: $ => $._CURRENCY,
-    CURRENT_DATE_FUNC: $ => $._CURRENT_DATE_FUNC,
-    CURSOR: $ => $._CURSOR,
-    CYCLE: $ => $._CYCLE,
-    CYL_OVERFLOW: $ => $._CYL_OVERFLOW,
-    DATA: $ => $._DATA,
-    DATE: $ => $._DATE,
-    DAY: $ => $._DAY,
-    DAY_OF_WEEK: $ => $._DAY_OF_WEEK,
-    DE: $ => $._DE,
-    DEBUGGING: $ => $._DEBUGGING,
-    DECIMAL_POINT: $ => $._DECIMAL_POINT,
-    DECLARATIVES: $ => $._DECLARATIVES,
-    DEFAULT: $ => $._DEFAULT,
-    DELETE: $ => $._DELETE,
-    DELIMITED: $ => $._DELIMITED,
-    DELIMITER: $ => $._DELIMITER,
-    DEPENDING: $ => $._DEPENDING,
-    DESCENDING: $ => $._DESCENDING,
-    DETAIL: $ => $._DETAIL,
-    //DISK: $ => $._DISK,
-    DISPLAY: $ => $._DISPLAY,
-    DIVIDE: $ => $._DIVIDE,
-    DIVISION: $ => $._DIVISION,
-    DOWN: $ => $._DOWN,
-    DUPLICATES: $ => $._DUPLICATES,
-    DYNAMIC: $ => $._DYNAMIC,
-    EBCDIC: $ => $._EBCDIC,
-    ELSE: $ => $._ELSE,
-    END: $ => $._END,
-    END_ACCEPT: $ => $._END_ACCEPT,
-    END_ADD: $ => $._END_ADD,
-    END_CALL: $ => $._END_CALL,
-    END_COMPUTE: $ => $._END_COMPUTE,
-    END_DELETE: $ => $._END_DELETE,
-    END_DISPLAY: $ => $._END_DISPLAY,
-    END_DIVIDE: $ => $._END_DIVIDE,
-    END_EVALUATE: $ => $._END_EVALUATE,
-    END_FUNCTION: $ => $._END_FUNCTION,
-    END_IF: $ => $._END_IF,
-    END_MULTIPLY: $ => $._END_MULTIPLY,
-    END_OF_PAGE: $ => $._END_OF_PAGE,
-    END_PERFORM: $ => $._END_PERFORM,
-    END_PROGRAM: $ => $._END_PROGRAM,
-    END_READ: $ => $._END_READ,
-    END_RETURN: $ => $._END_RETURN,
-    END_REWRITE: $ => $._END_REWRITE,
-    END_SEARCH: $ => $._END_SEARCH,
-    END_START: $ => $._END_START,
-    END_STRING: $ => $._END_STRING,
-    END_SUBTRACT: $ => $._END_SUBTRACT,
-    END_UNSTRING: $ => $._END_UNSTRING,
-    END_WRITE: $ => $._END_WRITE,
-    ENTRY: $ => $._ENTRY,
-    ENVIRONMENT: $ => $._ENVIRONMENT,
-    ENVIRONMENT_NAME: $ => $._ENVIRONMENT_NAME,
-    ENVIRONMENT_VALUE: $ => $._ENVIRONMENT_VALUE,
-    EOL: $ => $._EOL,
-    EOP: $ => $._EOP,
-    EOS: $ => $._EOS,
-    EQUAL: $ => $._EQUAL,
-    EQUALS: $ => $._EQUALS,
-    ERASE: $ => $._ERASE,
-    ERROR: $ => $._ERROR,
-    ESCAPE: $ => $._ESCAPE,
-    EVALUATE: $ => $._EVALUATE,
-    EVENT_STATUS: $ => $._EVENT_STATUS,
-    EXCEPTION: $ => $._EXCEPTION,
-    EXCLUSIVE: $ => $._EXCLUSIVE,
-    EXIT: $ => $._EXIT,
-    EXTEND: $ => $._EXTEND,
-    EXTERNAL: $ => $._EXTERNAL,
-    FD: $ => $._FD,
-    FILE_CONTROL: $ => $._FILE_CONTROL,
-    FILE_ID: $ => $._FILE_ID,
-    FILLER: $ => $._FILLER,
-    FINAL: $ => $._FINAL,
-    FIRST: $ => $._FIRST,
-    FOOTING: $ => $._FOOTING,
-    FOR: $ => $._FOR,
-    FOREGROUND_COLOR: $ => $._FOREGROUND_COLOR,
-    FOREVER: $ => $._FOREVER,
-    FORMS_OVERLAY: $ => $._FORMS_OVERLAY,
-    FREE: $ => $._FREE,
-    FROM: $ => $._FROM,
-    FULL: $ => $._FULL,
-    FUNCTION: $ => $._FUNCTION,
-    FUNCTION_ID: $ => $._FUNCTION_ID,
-    FUNCTION_NAME: $ => $._FUNCTION_NAME,
-    GE: $ => $._GE,
-    GENERATE: $ => $._GENERATE,
-    GIVING: $ => $._GIVING,
-    GLOBAL: $ => $._GLOBAL,
-    GO: $ => $._GO,
-    GOBACK: $ => $._GOBACK,
-    GREATER: $ => $._GREATER,
-    GROUP: $ => $._GROUP,
-    HEADING: $ => $._HEADING,
-    HIGHLIGHT: $ => $._HIGHLIGHT,
-    HIGH_VALUE: $ => $._HIGH_VALUE,
-    IDENTIFICATION: $ => $._IDENTIFICATION,
-    IF: $ => $._IF,
-    IGNORE: $ => $._IGNORE,
-    IGNORING: $ => $._IGNORING,
-    IN: $ => $._IN,
-    INDEX: $ => $._INDEX,
-    INDEXED: $ => $._INDEXED,
-    INDICATE: $ => $._INDICATE,
-    INITIALIZE: $ => $._INITIALIZE,
-    INITIALIZED: $ => $._INITIALIZED,
-    INITIATE: $ => $._INITIATE,
-    INPUT: $ => $._INPUT,
-    INPUT_OUTPUT: $ => $._INPUT_OUTPUT,
-    INSPECT: $ => $._INSPECT,
-    INTO: $ => $._INTO,
-    INTRINSIC: $ => $._INTRINSIC,
-    INVALID: $ => $._INVALID,
-    INVALID_KEY: $ => $._INVALID_KEY,
-    IS: $ => $._IS,
-    I_O: $ => $._I_O,
-    I_O_CONTROL: $ => $._I_O_CONTROL,
-    JUSTIFIED: $ => $._JUSTIFIED,
-    KEY: $ => $._KEY,
-    LABEL: $ => $._LABEL,
-    LAST: $ => $._LAST,
-    LAST_DETAIL: $ => $._LAST_DETAIL,
-    LE: $ => $._LE,
-    LEADING: $ => $._LEADING,
-    LEFT: $ => $._LEFT,
-    LENGTH: $ => $._LENGTH,
-    LESS: $ => $._LESS,
-    LEVEL_NUMBER_WORD: $ => $._LEVEL_NUMBER_WORD,
-    LEVEL88_NUMBER_WORD: $ => $._LEVEL88_NUMBER_WORD,
-    LIMIT: $ => $._LIMIT,
-    LIMITS: $ => $._LIMITS,
-    LINAGE: $ => $._LINAGE,
-    LINAGE_COUNTER: $ => $._LINAGE_COUNTER,
-    LINE: $ => $._LINE,
-    LINES: $ => $._LINES,
-    LINKAGE: $ => $._LINKAGE,
-    LITERAL: $ => $._LITERAL,
-    LOCALE: $ => $._LOCALE,
-    LOCALE_DT_FUNC: $ => $._LOCALE_DT_FUNC,
-    LOCAL_STORAGE: $ => $._LOCAL_STORAGE,
-    LOCK: $ => $._LOCK,
-    LOWER_CASE_FUNC: $ => $._LOWER_CASE_FUNC,
-    LOWLIGHT: $ => $._LOWLIGHT,
-    LOW_VALUE: $ => $._LOW_VALUE,
-    MANUAL: $ => $._MANUAL,
-    MEMORY: $ => $._MEMORY,
-    MERGE: $ => $._MERGE,
-    MINUS: $ => $._MINUS,
-    MNEMONIC_NAME: $ => $._MNEMONIC_NAME,
-    MODE: $ => $._MODE,
-    MOVE: $ => $._MOVE,
-    MULTIPLE: $ => $._MULTIPLE,
-    MULTIPLY: $ => $._MULTIPLY,
-    NATIONAL: $ => $._NATIONAL,
-    NATIONAL_EDITED: $ => $._NATIONAL_EDITED,
-    NATIVE: $ => $._NATIVE,
-    //NE: $ => $._NE,
-    NEGATIVE: $ => $._NEGATIVE,
-    NEXT: $ => $._NEXT,
-    NEXT_SENTENCE: $ => $._NEXT_SENTENCE,
-    NO: $ => $._NO,
-    NOMINAL: $ => $._NOMINAL,
-    NOT: $ => $._NOT,
-    NOT_END: $ => $._NOT_END,
-    NOT_EOP: $ => $._NOT_EOP,
-    NOT_EXCEPTION: $ => $._NOT_EXCEPTION,
-    NOT_INVALID_KEY: $ => $._NOT_INVALID_KEY,
-    NOT_OVERFLOW: $ => $._NOT_OVERFLOW,
-    NOT_SIZE_ERROR: $ => $._NOT_SIZE_ERROR,
-    NO_ADVANCING: $ => $._NO_ADVANCING,
-    NUMBER: $ => $._NUMBER,
-    NUMBERS: $ => $._NUMBERS,
-    NUMERIC: $ => $._NUMERIC,
-    NUMERIC_EDITED: $ => $._NUMERIC_EDITED,
-    NUMVALC_FUNC: $ => $._NUMVALC_FUNC,
-    OBJECT_COMPUTER: $ => $._OBJECT_COMPUTER,
-    OCCURS: $ => $._OCCURS,
-    OF: $ => $._OF,
-    OFF: $ => $._OFF,
-    OMITTED: $ => $._OMITTED,
-    ON: $ => $._ON,
-    ONLY: $ => $._ONLY,
-    OPEN: $ => $._OPEN,
-    OPTIONAL: $ => $._OPTIONAL,
-    OR: $ => $._OR,
-    ORDER: $ => $._ORDER,
-    ORGANIZATION: $ => $._ORGANIZATION,
-    OTHER: $ => $._OTHER,
-    OUTPUT: $ => $._OUTPUT,
-    OVERFLOW: $ => $._OVERFLOW,
-    OVERLINE: $ => $._OVERLINE,
-    PACKED_DECIMAL: $ => $._PACKED_DECIMAL,
-    PADDING: $ => $._PADDING,
-    PAGE: $ => $._PAGE,
-    PAGE_FOOTING: $ => $._PAGE_FOOTING,
-    PAGE_HEADING: $ => $._PAGE_HEADING,
-    PARAGRAPH: $ => $._PARAGRAPH,
-    PERFORM: $ => $._PERFORM,
-    PIC: $ => $._PIC,
-    PICTURE: $ => $._PICTURE,
-    PLUS: $ => $._PLUS,
-    POINTER: $ => $._POINTER,
-    POSITION: $ => $._POSITION,
-    POSITIVE: $ => $._POSITIVE,
-    PRESENT: $ => $._PRESENT,
-    PREVIOUS: $ => $._PREVIOUS,
-    PRINTER: $ => $._PRINTER,
-    PRINTING: $ => $._PRINTING,
-    PROCEDURE: $ => $._PROCEDURE,
-    PROCEDURES: $ => $._PROCEDURES,
-    PROCEED: $ => $._PROCEED,
-    PROGRAM: $ => $._PROGRAM,
-    PROGRAM_ID: $ => $._PROGRAM_ID,
-    PROGRAM_NAME: $ => $._PROGRAM_NAME,
-    PROGRAM_POINTER: $ => $._PROGRAM_POINTER,
-    PROMPT: $ => $._PROMPT,
-    QUOTE: $ => $._QUOTE,
-    RANDOM: $ => $._RANDOM,
-    RD: $ => $._RD,
-    READ: $ => $._READ,
-    RECORD: $ => $._RECORD,
-    RECORDING: $ => $._RECORDING,
-    RECORDS: $ => $._RECORDS,
-    RECURSIVE: $ => $._RECURSIVE,
-    REDEFINES: $ => $._REDEFINES,
-    REEL: $ => $._REEL,
-    REFERENCE: $ => $._REFERENCE,
-    RELATIVE: $ => $._RELATIVE,
-    RELEASE: $ => $._RELEASE,
-    REMAINDER: $ => $._REMAINDER,
-    REMOVAL: $ => $._REMOVAL,
-    RENAMES: $ => $._RENAMES,
-    REPLACING: $ => $._REPLACING,
-    REPORT: $ => $._REPORT,
-    REPORTING: $ => $._REPORTING,
-    REPORTS: $ => $._REPORTS,
-    REPORT_FOOTING: $ => $._REPORT_FOOTING,
-    REPORT_HEADING: $ => $._REPORT_HEADING,
-    REPOSITORY: $ => $._REPOSITORY,
-    REQUIRED: $ => $._REQUIRED,
-    RESERVE: $ => $._RESERVE,
-    RETURN: $ => $._RETURN,
-    RETURNING: $ => $._RETURNING,
-    REVERSE_FUNC: $ => $._REVERSE_FUNC,
-    REVERSE_VIDEO: $ => $._REVERSE_VIDEO,
-    REWIND: $ => $._REWIND,
-    REWRITE: $ => $._REWRITE,
-    RIGHT: $ => $._RIGHT,
-    ROLLBACK: $ => $._ROLLBACK,
-    ROUNDED: $ => $._ROUNDED,
-    RUN: $ => $._RUN,
-    SAME: $ => $._SAME,
-    SCREEN: $ => $._SCREEN,
-    SCREEN_CONTROL: $ => $._SCREEN_CONTROL,
-    SCROLL: $ => $._SCROLL,
-    SD: $ => $._SD,
-    SEARCH: $ => $._SEARCH,
-    SECTION: $ => $._SECTION,
-    SECURE: $ => $._SECURE,
-    SEGMENT_LIMIT: $ => $._SEGMENT_LIMIT,
-    SELECT: $ => $._SELECT,
-    SEMI_COLON: $ => $._SEMI_COLON,
-    SENTENCE: $ => $._SENTENCE,
-    SEPARATE: $ => $._SEPARATE,
-    SEQUENCE: $ => $._SEQUENCE,
-    SEQUENTIAL: $ => $._SEQUENTIAL,
-    SET: $ => $._SET,
-    SHARING: $ => $._SHARING,
-    SIGN: $ => $._SIGN,
-    SIGNED: $ => $._SIGNED,
-    SIGNED_INT: $ => $._SIGNED_INT,
-    SIGNED_LONG: $ => $._SIGNED_LONG,
-    SIGNED_SHORT: $ => $._SIGNED_SHORT,
-    SIZE: $ => $._SIZE,
-    SIZE_ERROR: $ => $._SIZE_ERROR,
-    SORT: $ => $._SORT,
-    SORT_MERGE: $ => $._SORT_MERGE,
-    SOURCE: $ => $._SOURCE,
-    SOURCE_COMPUTER: $ => $._SOURCE_COMPUTER,
-    SPACE: $ => $._SPACE,
-    SPECIAL_NAMES: $ => $._SPECIAL_NAMES,
-    STANDARD: $ => $._STANDARD,
-    STANDARD_1: $ => $._STANDARD_1,
-    STANDARD_2: $ => $._STANDARD_2,
-    START: $ => $._START,
-    STATUS: $ => $._STATUS,
-    STOP: $ => $._STOP,
-    STRING: $ => $._STRING,
-    SUBSTITUTE_FUNC: $ => $._SUBSTITUTE_FUNC,
-    SUBSTITUTE_CASE_FUNC: $ => $._SUBSTITUTE_CASE_FUNC,
-    SUBTRACT: $ => $._SUBTRACT,
-    SUM: $ => $._SUM,
-    SUPPRESS: $ => $._SUPPRESS,
-    SYMBOLIC: $ => $._SYMBOLIC,
-    SYNCHRONIZED: $ => $._SYNCHRONIZED,
-    TALLYING: $ => $._TALLYING,
-    TAPE: $ => $._TAPE,
-    TERMINATE: $ => $._TERMINATE,
-    TEST: $ => $._TEST,
-    THAN: $ => $._THAN,
-    THEN: $ => $._THEN,
-    THRU: $ => $._THRU,
-    TIME: $ => $._TIME,
-    TIMES: $ => $._TIMES,
-    TO: $ => $._TO,
-    FALSE: $ => $._FALSE,
-    FILE: $ => $._FILE,
-    TOK_INITIAL: $ => $._TOK_INITIAL,
-    TOK_NULL: $ => $._TOK_NULL,
-    TRUE: $ => $._TRUE,
-    TOP: $ => $._TOP,
-    TRACKS: $ => $._TRACKS,
-    TRAILING: $ => $._TRAILING,
-    TRANSFORM: $ => $._TRANSFORM,
-    TRIM_FUNCTION: $ => $._TRIM_FUNCTION,
-    TYPE: $ => $._TYPE,
-    UNDERLINE: $ => $._UNDERLINE,
-    UNIT: $ => $._UNIT,
-    UNLOCK: $ => $._UNLOCK,
-    UNSIGNED: $ => $._UNSIGNED,
-    UNSIGNED_INT: $ => $._UNSIGNED_INT,
-    UNSIGNED_LONG: $ => $._UNSIGNED_LONG,
-    UNSIGNED_SHORT: $ => $._UNSIGNED_SHORT,
-    UNSTRING: $ => $._UNSTRING,
-    UNTIL: $ => $._UNTIL,
-    UP: $ => $._UP,
-    UPDATE: $ => $._UPDATE,
-    UPON: $ => $._UPON,
-    UPON_ARGUMENT_NUMBER: $ => $._UPON_ARGUMENT_NUMBER,
-    UPON_COMMAND_LINE: $ => $._UPON_COMMAND_LINE,
-    UPON_ENVIRONMENT_NAME: $ => $._UPON_ENVIRONMENT_NAME,
-    UPON_ENVIRONMENT_VALUE: $ => $._UPON_ENVIRONMENT_VALUE,
-    UPPER_CASE_FUNC: $ => $._UPPER_CASE_FUNC,
-    USAGE: $ => $._USAGE,
-    USE: $ => $._USE,
-    USING: $ => $._USING,
-    VALUE: $ => $._VALUE,
-    VARYING: $ => $._VARYING,
-    WAIT: $ => $._WAIT,
-    WHEN: $ => $._WHEN,
-    WHEN_COMPILED_FUNC: $ => $._WHEN_COMPILED_FUNC,
-    WHEN_OTHER: $ => $._WHEN_OTHER,
-    WITH: $ => $._WITH,
-    WORD: $ => $._WORD,
-    WORDS: $ => $._WORDS,
-    WORKING_STORAGE: $ => $._WORKING_STORAGE,
-    WRITE: $ => $._WRITE,
-    YYYYDDD: $ => $._YYYYDDD,
-    YYYYMMDD: $ => $._YYYYMMDD,
-    ZERO: $ => $._ZERO,
-
-
-    COMPUTATIONAL: $ => $._COMPUTATIONAL,
-    _COMPUTATIONAL: $ => /[cC][oO][mM][pP][uU][tT][aA][tT][iI][oO][nN][aA][lL]/,
+    _WORD: $ => /[a-zA-Z][a-zA-Z0-9\-]*/,
+    WORD: $ => _WORD,
   }
 });
