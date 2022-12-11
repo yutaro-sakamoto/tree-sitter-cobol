@@ -47,11 +47,10 @@ module.exports = grammar({
     program_definition: $ => seq(
       $.identification_division,
       optional($.environment_division),
-      optional($.data_division),
-      optional($.procedure_division), //todo
-      optional($.nested_prog), //todo
-      optional($.end_program), //todo
-      //optional($.LINE_PREFIX_COMMENT),
+      //optional($.data_division),
+      //optional($.procedure_division), //todo
+      //optional($.nested_prog), //todo
+      //optional($.end_program), //todo
     ),
 
     identification_division: $ => seq(
@@ -192,9 +191,9 @@ module.exports = grammar({
 
     _alphabet_definition: $ => choice(
       alias(k('native'), $.NATIVE),
-      alias(k('standard_1', $.STANDARD_1)),
-      alias(k('standard_2', $.STANDARD_2)),
-      alias(k('ebcdic', $.EBCDIC)),
+      alias(k('standard_1'), $.STANDARD_1),
+      alias(k('standard_2'), $.STANDARD_2),
+      alias(k('ebcdic'), $.EBCDIC),
       repeat1($.alphabet_literal),
     ),
 
@@ -203,7 +202,7 @@ module.exports = grammar({
       seq($._alphabet_lits, k('thru'), $._alphabet_lits),
     ),
 
-    LITERAL: $ => _LITERAL,
+    LITERAL: $ => $._LITERAL,
 
     _alphabet_lits: $ => choice(
       $.LITERAL,
@@ -268,7 +267,7 @@ module.exports = grammar({
     ),
 
     _i_o_control_paragraph: $ => seq(
-      $._I_O_CONTROL, '.', optional($.i_o_control),
+      k('i_o_control'), '.', optional($.i_o_control),
     ),
 
     i_o_control: $ => choice(
@@ -409,7 +408,7 @@ module.exports = grammar({
     organization_clause: $ => seq(
       optional(seq(k('organization'), optional(k('is')))),
       choice(
-        alias(k('indexed', $.INDEXED)),
+        alias(k('indexed'), $.INDEXED),
         seq(alias(k('record'), $.RECORD), optional(k('binary')), alias(k('sequential'), $.SEQUENTIAL)),
         alias(k('sequential'), $.SEQUENTIAL),
         alias(k('relative'), $.RELATIVE),
@@ -437,7 +436,7 @@ module.exports = grammar({
       field('reference', $.qualified_word),
       optional(seq(
         field('key_is_eq', optional(choice(
-          seq(alias(k('source'), $.SOURCE), $._IS),
+          seq(alias(k('source'), $.SOURCE), k('is')),
           '='
         ))
         ),
@@ -694,35 +693,6 @@ module.exports = grammar({
 
     redefines_clause: $ => seq(
       k('redefines'), $._identifier
-    ),
-
-    _identifier: $ => choice(
-      $.qualified_word,
-      seq($.qualified_word, $.subref),
-      seq($.qualified_word, $.refmod),
-      seq($.qualified_word, $.subref, $.refmod),
-    ),
-
-    qualified_word: $ => sepBy(
-      $.WORD, $._in_of
-    ),
-
-    _in_of: $ => choice(
-      k('in'),
-      k('OF')
-    ),
-
-    subref: $ => seq(
-      '(',
-      $._exp_list,
-      ')'
-    ),
-
-    refmod: $ => seq(
-      '(',
-      $._exp,
-      ':',
-      ')'
     ),
 
     _exp_list: $ => sepBy(
@@ -1283,10 +1253,6 @@ module.exports = grammar({
     _evaluate_object_list: $ => sepBy($._evaluate_object, optional(k('also'))),
 
     _evaluate_object: $ => choice(
-      /*seq(
-        $.expr,
-        optional(seq($.THRU, $.expr))
-      ),*/
       $.expr,
       alias(k('any'), $.ANY),
       alias(k('true'), $.TRUE),
@@ -1754,11 +1720,6 @@ module.exports = grammar({
       '(', optional($._exp_list), ')'
     ),
 
-    _LITERAL: $ => choice(
-      $.number,
-      $._string,
-    ),
-
     //todo
     number: $ => choice($.integer, $.decimal),
     integer: $ => /[+-]?[0-9]+/,
@@ -1802,17 +1763,54 @@ module.exports = grammar({
       'High-value', 'High-Value', 'High-VALUE',
       'HIGH-value', 'HIGH-Value', 'HIGH-VALUE'
     ),
+    HIGH_VALUE: $ => _HIGH_VALUE,
     _LOW_VALUE: $ => choice(
       'low-value', 'low-Value', 'low-VALUE',
       'Low-value', 'Low-Value', 'Low-VALUE',
       'LOW-value', 'LOW-Value', 'LOW-VALUE'
     ),
-    _TOK_NULL: $ => choice('null', 'NULL', 'null'),
-    TOK_NULL: $ => _TOK_NULL,
+    LOW_VALUE: $ => _LOW_VALUE,
     _QUOTE: $ => choice('quote', 'QUOTE', 'Quote'),
+    QUOTE: $ => $._QUOTE,
     _TOK_NULL: $ => choice('null', 'Null', 'NULL'),
+    TOK_NULL: $ => $._TOK_NULL,
     _ZERO: $ => choice('zero', 'ZERO', 'Zero'),
+    ZERO: $ => $._ZERO,
     _WORD: $ => /[a-zA-Z][a-zA-Z0-9\-]*/,
-    WORD: $ => _WORD,
+    WORD: $ => $._WORD,
+    _SPACE: $ => choice('space', 'SPACE', 'Space'),
+    SPACE: $ => _SPACE,
+    _LITERAL: $ => choice(
+      $.number,
+      $._string,
+    ),
+    _identifier: $ => choice(
+      $.qualified_word,
+      seq($.qualified_word, $.subref),
+      seq($.qualified_word, $.refmod),
+      seq($.qualified_word, $.subref, $.refmod),
+    ),
+
+    qualified_word: $ => sepBy(
+      $.WORD, $._in_of
+    ),
+
+    _in_of: $ => choice(
+      k('in'),
+      k('OF')
+    ),
+
+    subref: $ => seq(
+      '(',
+      $._exp_list,
+      ')'
+    ),
+
+    refmod: $ => seq(
+      '(',
+      $._exp,
+      ':',
+      ')'
+    ),
   }
 });
