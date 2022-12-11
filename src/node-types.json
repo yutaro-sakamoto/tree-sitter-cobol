@@ -185,11 +185,6 @@
     "fields": {}
   },
   {
-    "type": "DISK",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "DISPLAY",
     "named": true,
     "fields": {}
@@ -8517,6 +8512,10 @@
   {
     "type": ">=",
     "named": false
+  },
+  {
+    "type": "DISK",
+    "named": true
   },
   {
     "type": "HIGH-VALUE",

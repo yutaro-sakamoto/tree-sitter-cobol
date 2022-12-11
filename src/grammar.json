@@ -1185,8 +1185,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "_ASSIGN"
+          "type": "PATTERN",
+          "value": "[aA][sS][sS][iI][gG][nN]"
         },
         {
           "type": "CHOICE",
@@ -1223,8 +1223,13 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "DISK"
+                "type": "ALIAS",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "[dD][iI][sS][kK]"
+                },
+                "named": true,
+                "value": "DISK"
               },
               {
                 "type": "SYMBOL",
@@ -1273,8 +1278,13 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "DISK"
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[dD][iI][sS][kK]"
+          },
+          "named": true,
+          "value": "DISK"
         },
         {
           "type": "SYMBOL",
@@ -10551,10 +10561,6 @@
       "type": "PATTERN",
       "value": "[dD][eE][tT][aA][iI][lL]"
     },
-    "_DISK": {
-      "type": "PATTERN",
-      "value": "[dD][iI][sS][kK]"
-    },
     "_DISPLAY": {
       "type": "PATTERN",
       "value": "[dD][iI][sS][pP][lL][aA][yY]"
@@ -12468,10 +12474,6 @@
     "DETAIL": {
       "type": "SYMBOL",
       "name": "_DETAIL"
-    },
-    "DISK": {
-      "type": "SYMBOL",
-      "name": "_DISK"
     },
     "DISPLAY": {
       "type": "SYMBOL",

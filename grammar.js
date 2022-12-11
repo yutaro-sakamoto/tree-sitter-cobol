@@ -9,6 +9,15 @@ function nonempty(pattern1, pattern2) {
   )
 }
 
+function k(keyword) {
+  return new RegExp(keyword
+    .split('')
+    .map(l => l.toLowerCase() !== l.toUpperCase()
+      ? `[${l.toLowerCase()}${l.toUpperCase()}]` : l)
+    .join('')
+  )
+}
+
 module.exports = grammar({
   name: 'COBOL',
   word: $ => $._WORD,
@@ -294,11 +303,11 @@ module.exports = grammar({
     ),
 
     assign_clause: $ => seq(
-      $._ASSIGN,
+      k('assign'),
       optional($._TO),
       field('external_or_dynamic', optional($._ext_clause)),
       field('to', choice(
-        $.DISK,
+        alias(k('disk'), $.DISK),
         $.PRINTER,
         seq(optional($._device), $._assignment_name),
       ))
@@ -310,8 +319,8 @@ module.exports = grammar({
     ),
 
     _device: $ => choice(
-      $.DISK,
-      $.PRINTER,
+      alias(k('disk'), $.DISK),
+      $.PRINTER
     ),
 
     _assignment_name: $ => choice(
@@ -1886,7 +1895,7 @@ module.exports = grammar({
     _DEPENDING: $ => /[dD][eE][pP][eE][nN][dD][iI][nN][gG]/,
     _DESCENDING: $ => /[dD][eE][sS][cC][eE][nN][dD][iI][nN][gG]/,
     _DETAIL: $ => /[dD][eE][tT][aA][iI][lL]/,
-    _DISK: $ => /[dD][iI][sS][kK]/,
+    //_DISK: $ => /[dD][iI][sS][kK]/,
     _DISPLAY: $ => /[dD][iI][sS][pP][lL][aA][yY]/,
     _DIVIDE: $ => /[dD][iI][vV][iI][dD][eE]/,
     _DIVISION: $ => /[dD][iI][vV][iI][sS][iI][oO][nN]/,
@@ -2342,7 +2351,7 @@ module.exports = grammar({
     DEPENDING: $ => $._DEPENDING,
     DESCENDING: $ => $._DESCENDING,
     DETAIL: $ => $._DETAIL,
-    DISK: $ => $._DISK,
+    //DISK: $ => $._DISK,
     DISPLAY: $ => $._DISPLAY,
     DIVIDE: $ => $._DIVIDE,
     DIVISION: $ => $._DIVISION,
