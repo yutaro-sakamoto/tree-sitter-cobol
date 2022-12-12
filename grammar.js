@@ -1009,7 +1009,7 @@ module.exports = grammar({
       //$.start_statement,
       seq($.stop_statement, '.'),
       //$.string_statement,
-      //$.subtract_statement,
+      seq($.subtract_statement, nonempty($._END_SUBTRACT, '.')),
       //$.suppress_statement,
       //$.terminate_statement,
       //$.transform_statement,
@@ -1023,20 +1023,20 @@ module.exports = grammar({
 
     //todo
     _statement: $ => choice(
-      //$.accept_statement,
+      //$.accept_statement,aaa
       $.add_statement_in_block,
       //$.allocate_statement,
       //$.alter_statement,
-      //$.call_statement,
+      //$.call_statement,aaa
       //$.cancel_statement,
       $.close_statement,
       //$.commit_statement,
-      //$.compute_statement,
+      //$.compute_statement,aaa
       $.continue_statement,
-      //$.delete_statement,
+      //$.delete_statement,aaa
       //$.delete_file_statement,
       $.display_statement_in_block,
-      //$.divide_statement,
+      //$.divide_statement,aaa
       //$.entry_statement,
       seq($.evaluate_statement, $._END_EVALUATE),
       //$.exit_statement,
@@ -1055,21 +1055,21 @@ module.exports = grammar({
       $.perform_statement_in_block,
       $.read_statement_in_block,
       //$.release_statement,
-      //$.return_statement,
-      //$.rewrite_statement,
+      //$.return_statement,aaa
+      //$.rewrite_statement,aaa
       //$.rollback_statement,
-      //$.search_statement,
+      //$.search_statement,aaa
       //$.set_statement,
       //$.sort_statement,
-      //$.start_statement,
+      //$.start_statement,aaa
       $.stop_statement,
       //$.string_statement,
-      //$.subtract_statement,
+      $.subtract_statement_in_block,
       //$.suppress_statement,
       //$.terminate_statement,
       //$.transform_statement,
       //$.unlock_statement,
-      //$.unstring_statement,
+      //$.unstring_statement,aaa
       //$.use_statement,
       $.write_statement_in_block,
       //$.NEXT_SENTENCE,
@@ -1119,8 +1119,8 @@ module.exports = grammar({
       ),
     )),
 
-    _size_error_block: $ => choice(
-      seq($.on_size_error, optional($.not_on_size_error)),
+    _size_error_block: $ => nonempty(
+      $.on_size_error,
       $.not_on_size_error,
     ),
 
@@ -1619,6 +1619,43 @@ module.exports = grammar({
 
     at_end: $ => seq($._AT, $._END, $._statements1),
     not_at_end: $ => seq($._NOT, $._AT, $._END, $._statements1),
+
+    subtract_statement: $ => seq(
+      $._SUBTRACT,
+      $._subtract_body,
+      optional($.on_size_error)
+    ),
+
+    subtract_statement_in_block: $ => prec.right(seq(
+      $._SUBTRACT,
+      $._subtract_body,
+      optional(seq(
+        optional($.on_size_error),
+        $._END_SUBTRACT
+      ))
+    )),
+
+    _subtract_body: $ => choice(
+      seq(
+        field('x', repeat1($._x)),
+        $._FROM,
+        choice(
+          field('from', repeat1($.arithmetic_x)),
+          seq(
+            field('from', $._x),
+            $._GIVING,
+            field('giving', repeat1($.arithmetic_x))
+          )
+        )
+      ),
+      seq(
+        $.CORRESPONDING,
+        field('x', $._identifier),
+        $._FROM,
+        field('from', $._identifier),
+        optional($.ROUNDED),
+      )
+    ),
 
     write_statement: $ => prec.right(seq(
       $._write_statement_header,
