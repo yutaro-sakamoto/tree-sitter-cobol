@@ -2675,6 +2675,151 @@
     }
   },
   {
+    "type": "else_if_sentense",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "statements": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "add_statement_in_block",
+            "named": true
+          },
+          {
+            "type": "close_statement",
+            "named": true
+          },
+          {
+            "type": "continue_statement",
+            "named": true
+          },
+          {
+            "type": "display_statement_in_block",
+            "named": true
+          },
+          {
+            "type": "evaluate_statement",
+            "named": true
+          },
+          {
+            "type": "goto_statement",
+            "named": true
+          },
+          {
+            "type": "if_statement",
+            "named": true
+          },
+          {
+            "type": "move_statement",
+            "named": true
+          },
+          {
+            "type": "multiply_statement_in_block",
+            "named": true
+          },
+          {
+            "type": "open_statement",
+            "named": true
+          },
+          {
+            "type": "perform_statement_in_block",
+            "named": true
+          },
+          {
+            "type": "read_statement_in_block",
+            "named": true
+          },
+          {
+            "type": "stop_statement",
+            "named": true
+          },
+          {
+            "type": "write_statement_in_block",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "else_sentense",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "add_statement_in_block",
+          "named": true
+        },
+        {
+          "type": "close_statement",
+          "named": true
+        },
+        {
+          "type": "continue_statement",
+          "named": true
+        },
+        {
+          "type": "display_statement_in_block",
+          "named": true
+        },
+        {
+          "type": "evaluate_statement",
+          "named": true
+        },
+        {
+          "type": "goto_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "move_statement",
+          "named": true
+        },
+        {
+          "type": "multiply_statement_in_block",
+          "named": true
+        },
+        {
+          "type": "open_statement",
+          "named": true
+        },
+        {
+          "type": "perform_statement_in_block",
+          "named": true
+        },
+        {
+          "type": "read_statement_in_block",
+          "named": true
+        },
+        {
+          "type": "stop_statement",
+          "named": true
+        },
+        {
+          "type": "write_statement_in_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "entry_name",
     "named": true,
     "fields": {}
@@ -3723,68 +3868,6 @@
           }
         ]
       },
-      "else_statements": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "add_statement_in_block",
-            "named": true
-          },
-          {
-            "type": "close_statement",
-            "named": true
-          },
-          {
-            "type": "continue_statement",
-            "named": true
-          },
-          {
-            "type": "display_statement_in_block",
-            "named": true
-          },
-          {
-            "type": "evaluate_statement",
-            "named": true
-          },
-          {
-            "type": "goto_statement",
-            "named": true
-          },
-          {
-            "type": "if_statement",
-            "named": true
-          },
-          {
-            "type": "move_statement",
-            "named": true
-          },
-          {
-            "type": "multiply_statement_in_block",
-            "named": true
-          },
-          {
-            "type": "open_statement",
-            "named": true
-          },
-          {
-            "type": "perform_statement_in_block",
-            "named": true
-          },
-          {
-            "type": "read_statement_in_block",
-            "named": true
-          },
-          {
-            "type": "stop_statement",
-            "named": true
-          },
-          {
-            "type": "write_statement_in_block",
-            "named": true
-          }
-        ]
-      },
       "statements": {
         "multiple": true,
         "required": true,
@@ -3847,6 +3930,20 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "else_if_sentense",
+          "named": true
+        },
+        {
+          "type": "else_sentense",
+          "named": true
+        }
+      ]
     }
   },
   {

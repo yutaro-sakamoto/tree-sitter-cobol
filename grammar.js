@@ -1293,15 +1293,23 @@ module.exports = grammar({
     ),
 
     //todo add error if statement (see cobc/parser.y)
-    if_statement: $ => prec.right(seq(
+    if_statement: $ => prec.right(1, seq(
       $._IF,
       field('condition', $.expr),
       optional($._THEN),
       field('statements', $._statements1),
-      field('else_statements', optional($._if_else_sentense)),
+      repeat($.else_if_sentense),
+      optional($.else_sentense),
     )),
 
-    _if_else_sentense: $ => prec.right(seq(
+    else_if_sentense: $ => prec.right(seq(
+      $._ELSE, $._IF,
+      field('condition', $.expr),
+      optional($._THEN),
+      field('statements', $._statements1),
+    )),
+
+    else_sentense: $ => prec.right(seq(
       $._ELSE,
       $._statements1
     )),

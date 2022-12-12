@@ -6794,7 +6794,7 @@
     },
     "if_statement": {
       "type": "PREC_RIGHT",
-      "value": 0,
+      "value": 1,
       "content": {
         "type": "SEQ",
         "members": [
@@ -6831,25 +6831,73 @@
             }
           },
           {
-            "type": "FIELD",
-            "name": "else_statements",
+            "type": "REPEAT",
             "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "_if_else_sentense"
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "else_if_sentense"
+            }
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "else_sentense"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "else_if_sentense": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_ELSE"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_IF"
+          },
+          {
+            "type": "FIELD",
+            "name": "condition",
+            "content": {
+              "type": "SYMBOL",
+              "name": "expr"
+            }
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_THEN"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "FIELD",
+            "name": "statements",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_statements1"
             }
           }
         ]
       }
     },
-    "_if_else_sentense": {
+    "else_sentense": {
       "type": "PREC_RIGHT",
       "value": 0,
       "content": {
