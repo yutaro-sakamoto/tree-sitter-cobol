@@ -47,10 +47,10 @@ module.exports = grammar({
     program_definition: $ => seq(
       $.identification_division,
       optional($.environment_division),
-      //optional($.data_division),
-      //optional($.procedure_division), //todo
-      //optional($.nested_prog), //todo
-      //optional($.end_program), //todo
+      optional($.data_division),
+      optional($.procedure_division), //todo
+      optional($.nested_prog), //todo
+      optional($.end_program), //todo
     ),
 
     identification_division: $ => seq(
@@ -567,9 +567,9 @@ module.exports = grammar({
     ),
 
     label_records_clause: $ => seq(
-      $._LABEL,
+      k('label'),
       $.records,
-      optional(choice(alias(k('standard'), $.STANDARD), alias(k('omitted'), $.OMITTED)))
+      optional(choice(alias(k('standard'), $.standard), alias(k('omitted'), $.omitted)))
     ),
 
     records: $ => prec.left(choice(
@@ -591,7 +591,7 @@ module.exports = grammar({
     )),
 
     linage_clause: $ => seq(
-      $._LINAGE,
+      k('linage'),
       optional(k('is')),
       field('reference', choice($.qualified_word, $._LITERAL)),
       optional(k('lines')),
@@ -803,7 +803,7 @@ module.exports = grammar({
     picture_edit: $ => /([aAxX9bBvVzZpP0-9()$/,*+-]|[cC][rR]|[dD][bB]|\.[^ \n\t])+/,
 
     usage_clause: $ => seq(
-      optional(seq(k('usage'), optional($._IS))),
+      optional(seq(k('usage'), optional(k('is')))),
       $._usage
     ),
 
@@ -850,7 +850,7 @@ module.exports = grammar({
       optional(k('sign')),
       optional(k('is')),
       choice(alias(k('leading'), $.LEADING), alias(k('trailing'), $.TRAILING)),
-      optional(seq(alias('separate', $.SEPARATE), optional(k('character'))))
+      optional(seq(alias(k('separate'), $.SEPARATE), optional(k('character'))))
     ),
 
     occurs_clause: $ => seq(
@@ -1205,10 +1205,11 @@ module.exports = grammar({
       alias(k('overline'), $.OVERLINE),
       seq(
         choice(
-          alias(k('foreground-color', $.FOREGROUND_COLOR)),
-          alias(k('background-color', $.BACKGROUND_COLOR)),
-          optional(k('is')),
-          $._num_or_id_or_lit)
+          alias(k('foreground-color'), $.FOREGROUND_COLOR),
+          alias(k('background-color'), $.BACKGROUND_COLOR)
+        ),
+        optional(k('is')),
+        $._num_or_id_or_lit
       ),
       seq(
         alias(k('scroll'), $.SCROLL),
@@ -1225,7 +1226,7 @@ module.exports = grammar({
     ),
 
     scroll_lines: $ => seq(
-      optional($._BY),
+      optional(k('by')),
       $._num_or_id_or_lit,
       optional($.line_or_lines),
     ),
@@ -1246,7 +1247,7 @@ module.exports = grammar({
     ),
 
     evaluate_case: $ => prec.left(seq(
-      field('when', repeat1(seq($._WHEN, $._evaluate_object_list))),
+      field('when', repeat1(seq(k('when'), $._evaluate_object_list))),
       field('statements', $._statements1),
     )),
 
@@ -1323,7 +1324,7 @@ module.exports = grammar({
     ),
 
     _expr_is: $ => choice(
-      seq($._expr_calc, optional($._IS), choice(
+      seq($._expr_calc, optional(k('is')), choice(
         alias(k('omitted'), $.OMITTED),
         alias(k('numeric'), $.NUMERIC),
         alias(k('alphabetic'), $.ALPHABETIC),
@@ -1355,7 +1356,7 @@ module.exports = grammar({
 
     eq: $ => choice(
       '=',
-      seq(optional(k('is')), $._EQUAL, optional(k('to'))),
+      seq(optional(k('is')), k('equal'), optional(k('to'))),
       k('EQUALS')
     ),
 
@@ -1484,8 +1485,8 @@ module.exports = grammar({
       ))),
       field('file_name_list', repeat1($.WORD)),
       field('option', optional(choice(
-        seq(optional($._WITH), alias(k('no'), $.NO), alias(k('rewind'), $.REWIND)),
-        seq(optional($._WITH), alias(k('lock'), $.LOCK))
+        seq(optional(k('with')), alias(k('no'), $.NO), alias(k('rewind'), $.REWIND)),
+        seq(optional(k('with')), alias(k('lock'), $.LOCK))
       )))
     ),
 
@@ -1763,13 +1764,13 @@ module.exports = grammar({
       'High-value', 'High-Value', 'High-VALUE',
       'HIGH-value', 'HIGH-Value', 'HIGH-VALUE'
     ),
-    HIGH_VALUE: $ => _HIGH_VALUE,
+    HIGH_VALUE: $ => $._HIGH_VALUE,
     _LOW_VALUE: $ => choice(
       'low-value', 'low-Value', 'low-VALUE',
       'Low-value', 'Low-Value', 'Low-VALUE',
       'LOW-value', 'LOW-Value', 'LOW-VALUE'
     ),
-    LOW_VALUE: $ => _LOW_VALUE,
+    LOW_VALUE: $ => $._LOW_VALUE,
     _QUOTE: $ => choice('quote', 'QUOTE', 'Quote'),
     QUOTE: $ => $._QUOTE,
     _TOK_NULL: $ => choice('null', 'Null', 'NULL'),
@@ -1779,7 +1780,7 @@ module.exports = grammar({
     _WORD: $ => /[a-zA-Z][a-zA-Z0-9\-]*/,
     WORD: $ => $._WORD,
     _SPACE: $ => choice('space', 'SPACE', 'Space'),
-    SPACE: $ => _SPACE,
+    SPACE: $ => $._SPACE,
     _LITERAL: $ => choice(
       $.number,
       $._string,
