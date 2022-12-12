@@ -998,7 +998,7 @@ module.exports = grammar({
       seq($.multiply_statement, nonempty($._END_MULTIPLY, '.')),
       seq($.open_statement, '.'),
       seq($.perform_statement),
-      //$.read_statement,
+      seq($.read_statement, nonempty($._END_READ, '.')),
       //$.release_statement,
       //$.return_statement,
       //$.rewrite_statement,
@@ -1053,7 +1053,7 @@ module.exports = grammar({
       $.multiply_statement_in_block,
       $.open_statement,
       $.perform_statement_in_block,
-      //$.read_statement,
+      $.read_statement_in_block,
       //$.release_statement,
       //$.return_statement,
       //$.rewrite_statement,
@@ -1570,6 +1570,49 @@ module.exports = grammar({
       $._UNTIL,
       field('until', $.expr),
     ),
+
+    _read_statement_header: $ => seq(
+      $._READ,
+      field('file_name', $.WORD),
+      field('flag_next', optional(choice($.NEXT, $.PREVIOUS))),
+      optional($._RECORD),
+      field('into', optional(seq($._INTO, $._identifier))),
+      optional($.with_lock),
+      field('key', optional(seq(
+        $._KEY,
+        optional($._IS),
+        repeat1($._identifier),
+      ))),
+    ),
+
+    _read_statement_footer: $ =>
+      field('handler', choice(
+        nonempty($.at_end, $.not_at_end),
+        nonempty($.invalid_key, $.not_invalid_key),
+      )),
+
+    read_statement: $ => seq(
+      $._read_statement_header,
+      optional($._read_statement_footer),
+    ),
+
+    read_statement_in_block: $ => prec.right(seq(
+      $._read_statement_header,
+      optional(seq($._read_statement_footer, $._END_READ)),
+    )),
+
+    with_lock: $ => choice(
+      seq($._IGNORING, $._LOCK),
+      seq(optional($._WITH), choice(
+        $.LOCK,
+        seq($.NO, $.LOCK),
+        seq($.IGNORE, $.LOCK),
+        $.WAIT
+      ))
+    ),
+
+    at_end: $ => seq($._AT, $._END, $._statements1),
+    not_at_end: $ => seq($._NOT, $._AT, $._END, $._statements1),
 
     write_statement: $ => prec.right(seq(
       $._write_statement_header,
