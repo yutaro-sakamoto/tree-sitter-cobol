@@ -1168,18 +1168,16 @@ module.exports = grammar({
     display_statement: $ => prec.right(seq(
       $._DISPLAY,
       $._display_body,
-      choice(
-        optional($.on_disp_exception),
-      )
+      optional($.on_disp_exception),
     )),
 
     display_statement_in_block: $ => prec.right(seq(
       $._DISPLAY,
       $._display_body,
-      choice(
+      optional(seq(
         optional($.on_disp_exception),
         $._END_DISPLAY
-      )
+      ))
     )),
 
     _display_body: $ => choice(
@@ -1598,7 +1596,7 @@ module.exports = grammar({
 
     read_statement_in_block: $ => prec.right(seq(
       $._read_statement_header,
-      optional(seq($._read_statement_footer, $._END_READ)),
+      optional(seq(optional($._read_statement_footer), $._END_READ)),
     )),
 
     with_lock: $ => choice(
@@ -1621,10 +1619,10 @@ module.exports = grammar({
 
     write_statement_in_block: $ => prec.right(seq(
       $._write_statement_header,
-      choice(
-        field('handler', optional(seq($._write_handler, $._END_WRITE))),
-        optional($._END_WRITE)
-      )
+      optional(seq(
+        field('handler', optional($._write_handler)),
+        $._END_WRITE
+      ))
     )),
 
     _write_statement_header: $ => prec.right(seq(
