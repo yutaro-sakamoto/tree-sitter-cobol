@@ -1227,26 +1227,18 @@
       }
     },
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "types": [
         {
           "type": "CORRESPONDING",
-          "named": true
-        },
-        {
-          "type": "not_on_size_error",
-          "named": true
-        },
-        {
-          "type": "on_size_error",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "add_statement_in_block",
+    "type": "add_statement_with_handler",
     "named": true,
     "fields": {
       "from": {
@@ -1426,7 +1418,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "CORRESPONDING",
@@ -1739,7 +1731,7 @@
       "required": true,
       "types": [
         {
-          "type": "add_statement_in_block",
+          "type": "add_statement",
           "named": true
         },
         {
@@ -1751,11 +1743,7 @@
           "named": true
         },
         {
-          "type": "display_statement_in_block",
-          "named": true
-        },
-        {
-          "type": "evaluate_statement",
+          "type": "display_statement",
           "named": true
         },
         {
@@ -1763,15 +1751,11 @@
           "named": true
         },
         {
-          "type": "if_statement",
-          "named": true
-        },
-        {
           "type": "move_statement",
           "named": true
         },
         {
-          "type": "multiply_statement_in_block",
+          "type": "multiply_statement",
           "named": true
         },
         {
@@ -1779,11 +1763,7 @@
           "named": true
         },
         {
-          "type": "perform_statement_in_block",
-          "named": true
-        },
-        {
-          "type": "read_statement_in_block",
+          "type": "read_statement",
           "named": true
         },
         {
@@ -1791,11 +1771,11 @@
           "named": true
         },
         {
-          "type": "subtract_statement_in_block",
+          "type": "subtract_statement",
           "named": true
         },
         {
-          "type": "write_statement_in_block",
+          "type": "write_statement",
           "named": true
         }
       ]
@@ -2307,10 +2287,6 @@
           "named": true
         },
         {
-          "type": "on_disp_exception",
-          "named": true
-        },
-        {
           "type": "qualified_word",
           "named": true
         },
@@ -2338,12 +2314,12 @@
     }
   },
   {
-    "type": "display_statement_in_block",
+    "type": "display_statement_with_handler",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "ALL",
@@ -2694,10 +2670,10 @@
       },
       "statements": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
-            "type": "add_statement_in_block",
+            "type": "add_statement",
             "named": true
           },
           {
@@ -2709,11 +2685,11 @@
             "named": true
           },
           {
-            "type": "display_statement_in_block",
+            "type": "display_statement",
             "named": true
           },
           {
-            "type": "evaluate_statement",
+            "type": "evaluate_statement_in_block",
             "named": true
           },
           {
@@ -2721,7 +2697,7 @@
             "named": true
           },
           {
-            "type": "if_statement",
+            "type": "if_statement_in_block",
             "named": true
           },
           {
@@ -2729,7 +2705,7 @@
             "named": true
           },
           {
-            "type": "multiply_statement_in_block",
+            "type": "multiply_statement",
             "named": true
           },
           {
@@ -2741,7 +2717,7 @@
             "named": true
           },
           {
-            "type": "read_statement_in_block",
+            "type": "read_statement",
             "named": true
           },
           {
@@ -2749,11 +2725,11 @@
             "named": true
           },
           {
-            "type": "subtract_statement_in_block",
+            "type": "subtract_statement",
             "named": true
           },
           {
-            "type": "write_statement_in_block",
+            "type": "write_statement",
             "named": true
           }
         ]
@@ -2766,10 +2742,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "add_statement_in_block",
+          "type": "add_statement",
           "named": true
         },
         {
@@ -2781,11 +2757,11 @@
           "named": true
         },
         {
-          "type": "display_statement_in_block",
+          "type": "display_statement",
           "named": true
         },
         {
-          "type": "evaluate_statement",
+          "type": "evaluate_statement_in_block",
           "named": true
         },
         {
@@ -2793,7 +2769,7 @@
           "named": true
         },
         {
-          "type": "if_statement",
+          "type": "if_statement_in_block",
           "named": true
         },
         {
@@ -2801,7 +2777,7 @@
           "named": true
         },
         {
-          "type": "multiply_statement_in_block",
+          "type": "multiply_statement",
           "named": true
         },
         {
@@ -2813,7 +2789,7 @@
           "named": true
         },
         {
-          "type": "read_statement_in_block",
+          "type": "read_statement",
           "named": true
         },
         {
@@ -2821,11 +2797,11 @@
           "named": true
         },
         {
-          "type": "subtract_statement_in_block",
+          "type": "subtract_statement",
           "named": true
         },
         {
-          "type": "write_statement_in_block",
+          "type": "write_statement",
           "named": true
         }
       ]
@@ -2864,7 +2840,7 @@
       "required": true,
       "types": [
         {
-          "type": "add_statement_in_block",
+          "type": "add_statement",
           "named": true
         },
         {
@@ -2876,11 +2852,7 @@
           "named": true
         },
         {
-          "type": "display_statement_in_block",
-          "named": true
-        },
-        {
-          "type": "evaluate_statement",
+          "type": "display_statement",
           "named": true
         },
         {
@@ -2888,15 +2860,11 @@
           "named": true
         },
         {
-          "type": "if_statement",
-          "named": true
-        },
-        {
           "type": "move_statement",
           "named": true
         },
         {
-          "type": "multiply_statement_in_block",
+          "type": "multiply_statement",
           "named": true
         },
         {
@@ -2904,11 +2872,7 @@
           "named": true
         },
         {
-          "type": "perform_statement_in_block",
-          "named": true
-        },
-        {
-          "type": "read_statement_in_block",
+          "type": "read_statement",
           "named": true
         },
         {
@@ -2916,11 +2880,11 @@
           "named": true
         },
         {
-          "type": "subtract_statement_in_block",
+          "type": "subtract_statement",
           "named": true
         },
         {
-          "type": "write_statement_in_block",
+          "type": "write_statement",
           "named": true
         }
       ]
@@ -2940,7 +2904,7 @@
         "required": true,
         "types": [
           {
-            "type": "add_statement_in_block",
+            "type": "add_statement",
             "named": true
           },
           {
@@ -2952,11 +2916,11 @@
             "named": true
           },
           {
-            "type": "display_statement_in_block",
+            "type": "display_statement",
             "named": true
           },
           {
-            "type": "evaluate_statement",
+            "type": "evaluate_statement_in_block",
             "named": true
           },
           {
@@ -2964,7 +2928,7 @@
             "named": true
           },
           {
-            "type": "if_statement",
+            "type": "if_statement_in_block",
             "named": true
           },
           {
@@ -2972,7 +2936,7 @@
             "named": true
           },
           {
-            "type": "multiply_statement_in_block",
+            "type": "multiply_statement",
             "named": true
           },
           {
@@ -2984,7 +2948,7 @@
             "named": true
           },
           {
-            "type": "read_statement_in_block",
+            "type": "read_statement",
             "named": true
           },
           {
@@ -2992,11 +2956,11 @@
             "named": true
           },
           {
-            "type": "subtract_statement_in_block",
+            "type": "subtract_statement",
             "named": true
           },
           {
-            "type": "write_statement_in_block",
+            "type": "write_statement",
             "named": true
           }
         ]
@@ -3034,7 +2998,7 @@
         "required": true,
         "types": [
           {
-            "type": "add_statement_in_block",
+            "type": "add_statement",
             "named": true
           },
           {
@@ -3046,11 +3010,11 @@
             "named": true
           },
           {
-            "type": "display_statement_in_block",
+            "type": "display_statement",
             "named": true
           },
           {
-            "type": "evaluate_statement",
+            "type": "evaluate_statement_in_block",
             "named": true
           },
           {
@@ -3058,7 +3022,7 @@
             "named": true
           },
           {
-            "type": "if_statement",
+            "type": "if_statement_in_block",
             "named": true
           },
           {
@@ -3066,7 +3030,7 @@
             "named": true
           },
           {
-            "type": "multiply_statement_in_block",
+            "type": "multiply_statement",
             "named": true
           },
           {
@@ -3078,7 +3042,7 @@
             "named": true
           },
           {
-            "type": "read_statement_in_block",
+            "type": "read_statement",
             "named": true
           },
           {
@@ -3086,11 +3050,11 @@
             "named": true
           },
           {
-            "type": "subtract_statement_in_block",
+            "type": "subtract_statement",
             "named": true
           },
           {
-            "type": "write_statement_in_block",
+            "type": "write_statement",
             "named": true
           }
         ]
@@ -3099,6 +3063,42 @@
   },
   {
     "type": "evaluate_statement",
+    "named": true,
+    "fields": {
+      "cases": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "evaluate_case",
+            "named": true
+          }
+        ]
+      },
+      "other": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "evaluate_other",
+            "named": true
+          }
+        ]
+      },
+      "subjects": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "evaluate_subject",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "evaluate_statement_in_block",
     "named": true,
     "fields": {
       "cases": {
@@ -3894,10 +3894,10 @@
       },
       "statements": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
-            "type": "add_statement_in_block",
+            "type": "add_statement",
             "named": true
           },
           {
@@ -3909,11 +3909,11 @@
             "named": true
           },
           {
-            "type": "display_statement_in_block",
+            "type": "display_statement",
             "named": true
           },
           {
-            "type": "evaluate_statement",
+            "type": "evaluate_statement_in_block",
             "named": true
           },
           {
@@ -3921,7 +3921,7 @@
             "named": true
           },
           {
-            "type": "if_statement",
+            "type": "if_statement_in_block",
             "named": true
           },
           {
@@ -3929,7 +3929,7 @@
             "named": true
           },
           {
-            "type": "multiply_statement_in_block",
+            "type": "multiply_statement",
             "named": true
           },
           {
@@ -3941,7 +3941,7 @@
             "named": true
           },
           {
-            "type": "read_statement_in_block",
+            "type": "read_statement",
             "named": true
           },
           {
@@ -3949,11 +3949,107 @@
             "named": true
           },
           {
-            "type": "subtract_statement_in_block",
+            "type": "subtract_statement",
             "named": true
           },
           {
-            "type": "write_statement_in_block",
+            "type": "write_statement",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "else_if_sentense",
+          "named": true
+        },
+        {
+          "type": "else_sentense",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "if_statement_in_block",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "statements": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "add_statement",
+            "named": true
+          },
+          {
+            "type": "close_statement",
+            "named": true
+          },
+          {
+            "type": "continue_statement",
+            "named": true
+          },
+          {
+            "type": "display_statement",
+            "named": true
+          },
+          {
+            "type": "evaluate_statement_in_block",
+            "named": true
+          },
+          {
+            "type": "goto_statement",
+            "named": true
+          },
+          {
+            "type": "if_statement_in_block",
+            "named": true
+          },
+          {
+            "type": "move_statement",
+            "named": true
+          },
+          {
+            "type": "multiply_statement",
+            "named": true
+          },
+          {
+            "type": "open_statement",
+            "named": true
+          },
+          {
+            "type": "perform_statement_in_block",
+            "named": true
+          },
+          {
+            "type": "read_statement",
+            "named": true
+          },
+          {
+            "type": "stop_statement",
+            "named": true
+          },
+          {
+            "type": "subtract_statement",
+            "named": true
+          },
+          {
+            "type": "write_statement",
             "named": true
           }
         ]
@@ -4002,7 +4098,7 @@
       "required": true,
       "types": [
         {
-          "type": "add_statement_in_block",
+          "type": "add_statement",
           "named": true
         },
         {
@@ -4014,11 +4110,7 @@
           "named": true
         },
         {
-          "type": "display_statement_in_block",
-          "named": true
-        },
-        {
-          "type": "evaluate_statement",
+          "type": "display_statement",
           "named": true
         },
         {
@@ -4026,15 +4118,11 @@
           "named": true
         },
         {
-          "type": "if_statement",
-          "named": true
-        },
-        {
           "type": "move_statement",
           "named": true
         },
         {
-          "type": "multiply_statement_in_block",
+          "type": "multiply_statement",
           "named": true
         },
         {
@@ -4042,11 +4130,7 @@
           "named": true
         },
         {
-          "type": "perform_statement_in_block",
-          "named": true
-        },
-        {
-          "type": "read_statement_in_block",
+          "type": "read_statement",
           "named": true
         },
         {
@@ -4054,11 +4138,11 @@
           "named": true
         },
         {
-          "type": "subtract_statement_in_block",
+          "type": "subtract_statement",
           "named": true
         },
         {
-          "type": "write_statement_in_block",
+          "type": "write_statement",
           "named": true
         }
       ]
@@ -4914,7 +4998,7 @@
     }
   },
   {
-    "type": "multiply_statement_in_block",
+    "type": "multiply_statement_with_handler",
     "named": true,
     "fields": {
       "giving": {
@@ -5090,7 +5174,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "not_on_size_error",
@@ -5257,7 +5341,7 @@
       "required": true,
       "types": [
         {
-          "type": "add_statement_in_block",
+          "type": "add_statement",
           "named": true
         },
         {
@@ -5269,11 +5353,7 @@
           "named": true
         },
         {
-          "type": "display_statement_in_block",
-          "named": true
-        },
-        {
-          "type": "evaluate_statement",
+          "type": "display_statement",
           "named": true
         },
         {
@@ -5281,15 +5361,11 @@
           "named": true
         },
         {
-          "type": "if_statement",
-          "named": true
-        },
-        {
           "type": "move_statement",
           "named": true
         },
         {
-          "type": "multiply_statement_in_block",
+          "type": "multiply_statement",
           "named": true
         },
         {
@@ -5297,11 +5373,7 @@
           "named": true
         },
         {
-          "type": "perform_statement_in_block",
-          "named": true
-        },
-        {
-          "type": "read_statement_in_block",
+          "type": "read_statement",
           "named": true
         },
         {
@@ -5309,11 +5381,11 @@
           "named": true
         },
         {
-          "type": "subtract_statement_in_block",
+          "type": "subtract_statement",
           "named": true
         },
         {
-          "type": "write_statement_in_block",
+          "type": "write_statement",
           "named": true
         }
       ]
@@ -5328,7 +5400,7 @@
       "required": true,
       "types": [
         {
-          "type": "add_statement_in_block",
+          "type": "add_statement",
           "named": true
         },
         {
@@ -5340,11 +5412,7 @@
           "named": true
         },
         {
-          "type": "display_statement_in_block",
-          "named": true
-        },
-        {
-          "type": "evaluate_statement",
+          "type": "display_statement",
           "named": true
         },
         {
@@ -5352,15 +5420,11 @@
           "named": true
         },
         {
-          "type": "if_statement",
-          "named": true
-        },
-        {
           "type": "move_statement",
           "named": true
         },
         {
-          "type": "multiply_statement_in_block",
+          "type": "multiply_statement",
           "named": true
         },
         {
@@ -5368,11 +5432,7 @@
           "named": true
         },
         {
-          "type": "perform_statement_in_block",
-          "named": true
-        },
-        {
-          "type": "read_statement_in_block",
+          "type": "read_statement",
           "named": true
         },
         {
@@ -5380,11 +5440,11 @@
           "named": true
         },
         {
-          "type": "subtract_statement_in_block",
+          "type": "subtract_statement",
           "named": true
         },
         {
-          "type": "write_statement_in_block",
+          "type": "write_statement",
           "named": true
         }
       ]
@@ -5399,7 +5459,7 @@
       "required": true,
       "types": [
         {
-          "type": "add_statement_in_block",
+          "type": "add_statement",
           "named": true
         },
         {
@@ -5411,11 +5471,7 @@
           "named": true
         },
         {
-          "type": "display_statement_in_block",
-          "named": true
-        },
-        {
-          "type": "evaluate_statement",
+          "type": "display_statement",
           "named": true
         },
         {
@@ -5423,15 +5479,11 @@
           "named": true
         },
         {
-          "type": "if_statement",
-          "named": true
-        },
-        {
           "type": "move_statement",
           "named": true
         },
         {
-          "type": "multiply_statement_in_block",
+          "type": "multiply_statement",
           "named": true
         },
         {
@@ -5439,11 +5491,7 @@
           "named": true
         },
         {
-          "type": "perform_statement_in_block",
-          "named": true
-        },
-        {
-          "type": "read_statement_in_block",
+          "type": "read_statement",
           "named": true
         },
         {
@@ -5451,11 +5499,11 @@
           "named": true
         },
         {
-          "type": "subtract_statement_in_block",
+          "type": "subtract_statement",
           "named": true
         },
         {
-          "type": "write_statement_in_block",
+          "type": "write_statement",
           "named": true
         }
       ]
@@ -5470,7 +5518,7 @@
       "required": true,
       "types": [
         {
-          "type": "add_statement_in_block",
+          "type": "add_statement",
           "named": true
         },
         {
@@ -5482,11 +5530,7 @@
           "named": true
         },
         {
-          "type": "display_statement_in_block",
-          "named": true
-        },
-        {
-          "type": "evaluate_statement",
+          "type": "display_statement",
           "named": true
         },
         {
@@ -5494,15 +5538,11 @@
           "named": true
         },
         {
-          "type": "if_statement",
-          "named": true
-        },
-        {
           "type": "move_statement",
           "named": true
         },
         {
-          "type": "multiply_statement_in_block",
+          "type": "multiply_statement",
           "named": true
         },
         {
@@ -5510,11 +5550,7 @@
           "named": true
         },
         {
-          "type": "perform_statement_in_block",
-          "named": true
-        },
-        {
-          "type": "read_statement_in_block",
+          "type": "read_statement",
           "named": true
         },
         {
@@ -5522,11 +5558,11 @@
           "named": true
         },
         {
-          "type": "subtract_statement_in_block",
+          "type": "subtract_statement",
           "named": true
         },
         {
-          "type": "write_statement_in_block",
+          "type": "write_statement",
           "named": true
         }
       ]
@@ -5694,7 +5730,7 @@
           "named": true
         },
         {
-          "type": "add_statement_in_block",
+          "type": "add_statement",
           "named": true
         },
         {
@@ -5706,11 +5742,7 @@
           "named": true
         },
         {
-          "type": "display_statement_in_block",
-          "named": true
-        },
-        {
-          "type": "evaluate_statement",
+          "type": "display_statement",
           "named": true
         },
         {
@@ -5718,15 +5750,11 @@
           "named": true
         },
         {
-          "type": "if_statement",
-          "named": true
-        },
-        {
           "type": "move_statement",
           "named": true
         },
         {
-          "type": "multiply_statement_in_block",
+          "type": "multiply_statement",
           "named": true
         },
         {
@@ -5734,11 +5762,7 @@
           "named": true
         },
         {
-          "type": "perform_statement_in_block",
-          "named": true
-        },
-        {
-          "type": "read_statement_in_block",
+          "type": "read_statement",
           "named": true
         },
         {
@@ -5746,11 +5770,11 @@
           "named": true
         },
         {
-          "type": "subtract_statement_in_block",
+          "type": "subtract_statement",
           "named": true
         },
         {
-          "type": "write_statement_in_block",
+          "type": "write_statement",
           "named": true
         }
       ]
@@ -5765,7 +5789,7 @@
       "required": true,
       "types": [
         {
-          "type": "add_statement_in_block",
+          "type": "add_statement",
           "named": true
         },
         {
@@ -5777,11 +5801,7 @@
           "named": true
         },
         {
-          "type": "display_statement_in_block",
-          "named": true
-        },
-        {
-          "type": "evaluate_statement",
+          "type": "display_statement",
           "named": true
         },
         {
@@ -5789,15 +5809,11 @@
           "named": true
         },
         {
-          "type": "if_statement",
-          "named": true
-        },
-        {
           "type": "move_statement",
           "named": true
         },
         {
-          "type": "multiply_statement_in_block",
+          "type": "multiply_statement",
           "named": true
         },
         {
@@ -5805,11 +5821,7 @@
           "named": true
         },
         {
-          "type": "perform_statement_in_block",
-          "named": true
-        },
-        {
-          "type": "read_statement_in_block",
+          "type": "read_statement",
           "named": true
         },
         {
@@ -5817,11 +5829,11 @@
           "named": true
         },
         {
-          "type": "subtract_statement_in_block",
+          "type": "subtract_statement",
           "named": true
         },
         {
-          "type": "write_statement_in_block",
+          "type": "write_statement",
           "named": true
         }
       ]
@@ -6123,7 +6135,7 @@
         "required": false,
         "types": [
           {
-            "type": "add_statement_in_block",
+            "type": "add_statement",
             "named": true
           },
           {
@@ -6135,11 +6147,11 @@
             "named": true
           },
           {
-            "type": "display_statement_in_block",
+            "type": "display_statement",
             "named": true
           },
           {
-            "type": "evaluate_statement",
+            "type": "evaluate_statement_in_block",
             "named": true
           },
           {
@@ -6147,7 +6159,7 @@
             "named": true
           },
           {
-            "type": "if_statement",
+            "type": "if_statement_in_block",
             "named": true
           },
           {
@@ -6155,7 +6167,7 @@
             "named": true
           },
           {
-            "type": "multiply_statement_in_block",
+            "type": "multiply_statement",
             "named": true
           },
           {
@@ -6167,7 +6179,7 @@
             "named": true
           },
           {
-            "type": "read_statement_in_block",
+            "type": "read_statement",
             "named": true
           },
           {
@@ -6175,11 +6187,11 @@
             "named": true
           },
           {
-            "type": "subtract_statement_in_block",
+            "type": "subtract_statement",
             "named": true
           },
           {
-            "type": "write_statement_in_block",
+            "type": "write_statement",
             "named": true
           }
         ]
@@ -6215,7 +6227,7 @@
         "required": false,
         "types": [
           {
-            "type": "add_statement_in_block",
+            "type": "add_statement",
             "named": true
           },
           {
@@ -6227,11 +6239,11 @@
             "named": true
           },
           {
-            "type": "display_statement_in_block",
+            "type": "display_statement",
             "named": true
           },
           {
-            "type": "evaluate_statement",
+            "type": "evaluate_statement_in_block",
             "named": true
           },
           {
@@ -6239,7 +6251,7 @@
             "named": true
           },
           {
-            "type": "if_statement",
+            "type": "if_statement_in_block",
             "named": true
           },
           {
@@ -6247,7 +6259,7 @@
             "named": true
           },
           {
-            "type": "multiply_statement_in_block",
+            "type": "multiply_statement",
             "named": true
           },
           {
@@ -6259,7 +6271,7 @@
             "named": true
           },
           {
-            "type": "read_statement_in_block",
+            "type": "read_statement",
             "named": true
           },
           {
@@ -6267,11 +6279,11 @@
             "named": true
           },
           {
-            "type": "subtract_statement_in_block",
+            "type": "subtract_statement",
             "named": true
           },
           {
-            "type": "write_statement_in_block",
+            "type": "write_statement",
             "named": true
           }
         ]
@@ -6886,6 +6898,10 @@
           "named": true
         },
         {
+          "type": "add_statement_with_handler",
+          "named": true
+        },
+        {
           "type": "close_statement",
           "named": true
         },
@@ -6895,6 +6911,10 @@
         },
         {
           "type": "display_statement",
+          "named": true
+        },
+        {
+          "type": "display_statement_with_handler",
           "named": true
         },
         {
@@ -6915,6 +6935,10 @@
         },
         {
           "type": "multiply_statement",
+          "named": true
+        },
+        {
+          "type": "multiply_statement_with_handler",
           "named": true
         },
         {
@@ -6934,6 +6958,10 @@
           "named": true
         },
         {
+          "type": "read_statement_with_handler",
+          "named": true
+        },
+        {
           "type": "section_header",
           "named": true
         },
@@ -6946,7 +6974,15 @@
           "named": true
         },
         {
+          "type": "subtract_statement_with_handler",
+          "named": true
+        },
+        {
           "type": "write_statement",
+          "named": true
+        },
+        {
+          "type": "write_statement_with_handler",
           "named": true
         }
       ]
@@ -6965,6 +7001,10 @@
           "named": true
         },
         {
+          "type": "add_statement_with_handler",
+          "named": true
+        },
+        {
           "type": "close_statement",
           "named": true
         },
@@ -6974,6 +7014,10 @@
         },
         {
           "type": "display_statement",
+          "named": true
+        },
+        {
+          "type": "display_statement_with_handler",
           "named": true
         },
         {
@@ -6994,6 +7038,10 @@
         },
         {
           "type": "multiply_statement",
+          "named": true
+        },
+        {
+          "type": "multiply_statement_with_handler",
           "named": true
         },
         {
@@ -7025,6 +7073,10 @@
           "named": true
         },
         {
+          "type": "read_statement_with_handler",
+          "named": true
+        },
+        {
           "type": "section_header",
           "named": true
         },
@@ -7037,7 +7089,15 @@
           "named": true
         },
         {
+          "type": "subtract_statement_with_handler",
+          "named": true
+        },
+        {
           "type": "write_statement",
+          "named": true
+        },
+        {
+          "type": "write_statement_with_handler",
           "named": true
         }
       ]
@@ -7222,28 +7282,6 @@
           }
         ]
       },
-      "handler": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "at_end",
-            "named": true
-          },
-          {
-            "type": "invalid_key",
-            "named": true
-          },
-          {
-            "type": "not_at_end",
-            "named": true
-          },
-          {
-            "type": "not_invalid_key",
-            "named": true
-          }
-        ]
-      },
       "into": {
         "multiple": true,
         "required": false,
@@ -7293,7 +7331,7 @@
     }
   },
   {
-    "type": "read_statement_in_block",
+    "type": "read_statement_with_handler",
     "named": true,
     "fields": {
       "file_name": {
@@ -7322,7 +7360,7 @@
       },
       "handler": {
         "multiple": true,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "at_end",
@@ -8621,16 +8659,12 @@
         {
           "type": "ROUNDED",
           "named": true
-        },
-        {
-          "type": "on_size_error",
-          "named": true
         }
       ]
     }
   },
   {
-    "type": "subtract_statement_in_block",
+    "type": "subtract_statement_with_handler",
     "named": true,
     "fields": {
       "from": {
@@ -8806,7 +8840,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "CORRESPONDING",
@@ -9257,28 +9291,6 @@
           }
         ]
       },
-      "handler": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "eop",
-            "named": true
-          },
-          {
-            "type": "invalid_key",
-            "named": true
-          },
-          {
-            "type": "not_eop",
-            "named": true
-          },
-          {
-            "type": "not_invalid_key",
-            "named": true
-          }
-        ]
-      },
       "lock": {
         "multiple": false,
         "required": false,
@@ -9316,7 +9328,7 @@
     }
   },
   {
-    "type": "write_statement_in_block",
+    "type": "write_statement_with_handler",
     "named": true,
     "fields": {
       "from": {

@@ -967,115 +967,44 @@ module.exports = grammar({
     nested_prog: $ => /todo_nested_prog/,
     end_program: $ => /todo_end_program/,
 
-    _procedure_division_statement: $ => choice(
-      //$.accept_statement,
-      seq($.add_statement, nonempty($._END_ADD, '.')),
-      //$.allocate_statement,
-      //$.alter_statement,
-      //$.call_statement,
-      //$.cancel_statement,
-      seq($.close_statement, '.'),
-      //$.commit_statement,
-      //$.compute_statement,
-      seq($.continue_statement, '.'),
-      //$.delete_statement,
-      //$.delete_file_statement,
-      seq($.display_statement, nonempty($._END_DISPLAY, '.')),
-      //$.divide_statement,
-      //$.entry_statement,
-      seq($.evaluate_statement, nonempty($._END_EVALUATE, '.')),
-      //$.exit_statement,
-      //$.free_statement,
-      //$.generate_statement,
-      seq($.goto_statement, '.'),
-      //$.goback_statement,
-      seq($.if_statement, nonempty($._END_IF, '.')),
-      //$.initialize_statement,
-      //$.initiate_statement,
-      //$.inspect_statement,
-      //$.merge_statement,
-      seq($.move_statement, '.'),
-      seq($.multiply_statement, nonempty($._END_MULTIPLY, '.')),
-      seq($.open_statement, '.'),
-      seq($.perform_statement),
-      seq($.read_statement, nonempty($._END_READ, '.')),
-      //$.release_statement,
-      //$.return_statement,
-      //$.rewrite_statement,
-      //$.rollback_statement,
-      //$.search_statement,
-      //$.set_statement,
-      //$.sort_statement,
-      //$.start_statement,
-      seq($.stop_statement, '.'),
-      //$.string_statement,
-      seq($.subtract_statement, nonempty($._END_SUBTRACT, '.')),
-      //$.suppress_statement,
-      //$.terminate_statement,
-      //$.transform_statement,
-      //$.unlock_statement,
-      //$.unstring_statement,
-      //$.use_statement,
-      seq($.write_statement, nonempty($._END_MULTIPLY, '.')),
-      //$.NEXT_SENTENCE,
+    _statement_containing_statement: $ => choice(
+      $.add_statement_with_handler,
+      $.display_statement_with_handler,
+      $.evaluate_statement,
+      $.if_statement,
+      $.multiply_statement_with_handler,
+      $.perform_statement,
+      $.read_statement_with_handler,
+      $.subtract_statement_with_handler,
+      $.write_statement_with_handler,
     ),
 
-
-    //todo
-    _statement: $ => choice(
-      //$.accept_statement,aaa
-      $.add_statement_in_block,
-      //$.allocate_statement,
-      //$.alter_statement,
-      //$.call_statement,aaa
-      //$.cancel_statement,
-      $.close_statement,
-      //$.commit_statement,
-      //$.compute_statement,aaa
-      $.continue_statement,
-      //$.delete_statement,aaa
-      //$.delete_file_statement,
-      $.display_statement_in_block,
-      //$.divide_statement,aaa
-      //$.entry_statement,
-      seq($.evaluate_statement, $._END_EVALUATE),
-      //$.exit_statement,
-      //$.free_statement,
-      //$.generate_statement,
-      $.goto_statement,
-      //$.goback_statement,
-      seq($.if_statement, $._END_IF),
-      //$.initialize_statement,
-      //$.initiate_statement,
-      //$.inspect_statement,
-      //$.merge_statement,
-      $.move_statement,
-      $.multiply_statement_in_block,
-      $.open_statement,
+    _statement_in_block: $ => choice(
+      $.evaluate_statement_in_block,
+      $.if_statement_in_block,
       $.perform_statement_in_block,
-      $.read_statement_in_block,
-      //$.release_statement,
-      //$.return_statement,aaa
-      //$.rewrite_statement,aaa
-      //$.rollback_statement,
-      //$.search_statement,aaa
-      //$.set_statement,
-      //$.sort_statement,
-      //$.start_statement,aaa
-      $.stop_statement,
-      //$.string_statement,
-      $.subtract_statement_in_block,
-      //$.suppress_statement,
-      //$.terminate_statement,
-      //$.transform_statement,
-      //$.unlock_statement,
-      //$.unstring_statement,aaa
-      //$.use_statement,
-      $.write_statement_in_block,
-      //$.NEXT_SENTENCE,
+      $._statement_imparative,
     ),
 
-    _statements1: $ => repeat1($._statement),
+    _statement_imparative: $ => choice(
+      $.add_statement,
+      $.close_statement,
+      $.display_statement,
+      $.continue_statement,
+      $.goto_statement,
+      $.move_statement,
+      $.multiply_statement,
+      $.open_statement,
+      $.read_statement,
+      $.stop_statement,
+      $.subtract_statement,
+      $.write_statement,
+    ),
+
+    _procedure_division_statement: $ => seq(
+      choice($._statement_imparative, $._statement_containing_statement),
+      '.'
+    ),
 
     //todo
     stop_statement: $ => seq(
@@ -1085,16 +1014,14 @@ module.exports = grammar({
     add_statement: $ => prec.left(seq(
       $._ADD,
       $._add_body,
-      optional($._size_error_block),
+      optional($._END_ADD),
     )),
 
-    add_statement_in_block: $ => prec.left(seq(
+    add_statement_with_handler: $ => prec.left(seq(
       $._ADD,
       $._add_body,
-      optional(seq(
-        optional($._size_error_block),
-        $._END_ADD
-      ))
+      $._size_error_block,
+      $._END_ADD
     )),
 
     _add_body: $ => prec.left(seq(
@@ -1128,7 +1055,7 @@ module.exports = grammar({
       $._ON,
       $._SIZE,
       $._ERROR,
-      $._statements1
+      repeat1($._statement_imparative)
     )),
 
     not_on_size_error: $ => prec.left(seq(
@@ -1136,13 +1063,13 @@ module.exports = grammar({
       $._ON,
       $._SIZE,
       $._ERROR,
-      $._statements1
+      repeat1($._statement_imparative)
     )),
 
-    close_statement: $ => seq(
+    close_statement: $ => prec.right(seq(
       $._CLOSE,
       repeat($.close_arg),
-    ),
+    )),
 
     close_arg: $ => seq(
       field('file_handler', $.WORD),
@@ -1168,19 +1095,17 @@ module.exports = grammar({
     display_statement: $ => prec.right(seq(
       $._DISPLAY,
       $._display_body,
-      optional($.on_disp_exception),
+      optional($._END_DISPLAY)
     )),
 
-    display_statement_in_block: $ => prec.right(seq(
+    display_statement_with_handler: $ => prec.right(seq(
       $._DISPLAY,
       $._display_body,
-      optional(seq(
-        optional($.on_disp_exception),
-        $._END_DISPLAY
-      ))
+      $.on_disp_exception,
+      $._END_DISPLAY
     )),
 
-    _display_body: $ => choice(
+    _display_body: $ => prec.right(choice(
       seq($._id_or_lit, $._UPON_ENVIRONMENT_NAME),
       seq($._id_or_lit, $._UPON_ENVIRONMENT_VALUE),
       seq($._id_or_lit, $._UPON_ARGUMENT_NUMBER),
@@ -1190,7 +1115,7 @@ module.exports = grammar({
       seq(repeat1($._x), optional($.at_line_column), $.UPON, $._WORD, optional($.with_clause)),
       seq(repeat1($._x), optional($.at_line_column), $.UPON, $.PRINTER, optional($.with_clause)),
       seq(repeat1($._x), optional($.at_line_column), $.UPON, $.CRT, optional($.with_clause)),
-    ),
+    )),
 
     at_line_column: $ => /todo_at_line_column/,
 
@@ -1201,7 +1126,7 @@ module.exports = grammar({
 
     on_disp_exception: $ => prec.right(seq(
       choice($.EXCEPTION, $.NOT_EXCEPTION),
-      $._statements1,
+      repeat1($._statement_imparative),
     )),
 
     with_clause: $ => choice(
@@ -1209,7 +1134,7 @@ module.exports = grammar({
       seq($.WITH, repeat1($.disp_attr))
     ),
 
-    disp_attr: $ => choice(
+    disp_attr: $ => prec.right(choice(
       $.BELL,
       $.BLINK,
       seq($.ERASE, $.EOL),
@@ -1229,7 +1154,7 @@ module.exports = grammar({
         optional($._IS), optional($.scroll_lines)),
       $.BLANK_LINE,
       $.BLANK_SCREEN,
-    ),
+    )),
 
     _num_or_id_or_lit: $ => choice(
       $._identifier,
@@ -1246,6 +1171,16 @@ module.exports = grammar({
     line_or_lines: $ => choice($.LINE, $.LINES),
 
     evaluate_statement: $ => prec.left(seq(
+      $._evaluate_header,
+      optional($._END_EVALUATE)
+    )),
+
+    evaluate_statement_in_block: $ => prec.left(seq(
+      $._evaluate_header,
+      $._END_EVALUATE
+    )),
+
+    _evaluate_header: $ => prec.right(seq(
       $._EVALUATE,
       field('subjects', sepBy($.evaluate_subject, optional($._ALSO))),
       field('cases', repeat($.evaluate_case)),
@@ -1260,10 +1195,10 @@ module.exports = grammar({
 
     evaluate_case: $ => prec.left(seq(
       field('when', repeat1(seq($._WHEN, $._evaluate_object_list))),
-      field('statements', $._statements1),
+      field('statements', repeat1($._statement_in_block)),
     )),
 
-    _evaluate_object_list: $ => sepBy($._evaluate_object, optional($._ALSO)),
+    _evaluate_object_list: $ => prec.right(sepBy($._evaluate_object, optional($._ALSO))),
 
     _evaluate_object: $ => choice(
       /*seq(
@@ -1278,14 +1213,14 @@ module.exports = grammar({
 
     evaluate_other: $ => prec.right(seq(
       $._WHEN_OTHER,
-      field('statement', $._statements1)
+      field('statement', repeat1($._statement_in_block))
     )),
 
-    goto_statement: $ => seq(
+    goto_statement: $ => prec.right(seq(
       $._GO, optional($._TO),
       field('to', repeat($.label)),
       field('depending', optional(seq($._DEPENDING, optional($._ON), $._identifier)))
-    ),
+    )),
 
     label: $ => choice(
       $.qualified_word,
@@ -1294,10 +1229,20 @@ module.exports = grammar({
 
     //todo add error if statement (see cobc/parser.y)
     if_statement: $ => prec.right(1, seq(
+      $._if_statement_header,
+      optional($._END_IF)
+    )),
+
+    if_statement_in_block: $ => prec.right(1, seq(
+      $._if_statement_header,
+      $._END_IF
+    )),
+
+    _if_statement_header: $ => prec.right(1, seq(
       $._IF,
       field('condition', $.expr),
       optional($._THEN),
-      field('statements', $._statements1),
+      field('statements', repeat($._statement_in_block)),
       repeat($.else_if_sentense),
       optional($.else_sentense),
     )),
@@ -1306,12 +1251,12 @@ module.exports = grammar({
       $._ELSE, $._IF,
       field('condition', $.expr),
       optional($._THEN),
-      field('statements', $._statements1),
+      field('statements', repeat($._statement_in_block)),
     )),
 
     else_sentense: $ => prec.right(seq(
       $._ELSE,
-      $._statements1
+      repeat($._statement_in_block)
     )),
 
     expr: $ => prec.left(choice($._expr_logic, $._expr_calc)),
@@ -1408,12 +1353,12 @@ module.exports = grammar({
       $._move_body
     ),
 
-    _move_body: $ => seq(
+    _move_body: $ => prec.right(seq(
       optional($._CORRESPONDING),
       field('src', $._x),
       $._TO,
       field('dst', $._target_x_list)
-    ),
+    )),
 
     _x: $ => choice(
       seq($._LENGTH, optional($._OF), choice(
@@ -1447,16 +1392,14 @@ module.exports = grammar({
     multiply_statement: $ => prec.right(seq(
       $._MULTIPLY,
       $._multiply_body,
-      optional($._size_error_block),
+      optional($._END_MULTIPLY)
     )),
 
-    multiply_statement_in_block: $ => prec.right(seq(
+    multiply_statement_with_handler: $ => prec.right(seq(
       $._MULTIPLY,
       $._multiply_body,
-      optional(seq(
-        optional($._size_error_block),
-        $._END_MULTIPLY
-      ))
+      $._size_error_block,
+      $._END_MULTIPLY
     )),
 
     _multiply_body: $ => prec.right(seq(
@@ -1485,7 +1428,7 @@ module.exports = grammar({
       repeat1($.open_arg)
     ),
 
-    open_arg: $ => seq(
+    open_arg: $ => prec.right(seq(
       field('mode', choice($.INPUT, $.OUTPUT, $.I_O, $.EXTEND)),
       field('sharing', optional(seq(
         $._SHARING,
@@ -1501,7 +1444,7 @@ module.exports = grammar({
         seq(optional($._WITH), $.NO, $.REWIND),
         seq(optional($._WITH), $.LOCK)
       )))
-    ),
+    )),
 
     perform_statement: $ => prec.right(seq(
       $._PERFORM,
@@ -1509,20 +1452,17 @@ module.exports = grammar({
         seq(
           field('procedure', $.perform_procedure),
           field('option', optional($.perform_option)),
-          nonempty($._END_PERFORM, '.')
+          optional($._END_PERFORM)
         ),
         seq(
           field('option', optional($.perform_option)),
-          field('statements', $._statements1),
-          $._END_PERFORM,
-          optional('.')
+          field('statements', repeat1($._statement_in_block)),
         ),
-        seq(
-          field('option', $.perform_option),
-          nonempty($._END_PERFORM, '.')
-        )
-      )
+        field('option', $.perform_option),
+      ),
+      optional($._END_PERFORM),
     )),
+
     perform_statement_in_block: $ => prec.right(seq(
       $._PERFORM,
       choice(
@@ -1533,7 +1473,7 @@ module.exports = grammar({
         ),
         seq(
           field('option', optional($.perform_option)),
-          field('statements', $._statements1),
+          field('statements', repeat1($._statement_in_block)),
           $._END_PERFORM
         ),
         seq(
@@ -1577,7 +1517,7 @@ module.exports = grammar({
       field('until', $.expr),
     ),
 
-    _read_statement_header: $ => seq(
+    _read_statement_header: $ => prec.right(seq(
       $._READ,
       field('file_name', $.WORD),
       field('flag_next', optional(choice($.NEXT, $.PREVIOUS))),
@@ -1589,7 +1529,7 @@ module.exports = grammar({
         optional($._IS),
         repeat1($._identifier),
       ))),
-    ),
+    )),
 
     _read_statement_footer: $ =>
       field('handler', choice(
@@ -1597,14 +1537,12 @@ module.exports = grammar({
         nonempty($.invalid_key, $.not_invalid_key),
       )),
 
-    read_statement: $ => seq(
-      $._read_statement_header,
-      optional($._read_statement_footer),
-    ),
+    read_statement: $ => $._read_statement_header,
 
-    read_statement_in_block: $ => prec.right(seq(
+    read_statement_with_handler: $ => prec.right(seq(
       $._read_statement_header,
-      optional(seq(optional($._read_statement_footer), $._END_READ)),
+      $._read_statement_footer,
+      $._END_READ,
     )),
 
     with_lock: $ => choice(
@@ -1617,25 +1555,23 @@ module.exports = grammar({
       ))
     ),
 
-    at_end: $ => seq($._AT, $._END, $._statements1),
-    not_at_end: $ => seq($._NOT, $._AT, $._END, $._statements1),
+    at_end: $ => seq($._AT, $._END, repeat1($._statement_imparative)),
+    not_at_end: $ => seq($._NOT, $._AT, $._END, repeat1($._statement_imparative)),
 
-    subtract_statement: $ => seq(
+    subtract_statement: $ => prec.right(seq(
       $._SUBTRACT,
       $._subtract_body,
-      optional($.on_size_error)
-    ),
-
-    subtract_statement_in_block: $ => prec.right(seq(
-      $._SUBTRACT,
-      $._subtract_body,
-      optional(seq(
-        optional($.on_size_error),
-        $._END_SUBTRACT
-      ))
+      optional($._END_SUBTRACT),
     )),
 
-    _subtract_body: $ => choice(
+    subtract_statement_with_handler: $ => prec.right(seq(
+      $._SUBTRACT,
+      $._subtract_body,
+      $.on_size_error,
+      $._END_SUBTRACT
+    )),
+
+    _subtract_body: $ => prec.right(choice(
       seq(
         field('x', repeat1($._x)),
         $._FROM,
@@ -1655,19 +1591,16 @@ module.exports = grammar({
         field('from', $._identifier),
         optional($.ROUNDED),
       )
-    ),
+    )),
 
     write_statement: $ => prec.right(seq(
       $._write_statement_header,
-      field('handler', optional($._write_handler)),
     )),
 
-    write_statement_in_block: $ => prec.right(seq(
+    write_statement_with_handler: $ => prec.right(seq(
       $._write_statement_header,
-      optional(seq(
-        field('handler', optional($._write_handler)),
-        $._END_WRITE
-      ))
+      field('handler', optional($._write_handler)),
+      $._END_WRITE
     )),
 
     _write_statement_header: $ => prec.right(seq(
@@ -1716,27 +1649,27 @@ module.exports = grammar({
     eop: $ => prec.right(seq(
       $._AT,
       choice($._EOP, $._END_OF_PAGE),
-      $._statements1
+      repeat1($._statement_imparative)
     )),
 
     not_eop: $ => prec.right(seq(
       $._NOT,
       $._AT,
       choice($._EOP, $._END_OF_PAGE),
-      $._statements1
+      repeat1($._statement_imparative)
     )),
 
     invalid_key: $ => prec.right(seq(
       $._INVALID,
       $._KEY,
-      $._statements1
+      repeat1($._statement_imparative)
     )),
 
     not_invalid_key: $ => prec.right(seq(
       $._NOT,
       $._INVALID,
       $._KEY,
-      $._statements1
+      repeat1($._statement_imparative)
     )),
 
     _basic_literal: $ => sepBy(
