@@ -970,6 +970,9 @@ module.exports = grammar({
     _statement_simple: $ => prec.right(choice(
       seq($.add_statement, optional($._END_ADD)),
       $.add_statement_with_handler,
+      seq($.call_statement, optional($._END_CALL)),
+      $.call_statement_with_handler,
+      $.display_statement_with_handler,
       $.close_statement,
       seq($.display_statement, optional($._END_DISPLAY)),
       $.display_statement_with_handler,
@@ -998,6 +1001,7 @@ module.exports = grammar({
 
     _statement_imparative: $ => choice(
       $.add_statement,
+      $.call_statement,
       $.close_statement,
       $.display_statement,
       $.continue_statement,
@@ -1077,6 +1081,97 @@ module.exports = grammar({
       $._ERROR,
       repeat1($._statement_imparative)
     )),
+
+    call_statement: $ => seq(
+      $._call_header
+    ),
+
+    call_statement_with_handler: $ => seq(
+      $._call_header,
+      $._call_handler,
+      $._END_CALL
+    ),
+
+    _call_header: $ => prec.right(seq(
+      $._CALL,
+      field('x', $._id_or_lit_or_func),
+      field('using', optional(seq(
+        $._USING,
+        repeat1($._call_param)
+      ))),
+      optional(choice(
+        field('returning', seq($._RETURNING, $._identifier),
+          field('giving', seq($._GIVING, $._identifier)),
+        )))
+    )),
+
+    _call_param: $ => choice(
+      $.call_param_omitted,
+      $.call_param_arg,
+    ),
+
+    call_param_omitted: $ => seq(
+      optional($._call_type), $._OMITTED
+    ),
+
+    call_param_arg: $ => seq(
+      optional($._call_type),
+      optional($._size_option),
+      $._x
+    ),
+
+    _call_type: $ => choice(
+      $.by_reference,
+      $.by_content,
+      $.by_value,
+    ),
+
+    by_reference: $ => seq(optional($._BY), $._REFERENCE),
+    by_content: $ => seq(optional($._BY), $._CONTENT),
+    by_value: $ => seq(optional($._BY), $._VALUE),
+
+    _size_option: $ => choice(
+      $.size_is_auto,
+      $.size_is_default,
+      $.unsigned_size_is,
+      $.size_is,
+    ),
+
+    size_is_auto: $ => seq($._SIZE, optional($._IS), $._AUTO),
+    size_is_default: $ => seq($._SIZE, optional($._IS), $._DEFAULT),
+    unsigned_size_is: $ => seq($._UNSIGNED, $._SIZE, optional($._IS), $.integer),
+    size_is: $ => seq($._SIZE, optional($._IS), $.integer),
+
+    _call_handler: $ => nonempty(
+      choice($.call_on_exception, $.call_on_overflow),
+      choice($.call_not_on_exception, $.call_not_on_overflow),
+    ),
+
+    call_on_exception: $ => seq(
+      optional($._ON),
+      $._EXCEPTION,
+      repeat1($._statement_imparative),
+    ),
+
+    call_on_overflow: $ => seq(
+      optional($._ON),
+      $._OVERFLOW,
+      repeat1($._statement_imparative),
+    ),
+
+    call_not_on_exception: $ => seq(
+      $._NOT,
+      optional($._ON),
+      $._EXCEPTION,
+      repeat1($._statement_imparative),
+    ),
+
+    call_not_on_overflow: $ => seq(
+      $._NOT,
+      optional($._ON),
+      $._OVERFLOW,
+      repeat1($._statement_imparative),
+    ),
 
     close_statement: $ => prec.right(seq(
       $._CLOSE,
