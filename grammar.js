@@ -1382,7 +1382,7 @@ module.exports = grammar({
       prec.left(-1, seq($._expr_calc, $.gt, $._expr_calc)),
       prec.left(-1, seq($._expr_calc, $.lt, $._expr_calc)),
       prec.left(-1, seq($._expr_calc, $.ge, $._expr_calc)),
-      prec.left(-1, seq($._expr_calc, $.lt, $._expr_calc)),
+      prec.left(-1, seq($._expr_calc, $.le, $._expr_calc)),
       prec.left(-1, seq($._expr_calc, $.ne, $._expr_calc)),
     ),
 
@@ -1417,29 +1417,31 @@ module.exports = grammar({
       $._EQUALS
     ),
 
-    gt: $ => choice(
-      '>',
-      seq(optional($._IS), $.GREATER, optional($._THAN))
-    ),
-
-    lt: $ => choice(
-      '<',
-      seq(optional($._IS), $.LESS, optional($._THAN))
-    ),
-
     ge: $ => choice(
       '>=',
-      seq(optional($._IS), $.GREATER, optional($._THAN), optional($._OR), $._EQUAL, optional($._TO)),
+      seq(optional($._IS), $._GREATER, optional($._THAN), optional($._OR), $._EQUAL, optional($._TO)),
+      seq(optional($._IS), $._NOT, $._LESS, optional($._THAN)),
     ),
 
     le: $ => choice(
       '<=',
-      seq(optional($._IS), $.LESS, optional($._THAN), optional($._OR), $._EQUAL, optional($._TO)),
+      seq(optional($._IS), $._LESS, optional($._THAN), optional($._OR), $._EQUAL, optional($._TO)),
+      seq(optional($._IS), $._NOT, $._GREATER, optional($._THAN)),
     ),
 
     ne: $ => choice(
       '!=',
       seq(optional($._IS), $._NOT, $._EQUAL, optional($._TO)),
+    ),
+
+    gt: $ => choice(
+      '>',
+      seq(optional($._IS), $._GREATER, optional($._THAN))
+    ),
+
+    lt: $ => choice(
+      '<',
+      seq(optional($._IS), $._LESS, optional($._THAN))
     ),
 
     move_statement: $ => seq(
