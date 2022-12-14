@@ -5151,6 +5151,10 @@
           {
             "type": "SYMBOL",
             "name": "write_statement_with_handler"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "next_sentence_statement"
           }
         ]
       }
@@ -5261,6 +5265,10 @@
         {
           "type": "SYMBOL",
           "name": "write_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "next_sentence_statement"
         }
       ]
     },
@@ -10349,6 +10357,19 @@
           }
         ]
       }
+    },
+    "next_sentence_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_NEXT"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_SENTENCE"
+        }
+      ]
     },
     "_basic_literal": {
       "type": "SEQ",

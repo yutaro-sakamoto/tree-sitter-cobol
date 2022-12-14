@@ -990,6 +990,7 @@ module.exports = grammar({
       $.subtract_statement_with_handler,
       seq($.write_statement, optional($._END_WRITE)),
       $.write_statement_with_handler,
+      $.next_sentence_statement,
     )),
 
     _statement_in_block: $ => prec.right(choice(
@@ -1013,6 +1014,7 @@ module.exports = grammar({
       $.stop_statement,
       $.subtract_statement,
       $.write_statement,
+      $.next_sentence_statement,
     ),
 
     _procedure_division_statement: $ => choice(
@@ -1747,6 +1749,8 @@ module.exports = grammar({
       $._KEY,
       repeat1($._statement_imparative)
     )),
+
+    next_sentence_statement: $ => seq($._NEXT, $._SENTENCE),
 
     _basic_literal: $ => sepBy(
       $._basic_value,

@@ -1753,6 +1753,10 @@
           "named": true
         },
         {
+          "type": "next_sentence_statement",
+          "named": true
+        },
+        {
           "type": "open_statement",
           "named": true
         },
@@ -1857,6 +1861,10 @@
           "named": true
         },
         {
+          "type": "next_sentence_statement",
+          "named": true
+        },
+        {
           "type": "open_statement",
           "named": true
         },
@@ -1917,6 +1925,10 @@
         },
         {
           "type": "multiply_statement",
+          "named": true
+        },
+        {
+          "type": "next_sentence_statement",
           "named": true
         },
         {
@@ -1983,6 +1995,10 @@
           "named": true
         },
         {
+          "type": "next_sentence_statement",
+          "named": true
+        },
+        {
           "type": "open_statement",
           "named": true
         },
@@ -2043,6 +2059,10 @@
         },
         {
           "type": "multiply_statement",
+          "named": true
+        },
+        {
+          "type": "next_sentence_statement",
           "named": true
         },
         {
@@ -3302,6 +3322,10 @@
             "named": true
           },
           {
+            "type": "next_sentence_statement",
+            "named": true
+          },
+          {
             "type": "open_statement",
             "named": true
           },
@@ -3407,6 +3431,10 @@
         },
         {
           "type": "multiply_statement_with_handler",
+          "named": true
+        },
+        {
+          "type": "next_sentence_statement",
           "named": true
         },
         {
@@ -3517,6 +3545,10 @@
           "named": true
         },
         {
+          "type": "next_sentence_statement",
+          "named": true
+        },
+        {
           "type": "open_statement",
           "named": true
         },
@@ -3606,6 +3638,10 @@
           },
           {
             "type": "multiply_statement_with_handler",
+            "named": true
+          },
+          {
+            "type": "next_sentence_statement",
             "named": true
           },
           {
@@ -3736,6 +3772,10 @@
           },
           {
             "type": "multiply_statement_with_handler",
+            "named": true
+          },
+          {
+            "type": "next_sentence_statement",
             "named": true
           },
           {
@@ -4622,6 +4662,10 @@
             "named": true
           },
           {
+            "type": "next_sentence_statement",
+            "named": true
+          },
+          {
             "type": "open_statement",
             "named": true
           },
@@ -4736,6 +4780,10 @@
         },
         {
           "type": "multiply_statement",
+          "named": true
+        },
+        {
+          "type": "next_sentence_statement",
           "named": true
         },
         {
@@ -5926,6 +5974,11 @@
     }
   },
   {
+    "type": "next_sentence_statement",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "nominal_key_clause",
     "named": true,
     "fields": {},
@@ -5978,6 +6031,10 @@
         },
         {
           "type": "multiply_statement",
+          "named": true
+        },
+        {
+          "type": "next_sentence_statement",
           "named": true
         },
         {
@@ -6044,6 +6101,10 @@
           "named": true
         },
         {
+          "type": "next_sentence_statement",
+          "named": true
+        },
+        {
           "type": "open_statement",
           "named": true
         },
@@ -6107,6 +6168,10 @@
           "named": true
         },
         {
+          "type": "next_sentence_statement",
+          "named": true
+        },
+        {
           "type": "open_statement",
           "named": true
         },
@@ -6167,6 +6232,10 @@
         },
         {
           "type": "multiply_statement",
+          "named": true
+        },
+        {
+          "type": "next_sentence_statement",
           "named": true
         },
         {
@@ -6386,6 +6455,10 @@
           "named": true
         },
         {
+          "type": "next_sentence_statement",
+          "named": true
+        },
+        {
           "type": "open_statement",
           "named": true
         },
@@ -6446,6 +6519,10 @@
         },
         {
           "type": "multiply_statement",
+          "named": true
+        },
+        {
+          "type": "next_sentence_statement",
           "named": true
         },
         {
@@ -6836,6 +6913,10 @@
           },
           {
             "type": "multiply_statement_with_handler",
+            "named": true
+          },
+          {
+            "type": "next_sentence_statement",
             "named": true
           },
           {
@@ -7542,6 +7623,10 @@
           "named": true
         },
         {
+          "type": "next_sentence_statement",
+          "named": true
+        },
+        {
           "type": "open_statement",
           "named": true
         },
@@ -7654,6 +7739,10 @@
         },
         {
           "type": "multiply_statement_with_handler",
+          "named": true
+        },
+        {
+          "type": "next_sentence_statement",
           "named": true
         },
         {
