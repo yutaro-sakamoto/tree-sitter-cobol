@@ -967,7 +967,7 @@ module.exports = grammar({
     nested_prog: $ => /todo_nested_prog/,
     end_program: $ => /todo_end_program/,
 
-    _statement_in_block: $ => prec.right(choice(
+    _statement_simple: $ => prec.right(choice(
       seq($.add_statement, optional($._END_ADD)),
       $.add_statement_with_handler,
       $.close_statement,
@@ -987,7 +987,10 @@ module.exports = grammar({
       $.subtract_statement_with_handler,
       seq($.write_statement, optional($._END_WRITE)),
       $.write_statement_with_handler,
+    )),
 
+    _statement_in_block: $ => prec.right(choice(
+      $._statement_simple,
       seq($.evaluate_statement, $._END_EVALUATE),
       seq($.if_statement, $._END_IF),
       seq($.perform_statement_loop, $._END_PERFORM)
@@ -1009,25 +1012,7 @@ module.exports = grammar({
     ),
 
     _procedure_division_statement: $ => choice(
-      seq($.add_statement, optional($._END_ADD), optional('.')),
-      seq($.add_statement_with_handler, optional('.')),
-      seq($.close_statement, optional('.')),
-      seq($.display_statement, optional($._END_DISPLAY), optional('.')),
-      seq($.display_statement_with_handler, optional('.')),
-      seq($.continue_statement, optional('.')),
-      seq($.goto_statement, optional('.')),
-      seq($.move_statement, optional('.')),
-      seq($.multiply_statement, optional($._END_MULTIPLY), optional('.')),
-      seq($.multiply_statement_with_handler, optional('.')),
-      seq($.open_statement, optional('.')),
-      seq($.perform_statement_call_proc, optional($._END_PERFORM), optional('.')),
-      seq($.read_statement, optional($._END_READ), optional('.')),
-      seq($.read_statement_with_handler, optional('.')),
-      seq($.stop_statement, optional('.')),
-      seq($.subtract_statement, optional($._END_SUBTRACT), optional('.')),
-      seq($.subtract_statement_with_handler, optional('.')),
-      seq($.write_statement, optional($._END_WRITE), optional('.')),
-      seq($.write_statement_with_handler, optional('.')),
+      seq($._statement_simple, optional('.')),
 
       seq($.evaluate_statement, nonempty($._END_EVALUATE, '.')),
       seq($.if_statement, nonempty($._END_IF, '.')),
