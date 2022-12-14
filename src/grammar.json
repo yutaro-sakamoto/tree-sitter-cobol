@@ -5718,15 +5718,15 @@
                   "type": "SEQ",
                   "members": [
                     {
-                      "type": "STRING",
-                      "value": "."
+                      "type": "SYMBOL",
+                      "name": "_END_EVALUATE"
                     },
                     {
                       "type": "CHOICE",
                       "members": [
                         {
-                          "type": "SYMBOL",
-                          "name": "_END_EVALUATE"
+                          "type": "STRING",
+                          "value": "."
                         },
                         {
                           "type": "BLANK"
@@ -5736,8 +5736,8 @@
                   ]
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "_END_EVALUATE"
+                  "type": "STRING",
+                  "value": "."
                 }
               ]
             }
@@ -5757,15 +5757,15 @@
                   "type": "SEQ",
                   "members": [
                     {
-                      "type": "STRING",
-                      "value": "."
+                      "type": "SYMBOL",
+                      "name": "_END_IF"
                     },
                     {
                       "type": "CHOICE",
                       "members": [
                         {
-                          "type": "SYMBOL",
-                          "name": "_END_IF"
+                          "type": "STRING",
+                          "value": "."
                         },
                         {
                           "type": "BLANK"
@@ -5775,8 +5775,8 @@
                   ]
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "_END_IF"
+                  "type": "STRING",
+                  "value": "."
                 }
               ]
             }
@@ -5796,15 +5796,15 @@
                   "type": "SEQ",
                   "members": [
                     {
-                      "type": "STRING",
-                      "value": "."
+                      "type": "SYMBOL",
+                      "name": "_END_PERFORM"
                     },
                     {
                       "type": "CHOICE",
                       "members": [
                         {
-                          "type": "SYMBOL",
-                          "name": "_END_PERFORM"
+                          "type": "STRING",
+                          "value": "."
                         },
                         {
                           "type": "BLANK"
@@ -5814,8 +5814,8 @@
                   ]
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "_END_PERFORM"
+                  "type": "STRING",
+                  "value": "."
                 }
               ]
             }
@@ -6126,7 +6126,7 @@
             "name": "_CLOSE"
           },
           {
-            "type": "REPEAT",
+            "type": "REPEAT1",
             "content": {
               "type": "SYMBOL",
               "name": "close_arg"
@@ -6888,7 +6888,7 @@
       ]
     },
     "evaluate_statement": {
-      "type": "PREC_LEFT",
+      "type": "PREC_RIGHT",
       "value": 0,
       "content": {
         "type": "SEQ",
@@ -6896,23 +6896,6 @@
           {
             "type": "SYMBOL",
             "name": "_evaluate_header"
-          }
-        ]
-      }
-    },
-    "evaluate_statement_in_block": {
-      "type": "PREC_LEFT",
-      "value": 0,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "_evaluate_header"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_END_EVALUATE"
           }
         ]
       }
@@ -6968,7 +6951,7 @@
             "type": "FIELD",
             "name": "cases",
             "content": {
-              "type": "REPEAT",
+              "type": "REPEAT1",
               "content": {
                 "type": "SYMBOL",
                 "name": "evaluate_case"
@@ -7254,23 +7237,6 @@
           {
             "type": "SYMBOL",
             "name": "_if_statement_header"
-          }
-        ]
-      }
-    },
-    "if_statement_in_block": {
-      "type": "PREC_RIGHT",
-      "value": 1,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "_if_statement_header"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_END_IF"
           }
         ]
       }

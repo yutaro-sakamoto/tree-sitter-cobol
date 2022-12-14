@@ -1874,7 +1874,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "close_arg",
@@ -3179,7 +3179,7 @@
     "fields": {
       "cases": {
         "multiple": true,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "evaluate_case",

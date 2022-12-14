@@ -1029,9 +1029,9 @@ module.exports = grammar({
       seq($.write_statement, optional($._END_WRITE), optional('.')),
       seq($.write_statement_with_handler, optional('.')),
 
-      seq($.evaluate_statement, nonempty('.', $._END_EVALUATE)),
-      seq($.if_statement, nonempty('.', $._END_IF)),
-      seq($.perform_statement_loop, nonempty('.', $._END_PERFORM))
+      seq($.evaluate_statement, nonempty($._END_EVALUATE, '.')),
+      seq($.if_statement, nonempty($._END_IF, '.')),
+      seq($.perform_statement_loop, nonempty($._END_PERFORM, '.'))
     ),
 
     //todo
@@ -1095,7 +1095,7 @@ module.exports = grammar({
 
     close_statement: $ => prec.right(seq(
       $._CLOSE,
-      repeat($.close_arg),
+      repeat1($.close_arg),
     )),
 
     close_arg: $ => prec.right(seq(
@@ -1196,19 +1196,14 @@ module.exports = grammar({
 
     line_or_lines: $ => choice($.LINE, $.LINES),
 
-    evaluate_statement: $ => prec.left(seq(
+    evaluate_statement: $ => prec.right(seq(
       $._evaluate_header,
-    )),
-
-    evaluate_statement_in_block: $ => prec.left(seq(
-      $._evaluate_header,
-      $._END_EVALUATE
     )),
 
     _evaluate_header: $ => prec.right(seq(
       $._EVALUATE,
       field('subjects', sepBy($.evaluate_subject, optional($._ALSO))),
-      field('cases', repeat($.evaluate_case)),
+      field('cases', repeat1($.evaluate_case)),
       field('other', optional($.evaluate_other)),
     )),
 
@@ -1255,11 +1250,6 @@ module.exports = grammar({
     //todo add error if statement (see cobc/parser.y)
     if_statement: $ => prec.right(1, seq(
       $._if_statement_header,
-    )),
-
-    if_statement_in_block: $ => prec.right(1, seq(
-      $._if_statement_header,
-      $._END_IF
     )),
 
     _if_statement_header: $ => prec.right(1, seq(
