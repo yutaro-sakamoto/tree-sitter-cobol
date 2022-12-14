@@ -12,7 +12,7 @@ perform label
     (identification_division
       (program_name))
     (procedure_division
-      (perform_statement
+      (perform_statement_call_proc
         procedure: (perform_procedure
           (label
             (qualified_word
@@ -33,7 +33,7 @@ perform label thru label
     (identification_division
       (program_name))
     (procedure_division
-      (perform_statement
+      (perform_statement_call_proc
         procedure: (perform_procedure
           (label
             (qualified_word
@@ -58,7 +58,7 @@ perform label FOREVER
     (identification_division
       (program_name))
     (procedure_division
-      (perform_statement
+      (perform_statement_call_proc
         procedure: (perform_procedure
           (label
             (qualified_word
@@ -81,7 +81,7 @@ perform continue
     (identification_division
       (program_name))
     (procedure_division
-      (perform_statement
+      (perform_statement_loop
         option: (perform_option
           (FOREVER))
         statements: (continue_statement)))))
@@ -99,7 +99,7 @@ perform label times
     (identification_division
       (program_name))
     (procedure_division
-      (perform_statement
+      (perform_statement_call_proc
         procedure: (perform_procedure
           (label
             (qualified_word
@@ -132,7 +132,7 @@ perform label UNTIL
           (picture_clause
             (picture_9)))))
     (procedure_division
-      (perform_statement
+      (perform_statement_call_proc
         procedure: (perform_procedure
           (label
             (qualified_word

@@ -2677,6 +2677,10 @@
             "named": true
           },
           {
+            "type": "add_statement_with_handler",
+            "named": true
+          },
+          {
             "type": "close_statement",
             "named": true
           },
@@ -2689,7 +2693,11 @@
             "named": true
           },
           {
-            "type": "evaluate_statement_in_block",
+            "type": "display_statement_with_handler",
+            "named": true
+          },
+          {
+            "type": "evaluate_statement",
             "named": true
           },
           {
@@ -2697,7 +2705,7 @@
             "named": true
           },
           {
-            "type": "if_statement_in_block",
+            "type": "if_statement",
             "named": true
           },
           {
@@ -2709,15 +2717,27 @@
             "named": true
           },
           {
+            "type": "multiply_statement_with_handler",
+            "named": true
+          },
+          {
             "type": "open_statement",
             "named": true
           },
           {
-            "type": "perform_statement_in_block",
+            "type": "perform_statement_call_proc",
+            "named": true
+          },
+          {
+            "type": "perform_statement_loop",
             "named": true
           },
           {
             "type": "read_statement",
+            "named": true
+          },
+          {
+            "type": "read_statement_with_handler",
             "named": true
           },
           {
@@ -2729,7 +2749,15 @@
             "named": true
           },
           {
+            "type": "subtract_statement_with_handler",
+            "named": true
+          },
+          {
             "type": "write_statement",
+            "named": true
+          },
+          {
+            "type": "write_statement_with_handler",
             "named": true
           }
         ]
@@ -2749,6 +2777,10 @@
           "named": true
         },
         {
+          "type": "add_statement_with_handler",
+          "named": true
+        },
+        {
           "type": "close_statement",
           "named": true
         },
@@ -2761,7 +2793,11 @@
           "named": true
         },
         {
-          "type": "evaluate_statement_in_block",
+          "type": "display_statement_with_handler",
+          "named": true
+        },
+        {
+          "type": "evaluate_statement",
           "named": true
         },
         {
@@ -2769,7 +2805,7 @@
           "named": true
         },
         {
-          "type": "if_statement_in_block",
+          "type": "if_statement",
           "named": true
         },
         {
@@ -2781,15 +2817,27 @@
           "named": true
         },
         {
+          "type": "multiply_statement_with_handler",
+          "named": true
+        },
+        {
           "type": "open_statement",
           "named": true
         },
         {
-          "type": "perform_statement_in_block",
+          "type": "perform_statement_call_proc",
+          "named": true
+        },
+        {
+          "type": "perform_statement_loop",
           "named": true
         },
         {
           "type": "read_statement",
+          "named": true
+        },
+        {
+          "type": "read_statement_with_handler",
           "named": true
         },
         {
@@ -2801,7 +2849,15 @@
           "named": true
         },
         {
+          "type": "subtract_statement_with_handler",
+          "named": true
+        },
+        {
           "type": "write_statement",
+          "named": true
+        },
+        {
+          "type": "write_statement_with_handler",
           "named": true
         }
       ]
@@ -2908,6 +2964,10 @@
             "named": true
           },
           {
+            "type": "add_statement_with_handler",
+            "named": true
+          },
+          {
             "type": "close_statement",
             "named": true
           },
@@ -2920,7 +2980,11 @@
             "named": true
           },
           {
-            "type": "evaluate_statement_in_block",
+            "type": "display_statement_with_handler",
+            "named": true
+          },
+          {
+            "type": "evaluate_statement",
             "named": true
           },
           {
@@ -2928,7 +2992,7 @@
             "named": true
           },
           {
-            "type": "if_statement_in_block",
+            "type": "if_statement",
             "named": true
           },
           {
@@ -2940,15 +3004,27 @@
             "named": true
           },
           {
+            "type": "multiply_statement_with_handler",
+            "named": true
+          },
+          {
             "type": "open_statement",
             "named": true
           },
           {
-            "type": "perform_statement_in_block",
+            "type": "perform_statement_call_proc",
+            "named": true
+          },
+          {
+            "type": "perform_statement_loop",
             "named": true
           },
           {
             "type": "read_statement",
+            "named": true
+          },
+          {
+            "type": "read_statement_with_handler",
             "named": true
           },
           {
@@ -2960,7 +3036,15 @@
             "named": true
           },
           {
+            "type": "subtract_statement_with_handler",
+            "named": true
+          },
+          {
             "type": "write_statement",
+            "named": true
+          },
+          {
+            "type": "write_statement_with_handler",
             "named": true
           }
         ]
@@ -3002,6 +3086,10 @@
             "named": true
           },
           {
+            "type": "add_statement_with_handler",
+            "named": true
+          },
+          {
             "type": "close_statement",
             "named": true
           },
@@ -3014,7 +3102,11 @@
             "named": true
           },
           {
-            "type": "evaluate_statement_in_block",
+            "type": "display_statement_with_handler",
+            "named": true
+          },
+          {
+            "type": "evaluate_statement",
             "named": true
           },
           {
@@ -3022,7 +3114,7 @@
             "named": true
           },
           {
-            "type": "if_statement_in_block",
+            "type": "if_statement",
             "named": true
           },
           {
@@ -3034,15 +3126,27 @@
             "named": true
           },
           {
+            "type": "multiply_statement_with_handler",
+            "named": true
+          },
+          {
             "type": "open_statement",
             "named": true
           },
           {
-            "type": "perform_statement_in_block",
+            "type": "perform_statement_call_proc",
+            "named": true
+          },
+          {
+            "type": "perform_statement_loop",
             "named": true
           },
           {
             "type": "read_statement",
+            "named": true
+          },
+          {
+            "type": "read_statement_with_handler",
             "named": true
           },
           {
@@ -3054,7 +3158,15 @@
             "named": true
           },
           {
+            "type": "subtract_statement_with_handler",
+            "named": true
+          },
+          {
             "type": "write_statement",
+            "named": true
+          },
+          {
+            "type": "write_statement_with_handler",
             "named": true
           }
         ]
@@ -3063,42 +3175,6 @@
   },
   {
     "type": "evaluate_statement",
-    "named": true,
-    "fields": {
-      "cases": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "evaluate_case",
-            "named": true
-          }
-        ]
-      },
-      "other": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "evaluate_other",
-            "named": true
-          }
-        ]
-      },
-      "subjects": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "evaluate_subject",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "evaluate_statement_in_block",
     "named": true,
     "fields": {
       "cases": {
@@ -3901,99 +3977,7 @@
             "named": true
           },
           {
-            "type": "close_statement",
-            "named": true
-          },
-          {
-            "type": "continue_statement",
-            "named": true
-          },
-          {
-            "type": "display_statement",
-            "named": true
-          },
-          {
-            "type": "evaluate_statement_in_block",
-            "named": true
-          },
-          {
-            "type": "goto_statement",
-            "named": true
-          },
-          {
-            "type": "if_statement_in_block",
-            "named": true
-          },
-          {
-            "type": "move_statement",
-            "named": true
-          },
-          {
-            "type": "multiply_statement",
-            "named": true
-          },
-          {
-            "type": "open_statement",
-            "named": true
-          },
-          {
-            "type": "perform_statement_in_block",
-            "named": true
-          },
-          {
-            "type": "read_statement",
-            "named": true
-          },
-          {
-            "type": "stop_statement",
-            "named": true
-          },
-          {
-            "type": "subtract_statement",
-            "named": true
-          },
-          {
-            "type": "write_statement",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "else_if_sentense",
-          "named": true
-        },
-        {
-          "type": "else_sentense",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "if_statement_in_block",
-    "named": true,
-    "fields": {
-      "condition": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "expr",
-            "named": true
-          }
-        ]
-      },
-      "statements": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "add_statement",
+            "type": "add_statement_with_handler",
             "named": true
           },
           {
@@ -4009,7 +3993,11 @@
             "named": true
           },
           {
-            "type": "evaluate_statement_in_block",
+            "type": "display_statement_with_handler",
+            "named": true
+          },
+          {
+            "type": "evaluate_statement",
             "named": true
           },
           {
@@ -4017,7 +4005,7 @@
             "named": true
           },
           {
-            "type": "if_statement_in_block",
+            "type": "if_statement",
             "named": true
           },
           {
@@ -4029,15 +4017,27 @@
             "named": true
           },
           {
+            "type": "multiply_statement_with_handler",
+            "named": true
+          },
+          {
             "type": "open_statement",
             "named": true
           },
           {
-            "type": "perform_statement_in_block",
+            "type": "perform_statement_call_proc",
+            "named": true
+          },
+          {
+            "type": "perform_statement_loop",
             "named": true
           },
           {
             "type": "read_statement",
+            "named": true
+          },
+          {
+            "type": "read_statement_with_handler",
             "named": true
           },
           {
@@ -4049,7 +4049,15 @@
             "named": true
           },
           {
+            "type": "subtract_statement_with_handler",
+            "named": true
+          },
+          {
             "type": "write_statement",
+            "named": true
+          },
+          {
+            "type": "write_statement_with_handler",
             "named": true
           }
         ]
@@ -6107,7 +6115,7 @@
     }
   },
   {
-    "type": "perform_statement",
+    "type": "perform_statement_call_proc",
     "named": true,
     "fields": {
       "option": {
@@ -6122,76 +6130,10 @@
       },
       "procedure": {
         "multiple": false,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "perform_procedure",
-            "named": true
-          }
-        ]
-      },
-      "statements": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "add_statement",
-            "named": true
-          },
-          {
-            "type": "close_statement",
-            "named": true
-          },
-          {
-            "type": "continue_statement",
-            "named": true
-          },
-          {
-            "type": "display_statement",
-            "named": true
-          },
-          {
-            "type": "evaluate_statement_in_block",
-            "named": true
-          },
-          {
-            "type": "goto_statement",
-            "named": true
-          },
-          {
-            "type": "if_statement_in_block",
-            "named": true
-          },
-          {
-            "type": "move_statement",
-            "named": true
-          },
-          {
-            "type": "multiply_statement",
-            "named": true
-          },
-          {
-            "type": "open_statement",
-            "named": true
-          },
-          {
-            "type": "perform_statement_in_block",
-            "named": true
-          },
-          {
-            "type": "read_statement",
-            "named": true
-          },
-          {
-            "type": "stop_statement",
-            "named": true
-          },
-          {
-            "type": "subtract_statement",
-            "named": true
-          },
-          {
-            "type": "write_statement",
             "named": true
           }
         ]
@@ -6199,7 +6141,7 @@
     }
   },
   {
-    "type": "perform_statement_in_block",
+    "type": "perform_statement_loop",
     "named": true,
     "fields": {
       "option": {
@@ -6212,22 +6154,16 @@
           }
         ]
       },
-      "procedure": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "perform_procedure",
-            "named": true
-          }
-        ]
-      },
       "statements": {
         "multiple": true,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "add_statement",
+            "named": true
+          },
+          {
+            "type": "add_statement_with_handler",
             "named": true
           },
           {
@@ -6243,7 +6179,11 @@
             "named": true
           },
           {
-            "type": "evaluate_statement_in_block",
+            "type": "display_statement_with_handler",
+            "named": true
+          },
+          {
+            "type": "evaluate_statement",
             "named": true
           },
           {
@@ -6251,7 +6191,7 @@
             "named": true
           },
           {
-            "type": "if_statement_in_block",
+            "type": "if_statement",
             "named": true
           },
           {
@@ -6263,15 +6203,27 @@
             "named": true
           },
           {
+            "type": "multiply_statement_with_handler",
+            "named": true
+          },
+          {
             "type": "open_statement",
             "named": true
           },
           {
-            "type": "perform_statement_in_block",
+            "type": "perform_statement_call_proc",
+            "named": true
+          },
+          {
+            "type": "perform_statement_loop",
             "named": true
           },
           {
             "type": "read_statement",
+            "named": true
+          },
+          {
+            "type": "read_statement_with_handler",
             "named": true
           },
           {
@@ -6283,7 +6235,15 @@
             "named": true
           },
           {
+            "type": "subtract_statement_with_handler",
+            "named": true
+          },
+          {
             "type": "write_statement",
+            "named": true
+          },
+          {
+            "type": "write_statement_with_handler",
             "named": true
           }
         ]
@@ -6950,7 +6910,11 @@
           "named": true
         },
         {
-          "type": "perform_statement",
+          "type": "perform_statement_call_proc",
+          "named": true
+        },
+        {
+          "type": "perform_statement_loop",
           "named": true
         },
         {
@@ -7053,7 +7017,11 @@
           "named": true
         },
         {
-          "type": "perform_statement",
+          "type": "perform_statement_call_proc",
+          "named": true
+        },
+        {
+          "type": "perform_statement_loop",
           "named": true
         },
         {
