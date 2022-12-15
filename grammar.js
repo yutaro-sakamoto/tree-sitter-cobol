@@ -558,11 +558,11 @@ module.exports = grammar({
 
     label_records_clause: $ => seq(
       $._LABEL,
-      $.records,
+      $._records,
       optional(choice($.STANDARD, $.OMITTED))
     ),
 
-    records: $ => prec.left(choice(
+    _records: $ => prec.left(choice(
       seq($._RECORD, optional($._IS)),
       seq($._RECORDS, optional($._ARE)),
     )),
@@ -574,11 +574,11 @@ module.exports = grammar({
       field('value', choice($._LITERAL, $.qualified_word))
     ),
 
-    data_records_clause: $ => prec.left(choice(
+    data_records_clause: $ => seq(
       $._DATA,
-      $.records,
+      $._records,
       repeat1($.qualified_word),
-    )),
+    ),
 
     linage_clause: $ => seq(
       $._LINAGE,

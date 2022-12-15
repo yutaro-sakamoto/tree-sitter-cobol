@@ -2722,14 +2722,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "qualified_word",
-          "named": true
-        },
-        {
-          "type": "records",
           "named": true
         }
       ]
@@ -4912,8 +4908,8 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": true,
+      "multiple": false,
+      "required": false,
       "types": [
         {
           "type": "OMITTED",
@@ -4921,10 +4917,6 @@
         },
         {
           "type": "STANDARD",
-          "named": true
-        },
-        {
-          "type": "records",
           "named": true
         }
       ]
@@ -8363,11 +8355,6 @@
         ]
       }
     }
-  },
-  {
-    "type": "records",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "redefines_clause",

@@ -2690,7 +2690,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "records"
+          "name": "_records"
         },
         {
           "type": "CHOICE",
@@ -2715,7 +2715,7 @@
         }
       ]
     },
-    "records": {
+    "_records": {
       "type": "PREC_LEFT",
       "value": 0,
       "content": {
@@ -2826,28 +2826,24 @@
       ]
     },
     "data_records_clause": {
-      "type": "PREC_LEFT",
-      "value": 0,
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_DATA"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_records"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
             "type": "SYMBOL",
-            "name": "_DATA"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "records"
-          },
-          {
-            "type": "REPEAT1",
-            "content": {
-              "type": "SYMBOL",
-              "name": "qualified_word"
-            }
+            "name": "qualified_word"
           }
-        ]
-      }
+        }
+      ]
     },
     "linage_clause": {
       "type": "SEQ",
