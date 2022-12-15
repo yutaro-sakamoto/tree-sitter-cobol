@@ -985,6 +985,7 @@ module.exports = grammar({
       seq($.perform_statement_call_proc, optional($._END_PERFORM)),
       seq($.read_statement, optional($._END_READ)),
       $.read_statement_with_handler,
+      $.sort_statement,
       $.stop_statement,
       seq($.subtract_statement, optional($._END_SUBTRACT)),
       $.subtract_statement_with_handler,
@@ -1011,6 +1012,7 @@ module.exports = grammar({
       $.multiply_statement,
       $.open_statement,
       $.read_statement,
+      $.sort_statement,
       $.stop_statement,
       $.subtract_statement,
       $.write_statement,
@@ -1630,6 +1632,63 @@ module.exports = grammar({
 
     at_end: $ => seq($._AT, $._END, repeat1($._statement_imparative)),
     not_at_end: $ => seq($._NOT, $._AT, $._END, repeat1($._statement_imparative)),
+
+    sort_statement: $ => seq(
+      $._SORT,
+      field('x', $.qualified_word),
+      field('key_list', repeat($.sort_key)),
+      field('duplicates', seq(
+        optional($._WITH),
+        $.DUPLICATES,
+        optional($._IN,),
+        $._ORDER
+      )),
+      field('collating', optional(seq(
+        $._coll_sequence,
+        optional($._IS),
+        $.qualified_word
+      ))),
+      field('input', optional(choice(
+        $.sort_input_using,
+        $.sort_input_procedure
+      ))),
+      field('output', optional(choice(
+        $.sort_output_giving,
+        $.sort_output_procedure,
+      )))
+    ),
+
+    sort_key: $ => seq(
+      optional($._ON),
+      field('order', choice($.ASCENDING, $.DESCENDING)),
+      optional($._KEY),
+      optional($._IS),
+      field('key_list', repeat($.qualified_word))
+    ),
+
+    sort_input_using: $ => prec.left(seq(
+      $._USING,
+      repeat1($.WORD)
+    )),
+
+    sort_input_procedure: $ => seq(
+      $._INPUT,
+      $._PROCEDURE,
+      optional($._IS),
+      $.perform_procedure,
+    ),
+
+    sort_output_giving: $ => prec.left(seq(
+      $._GIVING,
+      repeat1($.WORD)
+    )),
+
+    sort_output_procedure: $ => seq(
+      $._OUTPUT,
+      $._PROCEDURE,
+      optional($._IS),
+      $.perform_procedure,
+    ),
 
     subtract_statement: $ => prec.right(seq(
       $._SUBTRACT,
