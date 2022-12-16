@@ -1803,6 +1803,11 @@
     }
   },
   {
+    "type": "blank_clause",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "block_contains_clause",
     "named": true,
     "fields": {
@@ -10714,10 +10719,6 @@
   },
   {
     "type": "based_clause",
-    "named": true
-  },
-  {
-    "type": "blank_clause",
     "named": true
   },
   {

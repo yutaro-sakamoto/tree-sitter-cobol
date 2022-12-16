@@ -4473,8 +4473,29 @@
       "value": "todo_synchronized_clause"
     },
     "blank_clause": {
-      "type": "PATTERN",
-      "value": "todo_blank_clause"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_BLANK"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_WHEN"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_ZERO"
+        }
+      ]
     },
     "based_clause": {
       "type": "PATTERN",

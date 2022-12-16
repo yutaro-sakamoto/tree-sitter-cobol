@@ -884,7 +884,11 @@ module.exports = grammar({
 
     justified_clause: $ => /todo_justified_clause/,
     synchronized_clause: $ => /todo_synchronized_clause/,
-    blank_clause: $ => /todo_blank_clause/,
+    blank_clause: $ => seq(
+      $._BLANK,
+      optional($._WHEN),
+      $._ZERO,
+    ),
     based_clause: $ => /todo_based_clause/,
     value_clause: $ => seq($._VALUE, optional($._IS), $._literal),
     renames_clause: $ => /todo_renames_clause/,
