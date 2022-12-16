@@ -5013,6 +5013,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "goback_statement"
+          },
+          {
+            "type": "SYMBOL",
             "name": "goto_statement"
           },
           {
@@ -5233,6 +5237,10 @@
         {
           "type": "SYMBOL",
           "name": "continue_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "goback_statement"
         },
         {
           "type": "SYMBOL",
@@ -7265,6 +7273,10 @@
           }
         ]
       }
+    },
+    "goback_statement": {
+      "type": "SYMBOL",
+      "name": "_GOBACK"
     },
     "goto_statement": {
       "type": "PREC_RIGHT",

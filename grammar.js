@@ -977,6 +977,7 @@ module.exports = grammar({
       seq($.display_statement, optional($._END_DISPLAY)),
       $.display_statement_with_handler,
       $.continue_statement,
+      $.goback_statement,
       $.goto_statement,
       $.move_statement,
       seq($.multiply_statement, optional($._END_MULTIPLY)),
@@ -1007,6 +1008,7 @@ module.exports = grammar({
       $.close_statement,
       $.display_statement,
       $.continue_statement,
+      $.goback_statement,
       $.goto_statement,
       $.move_statement,
       $.multiply_statement,
@@ -1319,6 +1321,8 @@ module.exports = grammar({
       $._WHEN_OTHER,
       field('statement', repeat1($._statement_in_block))
     )),
+
+    goback_statement: $ => $._GOBACK,
 
     goto_statement: $ => prec.right(seq(
       $._GO, optional($._TO),
