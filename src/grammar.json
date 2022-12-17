@@ -4060,6 +4060,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "COMP"
+        },
+        {
+          "type": "SYMBOL",
           "name": "COMP_1"
         },
         {
@@ -4465,8 +4469,25 @@
       "value": "todo_occurs_key_spec"
     },
     "justified_clause": {
-      "type": "PATTERN",
-      "value": "todo_justified_clause"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_JUSTIFIED"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "RIGHT"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
     },
     "synchronized_clause": {
       "type": "SEQ",
@@ -4483,11 +4504,11 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "_LEFT"
+                  "name": "LEFT"
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "_RIGHT"
+                  "name": "RIGHT"
                 }
               ]
             },
@@ -4524,8 +4545,8 @@
       ]
     },
     "based_clause": {
-      "type": "PATTERN",
-      "value": "todo_based_clause"
+      "type": "SYMBOL",
+      "name": "_BASED"
     },
     "value_clause": {
       "type": "SEQ",

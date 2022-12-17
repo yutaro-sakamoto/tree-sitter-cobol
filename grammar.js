@@ -829,6 +829,7 @@ module.exports = grammar({
     _usage: $ => choice(
       $.BINARY,
       $.COMPUTATIONAL,
+      $.COMP,
       $.COMP_1,
       $.COMP_2,
       $.COMP_3,

@@ -130,6 +130,11 @@
     "fields": {}
   },
   {
+    "type": "COMP",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "COMPUTATIONAL",
     "named": true,
     "fields": {}
@@ -336,6 +341,11 @@
   },
   {
     "type": "LEADING",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "LEFT",
     "named": true,
     "fields": {}
   },
@@ -587,6 +597,11 @@
   },
   {
     "type": "REWIND",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "RIGHT",
     "named": true,
     "fields": {}
   },
@@ -1801,6 +1816,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "based_clause",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "blank_clause",
@@ -4921,6 +4941,21 @@
         },
         {
           "type": "write_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "justified_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "RIGHT",
           "named": true
         }
       ]
@@ -9920,7 +9955,21 @@
   {
     "type": "synchronized_clause",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "LEFT",
+          "named": true
+        },
+        {
+          "type": "RIGHT",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "unsigned_size_is",
@@ -9967,6 +10016,10 @@
         },
         {
           "type": "BINARY_SHORT",
+          "named": true
+        },
+        {
+          "type": "COMP",
           "named": true
         },
         {
@@ -10709,10 +10762,6 @@
     "named": true
   },
   {
-    "type": "based_clause",
-    "named": true
-  },
-  {
     "type": "class_name_clause",
     "named": true
   },
@@ -10774,10 +10823,6 @@
   },
   {
     "type": "integer",
-    "named": true
-  },
-  {
-    "type": "justified_clause",
     "named": true
   },
   {
