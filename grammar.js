@@ -1109,6 +1109,9 @@ module.exports = grammar({
       seq($.display_statement, optional($._END_DISPLAY)),
       seq($.display_statement_with_handler, $._END_DISPLAY),
 
+      seq($.divide_statement, optional($._END_DIVIDE)),
+      seq($.divide_statement_with_handler, $._END_DIVIDE),
+
       $.continue_statement,
 
       $.goback_statement,
@@ -1153,6 +1156,7 @@ module.exports = grammar({
       $.call_statement,
       $.close_statement,
       $.display_statement,
+      $.divide_statement,
       $.continue_statement,
       $.goback_statement,
       $.goto_statement,
@@ -1182,6 +1186,9 @@ module.exports = grammar({
 
       seq($.display_statement, optional($._END_DISPLAY), optional('.')),
       seq($.display_statement_with_handler, nonempty($._END_DISPLAY, '.')),
+
+      seq($.divide_statement, optional($._END_DIVIDE), optional('.')),
+      seq($.divide_statement_with_handler, nonempty($._END_DIVIDE, '.')),
 
       seq($.continue_statement, optional('.')),
 
@@ -1553,6 +1560,28 @@ module.exports = grammar({
     ),
 
     line_or_lines: $ => choice($.LINE, $.LINES),
+
+    divide_statement: $ => seq(
+      $._DIVIDE,
+      $._divide_body,
+    ),
+
+    divide_statement_with_handler: $ => seq(
+      $._DIVIDE,
+      $._divide_body,
+      $._size_error_block,
+    ),
+
+    _divide_body: $ => prec.right(seq(
+      field('x', $._x),
+      choice(
+        seq($._INTO, field('into', $.arithmetic_x)),
+        seq($._INTO, field('into', $._x), $._GIVING, field('giving', repeat1($.arithmetic_x))),
+        seq($._BY, field('by', $._x), $._GIVING, field('giving', repeat1($.arithmetic_x))),
+        seq($._INTO, field('into', $._x), $._GIVING, field('giving', $.arithmetic_x), $._REMAINDER, field('remainder', $.arithmetic_x)),
+        seq($._BY, field('by', $._x), $._GIVING, field('giving', $.arithmetic_x), $._REMAINDER, field('remainder', $.arithmetic_x)),
+      )
+    )),
 
     evaluate_statement: $ => seq(
       $._evaluate_header,
