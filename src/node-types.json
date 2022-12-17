@@ -2726,6 +2726,21 @@
     "fields": {}
   },
   {
+    "type": "crt_status_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "qualified_word",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "currency_sign_clause",
     "named": true,
     "fields": {},
@@ -2751,6 +2766,21 @@
         },
         {
           "type": "x_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "cursor_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "qualified_word",
           "named": true
         }
       ]
@@ -4138,6 +4168,21 @@
         },
         {
           "type": "expr",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "event_status",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "qualified_word",
           "named": true
         }
       ]
@@ -8894,6 +8939,21 @@
     }
   },
   {
+    "type": "screen_control",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "qualified_word",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "scroll_lines",
     "named": true,
     "fields": {},
@@ -11000,14 +11060,6 @@
     "named": true
   },
   {
-    "type": "crt_status_clause",
-    "named": true
-  },
-  {
-    "type": "cursor_clause",
-    "named": true
-  },
-  {
     "type": "decimal",
     "named": true
   },
@@ -11017,10 +11069,6 @@
   },
   {
     "type": "error",
-    "named": true
-  },
-  {
-    "type": "event_status",
     "named": true
   },
   {
@@ -11117,10 +11165,6 @@
   },
   {
     "type": "same_clause",
-    "named": true
-  },
-  {
-    "type": "screen_control",
     "named": true
   },
   {

@@ -242,10 +242,31 @@ module.exports = grammar({
       $._COMMA,
     ),
 
-    cursor_clause: $ => /todo_cursor_name/,
-    crt_status_clause: $ => /todo_crt_status_name/,
-    screen_control: $ => /todo_screen_control_name/,
-    event_status: $ => /todo_event_status_name/,
+    cursor_clause: $ => seq(
+      $._CURSOR,
+      optional($._IS),
+      $.qualified_word
+    ),
+
+    crt_status_clause: $ => seq(
+      $._CRT,
+      $._STATUS,
+      optional($._IS),
+      $.qualified_word
+    ),
+
+    screen_control: $ => seq(
+      $._SCREEN,
+      $._CONTROL,
+      optional($._IS),
+      $.qualified_word
+    ),
+
+    event_status: $ => seq(
+      $._EVENT_STATUS,
+      optional($._IS),
+      $.qualified_word
+    ),
 
     repository_paragraph: $ => seq(
       $._REPOSITORY,

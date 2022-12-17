@@ -1020,20 +1020,112 @@
       ]
     },
     "cursor_clause": {
-      "type": "PATTERN",
-      "value": "todo_cursor_name"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_CURSOR"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_IS"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "qualified_word"
+        }
+      ]
     },
     "crt_status_clause": {
-      "type": "PATTERN",
-      "value": "todo_crt_status_name"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_CRT"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_STATUS"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_IS"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "qualified_word"
+        }
+      ]
     },
     "screen_control": {
-      "type": "PATTERN",
-      "value": "todo_screen_control_name"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_SCREEN"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_CONTROL"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_IS"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "qualified_word"
+        }
+      ]
     },
     "event_status": {
-      "type": "PATTERN",
-      "value": "todo_event_status_name"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_EVENT_STATUS"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_IS"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "qualified_word"
+        }
+      ]
     },
     "repository_paragraph": {
       "type": "SEQ",
