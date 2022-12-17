@@ -10018,6 +10018,10 @@
           "named": true
         },
         {
+          "type": "not_on_size_error",
+          "named": true
+        },
+        {
           "type": "on_size_error",
           "named": true
         }

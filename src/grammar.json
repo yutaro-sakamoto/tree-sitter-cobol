@@ -10829,7 +10829,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "on_size_error"
+            "name": "_size_error_block"
           }
         ]
       }

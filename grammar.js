@@ -1769,7 +1769,7 @@ module.exports = grammar({
     subtract_statement_with_handler: $ => prec.right(seq(
       $._SUBTRACT,
       $._subtract_body,
-      $.on_size_error,
+      $._size_error_block,
     )),
 
     _subtract_body: $ => prec.right(choice(
