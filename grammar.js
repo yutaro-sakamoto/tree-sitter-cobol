@@ -172,7 +172,52 @@ module.exports = grammar({
       $.event_status,
     ),
 
-    mnemonic_name_clause: $ => /todo_mnemonic_name/,
+    mnemonic_name_clause: $ => choice(
+      seq(
+        field('crt', $.WORD),
+        optional($._IS),
+        $._CRT
+      ),
+      seq(
+        field('word', $.WORD),
+        optional($._IS),
+        field('value', $.WORD),
+        repeat($.special_name_mnemonic_on_off),
+      ),
+      seq(
+        field('word', $.WORD),
+        optional($._IS),
+        repeat1($.special_name_mnemonic_on_off),
+      ),
+      seq(
+        $._ARGUMENT_NUMBER,
+        optional($._IS),
+        field('argument_number', $.WORD),
+      ),
+      seq(
+        $._ARGUMENT_VALUE,
+        optional($._IS),
+        field('argument_value', $.WORD),
+      ),
+      seq(
+        $._ENVIRONMENT_NAME,
+        optional($._IS),
+        field('environment_name', $.WORD),
+      ),
+      seq(
+        $._ENVIRONMENT_VALUE,
+        optional($._IS),
+        field('environment_value', $.WORD),
+      ),
+    ),
+
+    special_name_mnemonic_on_off: $ => seq(
+      choice($.ON, $.OFF),
+      optional($._STATUS),
+      optional($._IS),
+      $.WORD
+    ),
+
     alphabet_name_clause: $ => seq(
       $._ALPHABET,
       field('word', $.WORD),
