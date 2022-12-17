@@ -3854,6 +3854,34 @@
           "members": [
             {
               "type": "SYMBOL",
+              "name": "level_number"
+            },
+            {
+              "type": "REPEAT1",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_data_description_clause"
+              }
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_LITERAL"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
               "name": "level_number_88"
             },
             {
@@ -4573,7 +4601,7 @@
     },
     "picture_edit": {
       "type": "PATTERN",
-      "value": "([aAxX9bBvVwWzZpP0-9()$/,*+-]|[cC][rR]|[dD][bB]|\\.[^ \\n\\t])+"
+      "value": "([aAxX9bBvVwWzZpP0-9<()$/,*+-]|[cC][rR]|[dD][bB]|\\.[^ \\n\\t])+"
     },
     "usage_clause": {
       "type": "SEQ",
@@ -5038,8 +5066,17 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "_JUSTIFIED"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_JUSTIFIED"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_JUST"
+            }
+          ]
         },
         {
           "type": "CHOICE",
@@ -5059,8 +5096,17 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "_SYNCHRONIZED"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_SYNCHRONIZED"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_SYNC"
+            }
+          ]
         },
         {
           "type": "CHOICE",
@@ -13734,6 +13780,10 @@
       "type": "PATTERN",
       "value": "[iI]-[oO]-[cC][oO][nN][tT][rR][oO][lL]"
     },
+    "_JUST": {
+      "type": "PATTERN",
+      "value": "[jJ][uU][sS][tT]"
+    },
     "_JUSTIFIED": {
       "type": "PATTERN",
       "value": "[jJ][uU][sS][tT][iI][fF][iI][eE][dD]"
@@ -14508,6 +14558,10 @@
     "_SYMBOLIC": {
       "type": "PATTERN",
       "value": "[sS][yY][mM][bB][oO][lL][iI][cC]"
+    },
+    "_SYNC": {
+      "type": "PATTERN",
+      "value": "[sS][yY][nN][cC]"
     },
     "_SYNCHRONIZED": {
       "type": "PATTERN",

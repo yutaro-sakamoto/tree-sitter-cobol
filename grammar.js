@@ -749,6 +749,10 @@ module.exports = grammar({
         repeat($._data_description_clause), optional($._LITERAL)
       ),
       seq(
+        $.level_number,
+        repeat1($._data_description_clause), optional($._LITERAL)
+      ),
+      seq(
         $.level_number_88, $.entry_name
       ),
     ),
@@ -919,7 +923,7 @@ module.exports = grammar({
     picture_a: $ => /([aA](\([0-9]+\))?)+/,
 
     //picture_edit: $ => /([aAxX9bBvVzZpP](\([0-9]+\))?|[0$/,*+-]|[cC][rR]|[dD][bB]|\.[^ \n\t])+/,
-    picture_edit: $ => /([aAxX9bBvVwWzZpP0-9()$/,*+-]|[cC][rR]|[dD][bB]|\.[^ \n\t])+/,
+    picture_edit: $ => /([aAxX9bBvVwWzZpP0-9<()$/,*+-]|[cC][rR]|[dD][bB]|\.[^ \n\t])+/,
 
     usage_clause: $ => seq(
       optional(seq($._USAGE, optional($._IS))),
@@ -984,12 +988,12 @@ module.exports = grammar({
     occurs_key_spec: $ => /todo_occurs_key_spec/,
 
     justified_clause: $ => seq(
-      $._JUSTIFIED,
+      choice($._JUSTIFIED, $._JUST),
       optional($.RIGHT)
     ),
 
     synchronized_clause: $ => seq(
-      $._SYNCHRONIZED,
+      choice($._SYNCHRONIZED, $._SYNC),
       optional(choice($.LEFT, $.RIGHT))
     ),
 
@@ -2312,6 +2316,7 @@ module.exports = grammar({
     _IS: $ => /[iI][sS]/,
     _I_O: $ => /[iI]-[oO]/,
     _I_O_CONTROL: $ => /[iI]-[oO]-[cC][oO][nN][tT][rR][oO][lL]/,
+    _JUST: $ => /[jJ][uU][sS][tT]/,
     _JUSTIFIED: $ => /[jJ][uU][sS][tT][iI][fF][iI][eE][dD]/,
     _KEY: $ => /[kK][eE][yY]/,
     _LABEL: $ => /[lL][aA][bB][eE][lL]/,
@@ -2492,6 +2497,7 @@ module.exports = grammar({
     _SUM: $ => /[sS][uU][mM]/,
     _SUPPRESS: $ => /[sS][uU][pP][pP][rR][eE][sS][sS]/,
     _SYMBOLIC: $ => /[sS][yY][mM][bB][oO][lL][iI][cC]/,
+    _SYNC: $ => /[sS][yY][nN][cC]/,
     _SYNCHRONIZED: $ => /[sS][yY][nN][cC][hH][rR][oO][nN][iI][zZ][eE][dD]/,
     _TALLYING: $ => /[tT][aA][lL][lL][yY][iI][nN][gG]/,
     _TAPE: $ => /[tT][aA][pP][eE]/,
