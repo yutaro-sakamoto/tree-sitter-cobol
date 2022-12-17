@@ -8686,78 +8686,33 @@
       "type": "PREC_RIGHT",
       "value": 0,
       "content": {
-        "type": "SEQ",
+        "type": "CHOICE",
         "members": [
           {
-            "type": "CHOICE",
+            "type": "SEQ",
             "members": [
               {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "FIELD",
-                    "name": "val1",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "_x"
-                    }
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "_BY"
-                  },
-                  {
-                    "type": "FIELD",
-                    "name": "val2",
-                    "content": {
-                      "type": "REPEAT1",
-                      "content": {
-                        "type": "SYMBOL",
-                        "name": "arithmetic_x"
-                      }
-                    }
-                  }
-                ]
+                "type": "FIELD",
+                "name": "val1",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_x"
+                }
               },
               {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "FIELD",
-                    "name": "val1",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "_x"
-                    }
-                  },
-                  {
+                "type": "SYMBOL",
+                "name": "_BY"
+              },
+              {
+                "type": "FIELD",
+                "name": "val2",
+                "content": {
+                  "type": "REPEAT1",
+                  "content": {
                     "type": "SYMBOL",
-                    "name": "_BY"
-                  },
-                  {
-                    "type": "FIELD",
-                    "name": "val2",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "_x"
-                    }
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "_GIVING"
-                  },
-                  {
-                    "type": "FIELD",
-                    "name": "giving",
-                    "content": {
-                      "type": "REPEAT1",
-                      "content": {
-                        "type": "SYMBOL",
-                        "name": "arithmetic_x"
-                      }
-                    }
+                    "name": "arithmetic_x"
                   }
-                ]
+                }
               }
             ]
           },
@@ -8765,28 +8720,39 @@
             "type": "SEQ",
             "members": [
               {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "on_size_error"
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
+                "type": "FIELD",
+                "name": "val1",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_x"
+                }
               },
               {
-                "type": "CHOICE",
-                "members": [
-                  {
+                "type": "SYMBOL",
+                "name": "_BY"
+              },
+              {
+                "type": "FIELD",
+                "name": "val2",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_x"
+                }
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_GIVING"
+              },
+              {
+                "type": "FIELD",
+                "name": "giving",
+                "content": {
+                  "type": "REPEAT1",
+                  "content": {
                     "type": "SYMBOL",
-                    "name": "not_on_size_error"
-                  },
-                  {
-                    "type": "BLANK"
+                    "name": "arithmetic_x"
                   }
-                ]
+                }
               }
             ]
           }

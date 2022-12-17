@@ -1509,24 +1509,18 @@ module.exports = grammar({
       $._END_MULTIPLY
     )),
 
-    _multiply_body: $ => prec.right(seq(
-      choice(
-        seq(
-          field('val1', $._x),
-          $._BY,
-          field('val2', repeat1($.arithmetic_x)),
-        ),
-        seq(
-          field('val1', $._x),
-          $._BY,
-          field('val2', $._x),
-          $._GIVING,
-          field('giving', repeat1($.arithmetic_x)),
-        )
+    _multiply_body: $ => prec.right(choice(
+      seq(
+        field('val1', $._x),
+        $._BY,
+        field('val2', repeat1($.arithmetic_x)),
       ),
       seq(
-        optional($.on_size_error),
-        optional($.not_on_size_error),
+        field('val1', $._x),
+        $._BY,
+        field('val2', $._x),
+        $._GIVING,
+        field('giving', repeat1($.arithmetic_x)),
       )
     )),
 
