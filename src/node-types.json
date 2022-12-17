@@ -801,11 +801,6 @@
     "fields": {}
   },
   {
-    "type": "WITH",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "WORD",
     "named": true,
     "fields": {}
@@ -10645,10 +10640,6 @@
       "types": [
         {
           "type": "NO_ADVANCING",
-          "named": true
-        },
-        {
-          "type": "WITH",
           "named": true
         },
         {
