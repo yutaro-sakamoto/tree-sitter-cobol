@@ -4574,12 +4574,51 @@
       ]
     },
     "renames_clause": {
-      "type": "PATTERN",
-      "value": "todo_renames_clause"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_RENAMES"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "qualified_word"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_THRU"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "qualified_word"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
     },
     "any_length_clause": {
-      "type": "PATTERN",
-      "value": "todo_any_length"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_ANY"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_LENGTH"
+        }
+      ]
     },
     "local_storage_section": {
       "type": "PATTERN",

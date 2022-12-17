@@ -1567,6 +1567,11 @@
     }
   },
   {
+    "type": "any_length_clause",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "arithmetic_x",
     "named": true,
     "fields": {},
@@ -8617,6 +8622,21 @@
     }
   },
   {
+    "type": "renames_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "qualified_word",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "report_clase",
     "named": true,
     "fields": {
@@ -10750,10 +10770,6 @@
     "named": false
   },
   {
-    "type": "any_length_clause",
-    "named": true
-  },
-  {
     "type": "apply_clause",
     "named": true
   },
@@ -10892,10 +10908,6 @@
   {
     "type": "quote",
     "named": false
-  },
-  {
-    "type": "renames_clause",
-    "named": true
   },
   {
     "type": "report_section",

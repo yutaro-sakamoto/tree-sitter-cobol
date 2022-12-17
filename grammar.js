@@ -900,10 +900,19 @@ module.exports = grammar({
     ),
 
     based_clause: $ => $._BASED,
+
     value_clause: $ => seq($._VALUE, optional($._IS), $._literal),
-    renames_clause: $ => /todo_renames_clause/,
-    any_length_clause: $ => /todo_any_length/,
-    error: $ => /todo_error/,
+
+    renames_clause: $ => seq(
+      $._RENAMES,
+      $.qualified_word,
+      optional(seq($._THRU, $.qualified_word))
+    ),
+
+    any_length_clause: $ => seq(
+      $._ANY,
+      $._LENGTH
+    ),
 
     local_storage_section: $ => /local_storage_section/,
     linkage_section: $ => /linkage_section/,
