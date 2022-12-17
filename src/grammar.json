@@ -4573,7 +4573,7 @@
     },
     "picture_edit": {
       "type": "PATTERN",
-      "value": "([aAxX9bBvVzZpP0-9()$/,*+-]|[cC][rR]|[dD][bB]|\\.[^ \\n\\t])+"
+      "value": "([aAxX9bBvVwWzZpP0-9()$/,*+-]|[cC][rR]|[dD][bB]|\\.[^ \\n\\t])+"
     },
     "usage_clause": {
       "type": "SEQ",
