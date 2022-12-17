@@ -6,7 +6,7 @@
   "scripts": {
     "test": "tree-sitter test",
     "build": "tree-sitter generate && node-gyp build",
-    "sample": "tree-sitter parse test/cobol85/src/NC108M.CBL",
+    "sample": "tree-sitter parse test/cobol85/src/NC109M.CBL",
     "t": "tree-sitter parse a.cbl",
     "c": "cobc -fsyntax-only a.cbl",
     "nist": "sh run_nist_cobol85.sh",

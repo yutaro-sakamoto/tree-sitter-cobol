@@ -1095,6 +1095,9 @@ module.exports = grammar({
     end_program: $ => /todo_end_program/,
 
     _statement_simple: $ => prec.right(choice(
+      seq($.accept_statement, optional($._END_ACCEPT)),
+      seq($.accept_statement_with_handler, $._END_ACCEPT),
+
       seq($.add_statement, optional($._END_ADD)),
       seq($.add_statement_with_handler, $._END_ADD),
 
@@ -1145,6 +1148,7 @@ module.exports = grammar({
     )),
 
     _statement_imparative: $ => choice(
+      $.accept_statement,
       $.add_statement,
       $.call_statement,
       $.close_statement,
@@ -1165,6 +1169,9 @@ module.exports = grammar({
     ),
 
     _procedure_division_statement: $ => choice(
+      seq($.accept_statement, optional($._END_ACCEPT), optional('.')),
+      seq($.accept_statement_with_handler, nonempty($._END_ACCEPT, '.')),
+
       seq($.add_statement, optional($._END_ADD), optional('.')),
       seq($.add_statement_with_handler, nonempty($._END_ADD, '.')),
 
@@ -1214,6 +1221,92 @@ module.exports = grammar({
     //todo
     stop_statement: $ => seq(
       $._STOP, $._RUN
+    ),
+
+    accept_statement: $ => seq(
+      $._ACCEPT,
+      $._accept_body,
+    ),
+
+    accept_statement_with_handler: $ => seq(
+      $._ACCEPT,
+      $._accept_body,
+      $._on_accp_exception
+    ),
+
+    _accept_body: $ => seq(
+      $._identifier,
+      choice(
+        seq(
+          optional($.at_line_column),
+          optional($.with_accp_attr),
+        ),
+        seq(
+          $._FROM,
+          field('from', choice(
+            seq($.ESCAPE, $.KEY),
+            $.LINES,
+            $.COLUMNS,
+            seq($.DATE, optional($.YYYYMMDD)),
+            seq($.DAY, optional($.YYYYDDD)),
+            $.DAY_OF_WEEK,
+            $.TIME,
+            $.COMMAND_LINE,
+            $.ENVIRONMENT_VALUE,
+            $.ENVIRONMENT,
+            $.ARGUMENT_NUMBER,
+            $.ARGUMENT_VALUE,
+            $.MNEMONIC_NAME,
+            $.WORD
+          ))
+        )
+      )
+    ),
+
+    at_line_column: $ => choice(
+      seq(optional($._AT), $.line_number, $.column_number),
+      seq(optional($._AT), $.column_number, $.line_number),
+      seq(optional($._AT), $.column_number),
+      seq(optional($._AT), $.line_number),
+      seq($._AT, $._simple_value)
+    ),
+
+    line_number: $ => seq(
+      $._LINE,
+      optional($._NUMBER),
+      $._id_or_lit,
+    ),
+
+    column_number: $ => seq(
+      choice($._POSITION, $._COLUMN),
+      optional($._NUMBER),
+      $._id_or_lit,
+    ),
+
+    with_accp_attr: $ => seq(
+      $._WITH, repeat1(choice(
+        $.BELL,
+        $.BLINK,
+        $.HIGHLIGHT,
+        $.LOWLIGHT,
+        $.REVERSE_VIDEO,
+        $.UNDERLINE,
+        $.OVERLINE,
+        seq(choice($.BACKGROUND_COLOR, $.FOREGROUND_COLOR), optional($._IS), $._num_or_id_or_lit),
+        seq($.SCROLL, choice($.UP, $.DOWN), optional(seq(
+          optional($.BY),
+          $._num_or_id_or_lit,
+          choice($.LINE, $.LINES)))),
+        $.AUTO,
+        $.FULL,
+        $.REQUIRED,
+        $.UPDATE,
+        $.PROMPT
+      ))
+    ),
+
+    _on_accp_exception: $ => nonempty(
+      $.on_exception, $.not_on_exception
     ),
 
     add_statement: $ => prec.left(seq(
@@ -1329,30 +1422,30 @@ module.exports = grammar({
     size_is: $ => seq($._SIZE, optional($._IS), $.integer),
 
     _call_handler: $ => nonempty(
-      choice($.call_on_exception, $.call_on_overflow),
-      choice($.call_not_on_exception, $.call_not_on_overflow),
+      choice($.on_exception, $.on_overflow),
+      choice($.not_on_exception, $.not_on_overflow),
     ),
 
-    call_on_exception: $ => seq(
+    on_exception: $ => seq(
       optional($._ON),
       $._EXCEPTION,
       repeat1($._statement_imparative),
     ),
 
-    call_on_overflow: $ => seq(
+    on_overflow: $ => seq(
       optional($._ON),
       $._OVERFLOW,
       repeat1($._statement_imparative),
     ),
 
-    call_not_on_exception: $ => seq(
+    not_on_exception: $ => seq(
       $._NOT,
       optional($._ON),
       $._EXCEPTION,
       repeat1($._statement_imparative),
     ),
 
-    call_not_on_overflow: $ => seq(
+    not_on_overflow: $ => seq(
       $._NOT,
       optional($._ON),
       $._OVERFLOW,
@@ -1978,6 +2071,11 @@ module.exports = grammar({
 
     next_sentence_statement: $ => seq($._NEXT, $._SENTENCE),
 
+    _simple_value: $ => choice(
+      $._identifier,
+      $._basic_literal
+    ),
+
     _basic_literal: $ => sepBy(
       $._basic_value,
       '&'
@@ -2577,8 +2675,8 @@ module.exports = grammar({
     //APPLY: $ => $._APPLY,
     //ARE: $ => $._ARE,
     //AREA: $ => $._AREA,
-    //ARGUMENT_NUMBER: $ => $._ARGUMENT_NUMBER,
-    //ARGUMENT_VALUE: $ => $._ARGUMENT_VALUE,
+    ARGUMENT_NUMBER: $ => $._ARGUMENT_NUMBER,
+    ARGUMENT_VALUE: $ => $._ARGUMENT_VALUE,
     //AS: $ => $._AS,
     ASCENDING: $ => $._ASCENDING,
     //ASSIGN: $ => $._ASSIGN,
@@ -2601,7 +2699,7 @@ module.exports = grammar({
     BLINK: $ => $._BLINK,
     //BLOCK: $ => $._BLOCK,
     //BOTTOM: $ => $._BOTTOM,
-    //BY: $ => $._BY,
+    BY: $ => $._BY,
     //BYTE_LENGTH: $ => $._BYTE_LENGTH,
     //CALL: $ => $._CALL,
     //CANCEL: $ => $._CANCEL,
@@ -2619,9 +2717,9 @@ module.exports = grammar({
     //COL: $ => $._COL,
     //COLS: $ => $._COLS,
     //COLUMN: $ => $._COLUMN,
-    //COLUMNS: $ => $._COLUMNS,
+    COLUMNS: $ => $._COLUMNS,
     //COMMA: $ => $._COMMA,
-    //COMMAND_LINE: $ => $._COMMAND_LINE,
+    COMMAND_LINE: $ => $._COMMAND_LINE,
     //COMMA_DELIM: $ => $._COMMA_DELIM,
     //COMMIT: $ => $._COMMIT,
     //COMMITMENT_CONTROL: $ => $._COMMITMENT_CONTROL,
@@ -2655,9 +2753,9 @@ module.exports = grammar({
     //CYCLE: $ => $._CYCLE,
     //CYL_OVERFLOW: $ => $._CYL_OVERFLOW,
     //DATA: $ => $._DATA,
-    //DATE: $ => $._DATE,
-    //DAY: $ => $._DAY,
-    //DAY_OF_WEEK: $ => $._DAY_OF_WEEK,
+    DATE: $ => $._DATE,
+    DAY: $ => $._DAY,
+    DAY_OF_WEEK: $ => $._DAY_OF_WEEK,
     //DE: $ => $._DE,
     //DEBUGGING: $ => $._DEBUGGING,
     //DECIMAL_POINT: $ => $._DECIMAL_POINT,
@@ -2703,9 +2801,9 @@ module.exports = grammar({
     //END_UNSTRING: $ => $._END_UNSTRING,
     //END_WRITE: $ => $._END_WRITE,
     //ENTRY: $ => $._ENTRY,
-    //ENVIRONMENT: $ => $._ENVIRONMENT,
+    ENVIRONMENT: $ => $._ENVIRONMENT,
     //ENVIRONMENT_NAME: $ => $._ENVIRONMENT_NAME,
-    //ENVIRONMENT_VALUE: $ => $._ENVIRONMENT_VALUE,
+    ENVIRONMENT_VALUE: $ => $._ENVIRONMENT_VALUE,
     EOL: $ => $._EOL,
     //EOP: $ => $._EOP,
     EOS: $ => $._EOS,
@@ -2713,7 +2811,7 @@ module.exports = grammar({
     //EQUALS: $ => $._EQUALS,
     ERASE: $ => $._ERASE,
     //ERROR: $ => $._ERROR,
-    //ESCAPE: $ => $._ESCAPE,
+    ESCAPE: $ => $._ESCAPE,
     //EVALUATE: $ => $._EVALUATE,
     //EVENT_STATUS: $ => $._EVENT_STATUS,
     EXCEPTION: $ => $._EXCEPTION,
@@ -2734,7 +2832,7 @@ module.exports = grammar({
     //FORMS_OVERLAY: $ => $._FORMS_OVERLAY,
     //FREE: $ => $._FREE,
     //FROM: $ => $._FROM,
-    //FULL: $ => $._FULL,
+    FULL: $ => $._FULL,
     //FUNCTION: $ => $._FUNCTION,
     //FUNCTION_ID: $ => $._FUNCTION_ID,
     FUNCTION_NAME: $ => $._FUNCTION_NAME,
@@ -2771,7 +2869,7 @@ module.exports = grammar({
     I_O: $ => $._I_O,
     //I_O_CONTROL: $ => $._I_O_CONTROL,
     //JUSTIFIED: $ => $._JUSTIFIED,
-    //KEY: $ => $._KEY,
+    KEY: $ => $._KEY,
     //LABEL: $ => $._LABEL,
     //LAST: $ => $._LAST,
     //LAST_DETAIL: $ => $._LAST_DETAIL,
@@ -2868,7 +2966,7 @@ module.exports = grammar({
     //PROGRAM_ID: $ => $._PROGRAM_ID,
     //PROGRAM_NAME: $ => $._PROGRAM_NAME,
     PROGRAM_POINTER: $ => $._PROGRAM_POINTER,
-    //PROMPT: $ => $._PROMPT,
+    PROMPT: $ => $._PROMPT,
     QUOTE: $ => $._QUOTE,
     RANDOM: $ => $._RANDOM,
     //RD: $ => $._RD,
@@ -2892,7 +2990,7 @@ module.exports = grammar({
     //REPORT_FOOTING: $ => $._REPORT_FOOTING,
     //REPORT_HEADING: $ => $._REPORT_HEADING,
     //REPOSITORY: $ => $._REPOSITORY,
-    //REQUIRED: $ => $._REQUIRED,
+    REQUIRED: $ => $._REQUIRED,
     //RESERVE: $ => $._RESERVE,
     //RETURN: $ => $._RETURN,
     //RETURNING: $ => $._RETURNING,
@@ -2955,7 +3053,7 @@ module.exports = grammar({
     //THAN: $ => $._THAN,
     //THEN: $ => $._THEN,
     THRU: $ => $._THRU,
-    //TIME: $ => $._TIME,
+    TIME: $ => $._TIME,
     //TIMES: $ => $._TIMES,
     //TO: $ => $._TO,
     FALSE: $ => $._FALSE,
@@ -2979,7 +3077,7 @@ module.exports = grammar({
     UNSTRING: $ => $._UNSTRING,
     //UNTIL: $ => $._UNTIL,
     UP: $ => $._UP,
-    //UPDATE: $ => $._UPDATE,
+    UPDATE: $ => $._UPDATE,
     UPON: $ => $._UPON,
     //UPON_ARGUMENT_NUMBER: $ => $._UPON_ARGUMENT_NUMBER,
     //UPON_COMMAND_LINE: $ => $._UPON_COMMAND_LINE,
@@ -3000,8 +3098,8 @@ module.exports = grammar({
     WORDS: $ => $._WORDS,
     //WORKING_STORAGE: $ => $._WORKING_STORAGE,
     //WRITE: $ => $._WRITE,
-    //YYYYDDD: $ => $._YYYYDDD,
-    //YYYYMMDD: $ => $._YYYYMMDD,
+    YYYYDDD: $ => $._YYYYDDD,
+    YYYYMMDD: $ => $._YYYYMMDD,
     ZERO: $ => $._ZERO,
 
 
