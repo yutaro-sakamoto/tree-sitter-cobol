@@ -1100,7 +1100,7 @@ module.exports = grammar({
       seq($.write_statement, optional($._END_WRITE), optional('.')),
       seq($.write_statement_with_handler, nonempty($._END_WRITE, '.')),
 
-      $.next_sentence_statement,
+      seq($.next_sentence_statement, optional('.')),
 
       seq($.evaluate_statement, nonempty($._END_EVALUATE, '.')),
       seq($.if_statement, nonempty($._END_IF, '.')),
