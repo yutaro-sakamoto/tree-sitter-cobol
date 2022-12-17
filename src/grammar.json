@@ -5586,8 +5586,17 @@
           "type": "FIELD",
           "name": "name",
           "content": {
-            "type": "SYMBOL",
-            "name": "_WORD"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_WORD"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "integer"
+              }
+            ]
           }
         },
         {

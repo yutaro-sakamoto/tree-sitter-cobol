@@ -1080,7 +1080,7 @@ module.exports = grammar({
     ),
 
     section_header: $ => seq(
-      field('name', $._WORD),
+      field('name', choice($._WORD, $.integer)),
       $._SECTION,
       optional($._LITERAL),
       '.'
