@@ -992,29 +992,44 @@ module.exports = grammar({
 
     _statement_simple: $ => prec.right(choice(
       seq($.add_statement, optional($._END_ADD)),
-      $.add_statement_with_handler,
+      seq($.add_statement_with_handler, $._END_ADD),
+
       seq($.call_statement, optional($._END_CALL)),
-      $.call_statement_with_handler,
-      $.display_statement_with_handler,
+      seq($.call_statement_with_handler, $._END_CALL),
+
       $.close_statement,
+
       seq($.display_statement, optional($._END_DISPLAY)),
-      $.display_statement_with_handler,
+      seq($.display_statement_with_handler, $._END_DISPLAY),
+
       $.continue_statement,
+
       $.goback_statement,
+
       $.goto_statement,
+
       $.move_statement,
+
       seq($.multiply_statement, optional($._END_MULTIPLY)),
-      $.multiply_statement_with_handler,
+      seq($.multiply_statement_with_handler, $._END_MULTIPLY),
+
       $.open_statement,
+
       seq($.perform_statement_call_proc, optional($._END_PERFORM)),
+
       seq($.read_statement, optional($._END_READ)),
-      $.read_statement_with_handler,
+      seq($.read_statement_with_handler, $._END_READ),
+
       $.sort_statement,
+
       $.stop_statement,
+
       seq($.subtract_statement, optional($._END_SUBTRACT)),
-      $.subtract_statement_with_handler,
+      seq($.subtract_statement_with_handler, $._END_SUBTRACT),
+
       seq($.write_statement, optional($._END_WRITE)),
-      $.write_statement_with_handler,
+      seq($.write_statement_with_handler, $._END_WRITE),
+
       $.next_sentence_statement,
     )),
 
@@ -1036,6 +1051,7 @@ module.exports = grammar({
       $.move_statement,
       $.multiply_statement,
       $.open_statement,
+      $.perform_statement_call_proc,
       $.read_statement,
       $.sort_statement,
       $.stop_statement,
@@ -1045,7 +1061,46 @@ module.exports = grammar({
     ),
 
     _procedure_division_statement: $ => choice(
-      seq($._statement_simple, optional('.')),
+      seq($.add_statement, optional($._END_ADD), optional('.')),
+      seq($.add_statement_with_handler, nonempty($._END_ADD, '.')),
+
+      seq($.call_statement, optional($._END_CALL), optional('.')),
+      seq($.call_statement_with_handler, nonempty($._END_CALL, '.')),
+
+      seq($.close_statement, optional('.')),
+
+      seq($.display_statement, optional($._END_DISPLAY), optional('.')),
+      seq($.display_statement_with_handler, nonempty($._END_DISPLAY, '.')),
+
+      seq($.continue_statement, optional('.')),
+
+      seq($.goback_statement, optional('.')),
+
+      seq($.goto_statement, optional('.')),
+
+      seq($.move_statement, optional('.')),
+
+      seq($.multiply_statement, optional($._END_MULTIPLY), optional('.')),
+      seq($.multiply_statement_with_handler, nonempty($._END_MULTIPLY, '.')),
+
+      seq($.open_statement, optional('.')),
+
+      seq($.perform_statement_call_proc, optional($._END_PERFORM), optional('.')),
+
+      seq($.read_statement, optional($._END_READ), optional('.')),
+      seq($.read_statement_with_handler, nonempty($._END_READ, '.')),
+
+      seq($.sort_statement, optional('.')),
+
+      seq($.stop_statement, optional('.')),
+
+      seq($.subtract_statement, optional($._END_SUBTRACT), optional('.')),
+      seq($.subtract_statement_with_handler, nonempty($._END_SUBTRACT, '.')),
+
+      seq($.write_statement, optional($._END_WRITE), optional('.')),
+      seq($.write_statement_with_handler, nonempty($._END_WRITE, '.')),
+
+      $.next_sentence_statement,
 
       seq($.evaluate_statement, nonempty($._END_EVALUATE, '.')),
       seq($.if_statement, nonempty($._END_IF, '.')),
@@ -1066,7 +1121,6 @@ module.exports = grammar({
       $._ADD,
       $._add_body,
       $._size_error_block,
-      $._END_ADD
     )),
 
     _add_body: $ => prec.left(seq(
@@ -1118,7 +1172,6 @@ module.exports = grammar({
     call_statement_with_handler: $ => seq(
       $._call_header,
       $._call_handler,
-      $._END_CALL
     ),
 
     _call_header: $ => prec.right(seq(
@@ -1237,7 +1290,6 @@ module.exports = grammar({
       $._DISPLAY,
       $._display_body,
       $.on_disp_exception,
-      $._END_DISPLAY
     )),
 
     _display_body: $ => prec.right(choice(
@@ -1525,7 +1577,6 @@ module.exports = grammar({
       $._MULTIPLY,
       $._multiply_body,
       $._size_error_block,
-      $._END_MULTIPLY
     )),
 
     _multiply_body: $ => prec.right(choice(
@@ -1638,7 +1689,6 @@ module.exports = grammar({
     read_statement_with_handler: $ => prec.right(seq(
       $._read_statement_header,
       $._read_statement_footer,
-      $._END_READ,
     )),
 
     with_lock: $ => choice(
@@ -1716,17 +1766,10 @@ module.exports = grammar({
       $._subtract_body,
     )),
 
-    subtract_statement_imparative: $ => prec.right(seq(
-      $._SUBTRACT,
-      $._subtract_body,
-      optional($._END_SUBTRACT)
-    )),
-
     subtract_statement_with_handler: $ => prec.right(seq(
       $._SUBTRACT,
       $._subtract_body,
       $.on_size_error,
-      $._END_SUBTRACT
     )),
 
     _subtract_body: $ => prec.right(choice(
@@ -1757,8 +1800,7 @@ module.exports = grammar({
 
     write_statement_with_handler: $ => prec.right(seq(
       $._write_statement_header,
-      field('handler', optional($._write_handler)),
-      $._END_WRITE
+      field('handler', $._write_handler),
     )),
 
     _write_statement_header: $ => prec.right(seq(

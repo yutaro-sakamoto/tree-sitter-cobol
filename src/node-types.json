@@ -1800,6 +1800,10 @@
           "named": true
         },
         {
+          "type": "perform_statement_call_proc",
+          "named": true
+        },
+        {
           "type": "read_statement",
           "named": true
         },
@@ -1926,6 +1930,10 @@
           "named": true
         },
         {
+          "type": "perform_statement_call_proc",
+          "named": true
+        },
+        {
           "type": "read_statement",
           "named": true
         },
@@ -1998,6 +2006,10 @@
         },
         {
           "type": "open_statement",
+          "named": true
+        },
+        {
+          "type": "perform_statement_call_proc",
           "named": true
         },
         {
@@ -2076,6 +2088,10 @@
           "named": true
         },
         {
+          "type": "perform_statement_call_proc",
+          "named": true
+        },
+        {
           "type": "read_statement",
           "named": true
         },
@@ -2148,6 +2164,10 @@
         },
         {
           "type": "open_statement",
+          "named": true
+        },
+        {
+          "type": "perform_statement_call_proc",
           "named": true
         },
         {
@@ -3654,6 +3674,10 @@
           "named": true
         },
         {
+          "type": "perform_statement_call_proc",
+          "named": true
+        },
+        {
           "type": "read_statement",
           "named": true
         },
@@ -4929,6 +4953,10 @@
           "named": true
         },
         {
+          "type": "perform_statement_call_proc",
+          "named": true
+        },
+        {
           "type": "read_statement",
           "named": true
         },
@@ -6185,6 +6213,10 @@
           "named": true
         },
         {
+          "type": "perform_statement_call_proc",
+          "named": true
+        },
+        {
           "type": "read_statement",
           "named": true
         },
@@ -6257,6 +6289,10 @@
         },
         {
           "type": "open_statement",
+          "named": true
+        },
+        {
+          "type": "perform_statement_call_proc",
           "named": true
         },
         {
@@ -6335,6 +6371,10 @@
           "named": true
         },
         {
+          "type": "perform_statement_call_proc",
+          "named": true
+        },
+        {
           "type": "read_statement",
           "named": true
         },
@@ -6407,6 +6447,10 @@
         },
         {
           "type": "open_statement",
+          "named": true
+        },
+        {
+          "type": "perform_statement_call_proc",
           "named": true
         },
         {
@@ -6638,6 +6682,10 @@
           "named": true
         },
         {
+          "type": "perform_statement_call_proc",
+          "named": true
+        },
+        {
           "type": "read_statement",
           "named": true
         },
@@ -6710,6 +6758,10 @@
         },
         {
           "type": "open_statement",
+          "named": true
+        },
+        {
+          "type": "perform_statement_call_proc",
           "named": true
         },
         {
@@ -10556,7 +10608,7 @@
       },
       "handler": {
         "multiple": true,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "eop",
