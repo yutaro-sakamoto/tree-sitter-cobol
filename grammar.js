@@ -1309,18 +1309,18 @@ module.exports = grammar({
       $.on_exception, $.not_on_exception
     ),
 
-    add_statement: $ => prec.left(seq(
+    add_statement: $ => seq(
       $._ADD,
       $._add_body,
-    )),
+    ),
 
-    add_statement_with_handler: $ => prec.left(seq(
+    add_statement_with_handler: $ => seq(
       $._ADD,
       $._add_body,
       $._size_error_block,
-    )),
+    ),
 
-    _add_body: $ => prec.left(seq(
+    _add_body: $ => prec.right(seq(
       choice(
         seq(
           field('from', repeat1($._x)),
@@ -1347,20 +1347,20 @@ module.exports = grammar({
       $.not_on_size_error,
     ),
 
-    on_size_error: $ => prec.left(seq(
+    on_size_error: $ => seq(
       $._ON,
       $._SIZE,
       $._ERROR,
       repeat1($._statement_imparative)
-    )),
+    ),
 
-    not_on_size_error: $ => prec.left(seq(
+    not_on_size_error: $ => seq(
       $._NOT,
       $._ON,
       $._SIZE,
       $._ERROR,
       repeat1($._statement_imparative)
-    )),
+    ),
 
     call_statement: $ => seq(
       $._call_header
@@ -1457,10 +1457,10 @@ module.exports = grammar({
       repeat1($.close_arg),
     )),
 
-    close_arg: $ => prec.right(seq(
+    close_arg: $ => seq(
       field('file_handler', $.WORD),
       optional($.close_option)
-    )),
+    ),
 
     close_option: $ => choice(
       seq(
@@ -1483,11 +1483,11 @@ module.exports = grammar({
       $._display_body,
     )),
 
-    display_statement_with_handler: $ => prec.right(seq(
+    display_statement_with_handler: $ => seq(
       $._DISPLAY,
       $._display_body,
       $.on_disp_exception,
-    )),
+    ),
 
     _display_body: $ => prec.right(choice(
       seq($._id_or_lit, $._UPON_ENVIRONMENT_NAME),
@@ -1508,10 +1508,10 @@ module.exports = grammar({
       $._literal
     ),
 
-    on_disp_exception: $ => prec.right(seq(
+    on_disp_exception: $ => seq(
       choice($.EXCEPTION, $.NOT_EXCEPTION),
       repeat1($._statement_imparative),
-    )),
+    ),
 
     with_clause: $ => choice(
       seq(optional($._WITH), $.NO_ADVANCING),
@@ -1554,16 +1554,16 @@ module.exports = grammar({
 
     line_or_lines: $ => choice($.LINE, $.LINES),
 
-    evaluate_statement: $ => prec.right(seq(
+    evaluate_statement: $ => seq(
       $._evaluate_header,
-    )),
+    ),
 
-    _evaluate_header: $ => prec.right(seq(
+    _evaluate_header: $ => seq(
       $._EVALUATE,
       field('subjects', sepBy($.evaluate_subject, optional($._ALSO))),
       field('cases', repeat1($.evaluate_case)),
       field('other', optional($.evaluate_other)),
-    )),
+    ),
 
     evaluate_subject: $ => choice(
       $.expr,
@@ -1571,12 +1571,12 @@ module.exports = grammar({
       $.FALSE,
     ),
 
-    evaluate_case: $ => prec.left(seq(
+    evaluate_case: $ => seq(
       field('when', repeat1(seq($._WHEN, $._evaluate_object_list))),
       field('statements', repeat1($._statement_in_block)),
-    )),
+    ),
 
-    _evaluate_object_list: $ => prec.right(sepBy($._evaluate_object, optional($._ALSO))),
+    _evaluate_object_list: $ => sepBy($._evaluate_object, optional($._ALSO)),
 
     _evaluate_object: $ => choice(
       /*seq(
@@ -1589,10 +1589,10 @@ module.exports = grammar({
       $.FALSE
     ),
 
-    evaluate_other: $ => prec.right(seq(
+    evaluate_other: $ => seq(
       $._WHEN_OTHER,
       field('statement', repeat1($._statement_in_block))
-    )),
+    ),
 
     goback_statement: $ => $._GOBACK,
 
@@ -1608,11 +1608,11 @@ module.exports = grammar({
     ),
 
     //todo add error if statement (see cobc/parser.y)
-    if_statement: $ => prec.right(1, seq(
+    if_statement: $ => seq(
       $._if_statement_header,
-    )),
+    ),
 
-    _if_statement_header: $ => prec.right(1, seq(
+    _if_statement_header: $ => prec(1, seq(
       $._IF,
       field('condition', $.expr),
       optional($._THEN),
@@ -1621,17 +1621,17 @@ module.exports = grammar({
       optional($.else_sentense),
     )),
 
-    else_if_sentense: $ => prec.right(seq(
+    else_if_sentense: $ => seq(
       $._ELSE, $._IF,
       field('condition', $.expr),
       optional($._THEN),
       field('statements', repeat($._statement_in_block)),
-    )),
+    ),
 
-    else_sentense: $ => prec.right(seq(
+    else_sentense: $ => seq(
       $._ELSE,
       repeat($._statement_in_block)
-    )),
+    ),
 
     expr: $ => prec.left(choice($._expr_logic, $._expr_calc)),
 
@@ -1765,16 +1765,16 @@ module.exports = grammar({
       seq($._ADDRESS, optional($._OF), $._identifier)
     ),
 
-    multiply_statement: $ => prec.right(seq(
+    multiply_statement: $ => seq(
       $._MULTIPLY,
       $._multiply_body,
-    )),
+    ),
 
-    multiply_statement_with_handler: $ => prec.right(seq(
+    multiply_statement_with_handler: $ => seq(
       $._MULTIPLY,
       $._multiply_body,
       $._size_error_block,
-    )),
+    ),
 
     _multiply_body: $ => prec.right(choice(
       seq(
@@ -1883,10 +1883,10 @@ module.exports = grammar({
 
     read_statement: $ => $._read_statement_header,
 
-    read_statement_with_handler: $ => prec.right(seq(
+    read_statement_with_handler: $ => seq(
       $._read_statement_header,
       $._read_statement_footer,
-    )),
+    ),
 
     with_lock: $ => choice(
       seq($._IGNORING, $._LOCK),
@@ -1958,16 +1958,16 @@ module.exports = grammar({
       $.perform_procedure,
     ),
 
-    subtract_statement: $ => prec.right(seq(
+    subtract_statement: $ => seq(
       $._SUBTRACT,
       $._subtract_body,
-    )),
+    ),
 
-    subtract_statement_with_handler: $ => prec.right(seq(
+    subtract_statement_with_handler: $ => seq(
       $._SUBTRACT,
       $._subtract_body,
       $._size_error_block,
-    )),
+    ),
 
     _subtract_body: $ => prec.right(choice(
       seq(
@@ -1991,22 +1991,22 @@ module.exports = grammar({
       )
     )),
 
-    write_statement: $ => prec.right(seq(
+    write_statement: $ => seq(
       $._write_statement_header,
-    )),
+    ),
 
-    write_statement_with_handler: $ => prec.right(seq(
+    write_statement_with_handler: $ => seq(
       $._write_statement_header,
       field('handler', $._write_handler),
-    )),
+    ),
 
-    _write_statement_header: $ => prec.right(seq(
+    _write_statement_header: $ => seq(
       $._WRITE,
       field('record_name', $.qualified_word),
       field('from', optional(seq($._FROM, $._id_or_lit))),
       field('lock', optional(choice($.write_lock, $.write_no_lock))),
       field('option', optional($.write_option))
-    )),
+    ),
 
     write_lock: $ => seq(
       optional($._WITH),
@@ -2043,31 +2043,31 @@ module.exports = grammar({
       nonempty($.invalid_key, $.not_invalid_key),
     ),
 
-    eop: $ => prec.right(seq(
+    eop: $ => seq(
       $._AT,
       choice($._EOP, $._END_OF_PAGE),
       repeat1($._statement_imparative)
-    )),
+    ),
 
-    not_eop: $ => prec.right(seq(
+    not_eop: $ => seq(
       $._NOT,
       $._AT,
       choice($._EOP, $._END_OF_PAGE),
       repeat1($._statement_imparative)
-    )),
+    ),
 
-    invalid_key: $ => prec.right(seq(
+    invalid_key: $ => seq(
       $._INVALID,
       $._KEY,
       repeat1($._statement_imparative)
-    )),
+    ),
 
-    not_invalid_key: $ => prec.right(seq(
+    not_invalid_key: $ => seq(
       $._NOT,
       $._INVALID,
       $._KEY,
       repeat1($._statement_imparative)
-    )),
+    ),
 
     next_sentence_statement: $ => seq($._NEXT, $._SENTENCE),
 
