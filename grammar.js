@@ -155,8 +155,7 @@ module.exports = grammar({
     special_names_paragraph: $ => seq(
       $._SPECIAL_NAMES,
       '.',
-      repeat($.special_name),
-      optional('.')
+      repeat(seq($.special_name, optional('.'))),
     ),
 
     special_name: $ => choice(
@@ -203,11 +202,46 @@ module.exports = grammar({
       $.LOW_VALUE
     ),
 
-    symbolic_characters_clause: $ => /todo_symbolic_character_name/,
-    locale_clause: $ => /todo_locale_name/,
-    class_name_clause: $ => /todo_class_name/,
-    currency_sign_clause: $ => /todo_currency_sign_name/,
-    decimal_point_clause: $ => /todo_decimal_point_name/,
+    symbolic_characters_clause: $ => seq(
+      $._SYMBOLIC,
+      optional($._CHARACTERS),
+      field('char_list', repeat1($.WORD)),
+      optional(choice($._IS, $._ARE)),
+      field('integer_list', repeat1($.integer)),
+    ),
+
+    locale_clause: $ => seq(
+      $._LOCALE,
+      $.WORD,
+      optional($._IS),
+      $.qualified_word,
+    ),
+
+    class_name_clause: $ => seq(
+      $._CLASS,
+      field('x', $.WORD),
+      optional($._IS),
+      field('list', repeat1($.class_item))
+    ),
+
+    class_item: $ => seq(
+      $._basic_value,
+      optional(seq($._THRU, $._basic_value))
+    ),
+
+    currency_sign_clause: $ => seq(
+      $._CURRENCY,
+      optional($._SIGN),
+      optional($._IS),
+      $._LITERAL
+    ),
+
+    decimal_point_clause: $ => seq(
+      $._DECIMAL_POINT,
+      optional($._IS),
+      $._COMMA,
+    ),
+
     cursor_clause: $ => /todo_cursor_name/,
     crt_status_clause: $ => /todo_crt_status_name/,
     screen_control: $ => /todo_screen_control_name/,

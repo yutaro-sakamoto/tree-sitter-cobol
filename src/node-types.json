@@ -2506,6 +2506,87 @@
     }
   },
   {
+    "type": "class_item",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "HIGH_VALUE",
+          "named": true
+        },
+        {
+          "type": "LOW_VALUE",
+          "named": true
+        },
+        {
+          "type": "QUOTE",
+          "named": true
+        },
+        {
+          "type": "SPACE",
+          "named": true
+        },
+        {
+          "type": "TOK_NULL",
+          "named": true
+        },
+        {
+          "type": "ZERO",
+          "named": true
+        },
+        {
+          "type": "h_string",
+          "named": true
+        },
+        {
+          "type": "n_string",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "x_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "class_name_clause",
+    "named": true,
+    "fields": {
+      "list": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "class_item",
+            "named": true
+          }
+        ]
+      },
+      "x": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "WORD",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "close_arg",
     "named": true,
     "fields": {
@@ -2643,6 +2724,37 @@
     "type": "continue_statement",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "currency_sign_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "h_string",
+          "named": true
+        },
+        {
+          "type": "n_string",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "x_string",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "data_description",
@@ -2800,6 +2912,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "decimal_point_clause",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "disp_attr",
@@ -5249,6 +5366,25 @@
         },
         {
           "type": "LINES",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "locale_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "WORD",
+          "named": true
+        },
+        {
+          "type": "qualified_word",
           "named": true
         }
       ]
@@ -10029,6 +10165,32 @@
     }
   },
   {
+    "type": "symbolic_characters_clause",
+    "named": true,
+    "fields": {
+      "char_list": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "WORD",
+            "named": true
+          }
+        ]
+      },
+      "integer_list": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "synchronized_clause",
     "named": true,
     "fields": {},
@@ -10834,10 +10996,6 @@
     "named": true
   },
   {
-    "type": "class_name_clause",
-    "named": true
-  },
-  {
     "type": "constant_entry",
     "named": true
   },
@@ -10846,19 +11004,11 @@
     "named": true
   },
   {
-    "type": "currency_sign_clause",
-    "named": true
-  },
-  {
     "type": "cursor_clause",
     "named": true
   },
   {
     "type": "decimal",
-    "named": true
-  },
-  {
-    "type": "decimal_point_clause",
     "named": true
   },
   {
@@ -10911,10 +11061,6 @@
   },
   {
     "type": "local_storage_section",
-    "named": true
-  },
-  {
-    "type": "locale_clause",
     "named": true
   },
   {
@@ -10988,10 +11134,6 @@
   {
     "type": "spaces",
     "named": false
-  },
-  {
-    "type": "symbolic_characters_clause",
-    "named": true
   },
   {
     "type": "zero",
