@@ -882,14 +882,23 @@ module.exports = grammar({
 
     occurs_key_spec: $ => /todo_occurs_key_spec/,
 
-    justified_clause: $ => /todo_justified_clause/,
-    synchronized_clause: $ => /todo_synchronized_clause/,
+    justified_clause: $ => seq(
+      $._JUSTIFIED,
+      optional($.RIGHT)
+    ),
+
+    synchronized_clause: $ => seq(
+      $._SYNCHRONIZED,
+      optional(choice($.LEFT, $.RIGHT))
+    ),
+
     blank_clause: $ => seq(
       $._BLANK,
       optional($._WHEN),
       $._ZERO,
     ),
-    based_clause: $ => /todo_based_clause/,
+
+    based_clause: $ => $._BASED,
     value_clause: $ => seq($._VALUE, optional($._IS), $._literal),
     renames_clause: $ => /todo_renames_clause/,
     any_length_clause: $ => /todo_any_length/,

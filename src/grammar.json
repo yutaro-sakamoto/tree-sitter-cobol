@@ -4469,8 +4469,34 @@
       "value": "todo_justified_clause"
     },
     "synchronized_clause": {
-      "type": "PATTERN",
-      "value": "todo_synchronized_clause"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_SYNCHRONIZED"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_LEFT"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_RIGHT"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
     },
     "blank_clause": {
       "type": "SEQ",

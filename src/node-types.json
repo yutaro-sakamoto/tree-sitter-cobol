@@ -9918,6 +9918,11 @@
     }
   },
   {
+    "type": "synchronized_clause",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "unsigned_size_is",
     "named": true,
     "fields": {},
@@ -10873,10 +10878,6 @@
   },
   {
     "type": "symbolic_characters_clause",
-    "named": true
-  },
-  {
-    "type": "synchronized_clause",
     "named": true
   },
   {
