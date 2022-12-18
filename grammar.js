@@ -1146,6 +1146,7 @@ module.exports = grammar({
       $.move_statement,
       $.multiply_statement,
       $.open_statement,
+      $.perform_statement_call_proc,
       $.read_statement,
       $.sort_statement,
       $.stop_statement,
@@ -1734,11 +1735,11 @@ module.exports = grammar({
       )))
     ),
 
-    //perform_statement_call_proc: $ => seq(
-    //  $._PERFORM,
-    //  field('procedure', $.perform_procedure),
-    //  field('option', optional($.perform_option)),
-    //),
+    perform_statement_call_proc: $ => seq(
+      $._PERFORM,
+      field('procedure', $.perform_procedure),
+      field('option', optional($.perform_option)),
+    ),
 
     //perform_statement_loop: $ => seq(
     //  $._PERFORM,
@@ -1752,12 +1753,12 @@ module.exports = grammar({
       optional(seq($.THRU, $.label)),
     ),
 
-    //perform_option: $ => choice(
-    //  $.FOREVER,
-    //  seq(field('times', $._id_or_lit_or_func), $._TIMES),
-    //  seq(field('test', optional($.perform_test)), $._UNTIL, field('until', $.expr)),
-    //  seq(field('test', optional($.perform_test)), $._VARYING, field('varying', sepBy($.perform_varying, $._AFTER)))
-    //),
+    perform_option: $ => choice(
+      $.FOREVER,
+      seq(field('times', $._id_or_lit_or_func), $._TIMES),
+      seq(field('test', optional($.perform_test)), $._UNTIL, field('until', $.expr)),
+      seq(field('test', optional($.perform_test)), $._VARYING, field('varying', sepBy($.perform_varying, $._AFTER)))
+    ),
 
     _id_or_lit_or_func: $ => choice(
       $._identifier,
@@ -1765,21 +1766,21 @@ module.exports = grammar({
       $.function_
     ),
 
-    //perform_test: $ => seq(
-    //  optional($._WITH),
-    //  $._TEST,
-    //  choice($.BEFORE, $.AFTER)
-    //),
+    perform_test: $ => seq(
+      optional($._WITH),
+      $._TEST,
+      choice($.BEFORE, $.AFTER)
+    ),
 
-    //perform_varying: $ => seq(
-    //  $._identifier,
-    //  $._FROM,
-    //  field('from', $._x),
-    //  $._BY,
-    //  field('by', $._x),
-    //  $._UNTIL,
-    //  field('until', $.expr),
-    //),
+    perform_varying: $ => seq(
+      $._identifier,
+      $._FROM,
+      field('from', $._x),
+      $._BY,
+      field('by', $._x),
+      $._UNTIL,
+      field('until', $.expr),
+    ),
 
     _read_statement_header: $ => prec.right(seq(
       $._READ,
