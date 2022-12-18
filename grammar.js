@@ -1186,6 +1186,7 @@ module.exports = grammar({
       $.evaluate_header,
       $.evaluate_case,
       $.evaluate_other,
+      $.perform_statement_loop,
     ),
 
     //todo
@@ -1741,12 +1742,10 @@ module.exports = grammar({
       field('option', optional($.perform_option)),
     ),
 
-    //perform_statement_loop: $ => seq(
-    //  $._PERFORM,
-    //  field('option', optional($.perform_option)),
-    //  field('statements', repeat1($._statement_in_block)),
-    //  $._END_PERFORM
-    //),
+    perform_statement_loop: $ => seq(
+      $._PERFORM,
+      field('option', $.perform_option),
+    ),
 
     perform_procedure: $ => seq(
       $.label,

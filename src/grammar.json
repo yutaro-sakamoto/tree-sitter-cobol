@@ -5982,6 +5982,10 @@
         {
           "type": "SYMBOL",
           "name": "evaluate_other"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "perform_statement_loop"
         }
       ]
     },
@@ -9623,6 +9627,23 @@
                 "type": "BLANK"
               }
             ]
+          }
+        }
+      ]
+    },
+    "perform_statement_loop": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_PERFORM"
+        },
+        {
+          "type": "FIELD",
+          "name": "option",
+          "content": {
+            "type": "SYMBOL",
+            "name": "perform_option"
           }
         }
       ]

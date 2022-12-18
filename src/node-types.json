@@ -5592,6 +5592,22 @@
     }
   },
   {
+    "type": "perform_statement_loop",
+    "named": true,
+    "fields": {
+      "option": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "perform_option",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "perform_test",
     "named": true,
     "fields": {},
@@ -6307,6 +6323,10 @@
           "named": true
         },
         {
+          "type": "perform_statement_loop",
+          "named": true
+        },
+        {
           "type": "read_statement",
           "named": true
         },
@@ -6451,6 +6471,10 @@
         },
         {
           "type": "perform_statement_call_proc",
+          "named": true
+        },
+        {
+          "type": "perform_statement_loop",
           "named": true
         },
         {
