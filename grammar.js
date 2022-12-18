@@ -1081,7 +1081,7 @@ module.exports = grammar({
 
     _procedure_division_statements_before_header: $ => seq(
       repeat($._procedure_division_statement),
-      $._procedure_division_statement_with_end_or_period
+      $._end_statement
     ),
 
     _procedure_division_contenet: $ => choice(
@@ -1104,10 +1104,18 @@ module.exports = grammar({
       //$._procedure_division_headers,
     ),
 
+    _procedure_division_statement: $ => choice(
+      $._statement,
+      $._start_handler,
+      $._end_statement,
+    ),
+
     _procedure: $ => choice(
       $.section_header,
       $.paragraph_header,
-      $._procedure_division_statement
+      $._statement,
+      $._start_handler,
+      $._end_statement,
     ),
 
     section_header: $ => seq(
@@ -1125,63 +1133,7 @@ module.exports = grammar({
     nested_prog: $ => /todo_nested_prog/,
     end_program: $ => /todo_end_program/,
 
-    _statement_simple: $ => prec.right(choice(
-      seq($.accept_statement, optional($._END_ACCEPT)),
-      seq($.accept_statement_with_handler, $._END_ACCEPT),
-
-      seq($.add_statement, optional($._END_ADD)),
-      seq($.add_statement_with_handler, $._END_ADD),
-
-      seq($.call_statement, optional($._END_CALL)),
-      seq($.call_statement_with_handler, $._END_CALL),
-
-      $.close_statement,
-
-      seq($.display_statement, optional($._END_DISPLAY)),
-      seq($.display_statement_with_handler, $._END_DISPLAY),
-
-      seq($.divide_statement, optional($._END_DIVIDE)),
-      seq($.divide_statement_with_handler, $._END_DIVIDE),
-
-      $.continue_statement,
-
-      $.goback_statement,
-
-      $.goto_statement,
-
-      $.move_statement,
-
-      seq($.multiply_statement, optional($._END_MULTIPLY)),
-      seq($.multiply_statement_with_handler, $._END_MULTIPLY),
-
-      $.open_statement,
-
-      seq($.perform_statement_call_proc, optional($._END_PERFORM)),
-
-      seq($.read_statement, optional($._END_READ)),
-      seq($.read_statement_with_handler, $._END_READ),
-
-      $.sort_statement,
-
-      $.stop_statement,
-
-      seq($.subtract_statement, optional($._END_SUBTRACT)),
-      seq($.subtract_statement_with_handler, $._END_SUBTRACT),
-
-      seq($.write_statement, optional($._END_WRITE)),
-      seq($.write_statement_with_handler, $._END_WRITE),
-
-      $.next_sentence_statement,
-    )),
-
-    _statement_in_block: $ => choice(
-      $._statement_simple,
-      seq($.evaluate_statement, $._END_EVALUATE),
-      seq($.if_statement, $._END_IF),
-      seq($.perform_statement_loop, $._END_PERFORM)
-    ),
-
-    _statement_imparative: $ => choice(
+    _statement: $ => choice(
       $.accept_statement,
       $.add_statement,
       $.call_statement,
@@ -1194,7 +1146,6 @@ module.exports = grammar({
       $.move_statement,
       $.multiply_statement,
       $.open_statement,
-      $.perform_statement_call_proc,
       $.read_statement,
       $.sort_statement,
       $.stop_statement,
@@ -1203,110 +1154,30 @@ module.exports = grammar({
       $.next_sentence_statement,
     ),
 
-    _procedure_division_statement: $ => choice(
-      seq($.accept_statement, optional($._END_ACCEPT), optional('.')),
-      seq($.accept_statement_with_handler, nonempty($._END_ACCEPT, '.')),
-
-      seq($.add_statement, optional($._END_ADD), optional('.')),
-      seq($.add_statement_with_handler, nonempty($._END_ADD, '.')),
-
-      seq($.call_statement, optional($._END_CALL), optional('.')),
-      seq($.call_statement_with_handler, nonempty($._END_CALL, '.')),
-
-      seq($.close_statement, optional('.')),
-
-      seq($.display_statement, optional($._END_DISPLAY), optional('.')),
-      seq($.display_statement_with_handler, nonempty($._END_DISPLAY, '.')),
-
-      seq($.divide_statement, optional($._END_DIVIDE), optional('.')),
-      seq($.divide_statement_with_handler, nonempty($._END_DIVIDE, '.')),
-
-      seq($.continue_statement, optional('.')),
-
-      seq($.goback_statement, optional('.')),
-
-      seq($.goto_statement, optional('.')),
-
-      seq($.move_statement, optional('.')),
-
-      seq($.multiply_statement, optional($._END_MULTIPLY), optional('.')),
-      seq($.multiply_statement_with_handler, nonempty($._END_MULTIPLY, '.')),
-
-      seq($.open_statement, optional('.')),
-
-      seq($.perform_statement_call_proc, optional($._END_PERFORM), optional('.')),
-
-      seq($.read_statement, optional($._END_READ), optional('.')),
-      seq($.read_statement_with_handler, nonempty($._END_READ, '.')),
-
-      seq($.sort_statement, optional('.')),
-
-      seq($.stop_statement, optional('.')),
-
-      seq($.subtract_statement, optional($._END_SUBTRACT), optional('.')),
-      seq($.subtract_statement_with_handler, nonempty($._END_SUBTRACT, '.')),
-
-      seq($.write_statement, optional($._END_WRITE), optional('.')),
-      seq($.write_statement_with_handler, nonempty($._END_WRITE, '.')),
-
-      seq($.next_sentence_statement, optional('.')),
-
-      seq($.evaluate_statement, nonempty($._END_EVALUATE, '.')),
-      seq($.if_statement, nonempty($._END_IF, '.')),
-      seq($.perform_statement_loop, nonempty($._END_PERFORM, '.'))
+    _end_statement: $ => choice(
+      $._END_ACCEPT,
+      $._END_ADD,
+      $._END_CALL,
+      $._END_DISPLAY,
+      $._END_DIVIDE,
+      $._END_MULTIPLY,
+      $._END_READ,
+      $._END_SUBTRACT,
+      $._END_WRITE,
+      '.'
     ),
 
-    _procedure_division_statement_with_end_or_period: $ => choice(
-      seq($.accept_statement, nonempty($._END_ACCEPT, '.')),
-      seq($.accept_statement_with_handler, nonempty($._END_ACCEPT, '.')),
-
-      seq($.add_statement, nonempty($._END_ADD, '.')),
-      seq($.add_statement_with_handler, nonempty($._END_ADD, '.')),
-
-      seq($.call_statement, nonempty($._END_CALL, '.')),
-      seq($.call_statement_with_handler, nonempty($._END_CALL, '.')),
-
-      seq($.close_statement, '.'),
-
-      seq($.display_statement, nonempty($._END_DISPLAY, '.')),
-      seq($.display_statement_with_handler, nonempty($._END_DISPLAY, '.')),
-
-      seq($.divide_statement, nonempty($._END_DIVIDE, '.')),
-      seq($.divide_statement_with_handler, nonempty($._END_DIVIDE, '.')),
-
-      seq($.continue_statement, '.'),
-
-      seq($.goback_statement, '.'),
-
-      seq($.goto_statement, '.'),
-
-      seq($.move_statement, '.'),
-
-      seq($.multiply_statement, nonempty($._END_MULTIPLY, '.')),
-      seq($.multiply_statement_with_handler, nonempty($._END_MULTIPLY, '.')),
-
-      seq($.open_statement, '.'),
-
-      seq($.perform_statement_call_proc, nonempty($._END_PERFORM, '.')),
-
-      seq($.read_statement, nonempty($._END_READ, '.')),
-      seq($.read_statement_with_handler, nonempty($._END_READ, '.')),
-
-      seq($.sort_statement, '.'),
-
-      seq($.stop_statement, '.'),
-
-      seq($.subtract_statement, nonempty($._END_SUBTRACT, '.')),
-      seq($.subtract_statement_with_handler, nonempty($._END_SUBTRACT, '.')),
-
-      seq($.write_statement, nonempty($._END_WRITE, '.')),
-      seq($.write_statement_with_handler, nonempty($._END_WRITE, '.')),
-
-      seq($.next_sentence_statement, '.'),
-
-      seq($.evaluate_statement, nonempty($._END_EVALUATE, '.')),
-      seq($.if_statement, nonempty($._END_IF, '.')),
-      seq($.perform_statement_loop, nonempty($._END_PERFORM, '.'))
+    _start_handler: $ => choice(
+      $.on_exception,
+      $.not_on_exception,
+      $.on_overflow,
+      $.not_on_overflow,
+      $.at_end,
+      $.not_at_end,
+      $.eop,
+      $.not_eop,
+      $.invalid_key,
+      $.not_invalid_key,
     ),
 
     //todo
@@ -1317,12 +1188,6 @@ module.exports = grammar({
     accept_statement: $ => seq(
       $._ACCEPT,
       $._accept_body,
-    ),
-
-    accept_statement_with_handler: $ => seq(
-      $._ACCEPT,
-      $._accept_body,
-      $._on_accp_exception
     ),
 
     _accept_body: $ => seq(
@@ -1396,19 +1261,9 @@ module.exports = grammar({
       ))
     ),
 
-    _on_accp_exception: $ => nonempty(
-      $.on_exception, $.not_on_exception
-    ),
-
     add_statement: $ => seq(
       $._ADD,
       $._add_body,
-    ),
-
-    add_statement_with_handler: $ => seq(
-      $._ADD,
-      $._add_body,
-      $._size_error_block,
     ),
 
     _add_body: $ => seq(
@@ -1442,7 +1297,6 @@ module.exports = grammar({
       $._ON,
       $._SIZE,
       $._ERROR,
-      repeat1($._statement_imparative)
     ),
 
     not_on_size_error: $ => seq(
@@ -1450,16 +1304,10 @@ module.exports = grammar({
       $._ON,
       $._SIZE,
       $._ERROR,
-      repeat1($._statement_imparative)
     ),
 
     call_statement: $ => seq(
       $._call_header
-    ),
-
-    call_statement_with_handler: $ => seq(
-      $._call_header,
-      $._call_handler,
     ),
 
     _call_header: $ => seq(
@@ -1512,35 +1360,26 @@ module.exports = grammar({
     unsigned_size_is: $ => seq($._UNSIGNED, $._SIZE, optional($._IS), $.integer),
     size_is: $ => seq($._SIZE, optional($._IS), $.integer),
 
-    _call_handler: $ => nonempty(
-      choice($.on_exception, $.on_overflow),
-      choice($.not_on_exception, $.not_on_overflow),
-    ),
-
     on_exception: $ => seq(
       optional($._ON),
       $._EXCEPTION,
-      repeat1($._statement_imparative),
     ),
 
     on_overflow: $ => seq(
       optional($._ON),
       $._OVERFLOW,
-      repeat1($._statement_imparative),
     ),
 
     not_on_exception: $ => seq(
       $._NOT,
       optional($._ON),
       $._EXCEPTION,
-      repeat1($._statement_imparative),
     ),
 
     not_on_overflow: $ => seq(
       $._NOT,
       optional($._ON),
       $._OVERFLOW,
-      repeat1($._statement_imparative),
     ),
 
     close_statement: $ => seq(
@@ -1574,12 +1413,6 @@ module.exports = grammar({
       $._display_body,
     ),
 
-    display_statement_with_handler: $ => seq(
-      $._DISPLAY,
-      $._display_body,
-      $.on_disp_exception,
-    ),
-
     _display_body: $ => choice(
       seq($._id_or_lit, $._UPON_ENVIRONMENT_NAME),
       seq($._id_or_lit, $._UPON_ENVIRONMENT_VALUE),
@@ -1597,11 +1430,6 @@ module.exports = grammar({
     _id_or_lit: $ => choice(
       $._identifier,
       $._literal
-    ),
-
-    on_disp_exception: $ => seq(
-      choice($.EXCEPTION, $.NOT_EXCEPTION),
-      repeat1($._statement_imparative),
     ),
 
     with_clause: $ => choice(
@@ -1650,12 +1478,6 @@ module.exports = grammar({
       $._divide_body,
     ),
 
-    divide_statement_with_handler: $ => seq(
-      $._DIVIDE,
-      $._divide_body,
-      $._size_error_block,
-    ),
-
     _divide_body: $ => seq(
       field('x', $._x),
       choice(
@@ -1667,46 +1489,46 @@ module.exports = grammar({
       )
     ),
 
-    evaluate_statement: $ => seq(
-      $._evaluate_header,
-    ),
-
-    _evaluate_header: $ => seq(
-      $._EVALUATE,
-      field('subjects', sepBy($.evaluate_subject, optional($._ALSO))),
-      field('cases', repeat1($.evaluate_case)),
-      field('other', optional($.evaluate_other)),
-    ),
-
-    evaluate_subject: $ => choice(
-      $.expr,
-      $.TRUE,
-      $.FALSE,
-    ),
-
-    evaluate_case: $ => seq(
-      field('when', repeat1(seq($._WHEN, $._evaluate_object_list))),
-      field('statements', repeat1($._statement_in_block)),
-    ),
-
-    _evaluate_object_list: $ => sepBy($._evaluate_object, optional($._ALSO)),
-
-    _evaluate_object: $ => choice(
-      /*seq(
-        $.expr,
-        optional(seq($.THRU, $.expr))
-      ),*/
-      $.expr,
-      $.ANY,
-      $.TRUE,
-      $.FALSE
-    ),
-
-    evaluate_other: $ => seq(
-      $._WHEN_OTHER,
-      field('statement', repeat1($._statement_in_block))
-    ),
-
+    //    evaluate_statement: $ => seq(
+    //      $._evaluate_header,
+    //    ),
+    //
+    //    _evaluate_header: $ => seq(
+    //      $._EVALUATE,
+    //      field('subjects', sepBy($.evaluate_subject, optional($._ALSO))),
+    //      field('cases', repeat1($.evaluate_case)),
+    //      field('other', optional($.evaluate_other)),
+    //    ),
+    //
+    //    evaluate_subject: $ => choice(
+    //      $.expr,
+    //      $.TRUE,
+    //      $.FALSE,
+    //    ),
+    //
+    //    evaluate_case: $ => seq(
+    //      field('when', repeat1(seq($._WHEN, $._evaluate_object_list))),
+    //      field('statements', repeat1($._statement_in_block)),
+    //    ),
+    //
+    //    _evaluate_object_list: $ => sepBy($._evaluate_object, optional($._ALSO)),
+    //
+    //    _evaluate_object: $ => choice(
+    //      /*seq(
+    //        $.expr,
+    //        optional(seq($.THRU, $.expr))
+    //      ),*/
+    //      $.expr,
+    //      $.ANY,
+    //      $.TRUE,
+    //      $.FALSE
+    //    ),
+    //
+    //    evaluate_other: $ => seq(
+    //      $._WHEN_OTHER,
+    //      field('statement', repeat1($._statement_in_block))
+    //    ),
+    //
     goback_statement: $ => $._GOBACK,
 
     goto_statement: $ => seq(
@@ -1721,30 +1543,30 @@ module.exports = grammar({
     ),
 
     //todo add error if statement (see cobc/parser.y)
-    if_statement: $ => seq(
-      $._if_statement_header,
-    ),
+    //if_statement: $ => seq(
+    //  $._if_statement_header,
+    //),
 
-    _if_statement_header: $ => prec(1, seq(
-      $._IF,
-      field('condition', $.expr),
-      optional($._THEN),
-      field('statements', repeat($._statement_in_block)),
-      repeat($.else_if_sentense),
-      optional($.else_sentense),
-    )),
+    //_if_statement_header: $ => prec(1, seq(
+    //  $._IF,
+    //  field('condition', $.expr),
+    //  optional($._THEN),
+    //  field('statements', repeat($._statement_in_block)),
+    //  repeat($.else_if_sentense),
+    //  optional($.else_sentense),
+    //)),
 
-    else_if_sentense: $ => seq(
-      $._ELSE, $._IF,
-      field('condition', $.expr),
-      optional($._THEN),
-      field('statements', repeat($._statement_in_block)),
-    ),
+    //else_if_sentense: $ => seq(
+    //  $._ELSE, $._IF,
+    //  field('condition', $.expr),
+    //  optional($._THEN),
+    //  field('statements', repeat($._statement_in_block)),
+    //),
 
-    else_sentense: $ => seq(
-      $._ELSE,
-      repeat($._statement_in_block)
-    ),
+    //else_sentense: $ => seq(
+    //  $._ELSE,
+    //  repeat($._statement_in_block)
+    //),
 
     expr: $ => prec.left(choice($._expr_logic, $._expr_calc)),
 
@@ -1883,12 +1705,6 @@ module.exports = grammar({
       $._multiply_body,
     ),
 
-    multiply_statement_with_handler: $ => seq(
-      $._MULTIPLY,
-      $._multiply_body,
-      $._size_error_block,
-    ),
-
     _multiply_body: $ => choice(
       seq(
         field('val1', $._x),
@@ -1927,30 +1743,30 @@ module.exports = grammar({
       )))
     ),
 
-    perform_statement_call_proc: $ => seq(
-      $._PERFORM,
-      field('procedure', $.perform_procedure),
-      field('option', optional($.perform_option)),
-    ),
+    //perform_statement_call_proc: $ => seq(
+    //  $._PERFORM,
+    //  field('procedure', $.perform_procedure),
+    //  field('option', optional($.perform_option)),
+    //),
 
-    perform_statement_loop: $ => seq(
-      $._PERFORM,
-      field('option', optional($.perform_option)),
-      field('statements', repeat1($._statement_in_block)),
-      $._END_PERFORM
-    ),
+    //perform_statement_loop: $ => seq(
+    //  $._PERFORM,
+    //  field('option', optional($.perform_option)),
+    //  field('statements', repeat1($._statement_in_block)),
+    //  $._END_PERFORM
+    //),
 
     perform_procedure: $ => seq(
       $.label,
       optional(seq($.THRU, $.label)),
     ),
 
-    perform_option: $ => choice(
-      $.FOREVER,
-      seq(field('times', $._id_or_lit_or_func), $._TIMES),
-      seq(field('test', optional($.perform_test)), $._UNTIL, field('until', $.expr)),
-      seq(field('test', optional($.perform_test)), $._VARYING, field('varying', sepBy($.perform_varying, $._AFTER)))
-    ),
+    //perform_option: $ => choice(
+    //  $.FOREVER,
+    //  seq(field('times', $._id_or_lit_or_func), $._TIMES),
+    //  seq(field('test', optional($.perform_test)), $._UNTIL, field('until', $.expr)),
+    //  seq(field('test', optional($.perform_test)), $._VARYING, field('varying', sepBy($.perform_varying, $._AFTER)))
+    //),
 
     _id_or_lit_or_func: $ => choice(
       $._identifier,
@@ -1958,21 +1774,21 @@ module.exports = grammar({
       $.function_
     ),
 
-    perform_test: $ => seq(
-      optional($._WITH),
-      $._TEST,
-      choice($.BEFORE, $.AFTER)
-    ),
+    //perform_test: $ => seq(
+    //  optional($._WITH),
+    //  $._TEST,
+    //  choice($.BEFORE, $.AFTER)
+    //),
 
-    perform_varying: $ => seq(
-      $._identifier,
-      $._FROM,
-      field('from', $._x),
-      $._BY,
-      field('by', $._x),
-      $._UNTIL,
-      field('until', $.expr),
-    ),
+    //perform_varying: $ => seq(
+    //  $._identifier,
+    //  $._FROM,
+    //  field('from', $._x),
+    //  $._BY,
+    //  field('by', $._x),
+    //  $._UNTIL,
+    //  field('until', $.expr),
+    //),
 
     _read_statement_header: $ => prec.right(seq(
       $._READ,
@@ -1988,18 +1804,7 @@ module.exports = grammar({
       ))),
     )),
 
-    _read_statement_footer: $ =>
-      field('handler', choice(
-        nonempty($.at_end, $.not_at_end),
-        nonempty($.invalid_key, $.not_invalid_key),
-      )),
-
     read_statement: $ => $._read_statement_header,
-
-    read_statement_with_handler: $ => seq(
-      $._read_statement_header,
-      $._read_statement_footer,
-    ),
 
     with_lock: $ => choice(
       seq($._IGNORING, $._LOCK),
@@ -2011,8 +1816,8 @@ module.exports = grammar({
       ))
     ),
 
-    at_end: $ => seq($._AT, $._END, repeat1($._statement_imparative)),
-    not_at_end: $ => seq($._NOT, $._AT, $._END, repeat1($._statement_imparative)),
+    at_end: $ => seq($._AT, $._END),
+    not_at_end: $ => seq($._NOT, $._AT, $._END),
 
     sort_statement: $ => seq(
       $._SORT,
@@ -2076,12 +1881,6 @@ module.exports = grammar({
       $._subtract_body,
     ),
 
-    subtract_statement_with_handler: $ => seq(
-      $._SUBTRACT,
-      $._subtract_body,
-      $._size_error_block,
-    ),
-
     _subtract_body: $ => choice(
       seq(
         field('x', repeat1($._x)),
@@ -2106,11 +1905,6 @@ module.exports = grammar({
 
     write_statement: $ => seq(
       $._write_statement_header,
-    ),
-
-    write_statement_with_handler: $ => seq(
-      $._write_statement_header,
-      field('handler', $._write_handler),
     ),
 
     _write_statement_header: $ => seq(
@@ -2159,27 +1953,23 @@ module.exports = grammar({
     eop: $ => seq(
       $._AT,
       choice($._EOP, $._END_OF_PAGE),
-      repeat1($._statement_imparative)
     ),
 
     not_eop: $ => seq(
       $._NOT,
       $._AT,
       choice($._EOP, $._END_OF_PAGE),
-      repeat1($._statement_imparative)
     ),
 
     invalid_key: $ => seq(
       $._INVALID,
       $._KEY,
-      repeat1($._statement_imparative)
     ),
 
     not_invalid_key: $ => seq(
       $._NOT,
       $._INVALID,
       $._KEY,
-      repeat1($._statement_imparative)
     ),
 
     next_sentence_statement: $ => seq($._NEXT, $._SENTENCE),
