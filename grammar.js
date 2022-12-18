@@ -1187,6 +1187,9 @@ module.exports = grammar({
       $.evaluate_case,
       $.evaluate_other,
       $.perform_statement_loop,
+      $.if_header,
+      $.else_if_header,
+      $.else_header,
     ),
 
     //todo
@@ -1535,31 +1538,20 @@ module.exports = grammar({
       seq($._LITERAL, optional(seq($._in_of, $._LITERAL)))
     ),
 
-    //todo add error if statement (see cobc/parser.y)
-    //if_statement: $ => seq(
-    //  $._if_statement_header,
-    //),
 
-    //_if_statement_header: $ => prec(1, seq(
-    //  $._IF,
-    //  field('condition', $.expr),
-    //  optional($._THEN),
-    //  field('statements', repeat($._statement_in_block)),
-    //  repeat($.else_if_sentense),
-    //  optional($.else_sentense),
-    //)),
+    if_header: $ => prec(1, seq(
+      $._IF,
+      field('condition', $.expr),
+      optional($._THEN),
+    )),
 
-    //else_if_sentense: $ => seq(
-    //  $._ELSE, $._IF,
-    //  field('condition', $.expr),
-    //  optional($._THEN),
-    //  field('statements', repeat($._statement_in_block)),
-    //),
+    else_if_header: $ => prec.right(1, seq(
+      $._ELSE, $._IF,
+      field('condition', $.expr),
+      optional($._THEN),
+    )),
 
-    //else_sentense: $ => seq(
-    //  $._ELSE,
-    //  repeat($._statement_in_block)
-    //),
+    else_header: $ => $._ELSE,
 
     expr: $ => prec.left(choice($._expr_logic, $._expr_calc)),
 

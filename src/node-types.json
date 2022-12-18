@@ -3159,6 +3159,27 @@
     }
   },
   {
+    "type": "else_header",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "else_if_header",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "entry_name",
     "named": true,
     "fields": {}
@@ -3986,6 +4007,22 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "if_header",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -6243,6 +6280,14 @@
           "named": true
         },
         {
+          "type": "else_header",
+          "named": true
+        },
+        {
+          "type": "else_if_header",
+          "named": true
+        },
+        {
           "type": "eop",
           "named": true
         },
@@ -6264,6 +6309,10 @@
         },
         {
           "type": "goto_statement",
+          "named": true
+        },
+        {
+          "type": "if_header",
           "named": true
         },
         {
@@ -6394,6 +6443,14 @@
           "named": true
         },
         {
+          "type": "else_header",
+          "named": true
+        },
+        {
+          "type": "else_if_header",
+          "named": true
+        },
+        {
           "type": "eop",
           "named": true
         },
@@ -6415,6 +6472,10 @@
         },
         {
           "type": "goto_statement",
+          "named": true
+        },
+        {
+          "type": "if_header",
           "named": true
         },
         {
