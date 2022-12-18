@@ -74,5 +74,5 @@ jobs:
           cd test
           bash check_tests.sh
 
-      - name: Run tests
-        run: node_modules/.bin/tree-sitter test
+          #- name: Run tests
+          #  run: node_modules/.bin/tree-sitter test
