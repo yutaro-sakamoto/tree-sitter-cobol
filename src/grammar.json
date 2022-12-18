@@ -5907,6 +5907,18 @@
           "name": "_END_WRITE"
         },
         {
+          "type": "SYMBOL",
+          "name": "_END_PERFORM"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_END_IF"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_END_EVALUATE"
+        },
+        {
           "type": "STRING",
           "value": "."
         }
@@ -5954,6 +5966,18 @@
         {
           "type": "SYMBOL",
           "name": "not_invalid_key"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "evaluate_header"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "evaluate_case"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "evaluate_other"
         }
       ]
     },
@@ -7928,6 +7952,151 @@
           ]
         }
       ]
+    },
+    "evaluate_header": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_EVALUATE"
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "evaluate_subject"
+              },
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "_ALSO"
+                        },
+                        {
+                          "type": "BLANK"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "evaluate_subject"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "evaluate_subject": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "expr"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "TRUE"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "FALSE"
+        }
+      ]
+    },
+    "evaluate_case": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "REPEAT1",
+        "content": {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_WHEN"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_evaluate_object_list"
+            }
+          ]
+        }
+      }
+    },
+    "_evaluate_object_list": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_evaluate_object"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_ALSO"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_evaluate_object"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "_evaluate_object": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "expr"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "ANY"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "TRUE"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "FALSE"
+        }
+      ]
+    },
+    "evaluate_other": {
+      "type": "SYMBOL",
+      "name": "_WHEN_OTHER"
     },
     "goback_statement": {
       "type": "SYMBOL",

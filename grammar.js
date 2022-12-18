@@ -1164,6 +1164,9 @@ module.exports = grammar({
       $._END_READ,
       $._END_SUBTRACT,
       $._END_WRITE,
+      $._END_PERFORM,
+      $._END_IF,
+      $._END_EVALUATE,
       '.'
     ),
 
@@ -1178,6 +1181,10 @@ module.exports = grammar({
       $.not_eop,
       $.invalid_key,
       $.not_invalid_key,
+
+      $.evaluate_header,
+      $.evaluate_case,
+      $.evaluate_other,
     ),
 
     //todo
@@ -1489,46 +1496,30 @@ module.exports = grammar({
       )
     ),
 
-    //    evaluate_statement: $ => seq(
-    //      $._evaluate_header,
-    //    ),
-    //
-    //    _evaluate_header: $ => seq(
-    //      $._EVALUATE,
-    //      field('subjects', sepBy($.evaluate_subject, optional($._ALSO))),
-    //      field('cases', repeat1($.evaluate_case)),
-    //      field('other', optional($.evaluate_other)),
-    //    ),
-    //
-    //    evaluate_subject: $ => choice(
-    //      $.expr,
-    //      $.TRUE,
-    //      $.FALSE,
-    //    ),
-    //
-    //    evaluate_case: $ => seq(
-    //      field('when', repeat1(seq($._WHEN, $._evaluate_object_list))),
-    //      field('statements', repeat1($._statement_in_block)),
-    //    ),
-    //
-    //    _evaluate_object_list: $ => sepBy($._evaluate_object, optional($._ALSO)),
-    //
-    //    _evaluate_object: $ => choice(
-    //      /*seq(
-    //        $.expr,
-    //        optional(seq($.THRU, $.expr))
-    //      ),*/
-    //      $.expr,
-    //      $.ANY,
-    //      $.TRUE,
-    //      $.FALSE
-    //    ),
-    //
-    //    evaluate_other: $ => seq(
-    //      $._WHEN_OTHER,
-    //      field('statement', repeat1($._statement_in_block))
-    //    ),
-    //
+    evaluate_header: $ => prec.right(seq(
+      $._EVALUATE,
+      sepBy($.evaluate_subject, optional($._ALSO)),
+    )),
+
+    evaluate_subject: $ => choice(
+      $.expr,
+      $.TRUE,
+      $.FALSE,
+    ),
+
+    evaluate_case: $ => prec.right(repeat1(seq($._WHEN, $._evaluate_object_list))),
+
+    _evaluate_object_list: $ => prec.right(sepBy($._evaluate_object, optional($._ALSO))),
+
+    _evaluate_object: $ => choice(
+      $.expr,
+      $.ANY,
+      $.TRUE,
+      $.FALSE
+    ),
+
+    evaluate_other: $ => $._WHEN_OTHER,
+
     goback_statement: $ => $._GOBACK,
 
     goto_statement: $ => seq(
