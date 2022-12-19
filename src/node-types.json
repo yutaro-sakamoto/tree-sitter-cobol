@@ -771,6 +771,11 @@
     "fields": {}
   },
   {
+    "type": "SUPPRESS",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "THRU",
     "named": true,
     "fields": {}
@@ -2230,6 +2235,60 @@
     "type": "continue_statement",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "copy_statement",
+    "named": true,
+    "fields": {
+      "book": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "WORD",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "lib_name": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "WORD",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "supress": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "SUPPRESS",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "replacing_clause",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "crt_status_clause",
@@ -7422,6 +7481,54 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "replacing_clause",
+    "named": true,
+    "fields": {
+      "by": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "WORD",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "leading_or_trailing": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "LEADING",
+            "named": true
+          },
+          {
+            "type": "TRAILING",
+            "named": true
+          }
+        ]
+      },
+      "x": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "WORD",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {

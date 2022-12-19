@@ -25,6 +25,7 @@ module.exports = grammar({
     $._LINE_PREFIX_COMMENT,
     $._LINE_SUFFIX_COMMENT,
     $._LINE_COMMENT,
+    $.copy_statement,
   ],
 
   rules: {
@@ -1194,6 +1195,25 @@ module.exports = grammar({
       $.else_header,
     ),
 
+    copy_statement: $ => seq(
+      $._COPY,
+      field('book', optional(choice($.WORD, $.string))),
+      field('lib_name', optional(seq(
+        $._in_of,
+        choice($.WORD, $.string)))
+      ),
+      field('supress', optional($.SUPPRESS)),
+      optional($.replacing_clause),
+      '.'
+    ),
+
+    replacing_clause: $ => seq(
+      field('leading_or_trailing', optional(choice($.LEADING, $.TRAILING))),
+      field('x', choice($.WORD, $.string)),
+      optional($._BY),
+      field('by', choice($.WORD, $.string)),
+    ),
+
     //todo
     stop_statement: $ => seq(
       $._STOP, $._RUN
@@ -2138,6 +2158,7 @@ module.exports = grammar({
     _CHARACTERS: $ => /[cC][hH][aA][rR][aA][cC][tT][eE][rR][sS]/,
     _CLASS: $ => /[cC][lL][aA][sS][sS]/,
     _CLASS_NAME: $ => /[cC][lL][aA][sS][sS]-[nN][aA][mM][eE]/,
+    _COPY: $ => /[cC][oO][pP][yY]/,
     _CLOSE: $ => /[cC][lL][oO][sS][eE]/,
     _CLOSE_NOFEED: $ => /[cC][lL][oO][sS][eE]-[nN][oO][fF][eE][eE][dD]/,
     _CODE: $ => /[cC][oO][dD][eE]/,
@@ -2930,7 +2951,7 @@ module.exports = grammar({
     SUBSTITUTE_CASE_FUNC: $ => $._SUBSTITUTE_CASE_FUNC,
     //SUBTRACT: $ => $._SUBTRACT,
     //SUM: $ => $._SUM,
-    //SUPPRESS: $ => $._SUPPRESS,
+    SUPPRESS: $ => $._SUPPRESS,
     //SYMBOLIC: $ => $._SYMBOLIC,
     //SYNCHRONIZED: $ => $._SYNCHRONIZED,
     //TALLYING: $ => $._TALLYING,
