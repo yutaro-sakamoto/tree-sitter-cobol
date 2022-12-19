@@ -13811,7 +13811,7 @@
     },
     "_THRU": {
       "type": "PATTERN",
-      "value": "[tT][hH][rR][uU]"
+      "value": "([tT][hH][rR][uU])|[tT][hH][rR][oO][uU][gG][hH]"
     },
     "_TIME": {
       "type": "PATTERN",
