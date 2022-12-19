@@ -1174,6 +1174,8 @@ module.exports = grammar({
     _start_handler: $ => choice(
       $.on_exception,
       $.not_on_exception,
+      $.on_size_error,
+      $.not_on_size_error,
       $.on_overflow,
       $.not_on_overflow,
       $.at_end,

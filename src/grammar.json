@@ -5941,6 +5941,14 @@
         },
         {
           "type": "SYMBOL",
+          "name": "on_size_error"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "not_on_size_error"
+        },
+        {
+          "type": "SYMBOL",
           "name": "on_overflow"
         },
         {
