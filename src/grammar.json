@@ -5601,89 +5601,93 @@
       ]
     },
     "_procedure_division_contenet": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "_procedure_division_headers"
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            },
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "SEQ",
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
                 "members": [
                   {
                     "type": "SYMBOL",
-                    "name": "_procedure_division_statements_before_header"
+                    "name": "_procedure_division_headers"
                   },
                   {
-                    "type": "SYMBOL",
-                    "name": "_procedure_division_headers"
+                    "type": "BLANK"
                   }
                 ]
-              }
-            },
-            {
-              "type": "REPEAT1",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_procedure_division_statement"
-              }
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "_procedure_division_headers"
-                },
-                {
-                  "type": "BLANK"
+              },
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_procedure_division_statements_before_header"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "_procedure_division_headers"
+                    }
+                  ]
                 }
-              ]
-            },
-            {
-              "type": "REPEAT1",
-              "content": {
-                "type": "SEQ",
+              },
+              {
+                "type": "REPEAT1",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_procedure_division_statement"
+                }
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
                 "members": [
                   {
                     "type": "SYMBOL",
-                    "name": "_procedure_division_statements_before_header"
+                    "name": "_procedure_division_headers"
                   },
                   {
-                    "type": "SYMBOL",
-                    "name": "_procedure_division_headers"
+                    "type": "BLANK"
                   }
                 ]
+              },
+              {
+                "type": "REPEAT1",
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_procedure_division_statements_before_header"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "_procedure_division_headers"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_procedure_division_statement"
+                }
               }
-            },
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_procedure_division_statement"
-              }
-            }
-          ]
-        }
-      ]
+            ]
+          }
+        ]
+      }
     },
     "_procedure_division_statement": {
       "type": "CHOICE",
@@ -10444,8 +10448,16 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "_AT"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_AT"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "SYMBOL",
@@ -10461,8 +10473,16 @@
           "name": "_NOT"
         },
         {
-          "type": "SYMBOL",
-          "name": "_AT"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_AT"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "SYMBOL",

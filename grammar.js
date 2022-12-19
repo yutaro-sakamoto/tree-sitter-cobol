@@ -1085,7 +1085,7 @@ module.exports = grammar({
       $._end_statement
     ),
 
-    _procedure_division_contenet: $ => choice(
+    _procedure_division_contenet: $ => prec.right(choice(
       seq(
         optional($._procedure_division_headers),
         repeat(seq(
@@ -1103,7 +1103,7 @@ module.exports = grammar({
         repeat($._procedure_division_statement)
       ),
       //$._procedure_division_headers,
-    ),
+    )),
 
     _procedure_division_statement: $ => choice(
       $._statement,
@@ -1829,8 +1829,8 @@ module.exports = grammar({
       ))
     ),
 
-    at_end: $ => seq($._AT, $._END),
-    not_at_end: $ => seq($._NOT, $._AT, $._END),
+    at_end: $ => seq(optional($._AT), $._END),
+    not_at_end: $ => seq($._NOT, optional($._AT), $._END),
 
     sort_statement: $ => seq(
       $._SORT,
