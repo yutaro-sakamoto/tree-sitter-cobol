@@ -1150,6 +1150,7 @@ module.exports = grammar({
       $.open_statement,
       $.perform_statement_call_proc,
       $.read_statement,
+      $.rewrite_statement,
       $.sort_statement,
       $.stop_statement,
       $.subtract_statement,
@@ -1170,6 +1171,7 @@ module.exports = grammar({
       $._END_PERFORM,
       $._END_IF,
       $._END_EVALUATE,
+      $._END_REWRITE,
       '.'
     ),
 
@@ -1831,6 +1833,13 @@ module.exports = grammar({
 
     at_end: $ => seq(optional($._AT), $._END),
     not_at_end: $ => seq($._NOT, optional($._AT), $._END),
+
+    rewrite_statement: $ => seq(
+      $._REWRITE,
+      field('record', $.qualified_word),
+      field('from', optional(seq($._FROM, $._id_or_lit))),
+      field('lock', optional(choice($.write_lock, $.write_no_lock))),
+    ),
 
     sort_statement: $ => seq(
       $._SORT,

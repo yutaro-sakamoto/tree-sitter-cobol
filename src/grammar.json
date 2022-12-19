@@ -5863,6 +5863,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "rewrite_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "sort_statement"
         },
         {
@@ -5933,6 +5937,10 @@
         {
           "type": "SYMBOL",
           "name": "_END_EVALUATE"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_END_REWRITE"
         },
         {
           "type": "STRING",
@@ -10487,6 +10495,73 @@
         {
           "type": "SYMBOL",
           "name": "_END"
+        }
+      ]
+    },
+    "rewrite_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_REWRITE"
+        },
+        {
+          "type": "FIELD",
+          "name": "record",
+          "content": {
+            "type": "SYMBOL",
+            "name": "qualified_word"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "from",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_FROM"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_id_or_lit"
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "lock",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "write_lock"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "write_no_lock"
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
         }
       ]
     },
