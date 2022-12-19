@@ -8245,7 +8245,7 @@
             "name": "condition",
             "content": {
               "type": "SYMBOL",
-              "name": "expr"
+              "name": "_expr_logic"
             }
           },
           {
@@ -8282,7 +8282,7 @@
             "name": "condition",
             "content": {
               "type": "SYMBOL",
-              "name": "expr"
+              "name": "_expr_logic"
             }
           },
           {
@@ -8515,6 +8515,27 @@
               },
               {
                 "type": "SYMBOL",
+                "name": "ne"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_expr_calc"
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_LEFT",
+          "value": -1,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_expr_calc"
+              },
+              {
+                "type": "SYMBOL",
                 "name": "eq"
               },
               {
@@ -8600,27 +8621,6 @@
               {
                 "type": "SYMBOL",
                 "name": "le"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_expr_calc"
-              }
-            ]
-          }
-        },
-        {
-          "type": "PREC_LEFT",
-          "value": -1,
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "_expr_calc"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "ne"
               },
               {
                 "type": "SYMBOL",
@@ -8802,10 +8802,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_EQUALS"
         }
       ]
     },

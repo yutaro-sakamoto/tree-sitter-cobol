@@ -3168,11 +3168,167 @@
     "named": true,
     "fields": {
       "condition": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "expr",
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "*",
+            "named": false
+          },
+          {
+            "type": "+",
+            "named": false
+          },
+          {
+            "type": "-",
+            "named": false
+          },
+          {
+            "type": "/",
+            "named": false
+          },
+          {
+            "type": "ALL",
+            "named": true
+          },
+          {
+            "type": "ALPHABETIC",
+            "named": true
+          },
+          {
+            "type": "ALPHABETIC_LOWER",
+            "named": true
+          },
+          {
+            "type": "ALPHABETIC_UPPER",
+            "named": true
+          },
+          {
+            "type": "AND",
+            "named": true
+          },
+          {
+            "type": "CLASS_NAME",
+            "named": true
+          },
+          {
+            "type": "HIGH_VALUE",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE",
+            "named": true
+          },
+          {
+            "type": "NEGATIVE",
+            "named": true
+          },
+          {
+            "type": "NOT",
+            "named": true
+          },
+          {
+            "type": "NUMERIC",
+            "named": true
+          },
+          {
+            "type": "OMITTED",
+            "named": true
+          },
+          {
+            "type": "OR",
+            "named": true
+          },
+          {
+            "type": "POSITIVE",
+            "named": true
+          },
+          {
+            "type": "QUOTE",
+            "named": true
+          },
+          {
+            "type": "SPACE",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL",
+            "named": true
+          },
+          {
+            "type": "ZERO",
+            "named": true
+          },
+          {
+            "type": "^",
+            "named": false
+          },
+          {
+            "type": "eq",
+            "named": true
+          },
+          {
+            "type": "function_",
+            "named": true
+          },
+          {
+            "type": "ge",
+            "named": true
+          },
+          {
+            "type": "gt",
+            "named": true
+          },
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "le",
+            "named": true
+          },
+          {
+            "type": "linage_counter",
+            "named": true
+          },
+          {
+            "type": "lt",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "ne",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          },
+          {
+            "type": "x_string",
             "named": true
           }
         ]
@@ -4014,11 +4170,167 @@
     "named": true,
     "fields": {
       "condition": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "expr",
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "*",
+            "named": false
+          },
+          {
+            "type": "+",
+            "named": false
+          },
+          {
+            "type": "-",
+            "named": false
+          },
+          {
+            "type": "/",
+            "named": false
+          },
+          {
+            "type": "ALL",
+            "named": true
+          },
+          {
+            "type": "ALPHABETIC",
+            "named": true
+          },
+          {
+            "type": "ALPHABETIC_LOWER",
+            "named": true
+          },
+          {
+            "type": "ALPHABETIC_UPPER",
+            "named": true
+          },
+          {
+            "type": "AND",
+            "named": true
+          },
+          {
+            "type": "CLASS_NAME",
+            "named": true
+          },
+          {
+            "type": "HIGH_VALUE",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE",
+            "named": true
+          },
+          {
+            "type": "NEGATIVE",
+            "named": true
+          },
+          {
+            "type": "NOT",
+            "named": true
+          },
+          {
+            "type": "NUMERIC",
+            "named": true
+          },
+          {
+            "type": "OMITTED",
+            "named": true
+          },
+          {
+            "type": "OR",
+            "named": true
+          },
+          {
+            "type": "POSITIVE",
+            "named": true
+          },
+          {
+            "type": "QUOTE",
+            "named": true
+          },
+          {
+            "type": "SPACE",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL",
+            "named": true
+          },
+          {
+            "type": "ZERO",
+            "named": true
+          },
+          {
+            "type": "^",
+            "named": false
+          },
+          {
+            "type": "eq",
+            "named": true
+          },
+          {
+            "type": "function_",
+            "named": true
+          },
+          {
+            "type": "ge",
+            "named": true
+          },
+          {
+            "type": "gt",
+            "named": true
+          },
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "le",
+            "named": true
+          },
+          {
+            "type": "linage_counter",
+            "named": true
+          },
+          {
+            "type": "lt",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "ne",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          },
+          {
+            "type": "x_string",
             "named": true
           }
         ]

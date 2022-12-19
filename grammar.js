@@ -1541,13 +1541,13 @@ module.exports = grammar({
 
     if_header: $ => prec(1, seq(
       $._IF,
-      field('condition', $.expr),
+      field('condition', $._expr_logic),
       optional($._THEN),
     )),
 
     else_if_header: $ => prec.right(1, seq(
       $._ELSE, $._IF,
-      field('condition', $.expr),
+      field('condition', $._expr_logic),
       optional($._THEN),
     )),
 
@@ -1578,12 +1578,12 @@ module.exports = grammar({
     )),
 
     _expr_compare: $ => choice(
+      prec.left(-1, seq($._expr_calc, $.ne, $._expr_calc)),
       prec.left(-1, seq($._expr_calc, $.eq, $._expr_calc)),
       prec.left(-1, seq($._expr_calc, $.gt, $._expr_calc)),
       prec.left(-1, seq($._expr_calc, $.lt, $._expr_calc)),
       prec.left(-1, seq($._expr_calc, $.ge, $._expr_calc)),
       prec.left(-1, seq($._expr_calc, $.le, $._expr_calc)),
-      prec.left(-1, seq($._expr_calc, $.ne, $._expr_calc)),
     ),
 
     _expr_is: $ => choice(
@@ -1614,7 +1614,6 @@ module.exports = grammar({
     eq: $ => choice(
       '=',
       seq(optional($._IS), $._EQUAL, optional($._TO)),
-      $._EQUALS
     ),
 
     ge: $ => choice(
