@@ -5811,6 +5811,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "compute_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "display_statement"
         },
         {
@@ -7281,6 +7285,47 @@
           "content": {
             "type": "SYMBOL",
             "name": "close_arg"
+          }
+        }
+      ]
+    },
+    "compute_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_COMPUTE"
+        },
+        {
+          "type": "FIELD",
+          "name": "left",
+          "content": {
+            "type": "REPEAT1",
+            "content": {
+              "type": "SYMBOL",
+              "name": "arithmetic_x"
+            }
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "="
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_EQUAL"
+            }
+          ]
+        },
+        {
+          "type": "FIELD",
+          "name": "right",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expr"
           }
         }
       ]

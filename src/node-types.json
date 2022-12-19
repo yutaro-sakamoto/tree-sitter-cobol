@@ -2205,6 +2205,32 @@
     }
   },
   {
+    "type": "compute_statement",
+    "named": true,
+    "fields": {
+      "left": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "arithmetic_x",
+            "named": true
+          }
+        ]
+      },
+      "right": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "configuration_section",
     "named": true,
     "fields": {},
@@ -6639,6 +6665,10 @@
           "named": true
         },
         {
+          "type": "compute_statement",
+          "named": true
+        },
+        {
           "type": "continue_statement",
           "named": true
         },
@@ -6807,6 +6837,10 @@
         },
         {
           "type": "close_statement",
+          "named": true
+        },
+        {
+          "type": "compute_statement",
           "named": true
         },
         {

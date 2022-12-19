@@ -1139,6 +1139,7 @@ module.exports = grammar({
       $.add_statement,
       $.call_statement,
       $.close_statement,
+      $.compute_statement,
       $.display_statement,
       $.divide_statement,
       $.continue_statement,
@@ -1419,6 +1420,13 @@ module.exports = grammar({
     close_statement: $ => seq(
       $._CLOSE,
       repeat1($.close_arg),
+    ),
+
+    compute_statement: $ => seq(
+      $._COMPUTE,
+      field('left', repeat1($.arithmetic_x)),
+      choice('=', $._EQUAL),
+      field('right', $.expr),
     ),
 
     close_arg: $ => seq(
