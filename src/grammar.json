@@ -9908,8 +9908,16 @@
           "type": "FIELD",
           "name": "option",
           "content": {
-            "type": "SYMBOL",
-            "name": "perform_option"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "perform_option"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
           }
         }
       ]

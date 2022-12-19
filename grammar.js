@@ -1757,7 +1757,7 @@ module.exports = grammar({
 
     perform_statement_loop: $ => seq(
       $._PERFORM,
-      field('option', $.perform_option),
+      field('option', optional($.perform_option)),
     ),
 
     perform_procedure: $ => seq(
