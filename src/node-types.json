@@ -25,6 +25,16 @@
     "fields": {}
   },
   {
+    "type": "ALPHANUMERIC",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "ALPHANUMERIC_EDITED",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "ALSO",
     "named": true,
     "fields": {}
@@ -335,6 +345,11 @@
     "fields": {}
   },
   {
+    "type": "FILLER",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "FOREGROUND_COLOR",
     "named": true,
     "fields": {}
@@ -491,6 +506,11 @@
     "fields": {}
   },
   {
+    "type": "NATIONAL_EDITED",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "NATIVE",
     "named": true,
     "fields": {}
@@ -522,6 +542,11 @@
   },
   {
     "type": "NUMERIC",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "NUMERIC_EDITED",
     "named": true,
     "fields": {}
   },
@@ -1452,6 +1477,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "all_to_value",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "alphabet_literal",
@@ -4545,6 +4575,231 @@
     }
   },
   {
+    "type": "initialize_category_to_value",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "ALPHABETIC",
+          "named": true
+        },
+        {
+          "type": "ALPHANUMERIC",
+          "named": true
+        },
+        {
+          "type": "ALPHANUMERIC_EDITED",
+          "named": true
+        },
+        {
+          "type": "NATIONAL",
+          "named": true
+        },
+        {
+          "type": "NATIONAL_EDITED",
+          "named": true
+        },
+        {
+          "type": "NUMERIC",
+          "named": true
+        },
+        {
+          "type": "NUMERIC_EDITED",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "initialize_replacing_item",
+    "named": true,
+    "fields": {
+      "by": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "ALL",
+            "named": true
+          },
+          {
+            "type": "HIGH_VALUE",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE",
+            "named": true
+          },
+          {
+            "type": "QUOTE",
+            "named": true
+          },
+          {
+            "type": "SPACE",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL",
+            "named": true
+          },
+          {
+            "type": "ZERO",
+            "named": true
+          },
+          {
+            "type": "function_",
+            "named": true
+          },
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "linage_counter",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
+          }
+        ]
+      },
+      "category": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "ALPHABETIC",
+            "named": true
+          },
+          {
+            "type": "ALPHANUMERIC",
+            "named": true
+          },
+          {
+            "type": "ALPHANUMERIC_EDITED",
+            "named": true
+          },
+          {
+            "type": "NATIONAL",
+            "named": true
+          },
+          {
+            "type": "NATIONAL_EDITED",
+            "named": true
+          },
+          {
+            "type": "NUMERIC",
+            "named": true
+          },
+          {
+            "type": "NUMERIC_EDITED",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "initialize_statement",
+    "named": true,
+    "fields": {
+      "default": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "DEFAULT",
+            "named": true
+          }
+        ]
+      },
+      "filler": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "FILLER",
+            "named": true
+          }
+        ]
+      },
+      "replacing": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "initialize_replacing_item",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "all_to_value",
+            "named": true
+          },
+          {
+            "type": "initialize_category_to_value",
+            "named": true
+          }
+        ]
+      },
+      "x": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "input_output_section",
     "named": true,
     "fields": {},
@@ -6839,6 +7094,10 @@
           "named": true
         },
         {
+          "type": "initialize_statement",
+          "named": true
+        },
+        {
           "type": "invalid_key",
           "named": true
         },
@@ -7015,6 +7274,10 @@
         },
         {
           "type": "if_header",
+          "named": true
+        },
+        {
+          "type": "initialize_statement",
           "named": true
         },
         {

@@ -1139,12 +1139,13 @@ module.exports = grammar({
       $.add_statement,
       $.call_statement,
       $.close_statement,
+      $.continue_statement,
       $.compute_statement,
       $.display_statement,
       $.divide_statement,
-      $.continue_statement,
       $.goback_statement,
       $.goto_statement,
+      $.initialize_statement,
       $.move_statement,
       $.multiply_statement,
       $.open_statement,
@@ -1674,6 +1675,48 @@ module.exports = grammar({
     lt: $ => choice(
       '<',
       seq(optional($._IS), $._LESS, optional($._THAN))
+    ),
+
+    initialize_statement: $ => seq(
+      $._INITIALIZE,
+      field('x', repeat1($._target_x)),
+      field('filler', optional(seq(optional($._WITH), $.FILLER))),
+      field('value', optional(choice(
+        $.all_to_value,
+        $.initialize_category_to_value))),
+      field('replacing', optional(seq(
+        $._REPLACING,
+        repeat1($.initialize_replacing_item)))),
+      field('default', optional($.DEFAULT)),
+    ),
+
+    all_to_value: $ => seq(
+      $._ALL,
+      optional($._TO),
+      $._VALUE
+    ),
+
+    initialize_category_to_value: $ => seq(
+      $._initialize_category,
+      optional($._TO),
+      $._VALUE
+    ),
+
+    _initialize_category: $ => choice(
+      $.ALPHABETIC,
+      $.ALPHANUMERIC,
+      $.NUMERIC,
+      $.ALPHANUMERIC_EDITED,
+      $.NUMERIC_EDITED,
+      $.NATIONAL,
+      $.NATIONAL_EDITED
+    ),
+
+    initialize_replacing_item: $ => seq(
+      field('category', $._initialize_category),
+      optional($._DATA),
+      $._BY,
+      field('by', $._x),
     ),
 
     move_statement: $ => seq(
@@ -2591,8 +2634,8 @@ module.exports = grammar({
     ALPHABETIC: $ => $._ALPHABETIC,
     ALPHABETIC_LOWER: $ => $._ALPHABETIC_LOWER,
     ALPHABETIC_UPPER: $ => $._ALPHABETIC_UPPER,
-    //ALPHANUMERIC: $ => $._ALPHANUMERIC,
-    //ALPHANUMERIC_EDITED: $ => $._ALPHANUMERIC_EDITED,
+    ALPHANUMERIC: $ => $._ALPHANUMERIC,
+    ALPHANUMERIC_EDITED: $ => $._ALPHANUMERIC_EDITED,
     ALSO: $ => $._ALSO,
     //ALTER: $ => $._ALTER,
     //ALTERNATE: $ => $._ALTERNATE,
@@ -2748,7 +2791,7 @@ module.exports = grammar({
     FD: $ => $._FD,
     //FILE_CONTROL: $ => $._FILE_CONTROL,
     FILE_ID: $ => $._FILE_ID,
-    //FILLER: $ => $._FILLER,
+    FILLER: $ => $._FILLER,
     //FINAL: $ => $._FINAL,
     //FIRST: $ => $._FIRST,
     //FOOTING: $ => $._FOOTING,
@@ -2831,7 +2874,7 @@ module.exports = grammar({
     MULTIPLE: $ => $._MULTIPLE,
     //MULTIPLY: $ => $._MULTIPLY,
     NATIONAL: $ => $._NATIONAL,
-    //NATIONAL_EDITED: $ => $._NATIONAL_EDITED,
+    NATIONAL_EDITED: $ => $._NATIONAL_EDITED,
     NATIVE: $ => $._NATIVE,
     ////NE: $ => $._NE,
     NEGATIVE: $ => $._NEGATIVE,
@@ -2850,7 +2893,7 @@ module.exports = grammar({
     //NUMBER: $ => $._NUMBER,
     //NUMBERS: $ => $._NUMBERS,
     NUMERIC: $ => $._NUMERIC,
-    //NUMERIC_EDITED: $ => $._NUMERIC_EDITED,
+    NUMERIC_EDITED: $ => $._NUMERIC_EDITED,
     NUMVALC_FUNC: $ => $._NUMVALC_FUNC,
     //OBJECT_COMPUTER: $ => $._OBJECT_COMPUTER,
     //OCCURS: $ => $._OCCURS,
