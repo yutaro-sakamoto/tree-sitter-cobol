@@ -350,11 +350,6 @@
     "fields": {}
   },
   {
-    "type": "FUNCTION_NAME",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "GLOBAL",
     "named": true,
     "fields": {}
@@ -3261,6 +3256,14 @@
             "named": false
           },
           {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
             "type": "*",
             "named": false
           },
@@ -3997,10 +4000,6 @@
           "named": true
         },
         {
-          "type": "FUNCTION_NAME",
-          "named": true
-        },
-        {
           "type": "HIGH_VALUE",
           "named": true
         },
@@ -4058,6 +4057,10 @@
         },
         {
           "type": "WHEN_COMPILED_FUNC",
+          "named": true
+        },
+        {
+          "type": "WORD",
           "named": true
         },
         {
@@ -4260,6 +4263,14 @@
         "types": [
           {
             "type": "&",
+            "named": false
+          },
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
             "named": false
           },
           {

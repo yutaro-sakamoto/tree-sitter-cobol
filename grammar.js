@@ -790,12 +790,12 @@ module.exports = grammar({
       $._REDEFINES, $._identifier
     ),
 
-    _identifier: $ => choice(
+    _identifier: $ => prec.right(choice(
       $.qualified_word,
       seq($.qualified_word, $.subref),
       seq($.qualified_word, $.refmod),
       seq($.qualified_word, $.subref, $.refmod),
-    ),
+    )),
 
     qualified_word: $ => sepBy(
       $.WORD, $._in_of
@@ -1638,7 +1638,8 @@ module.exports = grammar({
     _expr_logic: $ => prec.left(choice(
       seq($.NOT, $._expr_logic),
       seq($._expr_logic, choice($.AND, $.OR), $._expr_logic),
-      $._expr_bool
+      $._expr_bool,
+      seq("(", $._expr_logic, ")")
     )),
 
     eq: $ => choice(
@@ -2011,7 +2012,7 @@ module.exports = grammar({
       seq($.ALL, $._basic_value)
     ),
 
-    function_: $ => choice(
+    function_: $ => prec.right(seq($._FUNCTION, choice(
       seq($.CURRENT_DATE_FUNC, optional($.func_refmod)),
       seq($.WHEN_COMPILED_FUNC, optional($.func_refmod)),
       seq($.UPPER_CASE_FUNC, '(', $._exp, ')', optional($.func_refmod)),
@@ -2023,8 +2024,8 @@ module.exports = grammar({
       seq($.TRIM_FUNCTION, '(', $._trim_args, ')', optional($.func_refmod)),
       seq($.NUMVALC_FUNC, '(', $._numvalc_args, ')'),
       seq($.LOCALE_DT_FUNC, '(', $._locale_dt_args, ')', optional($.func_refmod)),
-      seq($.FUNCTION_NAME, optional($._func_args)),
-    ),
+      seq($.WORD, optional($._func_args)),
+    ))),
 
     func_refmod: $ => choice(
       seq('(', $._exp, ':', ')'),
