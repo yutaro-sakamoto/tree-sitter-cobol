@@ -11818,7 +11818,7 @@
                     "members": [
                       {
                         "type": "SYMBOL",
-                        "name": "_func_args"
+                        "name": "func_args"
                       },
                       {
                         "type": "BLANK"
@@ -12020,7 +12020,7 @@
         }
       ]
     },
-    "_func_args": {
+    "func_args": {
       "type": "SEQ",
       "members": [
         {
@@ -12458,7 +12458,7 @@
     },
     "_COMMA_DELIM": {
       "type": "PATTERN",
-      "value": "[cC][oO][mM][mM][aA]-[dD][eE][lL][iI][mM]"
+      "value": ",+"
     },
     "_COMMIT": {
       "type": "PATTERN",
@@ -13709,7 +13709,7 @@
     },
     "_SEMI_COLON": {
       "type": "PATTERN",
-      "value": "[sS][eE][mM][iI]-[cC][oO][lL][oO][nN]"
+      "value": ";+"
     },
     "_SENTENCE": {
       "type": "PATTERN",

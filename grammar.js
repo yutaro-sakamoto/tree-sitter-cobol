@@ -2024,7 +2024,7 @@ module.exports = grammar({
       seq($.TRIM_FUNCTION, '(', $._trim_args, ')', optional($.func_refmod)),
       seq($.NUMVALC_FUNC, '(', $._numvalc_args, ')'),
       seq($.LOCALE_DT_FUNC, '(', $._locale_dt_args, ')', optional($.func_refmod)),
-      seq($.WORD, optional($._func_args)),
+      seq($.WORD, optional($.func_args)),
     ))),
 
     func_refmod: $ => choice(
@@ -2063,7 +2063,7 @@ module.exports = grammar({
       optional(seq($._in_of, $._WORD))
     ),
 
-    _func_args: $ => seq(
+    func_args: $ => seq(
       '(', optional($._exp_list), ')'
     ),
 
@@ -2179,7 +2179,7 @@ module.exports = grammar({
     _COLUMNS: $ => /[cC][oO][lL][uU][mM][nN][sS]/,
     _COMMA: $ => /[cC][oO][mM][mM][aA]/,
     _COMMAND_LINE: $ => /[cC][oO][mM][mM][aA][nN][dD]-[lL][iI][nN][eE]/,
-    _COMMA_DELIM: $ => /[cC][oO][mM][mM][aA]-[dD][eE][lL][iI][mM]/,
+    _COMMA_DELIM: $ => /,+/,
     _COMMIT: $ => /[cC][oO][mM][mM][iI][tT]/,
     _COMMITMENT_CONTROL: $ => /[cC][oO][mM][mM][iI][tT][mM][eE][nN][tT]-[cC][oO][nN][tT][rR][oO][lL]/,
     _COMMON: $ => /[cC][oO][mM][mM][oO][nN]/,
@@ -2479,7 +2479,7 @@ module.exports = grammar({
     _SECURE: $ => /[sS][eE][cC][uU][rR][eE]/,
     _SEGMENT_LIMIT: $ => /[sS][eE][gG][mM][eE][nN][tT]-[lL][iI][mM][iI][tT]/,
     _SELECT: $ => /[sS][eE][lL][eE][cC][tT]/,
-    _SEMI_COLON: $ => /[sS][eE][mM][iI]-[cC][oO][lL][oO][nN]/,
+    _SEMI_COLON: $ => /;+/,
     _SENTENCE: $ => /[sS][eE][nN][tT][eE][nN][cC][eE]/,
     _SEPARATE: $ => /[sS][eE][pP][aA][rR][aA][tT][eE]/,
     _SEQUENCE: $ => /[sS][eE][qQ][uU][eE][nN][cC][eE]/,

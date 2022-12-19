@@ -3877,6 +3877,113 @@
     }
   },
   {
+    "type": "func_args",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "HIGH_VALUE",
+          "named": true
+        },
+        {
+          "type": "LENGTH",
+          "named": true
+        },
+        {
+          "type": "LOW_VALUE",
+          "named": true
+        },
+        {
+          "type": "QUOTE",
+          "named": true
+        },
+        {
+          "type": "SPACE",
+          "named": true
+        },
+        {
+          "type": "TOK_NULL",
+          "named": true
+        },
+        {
+          "type": "ZERO",
+          "named": true
+        },
+        {
+          "type": "add_exp",
+          "named": true
+        },
+        {
+          "type": "div_exp",
+          "named": true
+        },
+        {
+          "type": "function_",
+          "named": true
+        },
+        {
+          "type": "h_string",
+          "named": true
+        },
+        {
+          "type": "linage_counter",
+          "named": true
+        },
+        {
+          "type": "mul_exp",
+          "named": true
+        },
+        {
+          "type": "n_string",
+          "named": true
+        },
+        {
+          "type": "negative_exp",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "positive_exp",
+          "named": true
+        },
+        {
+          "type": "pow_exp",
+          "named": true
+        },
+        {
+          "type": "qualified_word",
+          "named": true
+        },
+        {
+          "type": "refmod",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "sub_exp",
+          "named": true
+        },
+        {
+          "type": "subref",
+          "named": true
+        },
+        {
+          "type": "x_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "func_refmod",
     "named": true,
     "fields": {},
@@ -4073,6 +4180,10 @@
         },
         {
           "type": "div_exp",
+          "named": true
+        },
+        {
+          "type": "func_args",
           "named": true
         },
         {
