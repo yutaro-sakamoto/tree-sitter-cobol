@@ -1152,6 +1152,7 @@ module.exports = grammar({
       $.perform_statement_call_proc,
       $.read_statement,
       $.release_statement,
+      $.return_statement,
       $.rewrite_statement,
       $.sort_statement,
       $.stop_statement,
@@ -1173,6 +1174,7 @@ module.exports = grammar({
       $._END_PERFORM,
       $._END_IF,
       $._END_EVALUATE,
+      $._END_RETURN,
       $._END_REWRITE,
       '.'
     ),
@@ -1882,6 +1884,13 @@ module.exports = grammar({
       $._RELEASE,
       field('record', $.qualified_word),
       field('from', optional(seq($._FROM, $._id_or_lit)))
+    ),
+
+    return_statement: $ => seq(
+      $._RETURN,
+      field('file_name', $.WORD),
+      optional($._RECORD),
+      field('into', optional(seq($._INTO, $._identifier)))
     ),
 
     rewrite_statement: $ => seq(

@@ -7174,6 +7174,10 @@
           "named": true
         },
         {
+          "type": "return_statement",
+          "named": true
+        },
+        {
           "type": "rewrite_statement",
           "named": true
         },
@@ -7370,6 +7374,10 @@
         },
         {
           "type": "release_statement",
+          "named": true
+        },
+        {
+          "type": "return_statement",
           "named": true
         },
         {
@@ -8119,6 +8127,40 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "return_statement",
+    "named": true,
+    "fields": {
+      "file_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "WORD",
+            "named": true
+          }
+        ]
+      },
+      "into": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
