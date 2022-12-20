@@ -8523,7 +8523,7 @@
       },
       "duplicates": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "DUPLICATES",

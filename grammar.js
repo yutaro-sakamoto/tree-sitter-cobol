@@ -1884,16 +1884,16 @@ module.exports = grammar({
       field('lock', optional(choice($.write_lock, $.write_no_lock))),
     ),
 
-    sort_statement: $ => seq(
+    sort_statement: $ => prec.right(seq(
       $._SORT,
       field('x', $.qualified_word),
       field('key_list', repeat($.sort_key)),
-      field('duplicates', seq(
+      field('duplicates', optional(seq(
         optional($._WITH),
         $.DUPLICATES,
         optional($._IN,),
         $._ORDER
-      )),
+      ))),
       field('collating', optional(seq(
         $._coll_sequence,
         optional($._IS),
@@ -1907,7 +1907,7 @@ module.exports = grammar({
         $.sort_output_giving,
         $.sort_output_procedure,
       )))
-    ),
+    )),
 
     sort_key: $ => seq(
       optional($._ON),
