@@ -371,7 +371,18 @@ module.exports = grammar({
       $.multiple_file_tape_clause
     ),
 
-    same_clause: $ => /todo_same_clause/,
+    same_clause: $ => seq(
+      $._SAME,
+      field('option', choice(
+        $.RECORD,
+        $.SORT,
+        $.SORT_MERGE
+      )),
+      optional($._AREA),
+      optional($._FOR),
+      field('file_name_list', repeat1($.WORD))
+    ),
+
     multiple_file_tape_clause: $ => /todo_multiple_file_tape_clause/,
 
     apply_clause: $ => /todo_apply_clause/,
@@ -3012,7 +3023,7 @@ module.exports = grammar({
     SIZE: $ => $._SIZE,
     //SIZE_ERROR: $ => $._SIZE_ERROR,
     SORT: $ => $._SORT,
-    //SORT_MERGE: $ => $._SORT_MERGE,
+    SORT_MERGE: $ => $._SORT_MERGE,
     SOURCE: $ => $._SOURCE,
     //SOURCE_COMPUTER: $ => $._SOURCE_COMPUTER,
     SPACE: $ => $._SPACE,

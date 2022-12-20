@@ -756,6 +756,11 @@
     "fields": {}
   },
   {
+    "type": "SORT_MERGE",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "SOURCE",
     "named": true,
     "fields": {}
@@ -8264,6 +8269,40 @@
     }
   },
   {
+    "type": "same_clause",
+    "named": true,
+    "fields": {
+      "file_name_list": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "WORD",
+            "named": true
+          }
+        ]
+      },
+      "option": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "RECORD",
+            "named": true
+          },
+          {
+            "type": "SORT",
+            "named": true
+          },
+          {
+            "type": "SORT_MERGE",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "screen_control",
     "named": true,
     "fields": {},
@@ -10293,10 +10332,6 @@
   },
   {
     "type": "report_section",
-    "named": true
-  },
-  {
-    "type": "same_clause",
     "named": true
   },
   {

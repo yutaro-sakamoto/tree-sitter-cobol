@@ -1671,8 +1671,69 @@
       ]
     },
     "same_clause": {
-      "type": "PATTERN",
-      "value": "todo_same_clause"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_SAME"
+        },
+        {
+          "type": "FIELD",
+          "name": "option",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "RECORD"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "SORT"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "SORT_MERGE"
+              }
+            ]
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_AREA"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_FOR"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "FIELD",
+          "name": "file_name_list",
+          "content": {
+            "type": "REPEAT1",
+            "content": {
+              "type": "SYMBOL",
+              "name": "WORD"
+            }
+          }
+        }
+      ]
     },
     "multiple_file_tape_clause": {
       "type": "PATTERN",
@@ -15162,6 +15223,10 @@
     "SORT": {
       "type": "SYMBOL",
       "name": "_SORT"
+    },
+    "SORT_MERGE": {
+      "type": "SYMBOL",
+      "name": "_SORT_MERGE"
     },
     "SOURCE": {
       "type": "SYMBOL",
