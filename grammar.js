@@ -556,7 +556,7 @@ module.exports = grammar({
     reserve_clause: $ => seq(
       $._RESERVE,
       choice(
-        seq($.integer, optional($._AREA)),
+        seq($.integer, optional(choice($._AREA, $._AREAS))),
         $.NO
       )
     ),
@@ -2212,6 +2212,7 @@ module.exports = grammar({
     _APPLY: $ => /[aA][pP][pP][lL][yY]/,
     _ARE: $ => /[aA][rR][eE]/,
     _AREA: $ => /[aA][rR][eE][aA]/,
+    _AREAS: $ => /[aA][rR][eE][aA][sS]/,
     _ARGUMENT_NUMBER: $ => /[aA][rR][gG][uU][mM][eE][nN][tT]-[nN][uU][mM][bB][eE][rR]/,
     _ARGUMENT_VALUE: $ => /[aA][rR][gG][uU][mM][eE][nN][tT]-[vV][aA][lL][uU][eE]/,
     _AS: $ => /[aA][sS]/,

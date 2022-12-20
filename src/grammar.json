@@ -2578,8 +2578,17 @@
                   "type": "CHOICE",
                   "members": [
                     {
-                      "type": "SYMBOL",
-                      "name": "_AREA"
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "_AREA"
+                        },
+                        {
+                          "type": "SYMBOL",
+                          "name": "_AREAS"
+                        }
+                      ]
                     },
                     {
                       "type": "BLANK"
@@ -12793,6 +12802,10 @@
     "_AREA": {
       "type": "PATTERN",
       "value": "[aA][rR][eE][aA]"
+    },
+    "_AREAS": {
+      "type": "PATTERN",
+      "value": "[aA][rR][eE][aA][sS]"
     },
     "_ARGUMENT_NUMBER": {
       "type": "PATTERN",
