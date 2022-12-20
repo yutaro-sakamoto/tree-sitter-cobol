@@ -5867,6 +5867,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "release_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "rewrite_statement"
         },
         {
@@ -10741,6 +10745,48 @@
         {
           "type": "SYMBOL",
           "name": "_END"
+        }
+      ]
+    },
+    "release_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_RELEASE"
+        },
+        {
+          "type": "FIELD",
+          "name": "record",
+          "content": {
+            "type": "SYMBOL",
+            "name": "qualified_word"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "from",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_FROM"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_id_or_lit"
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
         }
       ]
     },
