@@ -1152,6 +1152,7 @@ module.exports = grammar({
       $.close_statement,
       $.continue_statement,
       $.compute_statement,
+      $.delete_statement,
       $.display_statement,
       $.divide_statement,
       $.goback_statement,
@@ -1176,6 +1177,7 @@ module.exports = grammar({
       $._END_ACCEPT,
       $._END_ADD,
       $._END_CALL,
+      $._END_DELETE,
       $._END_DISPLAY,
       $._END_DIVIDE,
       $._END_MULTIPLY,
@@ -1466,6 +1468,12 @@ module.exports = grammar({
     ),
 
     continue_statement: $ => $._CONTINUE,
+
+    delete_statement: $ => seq(
+      $._DELETE,
+      field('file_name', $.WORD),
+      optional(choice($._RECORD, $._RECORDS)),
+    ),
 
     display_statement: $ => seq(
       $._DISPLAY,

@@ -5897,6 +5897,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "delete_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "display_statement"
         },
         {
@@ -5983,6 +5987,10 @@
         {
           "type": "SYMBOL",
           "name": "_END_CALL"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_END_DELETE"
         },
         {
           "type": "SYMBOL",
@@ -7562,6 +7570,44 @@
     "continue_statement": {
       "type": "SYMBOL",
       "name": "_CONTINUE"
+    },
+    "delete_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_DELETE"
+        },
+        {
+          "type": "FIELD",
+          "name": "file_name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "WORD"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_RECORD"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_RECORDS"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
     },
     "display_statement": {
       "type": "SEQ",

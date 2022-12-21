@@ -2570,6 +2570,22 @@
     "fields": {}
   },
   {
+    "type": "delete_statement",
+    "named": true,
+    "fields": {
+      "file_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "WORD",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "disp_attr",
     "named": true,
     "fields": {},
@@ -7055,6 +7071,10 @@
           "named": true
         },
         {
+          "type": "delete_statement",
+          "named": true
+        },
+        {
           "type": "display_statement",
           "named": true
         },
@@ -7243,6 +7263,10 @@
         },
         {
           "type": "continue_statement",
+          "named": true
+        },
+        {
+          "type": "delete_statement",
           "named": true
         },
         {
