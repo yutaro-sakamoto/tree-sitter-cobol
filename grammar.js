@@ -1082,7 +1082,7 @@ module.exports = grammar({
 
     procedure_declaratives: $ => seq(
       $._DECLARATIVES, '.',
-      $._procedure_division_contenet,
+      optional($._procedure_division_declaratives_content),
       $._END, $._DECLARATIVES, '.'
     ),
 
@@ -1114,6 +1114,30 @@ module.exports = grammar({
         repeat($._procedure_division_statement)
       ),
       //$._procedure_division_headers,
+    )),
+
+    _procedure_division_declaratives_content: $ => prec.right(1, seq(
+      choice(
+        seq(
+          optional($._procedure_division_headers),
+          repeat(seq(
+            $._procedure_division_statements_before_header,
+            $._procedure_division_headers,
+          )),
+          repeat($._procedure_division_statement)
+        ),
+        seq(
+          optional($._procedure_division_headers),
+          repeat(seq(
+            $._procedure_division_statements_before_header,
+            $._procedure_division_headers,
+          )),
+          repeat($._procedure_division_statement)
+        ),
+      ),
+      choice(
+        $._statement,
+        $._end_statement,)
     )),
 
     _procedure_division_statement: $ => choice(
