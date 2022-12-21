@@ -9559,8 +9559,17 @@
               "name": "_NOT"
             },
             {
-              "type": "SYMBOL",
-              "name": "_EQUAL"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "="
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_EQUAL"
+                }
+              ]
             },
             {
               "type": "CHOICE",

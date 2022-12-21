@@ -1711,7 +1711,7 @@ module.exports = grammar({
 
     ne: $ => choice(
       '!=',
-      seq(optional($._IS), $._NOT, $._EQUAL, optional($._TO)),
+      seq(optional($._IS), $._NOT, choice('=', $._EQUAL), optional($._TO)),
     ),
 
     gt: $ => choice(
