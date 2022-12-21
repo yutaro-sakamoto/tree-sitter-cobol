@@ -5965,6 +5965,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "use_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "write_statement"
         },
         {
@@ -11485,6 +11489,233 @@
         }
       ]
     },
+    "use_statement": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_use_exception"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_use_debugging"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_use_reporing"
+        }
+      ]
+    },
+    "_use_exception": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_USE"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "GLOBAL"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_AFTER"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_STANDARD"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_EXCEPTION"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_ERROR"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_PROCEDURE"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_ON"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "file_name_list",
+              "content": {
+                "type": "REPEAT1",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "WORD"
+                }
+              }
+            },
+            {
+              "type": "SYMBOL",
+              "name": "INPUT"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "OUTPUT"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "I_O"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "EXTEND"
+            }
+          ]
+        }
+      ]
+    },
+    "_use_debugging": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_USE"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_FOR"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_DEBUGGING"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_ON"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "procedure_name",
+              "content": {
+                "type": "SYMBOL",
+                "name": "label"
+              }
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "ALL"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "PROCEDURE"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "_use_reporing": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_USE"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "GLOBAL"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_BEFORE"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_REPORTING"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_identifier"
+        }
+      ]
+    },
     "write_statement": {
       "type": "SEQ",
       "members": [
@@ -15178,6 +15409,10 @@
     "PRINTER": {
       "type": "SYMBOL",
       "name": "_PRINTER"
+    },
+    "PROCEDURE": {
+      "type": "SYMBOL",
+      "name": "_PROCEDURE"
     },
     "PROGRAM_POINTER": {
       "type": "SYMBOL",

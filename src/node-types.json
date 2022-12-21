@@ -626,6 +626,11 @@
     "fields": {}
   },
   {
+    "type": "PROCEDURE",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "PROGRAM_POINTER",
     "named": true,
     "fields": {}
@@ -7223,6 +7228,10 @@
           "named": true
         },
         {
+          "type": "use_statement",
+          "named": true
+        },
+        {
           "type": "write_statement",
           "named": true
         }
@@ -7427,6 +7436,10 @@
         },
         {
           "type": "subtract_statement",
+          "named": true
+        },
+        {
+          "type": "use_statement",
           "named": true
         },
         {
@@ -9626,6 +9639,78 @@
         },
         {
           "type": "UNSIGNED_SHORT",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "use_statement",
+    "named": true,
+    "fields": {
+      "file_name_list": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "WORD",
+            "named": true
+          }
+        ]
+      },
+      "procedure_name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "label",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "ALL",
+          "named": true
+        },
+        {
+          "type": "EXTEND",
+          "named": true
+        },
+        {
+          "type": "GLOBAL",
+          "named": true
+        },
+        {
+          "type": "INPUT",
+          "named": true
+        },
+        {
+          "type": "I_O",
+          "named": true
+        },
+        {
+          "type": "OUTPUT",
+          "named": true
+        },
+        {
+          "type": "PROCEDURE",
+          "named": true
+        },
+        {
+          "type": "qualified_word",
+          "named": true
+        },
+        {
+          "type": "refmod",
+          "named": true
+        },
+        {
+          "type": "subref",
           "named": true
         }
       ]

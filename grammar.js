@@ -1169,6 +1169,7 @@ module.exports = grammar({
       $.sort_statement,
       $.stop_statement,
       $.subtract_statement,
+      $.use_statement,
       $.write_statement,
       $.next_sentence_statement,
     ),
@@ -2001,6 +2002,48 @@ module.exports = grammar({
         field('from', $._identifier),
         optional($.ROUNDED),
       )
+    ),
+
+    use_statement: $ => choice(
+      $._use_exception,
+      $._use_debugging,
+      $._use_reporing
+    ),
+
+    _use_exception: $ => seq(
+      $._USE,
+      optional($.GLOBAL),
+      optional($._AFTER),
+      optional($._STANDARD),
+      choice($._EXCEPTION, $._ERROR),
+      optional($._PROCEDURE),
+      optional($._ON),
+      choice(
+        field('file_name_list', repeat1($.WORD)),
+        $.INPUT,
+        $.OUTPUT,
+        $.I_O,
+        $.EXTEND
+      )
+    ),
+
+    _use_debugging: $ => seq(
+      $._USE,
+      optional($._FOR),
+      $._DEBUGGING,
+      optional($._ON),
+      choice(
+        field('procedure_name', $.label),
+        seq($.ALL, $.PROCEDURE)
+      ),
+    ),
+
+    _use_reporing: $ => seq(
+      $._USE,
+      optional($.GLOBAL),
+      $._BEFORE,
+      $._REPORTING,
+      $._identifier
     ),
 
     write_statement: $ => seq(
@@ -2964,7 +3007,7 @@ module.exports = grammar({
     PREVIOUS: $ => $._PREVIOUS,
     PRINTER: $ => $._PRINTER,
     //PRINTING: $ => $._PRINTING,
-    //PROCEDURE: $ => $._PROCEDURE,
+    PROCEDURE: $ => $._PROCEDURE,
     //PROCEDURES: $ => $._PROCEDURES,
     //PROCEED: $ => $._PROCEED,
     //PROGRAM: $ => $._PROGRAM,
