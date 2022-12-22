@@ -1031,7 +1031,12 @@ module.exports = grammar({
     ),
 
     local_storage_section: $ => /local_storage_section/,
-    linkage_section: $ => /linkage_section/,
+
+    linkage_section: $ => seq(
+      $._LINKAGE, $._SECTION, '.',
+      $.record_description_list
+    ),
+
     report_section: $ => /report_section/,
     screen_section: $ => /screen_section/,
 

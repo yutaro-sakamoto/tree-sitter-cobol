@@ -5125,6 +5125,21 @@
     }
   },
   {
+    "type": "linkage_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "record_description_list",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "locale_clause",
     "named": true,
     "fields": {},
@@ -10385,10 +10400,6 @@
   },
   {
     "type": "level_number_88",
-    "named": true
-  },
-  {
-    "type": "linkage_section",
     "named": true
   },
   {

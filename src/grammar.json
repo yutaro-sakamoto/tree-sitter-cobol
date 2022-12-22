@@ -5311,8 +5311,25 @@
       "value": "local_storage_section"
     },
     "linkage_section": {
-      "type": "PATTERN",
-      "value": "linkage_section"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_LINKAGE"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_SECTION"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "SYMBOL",
+          "name": "record_description_list"
+        }
+      ]
     },
     "report_section": {
       "type": "PATTERN",
