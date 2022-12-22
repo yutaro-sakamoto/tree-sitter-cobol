@@ -383,7 +383,18 @@ module.exports = grammar({
       field('file_name_list', repeat1($.WORD))
     ),
 
-    multiple_file_tape_clause: $ => /todo_multiple_file_tape_clause/,
+    multiple_file_tape_clause: $ => seq(
+      $._MULTIPLE,
+      optional($._FILE),
+      optional($._TAPE),
+      optional($._CONTAINS),
+      repeat1($.multiple_file)
+    ),
+
+    multiple_file: $ => seq(
+      field('file_name', $.WORD),
+      optional(seq($.POSITION, $.integer))
+    ),
 
     apply_clause: $ => /todo_apply_clause/,
 
@@ -3042,7 +3053,7 @@ module.exports = grammar({
     //PICTURE: $ => $._PICTURE,
     //PLUS: $ => $._PLUS,
     POINTER: $ => $._POINTER,
-    //POSITION: $ => $._POSITION,
+    POSITION: $ => $._POSITION,
     POSITIVE: $ => $._POSITIVE,
     //PRESENT: $ => $._PRESENT,
     PREVIOUS: $ => $._PREVIOUS,

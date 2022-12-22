@@ -626,6 +626,11 @@
     "fields": {}
   },
   {
+    "type": "POSITION",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "POSITIVE",
     "named": true,
     "fields": {}
@@ -5660,6 +5665,51 @@
     }
   },
   {
+    "type": "multiple_file",
+    "named": true,
+    "fields": {
+      "file_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "WORD",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "POSITION",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "multiple_file_tape_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "multiple_file",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "multiply_statement",
     "named": true,
     "fields": {
@@ -10442,10 +10492,6 @@
   {
     "type": "low-value",
     "named": false
-  },
-  {
-    "type": "multiple_file_tape_clause",
-    "named": true
   },
   {
     "type": "nested_prog",
