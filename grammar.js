@@ -1184,7 +1184,7 @@ module.exports = grammar({
       $.delete_statement,
       $.display_statement,
       $.divide_statement,
-      $.exit_statement,
+      //$.exit_statement,
       $.goback_statement,
       $.goto_statement,
       $.initialize_statement,

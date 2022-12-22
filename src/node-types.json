@@ -3624,37 +3624,6 @@
     }
   },
   {
-    "type": "exit_statement",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "CYCLE",
-          "named": true
-        },
-        {
-          "type": "PARAGRAPH",
-          "named": true
-        },
-        {
-          "type": "PERFORM",
-          "named": true
-        },
-        {
-          "type": "PROGRAM",
-          "named": true
-        },
-        {
-          "type": "SECTION",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "expr",
     "named": true,
     "fields": {},
@@ -7183,10 +7152,6 @@
           "named": true
         },
         {
-          "type": "exit_statement",
-          "named": true
-        },
-        {
           "type": "goback_statement",
           "named": true
         },
@@ -7383,10 +7348,6 @@
         },
         {
           "type": "evaluate_other",
-          "named": true
-        },
-        {
-          "type": "exit_statement",
           "named": true
         },
         {

@@ -6041,10 +6041,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "exit_statement"
-        },
-        {
-          "type": "SYMBOL",
           "name": "goback_statement"
         },
         {
