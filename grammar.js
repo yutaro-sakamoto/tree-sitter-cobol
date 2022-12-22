@@ -644,7 +644,7 @@ module.exports = grammar({
       optional($._CONTAINS),
       field('num', $.integer),
       field('to', optional(seq($._TO, $.integer))),
-      optional(choice($._RECORD, $._RECORDS))
+      optional(choice($._CHARACTERS, $._RECORDS))
     )),
 
     record_clause: $ => choice(
