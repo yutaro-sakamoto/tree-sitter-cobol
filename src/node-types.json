@@ -225,6 +225,11 @@
     "fields": {}
   },
   {
+    "type": "CYCLE",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "DATE",
     "named": true,
     "fields": {}
@@ -606,6 +611,16 @@
     "fields": {}
   },
   {
+    "type": "PARAGRAPH",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "PERFORM",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "POINTER",
     "named": true,
     "fields": {}
@@ -627,6 +642,11 @@
   },
   {
     "type": "PROCEDURE",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "PROGRAM",
     "named": true,
     "fields": {}
   },
@@ -717,6 +737,11 @@
   },
   {
     "type": "SD",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "SECTION",
     "named": true,
     "fields": {}
   },
@@ -3593,6 +3618,37 @@
       "types": [
         {
           "type": "qualified_word",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "exit_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "CYCLE",
+          "named": true
+        },
+        {
+          "type": "PARAGRAPH",
+          "named": true
+        },
+        {
+          "type": "PERFORM",
+          "named": true
+        },
+        {
+          "type": "PROGRAM",
+          "named": true
+        },
+        {
+          "type": "SECTION",
           "named": true
         }
       ]
@@ -7127,6 +7183,10 @@
           "named": true
         },
         {
+          "type": "exit_statement",
+          "named": true
+        },
+        {
           "type": "goback_statement",
           "named": true
         },
@@ -7323,6 +7383,10 @@
         },
         {
           "type": "evaluate_other",
+          "named": true
+        },
+        {
+          "type": "exit_statement",
           "named": true
         },
         {

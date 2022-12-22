@@ -1184,6 +1184,7 @@ module.exports = grammar({
       $.delete_statement,
       $.display_statement,
       $.divide_statement,
+      $.exit_statement,
       $.goback_statement,
       $.goto_statement,
       $.initialize_statement,
@@ -1609,6 +1610,17 @@ module.exports = grammar({
     ),
 
     evaluate_other: $ => $._WHEN_OTHER,
+
+    exit_statement: $ => seq(
+      $._EXIT,
+      choice(
+        $.PROGRAM,
+        $.PERFORM,
+        seq($.PERFORM, $.CYCLE),
+        $.SECTION,
+        $.PARAGRAPH
+      )
+    ),
 
     goback_statement: $ => $._GOBACK,
 
@@ -2827,7 +2839,7 @@ module.exports = grammar({
     //CURRENCY: $ => $._CURRENCY,
     CURRENT_DATE_FUNC: $ => $._CURRENT_DATE_FUNC,
     //CURSOR: $ => $._CURSOR,
-    //CYCLE: $ => $._CYCLE,
+    CYCLE: $ => $._CYCLE,
     //CYL_OVERFLOW: $ => $._CYL_OVERFLOW,
     //DATA: $ => $._DATA,
     DATE: $ => $._DATE,
@@ -3024,8 +3036,8 @@ module.exports = grammar({
     PAGE: $ => $._PAGE,
     //PAGE_FOOTING: $ => $._PAGE_FOOTING,
     //PAGE_HEADING: $ => $._PAGE_HEADING,
-    //PARAGRAPH: $ => $._PARAGRAPH,
-    //PERFORM: $ => $._PERFORM,
+    PARAGRAPH: $ => $._PARAGRAPH,
+    PERFORM: $ => $._PERFORM,
     //PIC: $ => $._PIC,
     //PICTURE: $ => $._PICTURE,
     //PLUS: $ => $._PLUS,
@@ -3039,7 +3051,7 @@ module.exports = grammar({
     PROCEDURE: $ => $._PROCEDURE,
     //PROCEDURES: $ => $._PROCEDURES,
     //PROCEED: $ => $._PROCEED,
-    //PROGRAM: $ => $._PROGRAM,
+    PROGRAM: $ => $._PROGRAM,
     //PROGRAM_ID: $ => $._PROGRAM_ID,
     //PROGRAM_NAME: $ => $._PROGRAM_NAME,
     PROGRAM_POINTER: $ => $._PROGRAM_POINTER,
@@ -3085,7 +3097,7 @@ module.exports = grammar({
     SCROLL: $ => $._SCROLL,
     SD: $ => $._SD,
     //SEARCH: $ => $._SEARCH,
-    //SECTION: $ => $._SECTION,
+    SECTION: $ => $._SECTION,
     //SECURE: $ => $._SECURE,
     //SEGMENT_LIMIT: $ => $._SEGMENT_LIMIT,
     //SELECT: $ => $._SELECT,

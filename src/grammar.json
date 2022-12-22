@@ -6041,6 +6041,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "exit_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "goback_statement"
         },
         {
@@ -8630,6 +8634,49 @@
     "evaluate_other": {
       "type": "SYMBOL",
       "name": "_WHEN_OTHER"
+    },
+    "exit_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_EXIT"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "PROGRAM"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "PERFORM"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "PERFORM"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "CYCLE"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "SECTION"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "PARAGRAPH"
+            }
+          ]
+        }
+      ]
     },
     "goback_statement": {
       "type": "SYMBOL",
@@ -15243,6 +15290,10 @@
       "type": "SYMBOL",
       "name": "_CURRENT_DATE_FUNC"
     },
+    "CYCLE": {
+      "type": "SYMBOL",
+      "name": "_CYCLE"
+    },
     "DATE": {
       "type": "SYMBOL",
       "name": "_DATE"
@@ -15535,6 +15586,14 @@
       "type": "SYMBOL",
       "name": "_PAGE"
     },
+    "PARAGRAPH": {
+      "type": "SYMBOL",
+      "name": "_PARAGRAPH"
+    },
+    "PERFORM": {
+      "type": "SYMBOL",
+      "name": "_PERFORM"
+    },
     "POINTER": {
       "type": "SYMBOL",
       "name": "_POINTER"
@@ -15554,6 +15613,10 @@
     "PROCEDURE": {
       "type": "SYMBOL",
       "name": "_PROCEDURE"
+    },
+    "PROGRAM": {
+      "type": "SYMBOL",
+      "name": "_PROGRAM"
     },
     "PROGRAM_POINTER": {
       "type": "SYMBOL",
@@ -15626,6 +15689,10 @@
     "SD": {
       "type": "SYMBOL",
       "name": "_SD"
+    },
+    "SECTION": {
+      "type": "SYMBOL",
+      "name": "_SECTION"
     },
     "SEPARATE": {
       "type": "SYMBOL",
