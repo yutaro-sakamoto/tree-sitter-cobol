@@ -682,7 +682,7 @@ module.exports = grammar({
     label_records_clause: $ => seq(
       $._LABEL,
       $._records,
-      optional(choice($.STANDARD, $.OMITTED))
+      choice($.STANDARD, $.OMITTED)
     ),
 
     _records: $ => prec.left(choice(

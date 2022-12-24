@@ -3414,20 +3414,12 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "STANDARD"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "OMITTED"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "STANDARD"
             },
             {
-              "type": "BLANK"
+              "type": "SYMBOL",
+              "name": "OMITTED"
             }
           ]
         }
