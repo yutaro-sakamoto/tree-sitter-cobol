@@ -1224,6 +1224,7 @@ module.exports = grammar({
       $.release_statement,
       $.return_statement,
       $.rewrite_statement,
+      $.set_statement,
       $.sort_statement,
       $.stop_statement,
       $.subtract_statement,
@@ -1992,6 +1993,62 @@ module.exports = grammar({
       field('record', $.qualified_word),
       field('from', optional(seq($._FROM, $._id_or_lit))),
       field('lock', optional(choice($.write_lock, $.write_no_lock))),
+    ),
+
+    set_statement: $ => seq(
+      $._SET,
+      choice(
+        $.set_environment,
+        $.set_to,
+        $.set_up_down,
+        repeat1($.set_to_on_off),
+        repeat1($.set_to_true_false),
+      )
+    ),
+
+    set_environment: $ => seq(
+      $._ENVIRONMENT,
+      field('environment', $._simple_value),
+      optional($._TO),
+      field('to', $._simple_value)
+    ),
+
+    set_to: $ => choice(
+      seq(
+        field('from', $._target_x_list),
+        $._TO,
+        $._ENTRY,
+        field('to_entry', $._alnum_or_id)
+      ),
+      seq(
+        field('from', $._target_x_list),
+        $._TO,
+        field('to', $._x)
+      )
+    ),
+
+    _alnum_or_id: $ => choice(
+      $._identifier,
+      $._LITERAL,
+    ),
+
+    set_up_down: $ => seq(
+      field('x', $._target_x_list),
+      choice($.UP, $.DOWN),
+      $._BY,
+      field('by', $._x)
+    ),
+
+    set_to_on_off: $ => seq(
+      field('mnemonic_names', repeat1($.MNEMONIC_NAME)),
+      $._TO,
+      choice($.UP, $.DOWN)
+    ),
+
+    set_to_true_false: $ => seq(
+      field('x', $._target_x_list),
+      $._TO,
+      choice($._TRUE, $._FALSE)
     ),
 
     sort_statement: $ => seq(
