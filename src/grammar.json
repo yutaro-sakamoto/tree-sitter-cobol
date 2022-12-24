@@ -6219,6 +6219,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "exit_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "goback_statement"
         },
         {
@@ -8818,47 +8822,59 @@
       "name": "_WHEN_OTHER"
     },
     "exit_statement": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_EXIT"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "PROGRAM"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "PERFORM"
-            },
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "PERFORM"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "CYCLE"
-                }
-              ]
-            },
-            {
-              "type": "SYMBOL",
-              "name": "SECTION"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "PARAGRAPH"
-            }
-          ]
-        }
-      ]
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_EXIT"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "PROGRAM"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "PERFORM"
+                  },
+                  {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "PERFORM"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "CYCLE"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "SECTION"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "PARAGRAPH"
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
     },
     "goback_statement": {
       "type": "SYMBOL",

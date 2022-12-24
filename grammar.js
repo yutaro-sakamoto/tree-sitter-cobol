@@ -1209,7 +1209,7 @@ module.exports = grammar({
       $.delete_statement,
       $.display_statement,
       $.divide_statement,
-      //$.exit_statement,
+      $.exit_statement,
       $.goback_statement,
       $.goto_statement,
       $.initialize_statement,
@@ -1638,16 +1638,16 @@ module.exports = grammar({
 
     evaluate_other: $ => $._WHEN_OTHER,
 
-    exit_statement: $ => seq(
+    exit_statement: $ => prec.left(seq(
       $._EXIT,
-      choice(
+      optional(choice(
         $.PROGRAM,
         $.PERFORM,
         seq($.PERFORM, $.CYCLE),
         $.SECTION,
         $.PARAGRAPH
-      )
-    ),
+      ))
+    )),
 
     goback_statement: $ => $._GOBACK,
 
