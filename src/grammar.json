@@ -6127,6 +6127,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "merge_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "move_statement"
         },
         {
@@ -10047,6 +10051,19 @@
         }
       ]
     },
+    "merge_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_MERGE"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_sort_body"
+        }
+      ]
+    },
     "move_statement": {
       "type": "SEQ",
       "members": [
@@ -11298,15 +11315,24 @@
       ]
     },
     "sort_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_SORT"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_sort_body"
+        }
+      ]
+    },
+    "_sort_body": {
       "type": "PREC_RIGHT",
       "value": 0,
       "content": {
         "type": "SEQ",
         "members": [
-          {
-            "type": "SYMBOL",
-            "name": "_SORT"
-          },
           {
             "type": "FIELD",
             "name": "x",

@@ -1199,6 +1199,7 @@ module.exports = grammar({
       $.goback_statement,
       $.goto_statement,
       $.initialize_statement,
+      $.merge_statement,
       $.move_statement,
       $.multiply_statement,
       $.open_statement,
@@ -1794,6 +1795,11 @@ module.exports = grammar({
       field('by', $._x),
     ),
 
+    merge_statement: $ => seq(
+      $._MERGE,
+      $._sort_body
+    ),
+
     move_statement: $ => seq(
       $._MOVE,
       $._move_body
@@ -1972,8 +1978,12 @@ module.exports = grammar({
       field('lock', optional(choice($.write_lock, $.write_no_lock))),
     ),
 
-    sort_statement: $ => prec.right(seq(
+    sort_statement: $ => seq(
       $._SORT,
+      $._sort_body,
+    ),
+
+    _sort_body: $ => prec.right(seq(
       field('x', $.qualified_word),
       field('key_list', repeat($.sort_key)),
       field('duplicates', optional(seq(

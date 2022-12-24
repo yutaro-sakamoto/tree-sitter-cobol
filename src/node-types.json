@@ -5243,6 +5243,80 @@
     "fields": {}
   },
   {
+    "type": "merge_statement",
+    "named": true,
+    "fields": {
+      "collating": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          }
+        ]
+      },
+      "duplicates": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "DUPLICATES",
+            "named": true
+          }
+        ]
+      },
+      "input": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "sort_input_procedure",
+            "named": true
+          },
+          {
+            "type": "sort_input_using",
+            "named": true
+          }
+        ]
+      },
+      "key_list": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "sort_key",
+            "named": true
+          }
+        ]
+      },
+      "output": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "sort_output_giving",
+            "named": true
+          },
+          {
+            "type": "sort_output_procedure",
+            "named": true
+          }
+        ]
+      },
+      "x": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "mnemonic_name_clause",
     "named": true,
     "fields": {
@@ -7222,6 +7296,10 @@
           "named": true
         },
         {
+          "type": "merge_statement",
+          "named": true
+        },
+        {
           "type": "move_statement",
           "named": true
         },
@@ -7418,6 +7496,10 @@
         },
         {
           "type": "invalid_key",
+          "named": true
+        },
+        {
+          "type": "merge_statement",
           "named": true
         },
         {
