@@ -841,9 +841,7 @@ module.exports = grammar({
       ')'
     ),
 
-    _exp_list: $ => sepBy(
-      $._exp, $._e_sep
-    ),
+    _exp_list: $ => repeat1($._exp),
 
     _exp: $ => choice(
       $._arith_x,
@@ -2329,7 +2327,7 @@ module.exports = grammar({
     ),
 
     func_args: $ => seq(
-      '(', optional($._exp_list), ')'
+      '(', $._exp_list, ')'
     ),
 
     _LITERAL: $ => choice(

@@ -4272,29 +4272,11 @@
       ]
     },
     "_exp_list": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_exp"
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "_e_sep"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_exp"
-              }
-            ]
-          }
-        }
-      ]
+      "type": "REPEAT1",
+      "content": {
+        "type": "SYMBOL",
+        "name": "_exp"
+      }
     },
     "_exp": {
       "type": "CHOICE",
@@ -13496,16 +13478,8 @@
           "value": "("
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "_exp_list"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "_exp_list"
         },
         {
           "type": "STRING",
