@@ -1754,6 +1754,7 @@ module.exports = grammar({
     _expr_calc_binary: $ => choice(
       prec.left(1, seq($._expr_calc, '+', $._expr_calc)),
       prec.left(1, seq($._expr_calc, '-', $._expr_calc)),
+      prec.left(2, seq($._expr_calc, '**', $._expr_calc)),
       prec.left(2, seq($._expr_calc, '*', $._expr_calc)),
       prec.left(2, seq($._expr_calc, '/', $._expr_calc)),
       prec.left(3, seq($._expr_calc, '^', $._expr_calc)),
