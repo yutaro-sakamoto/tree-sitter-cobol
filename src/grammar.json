@@ -9407,21 +9407,42 @@
       "name": "_x"
     },
     "_expr_calc": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_expr_calc_binary"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_expr_calc_unary"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_expr_data"
-        }
-      ]
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_expr_calc_binary"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_expr_calc_unary"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_expr_data"
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "("
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_expr_calc"
+              },
+              {
+                "type": "STRING",
+                "value": ")"
+              }
+            ]
+          }
+        ]
+      }
     },
     "_expr_calc_binary": {
       "type": "CHOICE",

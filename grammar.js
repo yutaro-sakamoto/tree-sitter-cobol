@@ -1744,11 +1744,12 @@ module.exports = grammar({
 
     _expr_data: $ => $._x,
 
-    _expr_calc: $ => choice(
+    _expr_calc: $ => prec(1, choice(
       $._expr_calc_binary,
       $._expr_calc_unary,
-      $._expr_data
-    ),
+      $._expr_data,
+      seq("(", $._expr_calc, ")")
+    )),
 
     _expr_calc_binary: $ => choice(
       prec.left(1, seq($._expr_calc, '+', $._expr_calc)),
