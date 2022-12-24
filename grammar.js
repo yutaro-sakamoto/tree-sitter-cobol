@@ -1203,6 +1203,7 @@ module.exports = grammar({
       $.accept_statement,
       $.add_statement,
       $.call_statement,
+      $.cancel_statement,
       $.close_statement,
       $.continue_statement,
       $.compute_statement,
@@ -1492,6 +1493,12 @@ module.exports = grammar({
       $._NOT,
       optional($._ON),
       $._OVERFLOW,
+    ),
+
+    cancel_statement: $ => seq(
+      $._CANCEL,
+      field('all', optional($.ALL)),
+      repeat($._id_or_lit)
     ),
 
     close_statement: $ => seq(
@@ -2255,10 +2262,10 @@ module.exports = grammar({
       $._basic_literal
     ),
 
-    _basic_literal: $ => sepBy(
+    _basic_literal: $ => prec(1, sepBy(
       $._basic_value,
       '&'
-    ),
+    )),
 
     _basic_value: $ => choice(
       $._LITERAL,

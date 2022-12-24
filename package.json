@@ -6,10 +6,10 @@
   "scripts": {
     "test": "tree-sitter test",
     "build": "tree-sitter generate && node-gyp build",
-    "sample": "tree-sitter parse test/cobol85/src/RL104A.CBL",
+    "sample": "tree-sitter parse test/cobol85/src/IC205A.CBL",
     "t": "tree-sitter parse a.cbl",
     "c": "cobc -fsyntax-only a.cbl",
-    "nist": "sh run_nist_cobol85.sh",
+    "nist": "sh run_nist_cobol85.sh | tee nist.txt",
     "ct": "cd test && bash check_tests.sh"
   },
   "repository": {
