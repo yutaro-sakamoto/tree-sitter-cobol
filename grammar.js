@@ -49,7 +49,10 @@ module.exports = grammar({
       $._IDENTIFICATION, $._DIVISION, '.',
       $._PROGRAM_ID, '.',
       $.program_name,
-      optional($.as_literal),
+      optional(choice(
+        $.as_literal,
+        $.is_initial,
+        $.is_common)),
       '.'
     ),
 
@@ -61,6 +64,16 @@ module.exports = grammar({
     as_literal: $ => seq(
       $._AS,
       $._LITERAL
+    ),
+
+    is_initial: $ => seq(
+      $._IS,
+      $._INITIAL
+    ),
+
+    is_common: $ => seq(
+      $._IS,
+      $._COMMON
     ),
 
     function_definition: $ => /todo_function_definition/,
@@ -2807,7 +2820,7 @@ module.exports = grammar({
     _TO: $ => /[tT][oO]/,
     _FALSE: $ => /[fF][aA][lL][sS][eE]/,
     _FILE: $ => /[fF][iI][lL][eE]/,
-    _TOK_INITIAL: $ => /[iI][nN][iI][tT][iI][aA][lL]/,
+    _INITIAL: $ => /[iI][nN][iI][tT][iI][aA][lL]/,
     _TOK_NULL: $ => choice('null', 'Null', 'NULL'),
     _TRUE: $ => /[tT][rR][uU][eE]/,
     _TOP: $ => /[tT][oO][pP]/,
@@ -3256,7 +3269,7 @@ module.exports = grammar({
     //TO: $ => $._TO,
     FALSE: $ => $._FALSE,
     FILE: $ => $._FILE,
-    //TOK_INITIAL: $ => $._TOK_INITIAL,
+    INITIAL: $ => $._INITIAL,
     TOK_NULL: $ => $._TOK_NULL,
     TRUE: $ => $._TRUE,
     //TOP: $ => $._TOP,

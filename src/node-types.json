@@ -4417,6 +4417,14 @@
           "named": true
         },
         {
+          "type": "is_common",
+          "named": true
+        },
+        {
+          "type": "is_initial",
+          "named": true
+        },
+        {
           "type": "program_name",
           "named": true
         }
@@ -4685,6 +4693,16 @@
   },
   {
     "type": "invalid_key",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "is_common",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "is_initial",
     "named": true,
     "fields": {}
   },

@@ -101,8 +101,21 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "as_literal"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "as_literal"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "is_initial"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "is_common"
+                }
+              ]
             },
             {
               "type": "BLANK"
@@ -138,6 +151,32 @@
         {
           "type": "SYMBOL",
           "name": "_LITERAL"
+        }
+      ]
+    },
+    "is_initial": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_IS"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_INITIAL"
+        }
+      ]
+    },
+    "is_common": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_IS"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_COMMON"
         }
       ]
     },
@@ -15469,7 +15508,7 @@
       "type": "PATTERN",
       "value": "[fF][iI][lL][eE]"
     },
-    "_TOK_INITIAL": {
+    "_INITIAL": {
       "type": "PATTERN",
       "value": "[iI][nN][iI][tT][iI][aA][lL]"
     },
@@ -16330,6 +16369,10 @@
     "FILE": {
       "type": "SYMBOL",
       "name": "_FILE"
+    },
+    "INITIAL": {
+      "type": "SYMBOL",
+      "name": "_INITIAL"
     },
     "TOK_NULL": {
       "type": "SYMBOL",
