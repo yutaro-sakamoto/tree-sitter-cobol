@@ -1066,7 +1066,29 @@ module.exports = grammar({
 
     based_clause: $ => $._BASED,
 
-    value_clause: $ => seq($._VALUE, optional($._IS), $._literal),
+    value_clause: $ => prec.right(seq(
+      $._VALUE,
+      optional(choice($._IS, $._ARE)),
+      repeat1($.value_item),
+      optional($._WHEN),
+      optional($._SET),
+      optional($._TO),
+      optional(seq(
+        $._FALSE,
+        optional($._IS),
+        field('when_set_to_false', $._literal)))
+    )),
+
+    value_item: $ => seq(
+      $._literal,
+      optional(seq(
+        $.THRU,
+        $._literal
+      ))
+    ),
+
+    value_when_clause: $ => seq(
+    ),
 
     renames_clause: $ => seq(
       $._RENAMES,
