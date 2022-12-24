@@ -1690,13 +1690,13 @@ module.exports = grammar({
 
     if_header: $ => prec(1, seq(
       $._IF,
-      field('condition', $._expr_logic),
+      field('condition', choice($.expr)),
       optional($._THEN),
     )),
 
     else_if_header: $ => prec.right(1, seq(
       $._ELSE, $._IF,
-      field('condition', $._expr_logic),
+      field('condition', choice($.expr)),
       optional($._THEN),
     )),
 
@@ -1755,7 +1755,7 @@ module.exports = grammar({
     ),
 
     _expr_logic: $ => prec.left(choice(
-      seq($.NOT, $._expr_logic),
+      //seq($.NOT, $._expr_logic),
       seq($._expr_logic, choice($.AND, $.OR), $._expr_logic),
       $._expr_bool,
       seq("(", $._expr_logic, ")")
@@ -1779,10 +1779,12 @@ module.exports = grammar({
       seq(optional($._IS), $._NOT, $._GREATER, optional($._THAN)),
     ),
 
-    ne: $ => choice(
+    ne: $ => prec.left(1,
+      seq(optional($._IS), $._NOT_EQUAL, optional($._TO))
+      /*choice(
       '!=',
       seq(optional($._IS), $._NOT, choice('=', $._EQUAL), optional($._TO)),
-    ),
+    )*/),
 
     gt: $ => choice(
       '>',
@@ -3307,5 +3309,6 @@ module.exports = grammar({
 
     COMPUTATIONAL: $ => $._COMPUTATIONAL,
     _COMPUTATIONAL: $ => /[cC][oO][mM][pP][uU][tT][aA][tT][iI][oO][nN][aA][lL]/,
+    _NOT_EQUAL: $ => /(!=)|([nN][oO][tT][ \t]([eE][qQ][uU][aA][lL])|=)/
   }
 });
