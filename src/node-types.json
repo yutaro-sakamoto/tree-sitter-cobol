@@ -6285,6 +6285,70 @@
     }
   },
   {
+    "type": "occurs_indexed",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "WORD",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "occurs_key",
+    "named": true,
+    "fields": {
+      "keys": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "ASCENDING",
+          "named": true
+        },
+        {
+          "type": "DESCENDING",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "occurs_key_spec",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "occurs_indexed",
+          "named": true
+        },
+        {
+          "type": "occurs_key",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "on_exception",
     "named": true,
     "fields": {}
@@ -10582,10 +10646,6 @@
   {
     "type": "null",
     "named": false
-  },
-  {
-    "type": "occurs_key_spec",
-    "named": true
   },
   {
     "type": "picture_a",

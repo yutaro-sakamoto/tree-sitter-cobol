@@ -1008,7 +1008,23 @@ module.exports = grammar({
       field('key_spec', optional($.occurs_key_spec)),
     ),
 
-    occurs_key_spec: $ => /todo_occurs_key_spec/,
+    occurs_key_spec: $ => choice(
+      seq(repeat1($.occurs_key), optional($.occurs_indexed)),
+      seq($.occurs_indexed, repeat($.occurs_key))
+    ),
+
+    occurs_key: $ => seq(
+      choice($.ASCENDING, $.DESCENDING),
+      optional($._KEY),
+      optional($._IS),
+      field('keys', repeat1($.qualified_word))
+    ),
+
+    occurs_indexed: $ => seq(
+      $._INDEXED,
+      optional($._BY),
+      repeat1($.WORD)
+    ),
 
     justified_clause: $ => seq(
       choice($._JUSTIFIED, $._JUST),
