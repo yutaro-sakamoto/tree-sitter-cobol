@@ -914,8 +914,20 @@ module.exports = grammar({
       $.linage_counter,
     ),
 
-    external_clause: $ => /todo_external_clause/,
-    global_clause: $ => /todo_global_clause/,
+    external_clause: $ => seq(
+      optional($._IS),
+      $.EXTERNAL,
+      optional(seq(
+        $._AS,
+        $._LITERAL,
+      ))
+    ),
+
+    global_clause: $ => seq(
+      optional($._IS),
+      $.GLOBAL
+    ),
+
     picture_clause: $ => seq(
       choice($._PICTURE, $._PIC),
       optional($._IS),

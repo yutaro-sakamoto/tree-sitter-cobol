@@ -3872,6 +3872,41 @@
     }
   },
   {
+    "type": "external_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "EXTERNAL",
+          "named": true
+        },
+        {
+          "type": "h_string",
+          "named": true
+        },
+        {
+          "type": "n_string",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "x_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "file_description",
     "named": true,
     "fields": {},
@@ -4439,6 +4474,21 @@
     "type": "ge",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "global_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "GLOBAL",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "goback_statement",
@@ -11272,14 +11322,6 @@
   },
   {
     "type": "error",
-    "named": true
-  },
-  {
-    "type": "external_clause",
-    "named": true
-  },
-  {
-    "type": "global_clause",
     "named": true
   },
   {
