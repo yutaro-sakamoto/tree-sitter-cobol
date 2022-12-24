@@ -1761,9 +1761,10 @@ module.exports = grammar({
       seq("(", $._expr_logic, ")")
     )),
 
-    eq: $ => choice(
-      '=',
-      seq(optional($._IS), $._EQUAL, optional($._TO)),
+    eq: $ => seq(
+      optional($._IS),
+      choice($._EQUAL, '='),
+      optional($._TO)
     ),
 
     ge: $ => choice(
