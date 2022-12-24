@@ -6175,8 +6175,25 @@
       "value": "todo_nested_prog"
     },
     "end_program": {
-      "type": "PATTERN",
-      "value": "todo_end_program"
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_END_PROGRAM"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "program_name"
+          },
+          {
+            "type": "STRING",
+            "value": "."
+          }
+        ]
+      }
     },
     "_statement": {
       "type": "CHOICE",
@@ -14257,7 +14274,7 @@
     },
     "_END_PROGRAM": {
       "type": "PATTERN",
-      "value": "[eE][nN][dD]-[pP][rR][oO][gG][rR][aA][mM]"
+      "value": "[eE][nN][dD][ \\t]+[pP][rR][oO][gG][rR][aA][mM]"
     },
     "_END_READ": {
       "type": "PATTERN",

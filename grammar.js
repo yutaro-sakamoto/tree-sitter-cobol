@@ -1197,7 +1197,11 @@ module.exports = grammar({
     ),
 
     nested_prog: $ => /todo_nested_prog/,
-    end_program: $ => /todo_end_program/,
+    end_program: $ => prec(1, seq(
+      $._END_PROGRAM,
+      $.program_name,
+      '.'
+    )),
 
     _statement: $ => choice(
       $.accept_statement,
@@ -2517,7 +2521,7 @@ module.exports = grammar({
     _END_MULTIPLY: $ => /[eE][nN][dD]-[mM][uU][lL][tT][iI][pP][lL][yY]/,
     _END_OF_PAGE: $ => /[eE][nN][dD]-[oO][fF]-[pP][aA][gG][eE]/,
     _END_PERFORM: $ => /[eE][nN][dD]-[pP][eE][rR][fF][oO][rR][mM]/,
-    _END_PROGRAM: $ => /[eE][nN][dD]-[pP][rR][oO][gG][rR][aA][mM]/,
+    _END_PROGRAM: $ => /[eE][nN][dD][ \t]+[pP][rR][oO][gG][rR][aA][mM]/,
     _END_READ: $ => /[eE][nN][dD]-[rR][eE][aA][dD]/,
     _END_RETURN: $ => /[eE][nN][dD]-[rR][eE][tT][uU][rR][nN]/,
     _END_REWRITE: $ => /[eE][nN][dD]-[rR][eE][wW][rR][iI][tT][eE]/,

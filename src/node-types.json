@@ -3592,6 +3592,21 @@
     }
   },
   {
+    "type": "end_program",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "program_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "entry_name",
     "named": true,
     "fields": {}
@@ -11253,10 +11268,6 @@
   },
   {
     "type": "decimal",
-    "named": true
-  },
-  {
-    "type": "end_program",
     "named": true
   },
   {
