@@ -2298,27 +2298,15 @@ module.exports = grammar({
     _trim_args: $ => seq(
       $._exp,
       optional(
-        seq(
-          $._e_sep,
-          choice($._LEADING, $._TRAILING)
-        )
+        choice($._LEADING, $._TRAILING)
       )
     ),
 
-    _e_sep: $ => choice(
-      $._COMMA_DELIM,
-      $._SEMI_COLON
-    ),
-
-    _numvalc_args: $ => sepBy(
-      $._exp, $._e_sep
-    ),
+    _numvalc_args: $ => repeat1($._exp),
 
     _locale_dt_args: $ => seq(
       $._exp,
-      optional(
-        seq($._e_sep, $.qualified_word)
-      )
+      optional($.qualified_word)
     ),
 
     linage_counter: $ => seq(

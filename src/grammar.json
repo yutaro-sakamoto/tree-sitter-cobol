@@ -13344,24 +13344,15 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SEQ",
+              "type": "CHOICE",
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "_e_sep"
+                  "name": "_LEADING"
                 },
                 {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "SYMBOL",
-                      "name": "_LEADING"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "_TRAILING"
-                    }
-                  ]
+                  "type": "SYMBOL",
+                  "name": "_TRAILING"
                 }
               ]
             },
@@ -13372,43 +13363,12 @@
         }
       ]
     },
-    "_e_sep": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_COMMA_DELIM"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_SEMI_COLON"
-        }
-      ]
-    },
     "_numvalc_args": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_exp"
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "_e_sep"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_exp"
-              }
-            ]
-          }
-        }
-      ]
+      "type": "REPEAT1",
+      "content": {
+        "type": "SYMBOL",
+        "name": "_exp"
+      }
     },
     "_locale_dt_args": {
       "type": "SEQ",
@@ -13421,17 +13381,8 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "_e_sep"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "qualified_word"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "qualified_word"
             },
             {
               "type": "BLANK"
