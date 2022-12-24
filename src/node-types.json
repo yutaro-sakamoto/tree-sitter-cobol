@@ -7623,10 +7623,6 @@
         {
           "type": "procedure_division",
           "named": true
-        },
-        {
-          "type": "program_definition",
-          "named": true
         }
       ]
     }

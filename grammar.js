@@ -41,8 +41,7 @@ module.exports = grammar({
       optional($.environment_division),
       optional($.data_division),
       optional($.procedure_division), //todo
-      optional($.program_definition),
-      optional($.end_program), //todo
+      repeat($.end_program), //todo
       //optional($.LINE_PREFIX_COMMENT),
     )),
 
@@ -1778,12 +1777,8 @@ module.exports = grammar({
       seq(optional($._IS), $._NOT, $._GREATER, optional($._THAN)),
     ),
 
-    ne: $ => prec.left(1,
-      seq(optional($._IS), $._NOT_EQUAL, optional($._TO))
-      /*choice(
-      '!=',
-      seq(optional($._IS), $._NOT, choice('=', $._EQUAL), optional($._TO)),
-    )*/),
+    ne: $ => seq(optional($._IS), $._NOT_EQUAL, optional($._TO)),
+
 
     gt: $ => choice(
       '>',
@@ -3308,6 +3303,6 @@ module.exports = grammar({
 
     COMPUTATIONAL: $ => $._COMPUTATIONAL,
     _COMPUTATIONAL: $ => /[cC][oO][mM][pP][uU][tT][aA][tT][iI][oO][nN][aA][lL]/,
-    _NOT_EQUAL: $ => /(!=)|([nN][oO][tT][ \t]([eE][qQ][uU][aA][lL])|=)/
+    _NOT_EQUAL: $ => /(!=)|([nN][oO][tT][ \t]+(([eE][qQ][uU][aA][lL])|=))/,
   }
 });
