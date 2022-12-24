@@ -1735,7 +1735,12 @@ module.exports = grammar({
 
     else_header: $ => $._ELSE,
 
-    expr: $ => prec.left(choice($._expr_logic, $._expr_calc)),
+    expr: $ => prec.left(choice(
+      seq($.NOT, $.expr),
+      seq($.expr, choice($.AND, $.OR), $.expr),
+      $._expr_bool,
+      seq("(", $.expr, ")")
+    )),
 
     _expr_data: $ => $._x,
 
@@ -1768,7 +1773,7 @@ module.exports = grammar({
       prec.left(-1, seq($._expr_calc, $.le, $._expr_calc)),
     ),
 
-    _expr_is: $ => choice(
+    _expr_is: $ => prec(1, choice(
       seq($._expr_calc, optional($._IS), choice(
         $.OMITTED,
         $.NUMERIC,
@@ -1780,19 +1785,13 @@ module.exports = grammar({
         $.NEGATIVE,
         $.ZERO
       ))
-    ),
+    )),
 
     _expr_bool: $ => choice(
       $._expr_is,
       $._expr_compare,
+      $._expr_calc
     ),
-
-    _expr_logic: $ => prec.left(choice(
-      //seq($.NOT, $._expr_logic),
-      seq($._expr_logic, choice($.AND, $.OR), $._expr_logic),
-      $._expr_bool,
-      seq("(", $._expr_logic, ")")
-    )),
 
     eq: $ => seq(
       optional($._IS),

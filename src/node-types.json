@@ -536,6 +536,11 @@
     "fields": {}
   },
   {
+    "type": "NOT",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "NO_ADVANCING",
     "named": true,
     "fields": {}
@@ -3600,6 +3605,10 @@
           "named": true
         },
         {
+          "type": "NOT",
+          "named": true
+        },
+        {
           "type": "NUMERIC",
           "named": true
         },
@@ -3633,6 +3642,10 @@
         },
         {
           "type": "eq",
+          "named": true
+        },
+        {
+          "type": "expr",
           "named": true
         },
         {
