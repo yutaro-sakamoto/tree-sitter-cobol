@@ -36,15 +36,15 @@ module.exports = grammar({
       )
     ),
 
-    program_definition: $ => seq(
+    program_definition: $ => prec.right(seq(
       $.identification_division,
       optional($.environment_division),
       optional($.data_division),
       optional($.procedure_division), //todo
-      optional($.nested_prog), //todo
+      optional($.program_definition),
       optional($.end_program), //todo
       //optional($.LINE_PREFIX_COMMENT),
-    ),
+    )),
 
     identification_division: $ => seq(
       $._IDENTIFICATION, $._DIVISION, '.',
@@ -1208,7 +1208,6 @@ module.exports = grammar({
       '.'
     ),
 
-    nested_prog: $ => /todo_nested_prog/,
     end_program: $ => prec(1, seq(
       $._END_PROGRAM,
       $.program_name,

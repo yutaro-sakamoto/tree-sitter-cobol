@@ -7621,11 +7621,11 @@
           "named": true
         },
         {
-          "type": "nested_prog",
+          "type": "procedure_division",
           "named": true
         },
         {
-          "type": "procedure_division",
+          "type": "program_definition",
           "named": true
         }
       ]
@@ -11022,10 +11022,6 @@
   {
     "type": "low-value",
     "named": false
-  },
-  {
-    "type": "nested_prog",
-    "named": true
   },
   {
     "type": "null",
