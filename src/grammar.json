@@ -13144,8 +13144,16 @@
           "name": "_INVALID"
         },
         {
-          "type": "SYMBOL",
-          "name": "_KEY"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_KEY"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -13161,8 +13169,16 @@
           "name": "_INVALID"
         },
         {
-          "type": "SYMBOL",
-          "name": "_KEY"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_KEY"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },

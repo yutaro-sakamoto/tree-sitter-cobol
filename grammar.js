@@ -2304,13 +2304,13 @@ module.exports = grammar({
 
     invalid_key: $ => seq(
       $._INVALID,
-      $._KEY,
+      optional($._KEY),
     ),
 
     not_invalid_key: $ => seq(
       $._NOT,
       $._INVALID,
-      $._KEY,
+      optional($._KEY),
     ),
 
     next_sentence_statement: $ => seq($._NEXT, $._SENTENCE),
