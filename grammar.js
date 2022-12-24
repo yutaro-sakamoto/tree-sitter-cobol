@@ -1223,6 +1223,7 @@ module.exports = grammar({
       $.release_statement,
       $.return_statement,
       $.rewrite_statement,
+      $.search_statement,
       $.set_statement,
       $.sort_statement,
       $.stop_statement,
@@ -1241,6 +1242,7 @@ module.exports = grammar({
       $._END_DIVIDE,
       $._END_MULTIPLY,
       $._END_READ,
+      $._END_SEARCH,
       $._END_SUBTRACT,
       $._END_WRITE,
       $._END_PERFORM,
@@ -1266,8 +1268,8 @@ module.exports = grammar({
       $.not_invalid_key,
 
       $.evaluate_header,
-      $.evaluate_case,
-      $.evaluate_other,
+      $.when,
+      $.when_other,
       $.perform_statement_loop,
       $.if_header,
       $.else_if_header,
@@ -1632,7 +1634,7 @@ module.exports = grammar({
       $.FALSE,
     ),
 
-    evaluate_case: $ => prec.right(repeat1(seq($._WHEN, $._evaluate_object_list))),
+    when: $ => prec.right(repeat1(seq($._WHEN, $._evaluate_object_list))),
 
     _evaluate_object_list: $ => prec.right(sepBy($._evaluate_object, optional($._ALSO))),
 
@@ -1643,7 +1645,7 @@ module.exports = grammar({
       $.FALSE
     ),
 
-    evaluate_other: $ => $._WHEN_OTHER,
+    when_other: $ => $._WHEN_OTHER,
 
     exit_statement: $ => prec.left(seq(
       $._EXIT,
@@ -1998,6 +2000,13 @@ module.exports = grammar({
       field('record', $.qualified_word),
       field('from', optional(seq($._FROM, $._id_or_lit))),
       field('lock', optional(choice($.write_lock, $.write_no_lock))),
+    ),
+
+    search_statement: $ => seq(
+      $._SEARCH,
+      optional(field('all', $.ALL)),
+      field('table_name', $.qualified_word),
+      field('varying', optional(seq($.VARYING, $._identifier)))
     ),
 
     set_statement: $ => seq(

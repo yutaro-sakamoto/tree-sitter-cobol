@@ -6275,6 +6275,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "search_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "set_statement"
         },
         {
@@ -6337,6 +6341,10 @@
         {
           "type": "SYMBOL",
           "name": "_END_READ"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_END_SEARCH"
         },
         {
           "type": "SYMBOL",
@@ -6429,11 +6437,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "evaluate_case"
+          "name": "when"
         },
         {
           "type": "SYMBOL",
-          "name": "evaluate_other"
+          "name": "when_other"
         },
         {
           "type": "SYMBOL",
@@ -8775,7 +8783,7 @@
         }
       ]
     },
-    "evaluate_case": {
+    "when": {
       "type": "PREC_RIGHT",
       "value": 0,
       "content": {
@@ -8853,7 +8861,7 @@
         }
       ]
     },
-    "evaluate_other": {
+    "when_other": {
       "type": "SYMBOL",
       "name": "_WHEN_OTHER"
     },
@@ -11463,6 +11471,64 @@
                   {
                     "type": "SYMBOL",
                     "name": "write_no_lock"
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "search_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_SEARCH"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "all",
+              "content": {
+                "type": "SYMBOL",
+                "name": "ALL"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "FIELD",
+          "name": "table_name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "qualified_word"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "varying",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "VARYING"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_identifier"
                   }
                 ]
               },

@@ -3626,33 +3626,6 @@
     "fields": {}
   },
   {
-    "type": "evaluate_case",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "ANY",
-          "named": true
-        },
-        {
-          "type": "FALSE",
-          "named": true
-        },
-        {
-          "type": "TRUE",
-          "named": true
-        },
-        {
-          "type": "expr",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "evaluate_header",
     "named": true,
     "fields": {},
@@ -3666,11 +3639,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "evaluate_other",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "evaluate_subject",
@@ -7445,15 +7413,7 @@
           "named": true
         },
         {
-          "type": "evaluate_case",
-          "named": true
-        },
-        {
           "type": "evaluate_header",
-          "named": true
-        },
-        {
-          "type": "evaluate_other",
           "named": true
         },
         {
@@ -7565,6 +7525,10 @@
           "named": true
         },
         {
+          "type": "search_statement",
+          "named": true
+        },
+        {
           "type": "section_header",
           "named": true
         },
@@ -7586,6 +7550,14 @@
         },
         {
           "type": "use_statement",
+          "named": true
+        },
+        {
+          "type": "when",
+          "named": true
+        },
+        {
+          "type": "when_other",
           "named": true
         },
         {
@@ -7660,15 +7632,7 @@
           "named": true
         },
         {
-          "type": "evaluate_case",
-          "named": true
-        },
-        {
           "type": "evaluate_header",
-          "named": true
-        },
-        {
-          "type": "evaluate_other",
           "named": true
         },
         {
@@ -7792,6 +7756,10 @@
           "named": true
         },
         {
+          "type": "search_statement",
+          "named": true
+        },
+        {
           "type": "section_header",
           "named": true
         },
@@ -7813,6 +7781,14 @@
         },
         {
           "type": "use_statement",
+          "named": true
+        },
+        {
+          "type": "when",
+          "named": true
+        },
+        {
+          "type": "when_other",
           "named": true
         },
         {
@@ -8760,6 +8736,54 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "search_statement",
+    "named": true,
+    "fields": {
+      "all": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "ALL",
+            "named": true
+          }
+        ]
+      },
+      "table_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          }
+        ]
+      },
+      "varying": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "VARYING",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -10676,6 +10700,38 @@
         ]
       }
     }
+  },
+  {
+    "type": "when",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "ANY",
+          "named": true
+        },
+        {
+          "type": "FALSE",
+          "named": true
+        },
+        {
+          "type": "TRUE",
+          "named": true
+        },
+        {
+          "type": "expr",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "when_other",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "with_accp_attr",
