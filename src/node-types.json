@@ -3651,6 +3651,30 @@
           "named": true
         },
         {
+          "type": "AND_EQ",
+          "named": true
+        },
+        {
+          "type": "AND_GE",
+          "named": true
+        },
+        {
+          "type": "AND_GT",
+          "named": true
+        },
+        {
+          "type": "AND_LE",
+          "named": true
+        },
+        {
+          "type": "AND_LT",
+          "named": true
+        },
+        {
+          "type": "AND_NE",
+          "named": true
+        },
+        {
           "type": "CLASS_NAME",
           "named": true
         },
@@ -3716,6 +3740,30 @@
         },
         {
           "type": "OR",
+          "named": true
+        },
+        {
+          "type": "OR_EQ",
+          "named": true
+        },
+        {
+          "type": "OR_GE",
+          "named": true
+        },
+        {
+          "type": "OR_GT",
+          "named": true
+        },
+        {
+          "type": "OR_LE",
+          "named": true
+        },
+        {
+          "type": "OR_LT",
+          "named": true
+        },
+        {
+          "type": "OR_NE",
           "named": true
         },
         {
@@ -12353,6 +12401,30 @@
     "named": false
   },
   {
+    "type": "AND_EQ",
+    "named": true
+  },
+  {
+    "type": "AND_GE",
+    "named": true
+  },
+  {
+    "type": "AND_GT",
+    "named": true
+  },
+  {
+    "type": "AND_LE",
+    "named": true
+  },
+  {
+    "type": "AND_LT",
+    "named": true
+  },
+  {
+    "type": "AND_NE",
+    "named": true
+  },
+  {
     "type": "HIGH-VALUE",
     "named": false
   },
@@ -12491,6 +12563,30 @@
   {
     "type": "Null",
     "named": false
+  },
+  {
+    "type": "OR_EQ",
+    "named": true
+  },
+  {
+    "type": "OR_GE",
+    "named": true
+  },
+  {
+    "type": "OR_GT",
+    "named": true
+  },
+  {
+    "type": "OR_LE",
+    "named": true
+  },
+  {
+    "type": "OR_LT",
+    "named": true
+  },
+  {
+    "type": "OR_NE",
+    "named": true
   },
   {
     "type": "QUOTE",

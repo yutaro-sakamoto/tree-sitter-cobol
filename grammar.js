@@ -1788,13 +1788,39 @@ module.exports = grammar({
       seq('^', $._expr_calc),
     )),
 
-    _expr_compare: $ => choice(
-      prec.left(-1, seq($._expr_calc, $.ne, $._expr_calc)),
-      prec.left(-1, seq($._expr_calc, $.eq, $._expr_calc)),
-      prec.left(-1, seq($._expr_calc, $.gt, $._expr_calc)),
-      prec.left(-1, seq($._expr_calc, $.lt, $._expr_calc)),
-      prec.left(-1, seq($._expr_calc, $.ge, $._expr_calc)),
-      prec.left(-1, seq($._expr_calc, $.le, $._expr_calc)),
+    _expr_compare: $ => //choice(
+      //prec.left(-1, seq($._expr_calc, $.ne, $._expr_calc)),
+      //prec.left(-1, seq($._expr_calc, $.eq, $._expr_calc)),
+      //prec.left(-1, seq($._expr_calc, $.gt, $._expr_calc)),
+      //prec.left(-1, seq($._expr_calc, $.lt, $._expr_calc)),
+      //prec.left(-1, seq($._expr_calc, $.ge, $._expr_calc)),
+      //prec.left(-1, seq($._expr_calc, $.le, $._expr_calc)),
+      //),
+      prec.left(-1, seq(
+        $._expr_calc,
+        $._comparator,
+        $._expr_calc,
+        optional(seq(
+          choice(
+            $.AND_LT,
+            $.AND_LE,
+            $.AND_GT,
+            $.AND_GE,
+            $.AND_EQ,
+            $.AND_NE,
+            $.OR_LT,
+            $.OR_LE,
+            $.OR_GT,
+            $.OR_GE,
+            $.OR_EQ,
+            $.OR_NE,
+          ),
+          $._expr_calc
+        ))
+      )),
+
+    _comparator: $ => choice(
+      $.ne, $.eq, $.gt, $.lt, $.ge, $.le
     ),
 
     _expr_is: $ => prec(1, choice(
@@ -3483,5 +3509,17 @@ module.exports = grammar({
     NOT_POSITIVE: $ => /[nN][oO][tT][ \t]+[pP][oO][sS][iI][tT][iI][vV][eE]/,
     NOT_NEGATIVE: $ => /[nN][oO][tT][ \t]+[nN][eE][gG][aA][tT][iI][vV][eE]/,
     NOT_ZERO: $ => /[nN][oO][tT][ \t]+[zZ][eE][rR][oO]/,
+    AND_LT: $ => /[aA][nN][dD][ \t]+</,
+    AND_LE: $ => /[aA][nN][dD][ \t]+<=/,
+    AND_GT: $ => /[aA][nN][dD][ \t]+>/,
+    AND_GE: $ => /[aA][nN][dD][ \t]+>=/,
+    AND_EQ: $ => /[aA][nN][dD][ \t]+=/,
+    AND_NE: $ => /[aA][nN][dD][ \t]+!=/,
+    OR_LT: $ => /[oO][rR][ \t]+</,
+    OR_LE: $ => /[oO][rR][ \t]+<=/,
+    OR_GT: $ => /[oO][rR][ \t]+>/,
+    OR_GE: $ => /[oO][rR][ \t]+>=/,
+    OR_EQ: $ => /[oO][rR][ \t]+=/,
+    OR_NE: $ => /[oO][rR][ \t]+!=/,
   }
 });
