@@ -380,10 +380,16 @@ module.exports = grammar({
 
     i_o_control_clause: $ => choice(
       $.same_clause,
-      $.multiple_file_tape_clause
+      $.multiple_file_tape_clause,
+      $.i_o_control_header,
     ),
 
-    same_clause: $ => seq(
+    // todo this i_o_control does not exits
+    i_o_control_header: $ => seq(
+      $.WORD, '.'
+    ),
+
+    same_clause: $ => prec.right(seq(
       $._SAME,
       field('option', choice(
         $.RECORD,
@@ -393,15 +399,15 @@ module.exports = grammar({
       optional($._AREA),
       optional($._FOR),
       field('file_name_list', repeat1($.WORD))
-    ),
+    )),
 
-    multiple_file_tape_clause: $ => seq(
+    multiple_file_tape_clause: $ => prec.right(seq(
       $._MULTIPLE,
       optional($._FILE),
       optional($._TAPE),
       optional($._CONTAINS),
       repeat1($.multiple_file)
-    ),
+    )),
 
     multiple_file: $ => seq(
       field('file_name', $.WORD),

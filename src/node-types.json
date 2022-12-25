@@ -4484,11 +4484,30 @@
       "required": true,
       "types": [
         {
+          "type": "i_o_control_header",
+          "named": true
+        },
+        {
           "type": "multiple_file_tape_clause",
           "named": true
         },
         {
           "type": "same_clause",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "i_o_control_header",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "WORD",
           "named": true
         }
       ]
