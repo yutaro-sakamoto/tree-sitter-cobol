@@ -1203,7 +1203,7 @@ module.exports = grammar({
       ),
       seq(
         optional($._procedure_division_headers),
-        repeat1(seq(
+        repeat(seq(
           $._procedure_division_statements_before_header,
           $._procedure_division_headers,
         )),

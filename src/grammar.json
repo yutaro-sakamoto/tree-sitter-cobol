@@ -6229,7 +6229,7 @@
                 ]
               },
               {
-                "type": "REPEAT1",
+                "type": "REPEAT",
                 "content": {
                   "type": "SEQ",
                   "members": [
@@ -16740,6 +16740,10 @@
     "_NOT_LESS": {
       "type": "PATTERN",
       "value": "([nN][oO][tT][ \\t]+[lL][eE][sS][sS])"
+    },
+    "_END_DECLARATIVES": {
+      "type": "PATTERN",
+      "value": "[eE][nN][dD][ \\t]+[dD][eE][cC][lL][aA][rR][aA][tT][iI][vV][eE][sS]"
     }
   },
   "extras": [
