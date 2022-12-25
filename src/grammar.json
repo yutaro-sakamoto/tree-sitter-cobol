@@ -15084,7 +15084,7 @@
     },
     "_CORRESPONDING": {
       "type": "PATTERN",
-      "value": "[cC][oO][rR][rR][eE][sS][pP][oO][nN][dD][iI][nN][gG]"
+      "value": "[cC][oO][rR][rR]([eE][sS][pP][oO][nN][dD][iI][nN][gG])?"
     },
     "_COUNT": {
       "type": "PATTERN",
