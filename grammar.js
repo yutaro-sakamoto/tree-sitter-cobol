@@ -775,12 +775,12 @@ module.exports = grammar({
     ),
 
     record_description_list: $ => seq(
-      repeat1(seq($.data_description, '.'))
+      repeat1(seq($.data_description, optional('.')))
     ),
 
     working_storage_section: $ => seq(
       $._WORKING_STORAGE, $._SECTION, '.',
-      repeat(seq($.data_description, '.'))
+      repeat(seq($.data_description, optional('.')))
     ),
 
     data_description: $ => choice(
