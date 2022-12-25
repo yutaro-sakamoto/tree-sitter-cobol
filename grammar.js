@@ -1687,7 +1687,7 @@ module.exports = grammar({
     _divide_body: $ => seq(
       field('x', $._x),
       choice(
-        seq($._INTO, field('into', $.arithmetic_x)),
+        seq($._INTO, field('into', repeat1($.arithmetic_x))),
         seq($._INTO, field('into', $._x), $._GIVING, field('giving', repeat1($.arithmetic_x))),
         seq($._BY, field('by', $._x), $._GIVING, field('giving', repeat1($.arithmetic_x))),
         seq($._INTO, field('into', $._x), $._GIVING, field('giving', $.arithmetic_x), $._REMAINDER, field('remainder', $.arithmetic_x)),

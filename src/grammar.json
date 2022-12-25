@@ -8904,8 +8904,11 @@
                   "type": "FIELD",
                   "name": "into",
                   "content": {
-                    "type": "SYMBOL",
-                    "name": "arithmetic_x"
+                    "type": "REPEAT1",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "arithmetic_x"
+                    }
                   }
                 }
               ]
