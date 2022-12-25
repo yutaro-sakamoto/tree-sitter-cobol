@@ -1834,7 +1834,7 @@ module.exports = grammar({
       seq(optional($._IS), '<='),
       seq(optional($._IS), $._NOT, '>'),
       seq(optional($._IS), $._LESS, optional($._THAN), optional($._OR), $._EQUAL, optional($._TO)),
-      seq(optional($._IS), $._NOT, $._GREATER, optional($._THAN)),
+      seq(optional($._IS), $._NOT_GREATER, optional($._THAN)),
     ),
 
     ne: $ => seq(optional($._IS), $._NOT_EQUAL, optional($._TO)),
@@ -3370,5 +3370,6 @@ module.exports = grammar({
     _COMPUTATIONAL: $ => /[cC][oO][mM][pP][uU][tT][aA][tT][iI][oO][nN][aA][lL]/,
     _NOT_EQUAL: $ => /(!=)|([nN][oO][tT][ \t]+(([eE][qQ][uU][aA][lL])|=))/,
     _NOT_LESS: $ => /([nN][oO][tT][ \t]+[lL][eE][sS][sS])/,
+    _NOT_GREATER: $ => /([nN][oO][tT][ \t]+[gG][rR][eE][aA][tT][eE][rR])/,
   }
 });

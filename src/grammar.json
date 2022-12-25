@@ -10259,11 +10259,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_NOT"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_GREATER"
+              "name": "_NOT_GREATER"
             },
             {
               "type": "CHOICE",
@@ -16966,6 +16962,10 @@
     "_NOT_LESS": {
       "type": "PATTERN",
       "value": "([nN][oO][tT][ \\t]+[lL][eE][sS][sS])"
+    },
+    "_NOT_GREATER": {
+      "type": "PATTERN",
+      "value": "([nN][oO][tT][ \\t]+[gG][rR][eE][aA][tT][eE][rR])"
     }
   },
   "extras": [
