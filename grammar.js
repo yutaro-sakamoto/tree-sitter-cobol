@@ -1167,10 +1167,10 @@ module.exports = grammar({
       $.paragraph_header,
     )),
 
-    _procedure_division_statements_before_header: $ => seq(
+    _procedure_division_statements_before_header: $ => prec(1, seq(
       repeat($._procedure_division_statement),
       $._end_statement
-    ),
+    )),
 
     _procedure_division_contenet: $ => prec.right(choice(
       seq(
@@ -1192,28 +1192,23 @@ module.exports = grammar({
       //$._procedure_division_headers,
     )),
 
-    _procedure_division_declaratives_content: $ => prec.right(1, seq(
-      choice(
-        seq(
-          optional($._procedure_division_headers),
-          repeat(seq(
-            $._procedure_division_statements_before_header,
-            $._procedure_division_headers,
-          )),
-          repeat($._procedure_division_statement)
-        ),
-        seq(
-          optional($._procedure_division_headers),
-          repeat(seq(
-            $._procedure_division_statements_before_header,
-            $._procedure_division_headers,
-          )),
-          repeat($._procedure_division_statement)
-        ),
+    _procedure_division_declaratives_content: $ => prec.right(1, choice(
+      $._procedure_division_headers,
+      seq(
+        optional($._procedure_division_headers),
+        repeat1(seq(
+          $._procedure_division_statements_before_header,
+          $._procedure_division_headers,
+        )),
       ),
-      choice(
-        $._statement,
-        $._end_statement,)
+      seq(
+        optional($._procedure_division_headers),
+        repeat1(seq(
+          $._procedure_division_statements_before_header,
+          $._procedure_division_headers,
+        )),
+        $._procedure_division_statements_before_header,
+      ),
     )),
 
     _procedure_division_statement: $ => choice(

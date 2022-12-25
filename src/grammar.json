@@ -6062,20 +6062,24 @@
       }
     },
     "_procedure_division_statements_before_header": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "REPEAT",
-          "content": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_procedure_division_statement"
+            }
+          },
+          {
             "type": "SYMBOL",
-            "name": "_procedure_division_statement"
+            "name": "_end_statement"
           }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_end_statement"
-        }
-      ]
+        ]
+      }
     },
     "_procedure_division_contenet": {
       "type": "PREC_RIGHT",
@@ -6170,103 +6174,79 @@
       "type": "PREC_RIGHT",
       "value": 1,
       "content": {
-        "type": "SEQ",
+        "type": "CHOICE",
         "members": [
           {
-            "type": "CHOICE",
+            "type": "SYMBOL",
+            "name": "_procedure_division_headers"
+          },
+          {
+            "type": "SEQ",
             "members": [
               {
-                "type": "SEQ",
+                "type": "CHOICE",
                 "members": [
                   {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "SYMBOL",
-                        "name": "_procedure_division_headers"
-                      },
-                      {
-                        "type": "BLANK"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "_procedure_division_headers"
                   },
                   {
-                    "type": "REPEAT",
-                    "content": {
-                      "type": "SEQ",
-                      "members": [
-                        {
-                          "type": "SYMBOL",
-                          "name": "_procedure_division_statements_before_header"
-                        },
-                        {
-                          "type": "SYMBOL",
-                          "name": "_procedure_division_headers"
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "type": "REPEAT",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "_procedure_division_statement"
-                    }
+                    "type": "BLANK"
                   }
                 ]
               },
               {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "SYMBOL",
-                        "name": "_procedure_division_headers"
-                      },
-                      {
-                        "type": "BLANK"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "REPEAT",
-                    "content": {
-                      "type": "SEQ",
-                      "members": [
-                        {
-                          "type": "SYMBOL",
-                          "name": "_procedure_division_statements_before_header"
-                        },
-                        {
-                          "type": "SYMBOL",
-                          "name": "_procedure_division_headers"
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "type": "REPEAT",
-                    "content": {
+                "type": "REPEAT1",
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
                       "type": "SYMBOL",
-                      "name": "_procedure_division_statement"
+                      "name": "_procedure_division_statements_before_header"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "_procedure_division_headers"
                     }
-                  }
-                ]
+                  ]
+                }
               }
             ]
           },
           {
-            "type": "CHOICE",
+            "type": "SEQ",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "_statement"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_procedure_division_headers"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "REPEAT1",
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_procedure_division_statements_before_header"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "_procedure_division_headers"
+                    }
+                  ]
+                }
               },
               {
                 "type": "SYMBOL",
-                "name": "_end_statement"
+                "name": "_procedure_division_statements_before_header"
               }
             ]
           }
