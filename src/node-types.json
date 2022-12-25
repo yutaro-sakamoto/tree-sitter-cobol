@@ -355,6 +355,11 @@
     "fields": {}
   },
   {
+    "type": "FIRST",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "FOREGROUND_COLOR",
     "named": true,
     "fields": {}
@@ -4805,6 +4810,575 @@
     }
   },
   {
+    "type": "inspect_converting",
+    "named": true,
+    "fields": {
+      "region": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "inspect_region",
+            "named": true
+          }
+        ]
+      },
+      "to": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "ALL",
+            "named": true
+          },
+          {
+            "type": "HIGH_VALUE",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE",
+            "named": true
+          },
+          {
+            "type": "QUOTE",
+            "named": true
+          },
+          {
+            "type": "SPACE",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL",
+            "named": true
+          },
+          {
+            "type": "ZERO",
+            "named": true
+          },
+          {
+            "type": "ZEROS",
+            "named": true
+          },
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
+          }
+        ]
+      },
+      "x": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "HIGH_VALUE",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE",
+            "named": true
+          },
+          {
+            "type": "QUOTE",
+            "named": true
+          },
+          {
+            "type": "SPACE",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL",
+            "named": true
+          },
+          {
+            "type": "ZERO",
+            "named": true
+          },
+          {
+            "type": "ZEROS",
+            "named": true
+          },
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "inspect_region",
+    "named": true,
+    "fields": {
+      "x": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "ALL",
+            "named": true
+          },
+          {
+            "type": "HIGH_VALUE",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE",
+            "named": true
+          },
+          {
+            "type": "QUOTE",
+            "named": true
+          },
+          {
+            "type": "SPACE",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL",
+            "named": true
+          },
+          {
+            "type": "ZERO",
+            "named": true
+          },
+          {
+            "type": "ZEROS",
+            "named": true
+          },
+          {
+            "type": "function_",
+            "named": true
+          },
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "linage_counter",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "AFTER",
+          "named": true
+        },
+        {
+          "type": "BEFORE",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "inspect_replacing",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "replacing_item",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "inspect_statement",
+    "named": true,
+    "fields": {
+      "send": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "ALL",
+            "named": true
+          },
+          {
+            "type": "HIGH_VALUE",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE",
+            "named": true
+          },
+          {
+            "type": "QUOTE",
+            "named": true
+          },
+          {
+            "type": "SPACE",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL",
+            "named": true
+          },
+          {
+            "type": "ZERO",
+            "named": true
+          },
+          {
+            "type": "ZEROS",
+            "named": true
+          },
+          {
+            "type": "function_",
+            "named": true
+          },
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "inspect_converting",
+          "named": true
+        },
+        {
+          "type": "inspect_replacing",
+          "named": true
+        },
+        {
+          "type": "inspect_tallying",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "inspect_tallying",
+    "named": true,
+    "fields": {
+      "all": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "ALL",
+            "named": true
+          }
+        ]
+      },
+      "character": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "inspect_region",
+            "named": true
+          }
+        ]
+      },
+      "for": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "HIGH_VALUE",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE",
+            "named": true
+          },
+          {
+            "type": "QUOTE",
+            "named": true
+          },
+          {
+            "type": "SPACE",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL",
+            "named": true
+          },
+          {
+            "type": "ZERO",
+            "named": true
+          },
+          {
+            "type": "ZEROS",
+            "named": true
+          },
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
+          }
+        ]
+      },
+      "leading": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "LEADING",
+            "named": true
+          }
+        ]
+      },
+      "trailing": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "TRAILING",
+            "named": true
+          }
+        ]
+      },
+      "two": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "HIGH_VALUE",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE",
+            "named": true
+          },
+          {
+            "type": "QUOTE",
+            "named": true
+          },
+          {
+            "type": "SPACE",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL",
+            "named": true
+          },
+          {
+            "type": "ZERO",
+            "named": true
+          },
+          {
+            "type": "ZEROS",
+            "named": true
+          },
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "inspect_region",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "invalid_key",
     "named": true,
     "fields": {}
@@ -7340,6 +7914,10 @@
           "named": true
         },
         {
+          "type": "inspect_statement",
+          "named": true
+        },
+        {
           "type": "invalid_key",
           "named": true
         },
@@ -7560,6 +8138,10 @@
         },
         {
           "type": "initialize_statement",
+          "named": true
+        },
+        {
+          "type": "inspect_statement",
           "named": true
         },
         {
@@ -8360,6 +8942,272 @@
           },
           {
             "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "replacing_item",
+    "named": true,
+    "fields": {
+      "characters_by": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "HIGH_VALUE",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE",
+            "named": true
+          },
+          {
+            "type": "QUOTE",
+            "named": true
+          },
+          {
+            "type": "SPACE",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL",
+            "named": true
+          },
+          {
+            "type": "ZERO",
+            "named": true
+          },
+          {
+            "type": "ZEROS",
+            "named": true
+          },
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "inspect_region",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
+          }
+        ]
+      },
+      "region": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "ALL",
+            "named": true
+          },
+          {
+            "type": "FIRST",
+            "named": true
+          },
+          {
+            "type": "LEADING",
+            "named": true
+          },
+          {
+            "type": "TRAILING",
+            "named": true
+          },
+          {
+            "type": "replacing_region",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "replacing_region",
+    "named": true,
+    "fields": {
+      "by": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "ALL",
+            "named": true
+          },
+          {
+            "type": "HIGH_VALUE",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE",
+            "named": true
+          },
+          {
+            "type": "QUOTE",
+            "named": true
+          },
+          {
+            "type": "SPACE",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL",
+            "named": true
+          },
+          {
+            "type": "ZERO",
+            "named": true
+          },
+          {
+            "type": "ZEROS",
+            "named": true
+          },
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
+          }
+        ]
+      },
+      "region": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "inspect_region",
+            "named": true
+          }
+        ]
+      },
+      "x": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "HIGH_VALUE",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE",
+            "named": true
+          },
+          {
+            "type": "QUOTE",
+            "named": true
+          },
+          {
+            "type": "SPACE",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL",
+            "named": true
+          },
+          {
+            "type": "ZERO",
+            "named": true
+          },
+          {
+            "type": "ZEROS",
+            "named": true
+          },
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          },
+          {
+            "type": "x_string",
             "named": true
           }
         ]

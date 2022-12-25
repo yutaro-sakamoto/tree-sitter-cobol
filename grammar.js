@@ -1264,6 +1264,7 @@ module.exports = grammar({
       $.goback_statement,
       $.goto_statement,
       $.initialize_statement,
+      $.inspect_statement,
       $.merge_statement,
       $.move_statement,
       $.multiply_statement,
@@ -1892,6 +1893,78 @@ module.exports = grammar({
       optional($._DATA),
       $._BY,
       field('by', $._x),
+    ),
+
+    inspect_statement: $ => seq(
+      $._INSPECT,
+      field('send', choice(
+        $._identifier,
+        $._literal,
+        $.function_
+      )),
+      repeat1(choice(
+        $.inspect_tallying,
+        $.inspect_replacing,
+        $.inspect_converting,
+      ))
+    ),
+
+    inspect_tallying: $ => seq(
+      $._TALLYING,
+      repeat1(choice(
+        field('for', seq($._simple_value, $._FOR)),
+        field('character', seq($._CHARACTERS, optional($.inspect_region))),
+        field('all', $.ALL),
+        field('leading', $.LEADING),
+        field('trailing', $.TRAILING),
+        field('two', seq($._simple_value, optional($.inspect_region))),
+      ))
+    ),
+
+    inspect_replacing: $ => seq(
+      $._REPLACING,
+      repeat1($.replacing_item)
+    ),
+
+    replacing_item: $ => choice(
+      field('characters_by', seq(
+        $._CHARACTERS, $._BY,
+        $._simple_value, optional($.inspect_region)
+      )),
+      field('region', seq(
+        optional(choice(
+          $.ALL,
+          $.LEADING,
+          $.FIRST,
+          $.TRAILING
+        )),
+        $.replacing_region
+      )),
+    ),
+
+    replacing_region: $ => seq(
+      field('x', $._simple_value),
+      $._BY,
+      field('by', $._simple_all_value),
+      field('region', optional($.inspect_region))
+    ),
+
+    inspect_converting: $ => seq(
+      $._CONVERTING,
+      field('x', $._simple_value),
+      field('to', $._simple_all_value),
+      field('region', optional($.inspect_region))
+    ),
+
+    inspect_region: $ => repeat1(seq(
+      choice($.BEFORE, $.AFTER),
+      optional($._INITIAL),
+      field('x', $._x)
+    )),
+
+    _simple_all_value: $ => choice(
+      $._identifier,
+      $._literal
     ),
 
     merge_statement: $ => seq(
@@ -3086,7 +3159,7 @@ module.exports = grammar({
     FILE_ID: $ => $._FILE_ID,
     FILLER: $ => $._FILLER,
     //FINAL: $ => $._FINAL,
-    //FIRST: $ => $._FIRST,
+    FIRST: $ => $._FIRST,
     //FOOTING: $ => $._FOOTING,
     //FOR: $ => $._FOR,
     FOREGROUND_COLOR: $ => $._FOREGROUND_COLOR,
