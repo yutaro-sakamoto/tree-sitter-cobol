@@ -1799,7 +1799,7 @@ module.exports = grammar({
     ge: $ => choice(
       '>=',
       seq(optional($._IS), $._GREATER, optional($._THAN), optional($._OR), $._EQUAL, optional($._TO)),
-      seq(optional($._IS), $._NOT, $._LESS, optional($._THAN)),
+      seq(optional($._IS), $._NOT_LESS, optional($._THAN)),
     ),
 
     le: $ => choice(
@@ -3335,5 +3335,6 @@ module.exports = grammar({
     COMPUTATIONAL: $ => $._COMPUTATIONAL,
     _COMPUTATIONAL: $ => /[cC][oO][mM][pP][uU][tT][aA][tT][iI][oO][nN][aA][lL]/,
     _NOT_EQUAL: $ => /(!=)|([nN][oO][tT][ \t]+(([eE][qQ][uU][aA][lL])|=))/,
+    _NOT_LESS: $ => /([nN][oO][tT][ \t]+[lL][eE][sS][sS])/,
   }
 });
