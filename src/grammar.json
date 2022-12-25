@@ -6484,6 +6484,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "start_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "stop_statement"
         },
         {
@@ -6570,6 +6574,10 @@
         {
           "type": "SYMBOL",
           "name": "_END_REWRITE"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_END_START"
         },
         {
           "type": "STRING",
@@ -6830,6 +6838,88 @@
                 "name": "string"
               }
             ]
+          }
+        }
+      ]
+    },
+    "start_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_START"
+        },
+        {
+          "type": "FIELD",
+          "name": "file_name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "WORD"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "start_key"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "start_key": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_KEY"
+        },
+        {
+          "type": "FIELD",
+          "name": "op",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "eq"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "gt"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "lt"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "ne"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "ge"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "ne"
+              }
+            ]
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "keys",
+          "content": {
+            "type": "REPEAT1",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_identifier"
+            }
           }
         }
       ]

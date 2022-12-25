@@ -7300,6 +7300,10 @@
           "named": true
         },
         {
+          "type": "start_statement",
+          "named": true
+        },
+        {
           "type": "stop_statement",
           "named": true
         },
@@ -7528,6 +7532,10 @@
         },
         {
           "type": "sort_statement",
+          "named": true
+        },
+        {
+          "type": "start_statement",
           "named": true
         },
         {
@@ -9546,6 +9554,82 @@
       "types": [
         {
           "type": "program_definition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "start_key",
+    "named": true,
+    "fields": {
+      "keys": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          }
+        ]
+      },
+      "op": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "eq",
+            "named": true
+          },
+          {
+            "type": "ge",
+            "named": true
+          },
+          {
+            "type": "gt",
+            "named": true
+          },
+          {
+            "type": "lt",
+            "named": true
+          },
+          {
+            "type": "ne",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "start_statement",
+    "named": true,
+    "fields": {
+      "file_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "WORD",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "start_key",
           "named": true
         }
       ]

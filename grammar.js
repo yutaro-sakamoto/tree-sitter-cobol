@@ -1270,6 +1270,7 @@ module.exports = grammar({
       $.search_statement,
       $.set_statement,
       $.sort_statement,
+      $.start_statement,
       $.stop_statement,
       $.subtract_statement,
       $.use_statement,
@@ -1294,6 +1295,7 @@ module.exports = grammar({
       $._END_EVALUATE,
       $._END_RETURN,
       $._END_REWRITE,
+      $._END_START,
       '.'
     ),
 
@@ -1337,6 +1339,25 @@ module.exports = grammar({
       field('x', choice($.WORD, $.string)),
       optional($._BY),
       field('by', choice($.WORD, $.string)),
+    ),
+
+    start_statement: $ => seq(
+      $._START,
+      field('file_name', $.WORD),
+      optional($.start_key),
+    ),
+
+    start_key: $ => seq(
+      $._KEY,
+      field('op', choice(
+        $.eq,
+        $.gt,
+        $.lt,
+        $.ne,
+        $.ge,
+        $.ne
+      )),
+      field('keys', repeat1($._identifier))
     ),
 
     //todo
