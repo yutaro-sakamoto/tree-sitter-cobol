@@ -2349,6 +2349,7 @@ module.exports = grammar({
       $._LITERAL,
       $.SPACE,
       $.ZERO,
+      $.ZEROS,
       $.QUOTE,
       $.HIGH_VALUE,
       $.LOW_VALUE,
@@ -2905,6 +2906,7 @@ module.exports = grammar({
     _YYYYDDD: $ => /[yY][yY][yY][yY][dD][dD][dD]/,
     _YYYYMMDD: $ => /[yY][yY][yY][yY][mM][mM][dD][dD]/,
     _ZERO: $ => choice('zero', 'ZERO', 'Zero'),
+    _ZEROS: $ => choice('zeros', 'ZEROS', 'Zeros'),
 
 
     //ACCEPT: $ => $._ACCEPT,
@@ -3355,6 +3357,7 @@ module.exports = grammar({
     YYYYDDD: $ => $._YYYYDDD,
     YYYYMMDD: $ => $._YYYYMMDD,
     ZERO: $ => $._ZERO,
+    ZEROS: $ => $._ZEROS,
 
 
     COMPUTATIONAL: $ => $._COMPUTATIONAL,

@@ -13488,6 +13488,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "ZEROS"
+        },
+        {
+          "type": "SYMBOL",
           "name": "QUOTE"
         },
         {
@@ -16121,6 +16125,23 @@
         }
       ]
     },
+    "_ZEROS": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "zeros"
+        },
+        {
+          "type": "STRING",
+          "value": "ZEROS"
+        },
+        {
+          "type": "STRING",
+          "value": "Zeros"
+        }
+      ]
+    },
     "AFTER": {
       "type": "SYMBOL",
       "name": "_AFTER"
@@ -16892,6 +16913,10 @@
     "ZERO": {
       "type": "SYMBOL",
       "name": "_ZERO"
+    },
+    "ZEROS": {
+      "type": "SYMBOL",
+      "name": "_ZEROS"
     },
     "COMPUTATIONAL": {
       "type": "SYMBOL",
