@@ -684,7 +684,7 @@ module.exports = grammar({
         $.VARYING,
         optional($._IN),
         optional($._SIZE),
-        field('from', optional(seq($._FROM, $.integer))),
+        field('from', optional(seq(optional($._FROM), $.integer))),
         field('to', optional(seq($._TO, $.integer))),
         optional($._CHARACTERS),
         field('depend', optional(seq($._DEPENDING, optional($._ON), $.qualified_word))),
