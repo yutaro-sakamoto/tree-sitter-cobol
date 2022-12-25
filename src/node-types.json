@@ -10028,11 +10028,11 @@
       "required": true,
       "types": [
         {
-          "type": "DOWN",
+          "type": "OFF",
           "named": true
         },
         {
-          "type": "UP",
+          "type": "ON",
           "named": true
         }
       ]

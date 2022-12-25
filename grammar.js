@@ -2204,7 +2204,7 @@ module.exports = grammar({
     set_to_on_off: $ => seq(
       field('mnemonic_names', repeat1($.MNEMONIC_NAME)),
       $._TO,
-      choice($.UP, $.DOWN)
+      choice($.ON, $.OFF)
     ),
 
     set_to_true_false: $ => seq(
@@ -2784,7 +2784,7 @@ module.exports = grammar({
     _MERGE: $ => /[mM][eE][rR][gG][eE]/,
     _MINUS: $ => /[mM][iI][nN][uU][sS]/,
     //todo
-    _MNEMONIC_NAME: $ => /[mM][nN][eE][mM][oO][nN][iI][cC]-[nN][aA][mM][eE]/,
+    _MNEMONIC_NAME: $ => /[sS][wW]\-[0-9]/,
     _MODE: $ => /[mM][oO][dD][eE]/,
     _MOVE: $ => /[mM][oO][vV][eE]/,
     _MULTIPLE: $ => /[mM][uU][lL][tT][iI][pP][lL][eE]/,

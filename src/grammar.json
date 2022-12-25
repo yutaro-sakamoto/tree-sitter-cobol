@@ -12664,11 +12664,11 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "UP"
+              "name": "ON"
             },
             {
               "type": "SYMBOL",
-              "name": "DOWN"
+              "name": "OFF"
             }
           ]
         }
@@ -15701,7 +15701,7 @@
     },
     "_MNEMONIC_NAME": {
       "type": "PATTERN",
-      "value": "[mM][nN][eE][mM][oO][nN][iI][cC]-[nN][aA][mM][eE]"
+      "value": "[sS][wW]\\-[0-9]"
     },
     "_MODE": {
       "type": "PATTERN",
