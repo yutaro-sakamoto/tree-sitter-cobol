@@ -2619,10 +2619,6 @@
           "named": true
         },
         {
-          "type": "level_number_88",
-          "named": true
-        },
-        {
           "type": "n_string",
           "named": true
         },
@@ -12530,10 +12526,6 @@
   },
   {
     "type": "level_number",
-    "named": true
-  },
-  {
-    "type": "level_number_88",
     "named": true
   },
   {

@@ -775,12 +775,12 @@ module.exports = grammar({
     ),
 
     record_description_list: $ => seq(
-      repeat1(seq($.data_description, optional('.')))
+      repeat1(seq($.data_description, repeat1('.')))
     ),
 
     working_storage_section: $ => seq(
       $._WORKING_STORAGE, $._SECTION, '.',
-      repeat(seq($.data_description, optional('.')))
+      repeat(seq($.data_description, repeat1('.')))
     ),
 
     data_description: $ => choice(
@@ -793,9 +793,9 @@ module.exports = grammar({
         $.level_number,
         repeat1($._data_description_clause), optional($._LITERAL)
       ),
-      seq(
+      /*seq(
         $.level_number_88, $.entry_name
-      ),
+      ),*/
     ),
 
     level_number: $ => /[0-9][0-9]/,
@@ -973,8 +973,7 @@ module.exports = grammar({
 
     picture_a: $ => /([aA](\([0-9]+\))?)+/,
 
-    //picture_edit: $ => /([aAxX9bBvVzZpP](\([0-9]+\))?|[0$/,*+-]|[cC][rR]|[dD][bB]|\.[^ \n\t])+/,
-    picture_edit: $ => /([aAxX9bBvVwWzZpP0-9<()$/,*+-]|[cC][rR]|[dD][bB]|\.[^ \n\t])+/,
+    picture_edit: $ => /([aAxX9bBvVzZpP\(\)0-9$/,\.*+<>-]|[cC][rR]|[dD][bB])*([aAxX9bBvVzZpP\(\)0-9$/,*+<>-]|[cC][rR]|[dD][bB])/,
 
     usage_clause: $ => seq(
       optional(seq($._USAGE, optional($._IS))),

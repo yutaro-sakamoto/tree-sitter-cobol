@@ -3972,16 +3972,11 @@
                 "name": "data_description"
               },
               {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": "."
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
+                "type": "REPEAT1",
+                "content": {
+                  "type": "STRING",
+                  "value": "."
+                }
               }
             ]
           }
@@ -4013,16 +4008,11 @@
                 "name": "data_description"
               },
               {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": "."
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
+                "type": "REPEAT1",
+                "content": {
+                  "type": "STRING",
+                  "value": "."
+                }
               }
             ]
           }
@@ -4093,19 +4083,6 @@
                   "type": "BLANK"
                 }
               ]
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "level_number_88"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "entry_name"
             }
           ]
         }
@@ -4861,7 +4838,7 @@
     },
     "picture_edit": {
       "type": "PATTERN",
-      "value": "([aAxX9bBvVwWzZpP0-9<()$/,*+-]|[cC][rR]|[dD][bB]|\\.[^ \\n\\t])+"
+      "value": "([aAxX9bBvVzZpP\\(\\)0-9$/,\\.*+<>-]|[cC][rR]|[dD][bB])*([aAxX9bBvVzZpP\\(\\)0-9$/,*+<>-]|[cC][rR]|[dD][bB])"
     },
     "usage_clause": {
       "type": "SEQ",
