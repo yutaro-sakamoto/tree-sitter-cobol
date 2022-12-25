@@ -1,5 +1,10 @@
 [
   {
+    "type": "ADVANCING",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "AFTER",
     "named": true,
     "fields": {}
@@ -542,11 +547,6 @@
   },
   {
     "type": "NOT",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "NO_ADVANCING",
     "named": true,
     "fields": {}
   },
@@ -12102,7 +12102,11 @@
       "required": true,
       "types": [
         {
-          "type": "NO_ADVANCING",
+          "type": "ADVANCING",
+          "named": true
+        },
+        {
+          "type": "NO",
           "named": true
         },
         {

@@ -8620,7 +8620,11 @@
             },
             {
               "type": "SYMBOL",
-              "name": "NO_ADVANCING"
+              "name": "NO"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "ADVANCING"
             }
           ]
         },
@@ -15924,10 +15928,6 @@
       "type": "PATTERN",
       "value": "[nN][oO][tT]-[sS][iI][zZ][eE]-[eE][rR][rR][oO][rR]"
     },
-    "_NO_ADVANCING": {
-      "type": "PATTERN",
-      "value": "[nN][oO]-[aA][dD][vV][aA][nN][cC][iI][nN][gG]"
-    },
     "_NUMBER": {
       "type": "PATTERN",
       "value": "[nN][uU][mM][bB][eE][rR]"
@@ -16757,6 +16757,10 @@
         }
       ]
     },
+    "ADVANCING": {
+      "type": "SYMBOL",
+      "name": "_ADVANCING"
+    },
     "AFTER": {
       "type": "SYMBOL",
       "name": "_AFTER"
@@ -17176,10 +17180,6 @@
     "NOT_EXCEPTION": {
       "type": "SYMBOL",
       "name": "_NOT_EXCEPTION"
-    },
-    "NO_ADVANCING": {
-      "type": "SYMBOL",
-      "name": "_NO_ADVANCING"
     },
     "NUMERIC": {
       "type": "SYMBOL",

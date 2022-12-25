@@ -1638,7 +1638,7 @@ module.exports = grammar({
     ),
 
     with_clause: $ => choice(
-      seq(optional($._WITH), $.NO_ADVANCING),
+      seq(optional($._WITH), $.NO, $.ADVANCING),
       seq($._WITH, repeat1($.disp_attr))
     ),
 
@@ -2858,7 +2858,7 @@ module.exports = grammar({
     _NOT_INVALID_KEY: $ => /[nN][oO][tT]-[iI][nN][vV][aA][lL][iI][dD]-[kK][eE][yY]/,
     _NOT_OVERFLOW: $ => /[nN][oO][tT]-[oO][vV][eE][rR][fF][lL][oO][wW]/,
     _NOT_SIZE_ERROR: $ => /[nN][oO][tT]-[sS][iI][zZ][eE]-[eE][rR][rR][oO][rR]/,
-    _NO_ADVANCING: $ => /[nN][oO]-[aA][dD][vV][aA][nN][cC][iI][nN][gG]/,
+    //_NO_ADVANCING: $ => /[nN][oO]-[aA][dD][vV][aA][nN][cC][iI][nN][gG]/,
     _NUMBER: $ => /[nN][uU][mM][bB][eE][rR]/,
     _NUMBERS: $ => /[nN][uU][mM][bB][eE][rR][sS]/,
     _NUMERIC: $ => /[nN][uU][mM][eE][rR][iI][cC]/,
@@ -3047,7 +3047,7 @@ module.exports = grammar({
     //ACCESS: $ => $._ACCESS,
     //ADD: $ => $._ADD,
     //ADDRESS: $ => $._ADDRESS,
-    //ADVANCING: $ => $._ADVANCING,
+    ADVANCING: $ => $._ADVANCING,
     AFTER: $ => $._AFTER,
     ALL: $ => $._ALL,
     //ALLOCATE: $ => $._ALLOCATE,
@@ -3310,7 +3310,7 @@ module.exports = grammar({
     //NOT_INVALID_KEY: $ => $._NOT_INVALID_KEY,
     //NOT_OVERFLOW: $ => $._NOT_OVERFLOW,
     //NOT_SIZE_ERROR: $ => $._NOT_SIZE_ERROR,
-    NO_ADVANCING: $ => $._NO_ADVANCING,
+    //NO_ADVANCING: $ => $._NO_ADVANCING,
     //NUMBER: $ => $._NUMBER,
     //NUMBERS: $ => $._NUMBERS,
     NUMERIC: $ => $._NUMERIC,
