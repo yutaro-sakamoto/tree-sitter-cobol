@@ -5549,8 +5549,17 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "SYMBOL",
-            "name": "_VALUE"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_VALUE"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_VALUES"
+              }
+            ]
           },
           {
             "type": "CHOICE",
@@ -16603,6 +16612,10 @@
     "_VALUE": {
       "type": "PATTERN",
       "value": "[vV][aA][lL][uU][eE]"
+    },
+    "_VALUES": {
+      "type": "PATTERN",
+      "value": "[vV][aA][lL][uU][eE][sS]"
     },
     "_VARYING": {
       "type": "PATTERN",

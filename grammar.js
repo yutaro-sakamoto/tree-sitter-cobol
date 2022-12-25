@@ -1073,7 +1073,7 @@ module.exports = grammar({
     based_clause: $ => $._BASED,
 
     value_clause: $ => prec.right(seq(
-      $._VALUE,
+      choice($._VALUE, $._VALUES),
       optional(choice($._IS, $._ARE)),
       repeat1($.value_item),
       optional($._WHEN),
@@ -2996,6 +2996,7 @@ module.exports = grammar({
     _USE: $ => /[uU][sS][eE]/,
     _USING: $ => /[uU][sS][iI][nN][gG]/,
     _VALUE: $ => /[vV][aA][lL][uU][eE]/,
+    _VALUES: $ => /[vV][aA][lL][uU][eE][sS]/,
     _VARYING: $ => /[vV][aA][rR][yY][iI][nN][gG]/,
     _WAIT: $ => /[wW][aA][iI][tT]/,
     _WHEN: $ => /[wW][hH][eE][nN]/,
