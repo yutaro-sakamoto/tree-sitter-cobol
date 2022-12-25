@@ -1825,8 +1825,21 @@ module.exports = grammar({
     _expr_bool: $ => choice(
       $._expr_is,
       $._expr_compare,
-      $._expr_calc
+      $._expr_calc,
+      $.is_class,
+      $.is_not_class,
     ),
+
+    is_class: $ => prec(1, seq(
+      field('x', $._x),
+      field('class', $.WORD)
+    )),
+
+    is_not_class: $ => prec(1, seq(
+      field('x', $._x),
+      $._NOT,
+      field('class', $.WORD)
+    )),
 
     eq: $ => seq(
       optional($._IS),

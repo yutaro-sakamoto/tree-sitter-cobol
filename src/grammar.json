@@ -10001,8 +10001,70 @@
         {
           "type": "SYMBOL",
           "name": "_expr_calc"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "is_class"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "is_not_class"
         }
       ]
+    },
+    "is_class": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "x",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_x"
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "class",
+            "content": {
+              "type": "SYMBOL",
+              "name": "WORD"
+            }
+          }
+        ]
+      }
+    },
+    "is_not_class": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "x",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_x"
+            }
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_NOT"
+          },
+          {
+            "type": "FIELD",
+            "name": "class",
+            "content": {
+              "type": "SYMBOL",
+              "name": "WORD"
+            }
+          }
+        ]
+      }
     },
     "eq": {
       "type": "SEQ",
