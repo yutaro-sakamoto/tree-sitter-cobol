@@ -12357,7 +12357,15 @@
     "named": false
   },
   {
+    "type": "HIGH-VALUES",
+    "named": false
+  },
+  {
     "type": "HIGH-Value",
+    "named": false
+  },
+  {
+    "type": "HIGH-Values",
     "named": false
   },
   {
@@ -12365,7 +12373,15 @@
     "named": false
   },
   {
+    "type": "HIGH-values",
+    "named": false
+  },
+  {
     "type": "High-VALUE",
+    "named": false
+  },
+  {
+    "type": "High-VALUES",
     "named": false
   },
   {
@@ -12373,7 +12389,15 @@
     "named": false
   },
   {
+    "type": "High-Values",
+    "named": false
+  },
+  {
     "type": "High-value",
+    "named": false
+  },
+  {
+    "type": "High-values",
     "named": false
   },
   {
@@ -12381,7 +12405,15 @@
     "named": false
   },
   {
+    "type": "LOW-VALUES",
+    "named": false
+  },
+  {
     "type": "LOW-Value",
+    "named": false
+  },
+  {
+    "type": "LOW-Values",
     "named": false
   },
   {
@@ -12389,7 +12421,15 @@
     "named": false
   },
   {
+    "type": "LOW-values",
+    "named": false
+  },
+  {
     "type": "Low-VALUE",
+    "named": false
+  },
+  {
+    "type": "Low-VALUES",
     "named": false
   },
   {
@@ -12397,7 +12437,15 @@
     "named": false
   },
   {
+    "type": "Low-Values",
+    "named": false
+  },
+  {
     "type": "Low-value",
+    "named": false
+  },
+  {
+    "type": "Low-values",
     "named": false
   },
   {
@@ -12449,7 +12497,15 @@
     "named": false
   },
   {
+    "type": "QUOTES",
+    "named": false
+  },
+  {
     "type": "Quote",
+    "named": false
+  },
+  {
+    "type": "Quotes",
     "named": false
   },
   {
@@ -12473,11 +12529,19 @@
     "named": false
   },
   {
+    "type": "ZEROES",
+    "named": false
+  },
+  {
     "type": "ZEROS",
     "named": false
   },
   {
     "type": "Zero",
+    "named": false
+  },
+  {
+    "type": "Zeroes",
     "named": false
   },
   {
@@ -12513,11 +12577,23 @@
     "named": false
   },
   {
+    "type": "high-VALUES",
+    "named": false
+  },
+  {
     "type": "high-Value",
     "named": false
   },
   {
+    "type": "high-Values",
+    "named": false
+  },
+  {
     "type": "high-value",
+    "named": false
+  },
+  {
+    "type": "high-values",
     "named": false
   },
   {
@@ -12537,11 +12613,23 @@
     "named": false
   },
   {
+    "type": "low-VALUES",
+    "named": false
+  },
+  {
     "type": "low-Value",
     "named": false
   },
   {
+    "type": "low-Values",
+    "named": false
+  },
+  {
     "type": "low-value",
+    "named": false
+  },
+  {
+    "type": "low-values",
     "named": false
   },
   {
@@ -12565,6 +12653,10 @@
     "named": false
   },
   {
+    "type": "quotes",
+    "named": false
+  },
+  {
     "type": "report_section",
     "named": true
   },
@@ -12582,6 +12674,10 @@
   },
   {
     "type": "zero",
+    "named": false
+  },
+  {
+    "type": "zeroes",
     "named": false
   },
   {

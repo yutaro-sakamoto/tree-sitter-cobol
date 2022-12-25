@@ -15535,6 +15535,42 @@
         {
           "type": "STRING",
           "value": "HIGH-VALUE"
+        },
+        {
+          "type": "STRING",
+          "value": "high-values"
+        },
+        {
+          "type": "STRING",
+          "value": "high-Values"
+        },
+        {
+          "type": "STRING",
+          "value": "high-VALUES"
+        },
+        {
+          "type": "STRING",
+          "value": "High-values"
+        },
+        {
+          "type": "STRING",
+          "value": "High-Values"
+        },
+        {
+          "type": "STRING",
+          "value": "High-VALUES"
+        },
+        {
+          "type": "STRING",
+          "value": "HIGH-values"
+        },
+        {
+          "type": "STRING",
+          "value": "HIGH-Values"
+        },
+        {
+          "type": "STRING",
+          "value": "HIGH-VALUES"
         }
       ]
     },
@@ -15764,6 +15800,42 @@
         {
           "type": "STRING",
           "value": "LOW-VALUE"
+        },
+        {
+          "type": "STRING",
+          "value": "low-values"
+        },
+        {
+          "type": "STRING",
+          "value": "low-Values"
+        },
+        {
+          "type": "STRING",
+          "value": "low-VALUES"
+        },
+        {
+          "type": "STRING",
+          "value": "Low-values"
+        },
+        {
+          "type": "STRING",
+          "value": "Low-Values"
+        },
+        {
+          "type": "STRING",
+          "value": "Low-VALUES"
+        },
+        {
+          "type": "STRING",
+          "value": "LOW-values"
+        },
+        {
+          "type": "STRING",
+          "value": "LOW-Values"
+        },
+        {
+          "type": "STRING",
+          "value": "LOW-VALUES"
         }
       ]
     },
@@ -16065,6 +16137,18 @@
         {
           "type": "STRING",
           "value": "Quote"
+        },
+        {
+          "type": "STRING",
+          "value": "quotes"
+        },
+        {
+          "type": "STRING",
+          "value": "QUOTES"
+        },
+        {
+          "type": "STRING",
+          "value": "Quotes"
         }
       ]
     },
@@ -16669,6 +16753,18 @@
         {
           "type": "STRING",
           "value": "Zeros"
+        },
+        {
+          "type": "STRING",
+          "value": "zeroes"
+        },
+        {
+          "type": "STRING",
+          "value": "ZEROES"
+        },
+        {
+          "type": "STRING",
+          "value": "Zeroes"
         }
       ]
     },

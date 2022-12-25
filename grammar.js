@@ -2747,7 +2747,10 @@ module.exports = grammar({
     _HIGH_VALUE: $ => choice(
       'high-value', 'high-Value', 'high-VALUE',
       'High-value', 'High-Value', 'High-VALUE',
-      'HIGH-value', 'HIGH-Value', 'HIGH-VALUE'
+      'HIGH-value', 'HIGH-Value', 'HIGH-VALUE',
+      'high-values', 'high-Values', 'high-VALUES',
+      'High-values', 'High-Values', 'High-VALUES',
+      'HIGH-values', 'HIGH-Values', 'HIGH-VALUES',
     ),
     _IDENTIFICATION: $ => /[iI][dD][eE][nN][tT][iI][fF][iI][cC][aA][tT][iI][oO][nN]/,
     _IF: $ => /[iI][fF]/,
@@ -2799,7 +2802,10 @@ module.exports = grammar({
     _LOW_VALUE: $ => choice(
       'low-value', 'low-Value', 'low-VALUE',
       'Low-value', 'Low-Value', 'Low-VALUE',
-      'LOW-value', 'LOW-Value', 'LOW-VALUE'
+      'LOW-value', 'LOW-Value', 'LOW-VALUE',
+      'low-values', 'low-Values', 'low-VALUES',
+      'Low-values', 'Low-Values', 'Low-VALUES',
+      'LOW-values', 'LOW-Values', 'LOW-VALUES',
     ),
     _MANUAL: $ => /[mM][aA][nN][uU][aA][lL]/,
     _MEMORY: $ => /[mM][eE][mM][oO][rR][yY]/,
@@ -2873,7 +2879,7 @@ module.exports = grammar({
     _PROGRAM_NAME: $ => /[pP][rR][oO][gG][rR][aA][mM]-[nN][aA][mM][eE]/,
     _PROGRAM_POINTER: $ => /[pP][rR][oO][gG][rR][aA][mM]-[pP][oO][iI][nN][tT][eE][rR]/,
     _PROMPT: $ => /[pP][rR][oO][mM][pP][tT]/,
-    _QUOTE: $ => choice('quote', 'QUOTE', 'Quote'),
+    _QUOTE: $ => choice('quote', 'QUOTE', 'Quote', 'quotes', 'QUOTES', 'Quotes'),
     _RANDOM: $ => /[rR][aA][nN][dD][oO][mM]/,
     _RD: $ => /[rR][dD]/,
     _READ: $ => /[rR][eE][aA][dD]/,
@@ -3008,7 +3014,7 @@ module.exports = grammar({
     _YYYYDDD: $ => /[yY][yY][yY][yY][dD][dD][dD]/,
     _YYYYMMDD: $ => /[yY][yY][yY][yY][mM][mM][dD][dD]/,
     _ZERO: $ => choice('zero', 'ZERO', 'Zero'),
-    _ZEROS: $ => choice('zeros', 'ZEROS', 'Zeros'),
+    _ZEROS: $ => choice('zeros', 'ZEROS', 'Zeros', 'zeroes', 'ZEROES', 'Zeroes'),
 
 
     //ACCEPT: $ => $._ACCEPT,
