@@ -1818,13 +1818,15 @@ module.exports = grammar({
     ),
 
     ge: $ => choice(
-      '>=',
+      seq(optional($._IS), '>='),
+      seq(optional($._IS), $._NOT, '<'),
       seq(optional($._IS), $._GREATER, optional($._THAN), optional($._OR), $._EQUAL, optional($._TO)),
       seq(optional($._IS), $._NOT_LESS, optional($._THAN)),
     ),
 
     le: $ => choice(
-      '<=',
+      seq(optional($._IS), '<='),
+      seq(optional($._IS), $._NOT, '>'),
       seq(optional($._IS), $._LESS, optional($._THAN), optional($._OR), $._EQUAL, optional($._TO)),
       seq(optional($._IS), $._NOT, $._GREATER, optional($._THAN)),
     ),
@@ -1833,12 +1835,14 @@ module.exports = grammar({
 
 
     gt: $ => choice(
-      '>',
+      seq(optional($._IS), '>'),
+      seq(optional($._IS), $._NOT, '<='),
       seq(optional($._IS), $._GREATER, optional($._THAN))
     ),
 
     lt: $ => choice(
-      '<',
+      seq(optional($._IS), '<'),
+      seq(optional($._IS), $._NOT, '>='),
       seq(optional($._IS), $._LESS, optional($._THAN))
     ),
 
