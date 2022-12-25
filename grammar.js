@@ -1808,7 +1808,17 @@ module.exports = grammar({
         $.CLASS_NAME,
         $.POSITIVE,
         $.NEGATIVE,
-        $.ZERO
+        $.ZERO,
+
+        $.NOT_OMITTED,
+        $.NOT_NUMERIC,
+        $.NOT_ALPHABETIC,
+        $.NOT_ALPHABETIC_LOWER,
+        $.NOT_ALPHABETIC_UPPER,
+        $.NOT_CLASS_NAME,
+        $.NOT_POSITIVE,
+        $.NOT_NEGATIVE,
+        $.NOT_ZERO
       ))
     )),
 
@@ -3444,5 +3454,15 @@ module.exports = grammar({
     _NOT_EQUAL: $ => /(!=)|([nN][oO][tT][ \t]+(([eE][qQ][uU][aA][lL])|=))/,
     _NOT_LESS: $ => /([nN][oO][tT][ \t]+[lL][eE][sS][sS])/,
     _NOT_GREATER: $ => /([nN][oO][tT][ \t]+[gG][rR][eE][aA][tT][eE][rR])/,
+
+    NOT_OMITTED: $ => /[nN][oO][tT][ \t]+[oO][mM][iI][tT][tT][eE][dD]/,
+    NOT_NUMERIC: $ => /[nN][oO][tT][ \t]+[nN][uU][mM][eE][rR][iI][cC]/,
+    NOT_ALPHABETIC: $ => /[nN][oO][tT][ \t]+[aA][lL][pP][hH][aA][bB][eE][tT][iI][cC]/,
+    NOT_ALPHABETIC_LOWER: $ => /[nN][oO][tT][ \t]+[aA][lL][pP][hH][aA][bB][eE][tT][iI][cC]-[lL][oO][wW][eE][rR]/,
+    NOT_ALPHABETIC_UPPER: $ => /[nN][oO][tT][ \t]+[aA][lL][pP][hH][aA][bB][eE][tT][iI][cC]-[uU][pP][pP][eE][rR]/,
+    NOT_CLASS_NAME: $ => /[nN][oO][tT][ \t]+[cC][lL][aA][sS][sS]-[nN][aA][mM][eE]/,
+    NOT_POSITIVE: $ => /[nN][oO][tT][ \t]+[pP][oO][sS][iI][tT][iI][vV][eE]/,
+    NOT_NEGATIVE: $ => /[nN][oO][tT][ \t]+[nN][eE][gG][aA][tT][iI][vV][eE]/,
+    NOT_ZERO: $ => /[nN][oO][tT][ \t]+[zZ][eE][rR][oO]/,
   }
 });

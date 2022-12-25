@@ -3675,6 +3675,42 @@
           "named": true
         },
         {
+          "type": "NOT_ALPHABETIC",
+          "named": true
+        },
+        {
+          "type": "NOT_ALPHABETIC_LOWER",
+          "named": true
+        },
+        {
+          "type": "NOT_ALPHABETIC_UPPER",
+          "named": true
+        },
+        {
+          "type": "NOT_CLASS_NAME",
+          "named": true
+        },
+        {
+          "type": "NOT_NEGATIVE",
+          "named": true
+        },
+        {
+          "type": "NOT_NUMERIC",
+          "named": true
+        },
+        {
+          "type": "NOT_OMITTED",
+          "named": true
+        },
+        {
+          "type": "NOT_POSITIVE",
+          "named": true
+        },
+        {
+          "type": "NOT_ZERO",
+          "named": true
+        },
+        {
           "type": "NUMERIC",
           "named": true
         },
@@ -12163,6 +12199,42 @@
   {
     "type": "Low-value",
     "named": false
+  },
+  {
+    "type": "NOT_ALPHABETIC",
+    "named": true
+  },
+  {
+    "type": "NOT_ALPHABETIC_LOWER",
+    "named": true
+  },
+  {
+    "type": "NOT_ALPHABETIC_UPPER",
+    "named": true
+  },
+  {
+    "type": "NOT_CLASS_NAME",
+    "named": true
+  },
+  {
+    "type": "NOT_NEGATIVE",
+    "named": true
+  },
+  {
+    "type": "NOT_NUMERIC",
+    "named": true
+  },
+  {
+    "type": "NOT_OMITTED",
+    "named": true
+  },
+  {
+    "type": "NOT_POSITIVE",
+    "named": true
+  },
+  {
+    "type": "NOT_ZERO",
+    "named": true
   },
   {
     "type": "NULL",

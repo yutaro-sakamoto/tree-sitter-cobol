@@ -9943,6 +9943,42 @@
                   {
                     "type": "SYMBOL",
                     "name": "ZERO"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "NOT_OMITTED"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "NOT_NUMERIC"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "NOT_ALPHABETIC"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "NOT_ALPHABETIC_LOWER"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "NOT_ALPHABETIC_UPPER"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "NOT_CLASS_NAME"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "NOT_POSITIVE"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "NOT_NEGATIVE"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "NOT_ZERO"
                   }
                 ]
               }
@@ -17383,6 +17419,42 @@
     "_NOT_GREATER": {
       "type": "PATTERN",
       "value": "([nN][oO][tT][ \\t]+[gG][rR][eE][aA][tT][eE][rR])"
+    },
+    "NOT_OMITTED": {
+      "type": "PATTERN",
+      "value": "[nN][oO][tT][ \\t]+[oO][mM][iI][tT][tT][eE][dD]"
+    },
+    "NOT_NUMERIC": {
+      "type": "PATTERN",
+      "value": "[nN][oO][tT][ \\t]+[nN][uU][mM][eE][rR][iI][cC]"
+    },
+    "NOT_ALPHABETIC": {
+      "type": "PATTERN",
+      "value": "[nN][oO][tT][ \\t]+[aA][lL][pP][hH][aA][bB][eE][tT][iI][cC]"
+    },
+    "NOT_ALPHABETIC_LOWER": {
+      "type": "PATTERN",
+      "value": "[nN][oO][tT][ \\t]+[aA][lL][pP][hH][aA][bB][eE][tT][iI][cC]-[lL][oO][wW][eE][rR]"
+    },
+    "NOT_ALPHABETIC_UPPER": {
+      "type": "PATTERN",
+      "value": "[nN][oO][tT][ \\t]+[aA][lL][pP][hH][aA][bB][eE][tT][iI][cC]-[uU][pP][pP][eE][rR]"
+    },
+    "NOT_CLASS_NAME": {
+      "type": "PATTERN",
+      "value": "[nN][oO][tT][ \\t]+[cC][lL][aA][sS][sS]-[nN][aA][mM][eE]"
+    },
+    "NOT_POSITIVE": {
+      "type": "PATTERN",
+      "value": "[nN][oO][tT][ \\t]+[pP][oO][sS][iI][tT][iI][vV][eE]"
+    },
+    "NOT_NEGATIVE": {
+      "type": "PATTERN",
+      "value": "[nN][oO][tT][ \\t]+[nN][eE][gG][aA][tT][iI][vV][eE]"
+    },
+    "NOT_ZERO": {
+      "type": "PATTERN",
+      "value": "[nN][oO][tT][ \\t]+[zZ][eE][rR][oO]"
     }
   },
   "extras": [
