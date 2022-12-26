@@ -591,7 +591,7 @@
 059100     MOVE "SET AND SEARCH-ALL" TO FEATURE.                        NC2374.2
 059200     SET IDX-1 TO 09.                                             NC2374.2
 059300 IDX-TEST-F2-11.                                                  NC2374.2
-059400     SEARCH ALL ENTRY-310                                      ENDNC2374.2
+059400     SEARCH ALL ENTRY-310                                     END NC2374.2
 059500         GO TO IDX-FAIL-F2-11                                     NC2374.2
 059600     WHEN GRP (IDX-1) EQUAL TO "07"                               NC2374.2
 059700         PERFORM PASS                                             NC2374.2
