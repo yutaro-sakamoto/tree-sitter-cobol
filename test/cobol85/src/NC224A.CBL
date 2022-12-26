@@ -349,7 +349,7 @@
 034900 REF-TEST-GF-1-2.                                                 NC2244.2
 035000     ADD     1       TO REC-CT.                                   NC2244.2
 035100     MOVE   "REF-TEST-GF-1-2" TO PAR-NAME.                        NC2244.2
-035200     IF      TEST-1-DATA (2: WS-3) = 234                          NC2244.2
+035200     IF      TEST-1-DATA (2: WS-3)  = 234                         NC2244.2
 035300             PERFORM PASS                                         NC2244.2
 035400             GO TO REF-WRITE-GF-1-2                               NC2244.2
 035500     ELSE                                                         NC2244.2

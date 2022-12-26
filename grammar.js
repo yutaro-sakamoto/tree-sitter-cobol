@@ -856,6 +856,7 @@ module.exports = grammar({
       '(',
       $._exp,
       ':',
+      optional($._exp),
       ')'
     ),
 
