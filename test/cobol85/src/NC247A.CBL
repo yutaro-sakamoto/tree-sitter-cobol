@@ -640,7 +640,7 @@
 064000     GO TO SCH-WRITE-F1-2.                                        NC2474.2
 064100 SCH-FAIL-F1-2.                                                   NC2474.2
 064200     PERFORM FAIL                                                 NC2474.2
-064300     MOVE "7 SHOULDN""T BE FOUND" TO CORRECT-A                    NC2474.2
+064300*    MOVE "7 SHOULDN""T BE FOUND" TO CORRECT-A                    NC2474.2
 064400     MOVE "7 WAS FOUND" TO COMPUTED-A.                            NC2474.2
 064500 SCH-WRITE-F1-2.                                                  NC2474.2
 064600     PERFORM PRINT-DETAIL.                                        NC2474.2
@@ -684,7 +684,7 @@
 068400     GO TO SCH-WRITE-4.                                           NC2474.2
 068500 SCH-FAIL-4.                                                      NC2474.2
 068600     PERFORM FAIL                                                 NC2474.2
-068700     MOVE "7 SHOULDN""T BE FOUND" TO CORRECT-A                    NC2474.2
+068700*    MOVE "7 SHOULDN""T BE FOUND" TO CORRECT-A                    NC2474.2
 068800     MOVE "7 WAS FOUND" TO COMPUTED-A.                            NC2474.2
 068900 SCH-WRITE-4.                                                     NC2474.2
 069000     PERFORM PRINT-DETAIL.                                        NC2474.2
