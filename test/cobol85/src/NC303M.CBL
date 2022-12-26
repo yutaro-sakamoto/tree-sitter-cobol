@@ -3,7 +3,7 @@
 000300     NC303M.                                                      NC3034.2
 000400*THE FOLLOWING PROGRAM TESTS THE FLAGGING OF                      NC3034.2
 000500*OBSOLETE HIGH SUBSET NUCLEUS FEATURES.                           NC3034.2
-000600 DATE-COMPILED.  22ND AUG 1988.                                   NC3034.2
+000600*DATE-COMPILED.  22ND AUG 1988.                                   NC3034.2
 000700*Message expected for above statement: OBSOLETE                   NC3034.2
 000800 ENVIRONMENT DIVISION.                                            NC3034.2
 000900 CONFIGURATION SECTION.                                           NC3034.2
