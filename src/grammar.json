@@ -86,34 +86,51 @@
           "value": "."
         },
         {
-          "type": "SYMBOL",
-          "name": "_PROGRAM_ID"
-        },
-        {
-          "type": "STRING",
-          "value": "."
-        },
-        {
-          "type": "SYMBOL",
-          "name": "program_name"
-        },
-        {
           "type": "CHOICE",
           "members": [
             {
-              "type": "CHOICE",
+              "type": "SEQ",
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "as_literal"
+                  "name": "_PROGRAM_ID"
+                },
+                {
+                  "type": "STRING",
+                  "value": "."
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "is_initial"
+                  "name": "program_name"
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "is_common"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "as_literal"
+                        },
+                        {
+                          "type": "SYMBOL",
+                          "name": "is_initial"
+                        },
+                        {
+                          "type": "SYMBOL",
+                          "name": "is_common"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "STRING",
+                  "value": "."
                 }
               ]
             },
@@ -121,10 +138,6 @@
               "type": "BLANK"
             }
           ]
-        },
-        {
-          "type": "STRING",
-          "value": "."
         }
       ]
     },

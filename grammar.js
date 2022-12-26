@@ -47,13 +47,14 @@ module.exports = grammar({
 
     identification_division: $ => seq(
       $._IDENTIFICATION, $._DIVISION, '.',
-      $._PROGRAM_ID, '.',
-      $.program_name,
-      optional(choice(
-        $.as_literal,
-        $.is_initial,
-        $.is_common)),
-      '.'
+      optional(
+        seq($._PROGRAM_ID, '.',
+          $.program_name,
+          optional(choice(
+            $.as_literal,
+            $.is_initial,
+            $.is_common)),
+          '.'))
     ),
 
     program_name: $ => choice(
