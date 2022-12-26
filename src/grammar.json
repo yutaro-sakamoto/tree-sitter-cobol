@@ -6473,6 +6473,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "allocate_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "alter_statement"
         },
         {
@@ -7737,6 +7741,136 @@
           "name": "_ERROR"
         }
       ]
+    },
+    "allocate_statement": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_ALLOCATE"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "FIELD",
+                    "name": "x",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "WORD"
+                    }
+                  },
+                  {
+                    "type": "FIELD",
+                    "name": "initialized",
+                    "content": {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "INITIALIZED"
+                        },
+                        {
+                          "type": "BLANK"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "FIELD",
+                    "name": "returning",
+                    "content": {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "SEQ",
+                          "members": [
+                            {
+                              "type": "SYMBOL",
+                              "name": "_RETURNING"
+                            },
+                            {
+                              "type": "SYMBOL",
+                              "name": "_target_x"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BLANK"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "FIELD",
+                    "name": "x",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "expr"
+                    }
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "CHARACTERS"
+                  },
+                  {
+                    "type": "FIELD",
+                    "name": "initialized",
+                    "content": {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "INITIALIZED"
+                        },
+                        {
+                          "type": "BLANK"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "FIELD",
+                    "name": "returning",
+                    "content": {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "SEQ",
+                          "members": [
+                            {
+                              "type": "SYMBOL",
+                              "name": "_RETURNING"
+                            },
+                            {
+                              "type": "SYMBOL",
+                              "name": "_target_x"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BLANK"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     "alter_statement": {
       "type": "SEQ",
@@ -17654,6 +17788,10 @@
     "INDEXED": {
       "type": "SYMBOL",
       "name": "_INDEXED"
+    },
+    "INITIALIZED": {
+      "type": "SYMBOL",
+      "name": "_INITIALIZED"
     },
     "INPUT": {
       "type": "SYMBOL",

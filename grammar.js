@@ -1253,6 +1253,7 @@ module.exports = grammar({
     _statement: $ => choice(
       $.accept_statement,
       $.add_statement,
+      $.allocate_statement,
       $.alter_statement,
       $.call_statement,
       $.cancel_statement,
@@ -1510,6 +1511,23 @@ module.exports = grammar({
       $._SIZE,
       $._ERROR,
     ),
+
+    allocate_statement: $ => prec(1, seq(
+      $._ALLOCATE,
+      choice(
+        seq(
+          field('x', $.WORD),
+          field('initialized', optional($.INITIALIZED)),
+          field('returning', optional(seq($._RETURNING, $._target_x)))
+        ),
+        seq(
+          field('x', $.expr),
+          $.CHARACTERS,
+          field('initialized', optional($.INITIALIZED)),
+          field('returning', optional(seq($._RETURNING, $._target_x)))
+        )
+      )
+    )),
 
     alter_statement: $ => seq(
       $._ALTER,
@@ -3342,7 +3360,7 @@ module.exports = grammar({
     INDEXED: $ => $._INDEXED,
     //INDICATE: $ => $._INDICATE,
     //INITIALIZE: $ => $._INITIALIZE,
-    //INITIALIZED: $ => $._INITIALIZED,
+    INITIALIZED: $ => $._INITIALIZED,
     //INITIATE: $ => $._INITIATE,
     INPUT: $ => $._INPUT,
     //INPUT_OUTPUT: $ => $._INPUT_OUTPUT,

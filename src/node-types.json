@@ -415,6 +415,11 @@
     "fields": {}
   },
   {
+    "type": "INITIALIZED",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "INPUT",
     "named": true,
     "fields": {}
@@ -1563,6 +1568,64 @@
     "type": "all_to_value",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "allocate_statement",
+    "named": true,
+    "fields": {
+      "initialized": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "INITIALIZED",
+            "named": true
+          }
+        ]
+      },
+      "returning": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          }
+        ]
+      },
+      "x": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "WORD",
+            "named": true
+          },
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "CHARACTERS",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "alphabet_literal",
@@ -8340,6 +8403,10 @@
           "named": true
         },
         {
+          "type": "allocate_statement",
+          "named": true
+        },
+        {
           "type": "alter_statement",
           "named": true
         },
@@ -8580,6 +8647,10 @@
         },
         {
           "type": "add_statement",
+          "named": true
+        },
+        {
+          "type": "allocate_statement",
           "named": true
         },
         {
