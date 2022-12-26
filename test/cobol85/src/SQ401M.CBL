@@ -78,8 +78,8 @@
 007800                                                                  SQ4014.2
 007900 01 VARIABLES.                                                    SQ4014.2
 008000                                                                  SQ4014.2
-008100     03 VKEY                                                      SQ4014.2
-008200     **** X-CARD UNDEFINED ****.                                  SQ4014.2
+008100*    03 VKEY                                                      SQ4014.2
+008200*    **** X-CARD UNDEFINED ****.                                  SQ4014.2
 008300                                                                  SQ4014.2
 008400                                                                  SQ4014.2
 008500 PROCEDURE DIVISION.                                              SQ4014.2
