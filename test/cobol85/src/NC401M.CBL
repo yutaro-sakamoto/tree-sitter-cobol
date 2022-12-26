@@ -5,7 +5,7 @@
 000500                                                                  NC4014.2
 000600*THIS PROGRAM TESTS THE FLAGGING OF HIGH SUBSET NUCLEUS           NC4014.2
 000700*FEATURES.                                                        NC4014.2
-000800 DATE-COMPILED.  22ND AUG 1988.                                   NC4014.2
+000800*DATE-COMPILED.  22ND AUG 1988.                                   NC4014.2
 000900*Message expected for above statement: NON-CONFORMING STANDARD    NC4014.2
 001000 ENVIRONMENT DIVISION.                                            NC4014.2
 001100 CONFIGURATION SECTION.                                           NC4014.2
@@ -35,8 +35,9 @@
 003500 FILE SECTION.                                                    NC4014.2
 003600 FD TFIL.                                                         NC4014.2
 003700 01 FREC.                                                         NC4014.2
-003800     03 GUBBINS PIC X(1                                           NC4014.2
-003900-                      00).                                       NC4014.2
+003800*    03 GUBBINS PIC X(1                                           NC4014.2
+003900*                      00).                                       NC4014.2
+003800     03 GUBBINS PIC X(100).                                       NC4014.2
 004000*Message expected for above statement: NON-CONFORMING STANDARD    NC4014.2
 004100                                                                  NC4014.2
 004200 FD TFIL-2.                                                       NC4014.2
@@ -189,14 +190,16 @@
 018900*Message expected for above statement: NON-CONFORMING STANDARD    NC4014.2
 019000                                                                  NC4014.2
 019100 NC401M-CHARBR1.                                                  NC4014.2
-019200     MUL                                                          NC4014.2
-019300-    TIPLY BOX-A BY BOX-B GIVING BOX-C.                           NC4014.2
+019200*    MUL                                                          NC4014.2
+019300*    TIPLY BOX-A BY BOX-B GIVING BOX-C.                           NC4014.2
+019300     MULTIPLY BOX-A BY BOX-B GIVING BOX-C.                        NC4014.2
 019400*Message expected for above statement: NON-CONFORMING STANDARD    NC4014.2
 019500                                                                  NC4014.2
 019600                                                                  NC4014.2
 019700 NC401M-CHARBR2.                                                  NC4014.2
-019800     MOVE 2                                                       NC4014.2
-019900-    0 TO BOX-A.                                                  NC4014.2
+019800*    MOVE 2                                                       NC4014.2
+019900*    0 TO BOX-A.                                                  NC4014.2
+           MOVE 20 TO BOX-A.
 020000*Message expected for above statement: NON-CONFORMING STANDARD    NC4014.2
 020100                                                                  NC4014.2
 020200 NC401M-ARITHEXP.                                                 NC4014.2
