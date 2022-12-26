@@ -2000,6 +2000,7 @@ module.exports = grammar({
     inspect_converting: $ => seq(
       $._CONVERTING,
       field('x', $._simple_value),
+      $._TO,
       field('to', $._simple_all_value),
       field('region', optional($.inspect_region))
     ),
@@ -2548,8 +2549,8 @@ module.exports = grammar({
     ),
 
     string: $ => choice(
-      /'[^'\n]*'/,
-      /"[^"\n]*"/,
+      /('[^'\n]*')+/,
+      /("[^"\n]*")+/,
       $._multiline_string,
     ),
 

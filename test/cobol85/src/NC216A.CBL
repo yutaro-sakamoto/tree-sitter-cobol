@@ -1846,8 +1846,8 @@
 184600     PERFORM FAIL.                                                NC2164.2
 184700     MOVE    WRK-XN-83-1  TO WS-WRONG-1-83.                       NC2164.2
 184800     MOVE    ANS-XN-83-10 TO WS-RIGHT-1-83.                       NC2164.2
-184900     MOVE "THERE SHOUD BE 55 SPACES BETWEEN ""B"" AND ""C""."     NC2164.2
-185000          TO RE-MARK.                                             NC2164.2
+184900*    MOVE "THERE SHOUD BE 55 SPACES BETWEEN ""B"" AND ""C""."     NC2164.2
+185000*         TO RE-MARK.                                             NC2164.2
 185100     MOVE    WS-RIGHT-1-20   TO CORRECT-A.                        NC2164.2
 185200     MOVE    WS-WRONG-1-20   TO COMPUTED-A.                       NC2164.2
 185300     PERFORM PRINT-DETAIL.                                        NC2164.2
@@ -1977,8 +1977,8 @@
 197700     PERFORM FAIL                                                 NC2164.2
 197800     MOVE    WRK-XN-83-1  TO WS-WRONG-1-83                        NC2164.2
 197900     MOVE    ANS-XN-83-11 TO WS-RIGHT-1-83                        NC2164.2
-198000     MOVE "THERE SHOULD BE 81 SPACES BETWEEN ""H"" AND ""Z""."    NC2164.2
-198100             TO RE-MARK                                           NC2164.2
+198000*    MOVE "THERE SHOULD BE 81 SPACES BETWEEN ""H"" AND ""Z""."    NC2164.2
+198100*            TO RE-MARK                                           NC2164.2
 198200     MOVE    WS-RIGHT-1-20   TO CORRECT-A                         NC2164.2
 198300     MOVE    WS-WRONG-1-20   TO COMPUTED-A                        NC2164.2
 198400     PERFORM PRINT-DETAIL                                         NC2164.2

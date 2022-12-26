@@ -11126,6 +11126,10 @@
           }
         },
         {
+          "type": "SYMBOL",
+          "name": "_TO"
+        },
+        {
           "type": "FIELD",
           "name": "to",
           "content": {
@@ -14626,11 +14630,11 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "'[^'\\n]*'"
+          "value": "('[^'\\n]*')+"
         },
         {
           "type": "PATTERN",
-          "value": "\"[^\"\\n]*\""
+          "value": "(\"[^\"\\n]*\")+"
         },
         {
           "type": "SYMBOL",
