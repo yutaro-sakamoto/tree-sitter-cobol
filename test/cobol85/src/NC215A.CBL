@@ -47,7 +47,8 @@
 004700*                                                                 NC2154.2
 004800     ALPHABET                                                     NC2154.2
 004900     THE-BIG-OL-LITERAL-ALPHABET IS "A+0B-1C*2D/3E=4Fl5G,6H;7I.8J"NC2154.2
-005000-    ""9K(L)M>N<O PQRSTUVWXYZ".                                   NC2154.2
+005000*    ""9K(L)M>N<O PQRSTUVWXYZ".                                   NC2154.2
+       .
 005100*                                                                 NC2154.2
 005200*                                                                 NC2154.2
 005300 INPUT-OUTPUT SECTION.                                            NC2154.2
