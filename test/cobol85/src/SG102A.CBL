@@ -1,28 +1,28 @@
 000100 IDENTIFICATION DIVISION.                                         SG1024.2
 000200 PROGRAM-ID.                                                      SG1024.2
 000300     SG102A.                                                      SG1024.2
-000400 AUTHOR.                                                          SG1024.2
-000500     FEDERAL COMPILER TESTING CENTER.                             SG1024.2
-000600 INSTALLATION.                                                    SG1024.2
-000700     GENERAL SERVICES ADMINISTRATION                              SG1024.2
-000800     AUTOMATED DATA AND TELECOMMUNICATION SERVICE.                SG1024.2
-000900     SOFTWARE DEVELOPMENT OFFICE.                                 SG1024.2
-001000     5203 LEESBURG PIKE  SUITE 1100                               SG1024.2
-001100     FALLS CHURCH VIRGINIA 22041.                                 SG1024.2
-001200                                                                  SG1024.2
-001300     PHONE   (703) 756-6153                                       SG1024.2
-001400                                                                  SG1024.2
-001500     " HIGH       ".                                              SG1024.2
-001600 DATE-WRITTEN.                                                    SG1024.2
-001700     CCVS-74 VERSION 4.0 - 1980 JULY 1.                           SG1024.2
-001800     CREATION DATE     /    VALIDATION DATE                       SG1024.2
-001900     "4.2 ".                                                      SG1024.2
-002000 SECURITY.                                                        SG1024.2
-002100     NONE.                                                        SG1024.2
-002200       THE FOLLOWING FEATURES ARE TESTED BY THIS PROGRAM ---      SG1024.2
-002300         VARIOUS ALTER AND PERFORM STATEMENTS ARE EXERCISED       SG1024.2
-002400         AND A DIRECTORY IS PREPARED IN EACH TEST TO TRACE        SG1024.2
-002500         PROGRAM FLOW.                                            SG1024.2
+000400*AUTHOR.                                                          SG1024.2
+000500*    FEDERAL COMPILER TESTING CENTER.                             SG1024.2
+000600*INSTALLATION.                                                    SG1024.2
+000700*    GENERAL SERVICES ADMINISTRATION                              SG1024.2
+000800*    AUTOMATED DATA AND TELECOMMUNICATION SERVICE.                SG1024.2
+000900*    SOFTWARE DEVELOPMENT OFFICE.                                 SG1024.2
+001000*    5203 LEESBURG PIKE  SUITE 1100                               SG1024.2
+001100*    FALLS CHURCH VIRGINIA 22041.                                 SG1024.2
+001200*                                                                 SG1024.2
+001300*    PHONE   (703) 756-6153                                       SG1024.2
+001400*                                                                 SG1024.2
+001500*    " HIGH       ".                                              SG1024.2
+001600*DATE-WRITTEN.                                                    SG1024.2
+001700*    CCVS-74 VERSION 4.0 - 1980 JULY 1.                           SG1024.2
+001800*    CREATION DATE     /    VALIDATION DATE                       SG1024.2
+001900*    "4.2 ".                                                      SG1024.2
+002000*SECURITY.                                                        SG1024.2
+002100*    NONE.                                                        SG1024.2
+002200*      THE FOLLOWING FEATURES ARE TESTED BY THIS PROGRAM ---      SG1024.2
+002300*        VARIOUS ALTER AND PERFORM STATEMENTS ARE EXERCISED       SG1024.2
+002400*        AND A DIRECTORY IS PREPARED IN EACH TEST TO TRACE        SG1024.2
+002500*        PROGRAM FLOW.                                            SG1024.2
 002600                                                                  SG1024.2
 002700 ENVIRONMENT DIVISION.                                            SG1024.2
 002800 CONFIGURATION SECTION.                                           SG1024.2

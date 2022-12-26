@@ -1,31 +1,31 @@
 000100 IDENTIFICATION DIVISION.                                         SG2014.2
 000200 PROGRAM-ID.                                                      SG2014.2
 000300     SG201A.                                                      SG2014.2
-000400 AUTHOR.                                                          SG2014.2
-000500     FEDERAL COMPILER TESTING CENTER.                             SG2014.2
-000600 INSTALLATION.                                                    SG2014.2
-000700     GENERAL SERVICES ADMINISTRATION                              SG2014.2
-000800     AUTOMATED DATA AND TELECOMMUNICATION SERVICE.                SG2014.2
-000900     SOFTWARE DEVELOPMENT OFFICE.                                 SG2014.2
-001000     5203 LEESBURG PIKE  SUITE 1100                               SG2014.2
-001100     FALLS CHURCH VIRGINIA 22041.                                 SG2014.2
-001200                                                                  SG2014.2
-001300     PHONE   (703) 756-6153                                       SG2014.2
-001400                                                                  SG2014.2
-001500     " HIGH       ".                                              SG2014.2
-001600 DATE-WRITTEN.                                                    SG2014.2
-001700     CCVS-74 VERSION 4.0 - 1980 JULY 1.                           SG2014.2
-001800     CREATION DATE     /    VALIDATION DATE                       SG2014.2
-001900     "4.2 ".                                                      SG2014.2
-002000 SECURITY.                                                        SG2014.2
-002100     NONE.                                                        SG2014.2
-002200       THE FOLLOWING FEATURES ARE TESTED BY THIS PROGRAM ---      SG2014.2
-002300         SEGMENT-LIMIT FEATURE IS TESTED BY USE OF ALTER          SG2014.2
-002400         PERFORM AND GO TO STATEMENTS VERIFYING LAST-USED         SG2014.2
-002500         STATE ON SEGMENTS GREATER THAN AND EQUAL TO THE          SG2014.2
-002600         SEGMENT-LIMIT INCLUDING SEGMENTS PERMANENTLY RESIDENT    SG2014.2
-002700         (LESS THAN SEGMENT-LIMIT) WITH THE INITIAL STATE         SG2014.2
-002800         ON SEGMENTS GREATER THAN 49.                             SG2014.2
+000400*AUTHOR.                                                          SG2014.2
+000500*    FEDERAL COMPILER TESTING CENTER.                             SG2014.2
+000600*INSTALLATION.                                                    SG2014.2
+000700*    GENERAL SERVICES ADMINISTRATION                              SG2014.2
+000800*    AUTOMATED DATA AND TELECOMMUNICATION SERVICE.                SG2014.2
+000900*    SOFTWARE DEVELOPMENT OFFICE.                                 SG2014.2
+001000*    5203 LEESBURG PIKE  SUITE 1100                               SG2014.2
+001100*    FALLS CHURCH VIRGINIA 22041.                                 SG2014.2
+001200*                                                                 SG2014.2
+001300*    PHONE   (703) 756-6153                                       SG2014.2
+001400*                                                                 SG2014.2
+001500*    " HIGH       ".                                              SG2014.2
+001600*DATE-WRITTEN.                                                    SG2014.2
+001700*    CCVS-74 VERSION 4.0 - 1980 JULY 1.                           SG2014.2
+001800*    CREATION DATE     /    VALIDATION DATE                       SG2014.2
+001900*    "4.2 ".                                                      SG2014.2
+002000*SECURITY.                                                        SG2014.2
+002100*    NONE.                                                        SG2014.2
+002200*      THE FOLLOWING FEATURES ARE TESTED BY THIS PROGRAM ---      SG2014.2
+002300*        SEGMENT-LIMIT FEATURE IS TESTED BY USE OF ALTER          SG2014.2
+002400*        PERFORM AND GO TO STATEMENTS VERIFYING LAST-USED         SG2014.2
+002500*        STATE ON SEGMENTS GREATER THAN AND EQUAL TO THE          SG2014.2
+002600*        SEGMENT-LIMIT INCLUDING SEGMENTS PERMANENTLY RESIDENT    SG2014.2
+002700*        (LESS THAN SEGMENT-LIMIT) WITH THE INITIAL STATE         SG2014.2
+002800*        ON SEGMENTS GREATER THAN 49.                             SG2014.2
 002900                                                                  SG2014.2
 003000*                                                                 SG2014.2
 003100 ENVIRONMENT DIVISION.                                            SG2014.2

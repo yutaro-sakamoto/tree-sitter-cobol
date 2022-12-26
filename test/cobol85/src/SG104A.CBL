@@ -1,45 +1,45 @@
 000100 IDENTIFICATION DIVISION.                                         SG1044.2
 000200 PROGRAM-ID.                                                      SG1044.2
 000300     SG104A.                                                      SG1044.2
-000400 AUTHOR.                                                          SG1044.2
-000500     FEDERAL COMPILER TESTING CENTER.                             SG1044.2
-000600 INSTALLATION.                                                    SG1044.2
-000700     GENERAL SERVICES ADMINISTRATION                              SG1044.2
-000800     AUTOMATED DATA AND TELECOMMUNICATION SERVICE.                SG1044.2
-000900     SOFTWARE DEVELOPMENT OFFICE.                                 SG1044.2
-001000     5203 LEESBURG PIKE  SUITE 1100                               SG1044.2
-001100     FALLS CHURCH VIRGINIA 22041.                                 SG1044.2
-001200                                                                  SG1044.2
-001300     PHONE   (703) 756-6153                                       SG1044.2
-001400                                                                  SG1044.2
-001500     " HIGH       ".                                              SG1044.2
-001600 DATE-WRITTEN.                                                    SG1044.2
-001700     CCVS-74 VERSION 4.0 - 1980 JULY 1.                           SG1044.2
-001800     CREATION DATE     /    VALIDATION DATE                       SG1044.2
-001900     "4.2 ".                                                      SG1044.2
-002000 SECURITY.                                                        SG1044.2
-002100     NONE.                                                        SG1044.2
-002200     SG104A IS A COMPLETELY SELF-CONTAINED PROGRAM.  THE INPUT    SG1044.2
-002300     PROCEDURE BUILDS THE EIGHT-RECORD FILE SHOWN BELOW. THE      SG1044.2
-002400     OUTPUT PROCEDURE CHECKS THE SORTED FILE AND GENERATES THE    SG1044.2
-002500     REPORT.                                                      SG1044.2
-002600     SORT    SORT    SORT    SORT    SORT   SORT     SORT    SORT SG1044.2
-002700     KEY-1   KEY-2   KEY-3   KEY-4   KEY-5  KEY-6    KEY-7   KEY-8SG1044.2
-002800     S9(6)   A(5)    SV9(16) X(10)   A(20)  X(10)    999     S99  SG1044.2
-002900     USAGE   JUST            JUST                            USAGESG1044.2
-003000     COMP    RIGHT           RIGHT                           COMP SG1044.2
-003100                                                                  SG1044.2
-003200     +123456     BBB -.1234   BBBBBB A      AAAAAAAA 501     +99  SG1044.2
-003300     -054321       X -.1234   BBBBBB A      AAAAAAAA 501     +99  SG1044.2
-003400     -054321     BBB +.6      BBBBBB A      AAAAAAAA 501     +99  SG1044.2
-003500     -054321     BBB -.1234        X A      AAAAAAAA 501     +99  SG1044.2
-003600     -054321     BBB -.1234   BBBBBB Z      AAAAAAAA 501     +99  SG1044.2
-003700     -054321     BBB -.1234   BBBBBB A      Z        501     +99  SG1044.2
-003800     -054321     BBB -.1234   BBBBBB A      AAAAAAAA 418     +99  SG1044.2
-003900     -054321     BBB -.1234   BBBBBB A      AAAAAAAA 501     -14  SG1044.2
-004000                                                                  SG1044.2
-004100     THIS PROGRAM CHECKS THE COMPILER"S ABILITY TO HANDLE EIGHT   SG1044.2
-004200     ASCENDING KEYS IN ONE FILE.                                  SG1044.2
+000400*AUTHOR.                                                          SG1044.2
+000500*    FEDERAL COMPILER TESTING CENTER.                             SG1044.2
+000600*INSTALLATION.                                                    SG1044.2
+000700*    GENERAL SERVICES ADMINISTRATION                              SG1044.2
+000800*    AUTOMATED DATA AND TELECOMMUNICATION SERVICE.                SG1044.2
+000900*    SOFTWARE DEVELOPMENT OFFICE.                                 SG1044.2
+001000*    5203 LEESBURG PIKE  SUITE 1100                               SG1044.2
+001100*    FALLS CHURCH VIRGINIA 22041.                                 SG1044.2
+001200*                                                                 SG1044.2
+001300*    PHONE   (703) 756-6153                                       SG1044.2
+001400*                                                                 SG1044.2
+001500*    " HIGH       ".                                              SG1044.2
+001600*DATE-WRITTEN.                                                    SG1044.2
+001700*    CCVS-74 VERSION 4.0 - 1980 JULY 1.                           SG1044.2
+001800*    CREATION DATE     /    VALIDATION DATE                       SG1044.2
+001900*    "4.2 ".                                                      SG1044.2
+002000*SECURITY.                                                        SG1044.2
+002100*    NONE.                                                        SG1044.2
+002200*    SG104A IS A COMPLETELY SELF-CONTAINED PROGRAM.  THE INPUT    SG1044.2
+002300*    PROCEDURE BUILDS THE EIGHT-RECORD FILE SHOWN BELOW. THE      SG1044.2
+002400*    OUTPUT PROCEDURE CHECKS THE SORTED FILE AND GENERATES THE    SG1044.2
+002500*    REPORT.                                                      SG1044.2
+002600*    SORT    SORT    SORT    SORT    SORT   SORT     SORT    SORT SG1044.2
+002700*    KEY-1   KEY-2   KEY-3   KEY-4   KEY-5  KEY-6    KEY-7   KEY-8SG1044.2
+002800*    S9(6)   A(5)    SV9(16) X(10)   A(20)  X(10)    999     S99  SG1044.2
+002900*    USAGE   JUST            JUST                            USAGESG1044.2
+003000*    COMP    RIGHT           RIGHT                           COMP SG1044.2
+003100*                                                                 SG1044.2
+003200*    +123456     BBB -.1234   BBBBBB A      AAAAAAAA 501     +99  SG1044.2
+003300*    -054321       X -.1234   BBBBBB A      AAAAAAAA 501     +99  SG1044.2
+003400*    -054321     BBB +.6      BBBBBB A      AAAAAAAA 501     +99  SG1044.2
+003500*    -054321     BBB -.1234        X A      AAAAAAAA 501     +99  SG1044.2
+003600*    -054321     BBB -.1234   BBBBBB Z      AAAAAAAA 501     +99  SG1044.2
+003700*    -054321     BBB -.1234   BBBBBB A      Z        501     +99  SG1044.2
+003800*    -054321     BBB -.1234   BBBBBB A      AAAAAAAA 418     +99  SG1044.2
+003900*    -054321     BBB -.1234   BBBBBB A      AAAAAAAA 501     -14  SG1044.2
+004000*                                                                 SG1044.2
+004100*    THIS PROGRAM CHECKS THE COMPILER"S ABILITY TO HANDLE EIGHT   SG1044.2
+004200*    ASCENDING KEYS IN ONE FILE.                                  SG1044.2
 004300                                                                  SG1044.2
 004400 ENVIRONMENT DIVISION.                                            SG1044.2
 004500 CONFIGURATION SECTION.                                           SG1044.2

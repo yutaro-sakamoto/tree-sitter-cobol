@@ -1,29 +1,29 @@
 000100 IDENTIFICATION DIVISION.                                         SG2024.2
 000200 PROGRAM-ID.                                                      SG2024.2
 000300     SG202A.                                                      SG2024.2
-000400 AUTHOR.                                                          SG2024.2
-000500     FEDERAL COMPILER TESTING CENTER.                             SG2024.2
-000600 INSTALLATION.                                                    SG2024.2
-000700     GENERAL SERVICES ADMINISTRATION                              SG2024.2
-000800     AUTOMATED DATA AND TELECOMMUNICATION SERVICE.                SG2024.2
-000900     SOFTWARE DEVELOPMENT OFFICE.                                 SG2024.2
-001000     5203 LEESBURG PIKE  SUITE 1100                               SG2024.2
-001100     FALLS CHURCH VIRGINIA 22041.                                 SG2024.2
-001200                                                                  SG2024.2
-001300     PHONE   (703) 756-6153                                       SG2024.2
-001400                                                                  SG2024.2
-001500     " HIGH       ".                                              SG2024.2
-001600 DATE-WRITTEN.                                                    SG2024.2
-001700     CCVS-74 VERSION 4.0 - 1980 JULY 1.                           SG2024.2
-001800     CREATION DATE     /    VALIDATION DATE                       SG2024.2
-001900     "4.2 ".                                                      SG2024.2
-002000 SECURITY.                                                        SG2024.2
-002100     NONE.                                                        SG2024.2
-002200       THE FOLLOWING FEATURES ARE TESTED BY THIS PROGRAM ---      SG2024.2
-002300         BASED ON A SEGMENT-LIMIT OF 25 THESE TESTS ARE           SG2024.2
-002400         DESIGNED TO ALTER SEGMENTS THAT HAVE NOT YET BEEN        SG2024.2
-002500         CALLED FOR EXECUTION, FALL THRU TO INDEPENDENT           SG2024.2
-002600         SEGMENTS, AND PERFORM FIXED OVERLAYABLE SEGMENTS.        SG2024.2
+000400*AUTHOR.                                                          SG2024.2
+000500*    FEDERAL COMPILER TESTING CENTER.                             SG2024.2
+000600*INSTALLATION.                                                    SG2024.2
+000700*    GENERAL SERVICES ADMINISTRATION                              SG2024.2
+000800*    AUTOMATED DATA AND TELECOMMUNICATION SERVICE.                SG2024.2
+000900*    SOFTWARE DEVELOPMENT OFFICE.                                 SG2024.2
+001000*    5203 LEESBURG PIKE  SUITE 1100                               SG2024.2
+001100*    FALLS CHURCH VIRGINIA 22041.                                 SG2024.2
+001200*                                                                 SG2024.2
+001300*    PHONE   (703) 756-6153                                       SG2024.2
+001400*                                                                 SG2024.2
+001500*    " HIGH       ".                                              SG2024.2
+001600*DATE-WRITTEN.                                                    SG2024.2
+001700*    CCVS-74 VERSION 4.0 - 1980 JULY 1.                           SG2024.2
+001800*    CREATION DATE     /    VALIDATION DATE                       SG2024.2
+001900*    "4.2 ".                                                      SG2024.2
+002000*SECURITY.                                                        SG2024.2
+002100*    NONE.                                                        SG2024.2
+002200*      THE FOLLOWING FEATURES ARE TESTED BY THIS PROGRAM ---      SG2024.2
+002300*        BASED ON A SEGMENT-LIMIT OF 25 THESE TESTS ARE           SG2024.2
+002400*        DESIGNED TO ALTER SEGMENTS THAT HAVE NOT YET BEEN        SG2024.2
+002500*        CALLED FOR EXECUTION, FALL THRU TO INDEPENDENT           SG2024.2
+002600*        SEGMENTS, AND PERFORM FIXED OVERLAYABLE SEGMENTS.        SG2024.2
 002700                                                                  SG2024.2
 002800*                                                                 SG2024.2
 002900 ENVIRONMENT DIVISION.                                            SG2024.2
