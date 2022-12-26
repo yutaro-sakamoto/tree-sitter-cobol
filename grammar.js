@@ -1278,6 +1278,7 @@ module.exports = grammar({
       $.sort_statement,
       $.start_statement,
       $.stop_statement,
+      $.string_statement,
       $.subtract_statement,
       $.use_statement,
       $.write_statement,
@@ -1302,6 +1303,7 @@ module.exports = grammar({
       $._END_RETURN,
       $._END_REWRITE,
       $._END_START,
+      $._END_STRING,
       '.'
     ),
 
@@ -2323,6 +2325,25 @@ module.exports = grammar({
       $.perform_procedure,
     ),
 
+    string_statement: $ => seq(
+      $._STRING,
+      field('from', repeat1($.string_item)),
+      $._INTO,
+      field('into', $._identifier),
+      optional($.with_pointer),
+    ),
+
+    string_item: $ => choice(
+      $._x,
+      seq($.DELIMITED, optional($._BY), choice($.SIZE, $._x)),
+    ),
+
+    with_pointer: $ => seq(
+      optional($._WITH),
+      $._POINTER,
+      $._identifier
+    ),
+
     subtract_statement: $ => seq(
       $._SUBTRACT,
       $._subtract_body,
@@ -3153,7 +3174,7 @@ module.exports = grammar({
     //DECLARATIVES: $ => $._DECLARATIVES,
     DEFAULT: $ => $._DEFAULT,
     //DELETE: $ => $._DELETE,
-    //DELIMITED: $ => $._DELIMITED,
+    DELIMITED: $ => $._DELIMITED,
     //DELIMITER: $ => $._DELIMITER,
     //DEPENDING: $ => $._DEPENDING,
     DESCENDING: $ => $._DESCENDING,

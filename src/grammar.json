@@ -6531,6 +6531,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "string_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "subtract_statement"
         },
         {
@@ -6617,6 +6621,10 @@
         {
           "type": "SYMBOL",
           "name": "_END_START"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_END_STRING"
         },
         {
           "type": "STRING",
@@ -13116,6 +13124,118 @@
         }
       ]
     },
+    "string_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_STRING"
+        },
+        {
+          "type": "FIELD",
+          "name": "from",
+          "content": {
+            "type": "REPEAT1",
+            "content": {
+              "type": "SYMBOL",
+              "name": "string_item"
+            }
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_INTO"
+        },
+        {
+          "type": "FIELD",
+          "name": "into",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_identifier"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "with_pointer"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "string_item": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_x"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "DELIMITED"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_BY"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "SIZE"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_x"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "with_pointer": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_WITH"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_POINTER"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_identifier"
+        }
+      ]
+    },
     "subtract_statement": {
       "type": "SEQ",
       "members": [
@@ -16955,6 +17075,10 @@
     "DEFAULT": {
       "type": "SYMBOL",
       "name": "_DEFAULT"
+    },
+    "DELIMITED": {
+      "type": "SYMBOL",
+      "name": "_DELIMITED"
     },
     "DESCENDING": {
       "type": "SYMBOL",
