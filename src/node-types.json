@@ -661,6 +661,11 @@
     "fields": {}
   },
   {
+    "type": "PROCEED",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "PROGRAM",
     "named": true,
     "fields": {}
@@ -852,6 +857,11 @@
   },
   {
     "type": "TIME",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "TO",
     "named": true,
     "fields": {}
   },
@@ -1637,6 +1647,61 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "alter_option",
+    "named": true,
+    "fields": {
+      "proc_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          }
+        ]
+      },
+      "to": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "PROCEED",
+          "named": true
+        },
+        {
+          "type": "TO",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "alter_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "alter_option",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -8131,6 +8196,10 @@
           "named": true
         },
         {
+          "type": "alter_statement",
+          "named": true
+        },
+        {
           "type": "at_end",
           "named": true
         },
@@ -8363,6 +8432,10 @@
         },
         {
           "type": "add_statement",
+          "named": true
+        },
+        {
+          "type": "alter_statement",
           "named": true
         },
         {

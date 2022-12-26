@@ -3,13 +3,13 @@
 000300     NC302M.                                                      NC3024.2
 000400*THE FOLLOWING PROGRAM TESTS THE FLAGGING OF OBSOLETE             NC3024.2
 000500*MINIMUM SUBSET NUCLEUS FEATURES.                                 NC3024.2
-000600 AUTHOR. DAVID G BAMBER.                                          NC3024.2
+000600*AUTHOR. DAVID G BAMBER.                                          NC3024.2
 000700*Message expected for above statement: OBSOLETE                   NC3024.2
-000800 INSTALLATION. NCC.                                               NC3024.2
+000800*INSTALLATION. NCC.                                               NC3024.2
 000900*Message expected for above statement: OBSOLETE                   NC3024.2
-001000 DATE-WRITTEN. 19TH AUG 1988.                                     NC3024.2
+001000*DATE-WRITTEN. 19TH AUG 1988.                                     NC3024.2
 001100*Message expected for above statement: OBSOLETE                   NC3024.2
-001200 SECURITY. NO SECURITY.                                           NC3024.2
+001200*SECURITY. NO SECURITY.                                           NC3024.2
 001300*Message expected for above statement: OBSOLETE                   NC3024.2
 001400 ENVIRONMENT DIVISION.                                            NC3024.2
 001500 CONFIGURATION SECTION.                                           NC3024.2

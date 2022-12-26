@@ -6435,6 +6435,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "alter_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "call_statement"
         },
         {
@@ -7620,6 +7624,68 @@
         {
           "type": "SYMBOL",
           "name": "_ERROR"
+        }
+      ]
+    },
+    "alter_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_ALTER"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "alter_option"
+          }
+        }
+      ]
+    },
+    "alter_option": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "proc_name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "qualified_word"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "TO"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "PROCEED"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "TO"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "FIELD",
+          "name": "to",
+          "content": {
+            "type": "SYMBOL",
+            "name": "qualified_word"
+          }
         }
       ]
     },
@@ -17637,6 +17703,10 @@
       "type": "SYMBOL",
       "name": "_PROCEDURE"
     },
+    "PROCEED": {
+      "type": "SYMBOL",
+      "name": "_PROCEED"
+    },
     "PROGRAM": {
       "type": "SYMBOL",
       "name": "_PROGRAM"
@@ -17792,6 +17862,10 @@
     "TIME": {
       "type": "SYMBOL",
       "name": "_TIME"
+    },
+    "TO": {
+      "type": "SYMBOL",
+      "name": "_TO"
     },
     "FALSE": {
       "type": "SYMBOL",

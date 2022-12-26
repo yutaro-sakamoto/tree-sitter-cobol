@@ -1252,6 +1252,7 @@ module.exports = grammar({
     _statement: $ => choice(
       $.accept_statement,
       $.add_statement,
+      $.alter_statement,
       $.call_statement,
       $.cancel_statement,
       $.close_statement,
@@ -1494,6 +1495,21 @@ module.exports = grammar({
       $._ON,
       $._SIZE,
       $._ERROR,
+    ),
+
+    alter_statement: $ => seq(
+      $._ALTER,
+      repeat1($.alter_option)
+    ),
+
+    alter_option: $ => seq(
+      field('proc_name', $.qualified_word),
+      $.TO,
+      optional(seq(
+        $.PROCEED,
+        $.TO
+      )),
+      field('to', $.qualified_word)
     ),
 
     call_statement: $ => seq(
@@ -3416,7 +3432,7 @@ module.exports = grammar({
     //PRINTING: $ => $._PRINTING,
     PROCEDURE: $ => $._PROCEDURE,
     //PROCEDURES: $ => $._PROCEDURES,
-    //PROCEED: $ => $._PROCEED,
+    PROCEED: $ => $._PROCEED,
     PROGRAM: $ => $._PROGRAM,
     //PROGRAM_ID: $ => $._PROGRAM_ID,
     //PROGRAM_NAME: $ => $._PROGRAM_NAME,
@@ -3510,7 +3526,7 @@ module.exports = grammar({
     THRU: $ => $._THRU,
     TIME: $ => $._TIME,
     //TIMES: $ => $._TIMES,
-    //TO: $ => $._TO,
+    TO: $ => $._TO,
     FALSE: $ => $._FALSE,
     FILE: $ => $._FILE,
     INITIAL: $ => $._INITIAL,
