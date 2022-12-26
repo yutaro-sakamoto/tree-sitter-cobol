@@ -6685,10 +6685,14 @@
           "name": "_END_STRING"
         },
         {
-          "type": "STRING",
-          "value": "."
+          "type": "SYMBOL",
+          "name": "period"
         }
       ]
+    },
+    "period": {
+      "type": "STRING",
+      "value": "."
     },
     "_start_handler": {
       "type": "CHOICE",

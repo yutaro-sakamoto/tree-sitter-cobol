@@ -1308,8 +1308,10 @@ module.exports = grammar({
       $._END_REWRITE,
       $._END_START,
       $._END_STRING,
-      '.'
+      $.period
     ),
+
+    period: $ => '.',
 
     _start_handler: $ => choice(
       $.on_exception,

@@ -7921,6 +7921,11 @@
     }
   },
   {
+    "type": "period",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "picture_9",
     "named": true,
     "fields": {}
@@ -8487,6 +8492,10 @@
           "named": true
         },
         {
+          "type": "period",
+          "named": true
+        },
+        {
           "type": "read_statement",
           "named": true
         },
@@ -8723,6 +8732,10 @@
         },
         {
           "type": "perform_statement_loop",
+          "named": true
+        },
+        {
+          "type": "period",
           "named": true
         },
         {
