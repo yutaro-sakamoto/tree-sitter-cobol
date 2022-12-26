@@ -1240,7 +1240,7 @@ module.exports = grammar({
     ),
 
     paragraph_header: $ => seq(
-      field('name', $._WORD),
+      field('name', choice($._WORD, $.integer)),
       '.'
     ),
 
@@ -1384,7 +1384,7 @@ module.exports = grammar({
       ),
       seq(
         $._STOP,
-        field('x', $._LITERAL),
+        field('x', $._simple_value),
       )
     ),
 
@@ -1515,13 +1515,13 @@ module.exports = grammar({
     ),
 
     alter_option: $ => seq(
-      field('proc_name', $.qualified_word),
+      field('proc_name', $._id_or_lit),
       $.TO,
       optional(seq(
         $.PROCEED,
         $.TO
       )),
-      field('to', $.qualified_word)
+      field('to', $._id_or_lit)
     ),
 
     call_statement: $ => seq(

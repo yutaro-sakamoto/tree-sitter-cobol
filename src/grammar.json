@@ -6404,8 +6404,17 @@
           "type": "FIELD",
           "name": "name",
           "content": {
-            "type": "SYMBOL",
-            "name": "_WORD"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_WORD"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "integer"
+              }
+            ]
           }
         },
         {
@@ -7079,7 +7088,7 @@
               "name": "x",
               "content": {
                 "type": "SYMBOL",
-                "name": "_LITERAL"
+                "name": "_simple_value"
               }
             }
           ]
@@ -7733,7 +7742,7 @@
           "name": "proc_name",
           "content": {
             "type": "SYMBOL",
-            "name": "qualified_word"
+            "name": "_id_or_lit"
           }
         },
         {
@@ -7766,7 +7775,7 @@
           "name": "to",
           "content": {
             "type": "SYMBOL",
-            "name": "qualified_word"
+            "name": "_id_or_lit"
           }
         }
       ]
