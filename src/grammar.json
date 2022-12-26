@@ -3754,8 +3754,16 @@
           }
         },
         {
-          "type": "SYMBOL",
-          "name": "_LINES"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_LINES"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -3796,8 +3804,16 @@
           }
         },
         {
-          "type": "SYMBOL",
-          "name": "_LINES"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_LINES"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },

@@ -741,14 +741,14 @@ module.exports = grammar({
       $._FOOTING,
       optional($._AT),
       field('reference', choice($.qualified_word, $._LITERAL)),
-      $._LINES
+      optional($._LINES)
     ),
 
     linage_top: $ => seq(
       optional($._AT),
       $._TOP,
       field('reference', choice($.qualified_word, $._LITERAL)),
-      $._LINES
+      optional($._LINES)
     ),
 
     linage_bottom: $ => seq(
