@@ -35,3 +35,8 @@ for file in $(ls $COBOL85_TEST_SRC_DIR/*.CBL | sort); do
 done
 echo "${TEST_TOTAL_COUNTER} tests. (Success: ${TEST_SUCCESS_COUNTER}, Fail: ${TEST_FAIL_COUNTER}, Skip: ${TEST_SKIP_COUNTER})" | tee -a $COBOL85_TEST_RESULT_SUMMARY
 
+if [ ${TEST_FAIL_COUNTER} != 0 ]; then
+    exit 1
+else
+    exit 0
+fi
