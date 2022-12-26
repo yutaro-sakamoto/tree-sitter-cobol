@@ -1800,7 +1800,7 @@ module.exports = grammar({
         $._expr_calc,
         $._comparator,
         $._expr_calc,
-        optional(seq(
+        repeat(seq(
           choice(
             $.AND_LT,
             $.AND_LE,
@@ -3509,17 +3509,17 @@ module.exports = grammar({
     NOT_POSITIVE: $ => /[nN][oO][tT][ \t]+[pP][oO][sS][iI][tT][iI][vV][eE]/,
     NOT_NEGATIVE: $ => /[nN][oO][tT][ \t]+[nN][eE][gG][aA][tT][iI][vV][eE]/,
     NOT_ZERO: $ => /[nN][oO][tT][ \t]+[zZ][eE][rR][oO]/,
-    AND_LT: $ => /[aA][nN][dD][ \t]+</,
-    AND_LE: $ => /[aA][nN][dD][ \t]+<=/,
-    AND_GT: $ => /[aA][nN][dD][ \t]+>/,
-    AND_GE: $ => /[aA][nN][dD][ \t]+>=/,
-    AND_EQ: $ => /[aA][nN][dD][ \t]+=/,
-    AND_NE: $ => /[aA][nN][dD][ \t]+!=/,
-    OR_LT: $ => /[oO][rR][ \t]+</,
-    OR_LE: $ => /[oO][rR][ \t]+<=/,
-    OR_GT: $ => /[oO][rR][ \t]+>/,
-    OR_GE: $ => /[oO][rR][ \t]+>=/,
-    OR_EQ: $ => /[oO][rR][ \t]+=/,
-    OR_NE: $ => /[oO][rR][ \t]+!=/,
+    AND_LT: $ => /[aA][nN][dD][ \t]+(<|[lL][eE][sS][sS][ \t]+[tT][hH][aA][nN])/,
+    AND_LE: $ => /[aA][nN][dD][ \t]+(<=|[nN][oO][tT][ \t]+(>|[gG][rR][eE][aA][tT][eE][rR][ \t]+[tT][hH][aA][nN]))/,
+    AND_GT: $ => /[aA][nN][dD][ \t]+(>|[gG][rR][eE][aA][tT][eE][rR][ \t]+[tT][hH][aA][nN])/,
+    AND_GE: $ => /[aA][nN][dD][ \t]+(>=|[nN][oO][tT][ \t]+(<|[lL][eE][sS][sS][ \t]+[tT][hH][aA][nN]))/,
+    AND_EQ: $ => /[aA][nN][dD][ \t]+(=|[eE][qQ][uU][aA][lL]([ \t]+[tT][oO])?)/,
+    AND_NE: $ => /[aA][nN][dD][ \t]+(!=|[nN][oO][tT][ \t]+[eE][qQ][uU][aA][lL]([ \t]+[tT][oO])?)/,
+    OR_LT: $ => /[oO][rR][ \t]+(<|[lL][eE][sS][sS][ \t]+[tT][hH][aA][nN])/,
+    OR_LE: $ => /[oO][rR][ \t]+(<=|[nN][oO][tT][ \t]+(>|[gG][rR][eE][aA][tT][eE][rR][ \t]+[tT][hH][aA][nN]))/,
+    OR_GT: $ => /[oO][rR][ \t]+(>|[gG][rR][eE][aA][tT][eE][rR][ \t]+[tT][hH][aA][nN])/,
+    OR_GE: $ => /[oO][rR][ \t]+(>=|[nN][oO][tT][ \t]+(<|[lL][eE][sS][sS][ \t]+[tT][hH][aA][nN]))/,
+    OR_EQ: $ => /[oO][rR][ \t]+(=|[eE][qQ][uU][aA][lL]([ \t]+[tT][oO])?)/,
+    OR_NE: $ => /[oO][rR][ \t]+(!=|[nN][oO][tT][ \t]+[eE][qQ][uU][aA][lL]([ \t]+[tT][oO])?)/,
   }
 });

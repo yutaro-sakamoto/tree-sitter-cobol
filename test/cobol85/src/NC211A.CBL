@@ -1792,8 +1792,8 @@
 179200*        OF THIS TEST.                                            NC2114.2
 179300     IF      FOUR GREATER THAN 2.5                                NC2114.2
 179400          AND          EQUAL TO QUATROS                           NC2114.2
-179500          AND     (FOUR     = TEN      OR                         NC2114.2
-179600                        NOT < TEN      OR                         NC2114.2
+179500          AND     (FOUR     = TEN      OR    NOT < TEN
+                OR
 179700                   SIGN-1 POSITIVE     AND                        NC2114.2
 179800                   (SIGN-2 NOT NEGATIVE          OR               NC2114.2
 179900                    CLASS-1 NOT NUMERIC))                         NC2114.2

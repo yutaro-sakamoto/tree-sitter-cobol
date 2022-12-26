@@ -9758,74 +9758,69 @@
             "name": "_expr_calc"
           },
           {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "SYMBOL",
-                        "name": "AND_LT"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "AND_LE"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "AND_GT"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "AND_GE"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "AND_EQ"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "AND_NE"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "OR_LT"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "OR_LE"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "OR_GT"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "OR_GE"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "OR_EQ"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "OR_NE"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "_expr_calc"
-                  }
-                ]
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
+            "type": "REPEAT",
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "AND_LT"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "AND_LE"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "AND_GT"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "AND_GE"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "AND_EQ"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "AND_NE"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "OR_LT"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "OR_LE"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "OR_GT"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "OR_GE"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "OR_EQ"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "OR_NE"
+                    }
+                  ]
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_expr_calc"
+                }
+              ]
+            }
           }
         ]
       }
@@ -17595,51 +17590,51 @@
     },
     "AND_LT": {
       "type": "PATTERN",
-      "value": "[aA][nN][dD][ \\t]+<"
+      "value": "[aA][nN][dD][ \\t]+(<|[lL][eE][sS][sS][ \\t]+[tT][hH][aA][nN])"
     },
     "AND_LE": {
       "type": "PATTERN",
-      "value": "[aA][nN][dD][ \\t]+<="
+      "value": "[aA][nN][dD][ \\t]+(<=|[nN][oO][tT][ \\t]+(>|[gG][rR][eE][aA][tT][eE][rR][ \\t]+[tT][hH][aA][nN]))"
     },
     "AND_GT": {
       "type": "PATTERN",
-      "value": "[aA][nN][dD][ \\t]+>"
+      "value": "[aA][nN][dD][ \\t]+(>|[gG][rR][eE][aA][tT][eE][rR][ \\t]+[tT][hH][aA][nN])"
     },
     "AND_GE": {
       "type": "PATTERN",
-      "value": "[aA][nN][dD][ \\t]+>="
+      "value": "[aA][nN][dD][ \\t]+(>=|[nN][oO][tT][ \\t]+(<|[lL][eE][sS][sS][ \\t]+[tT][hH][aA][nN]))"
     },
     "AND_EQ": {
       "type": "PATTERN",
-      "value": "[aA][nN][dD][ \\t]+="
+      "value": "[aA][nN][dD][ \\t]+(=|[eE][qQ][uU][aA][lL]([ \\t]+[tT][oO])?)"
     },
     "AND_NE": {
       "type": "PATTERN",
-      "value": "[aA][nN][dD][ \\t]+!="
+      "value": "[aA][nN][dD][ \\t]+(!=|[nN][oO][tT][ \\t]+[eE][qQ][uU][aA][lL]([ \\t]+[tT][oO])?)"
     },
     "OR_LT": {
       "type": "PATTERN",
-      "value": "[oO][rR][ \\t]+<"
+      "value": "[oO][rR][ \\t]+(<|[lL][eE][sS][sS][ \\t]+[tT][hH][aA][nN])"
     },
     "OR_LE": {
       "type": "PATTERN",
-      "value": "[oO][rR][ \\t]+<="
+      "value": "[oO][rR][ \\t]+(<=|[nN][oO][tT][ \\t]+(>|[gG][rR][eE][aA][tT][eE][rR][ \\t]+[tT][hH][aA][nN]))"
     },
     "OR_GT": {
       "type": "PATTERN",
-      "value": "[oO][rR][ \\t]+>"
+      "value": "[oO][rR][ \\t]+(>|[gG][rR][eE][aA][tT][eE][rR][ \\t]+[tT][hH][aA][nN])"
     },
     "OR_GE": {
       "type": "PATTERN",
-      "value": "[oO][rR][ \\t]+>="
+      "value": "[oO][rR][ \\t]+(>=|[nN][oO][tT][ \\t]+(<|[lL][eE][sS][sS][ \\t]+[tT][hH][aA][nN]))"
     },
     "OR_EQ": {
       "type": "PATTERN",
-      "value": "[oO][rR][ \\t]+="
+      "value": "[oO][rR][ \\t]+(=|[eE][qQ][uU][aA][lL]([ \\t]+[tT][oO])?)"
     },
     "OR_NE": {
       "type": "PATTERN",
-      "value": "[oO][rR][ \\t]+!="
+      "value": "[oO][rR][ \\t]+(!=|[nN][oO][tT][ \\t]+[eE][qQ][uU][aA][lL]([ \\t]+[tT][oO])?)"
     }
   },
   "extras": [
