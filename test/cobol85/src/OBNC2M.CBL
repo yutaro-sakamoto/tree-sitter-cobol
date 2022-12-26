@@ -22,7 +22,7 @@
 002200*    PROGRAM OBNC2M CONTAINS CCVS74 TESTS OF LANGUAGE ELEMENTS *  OBNC24.2
 002300*    DEFINED AS OBSOLETE IN THE 198X STANDARDS.                *  OBNC24.2
 002400****************************************************************  OBNC24.2
-002500 DATE-COMPILED.                                                   OBNC24.2
+002500*DATE-COMPILED.                                                   OBNC24.2
 002600*    THIS COMMENT LINE SHOULD NOT BE REPLACED                     OBNC24.2
 002700*    THIS COMMENT ENTRY SHOULD APPEAR AS THE LAST LINE BEFORE     OBNC24.2
 002800*    THE ENVIRONMENT DIVISION.                                    OBNC24.2
