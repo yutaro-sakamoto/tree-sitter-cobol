@@ -798,7 +798,7 @@ module.exports = grammar({
       ),*/
     ),
 
-    level_number: $ => /[0-9][0-9]/,
+    level_number: $ => /[0-9][0-9]?/,
     level_number_88: $ => /88/,
 
     entry_name: $ => choice(

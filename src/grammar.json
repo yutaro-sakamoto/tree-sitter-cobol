@@ -4090,7 +4090,7 @@
     },
     "level_number": {
       "type": "PATTERN",
-      "value": "[0-9][0-9]"
+      "value": "[0-9][0-9]?"
     },
     "level_number_88": {
       "type": "PATTERN",
