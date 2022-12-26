@@ -1280,6 +1280,7 @@ module.exports = grammar({
       $.stop_statement,
       $.string_statement,
       $.subtract_statement,
+      $.unstring_statement,
       $.use_statement,
       $.write_statement,
       $.next_sentence_statement,
@@ -2369,6 +2370,47 @@ module.exports = grammar({
         field('from', $._identifier),
         optional($.ROUNDED),
       )
+    ),
+
+    unstring_statement: $ => seq(
+      $._UNSTRING,
+      field('x', $._identifier),
+      optional($.unstring_delimited),
+      $._INTO,
+      repeat1($.unstring_into_item),
+      optional($.with_pointer),
+      optional($.unstring_tallying),
+    ),
+
+    unstring_delimited: $ => seq(
+      $._DELIMITED,
+      optional($._BY),
+      repeat1($.unstring_delimited_item)
+    ),
+
+    unstring_delimited_item: $ => seq(
+      optional($.ALL),
+      field('x', $._simple_value)
+    ),
+
+    unstring_into_item: $ => seq(
+      field('x', $._identifier),
+      optional(seq(
+        $._DELIMITER,
+        optional($._IN),
+        field('delimiter', $._identifier)
+      )),
+      optional(seq(
+        $._COUNT,
+        optional($._IN),
+        field('count', $._identifier)
+      )),
+    ),
+
+    unstring_tallying: $ => seq(
+      $._TALLYING,
+      optional($._IN),
+      field('tallying', $._identifier)
     ),
 
     use_statement: $ => choice(
