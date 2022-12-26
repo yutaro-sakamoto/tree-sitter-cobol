@@ -1372,8 +1372,19 @@ module.exports = grammar({
     ),
 
     //todo
-    stop_statement: $ => seq(
-      $._STOP, $._RUN
+    stop_statement: $ => choice(
+      seq(
+        $._STOP,
+        $._RUN,
+        optional(choice(
+          field('returning', seq($._RETURNING, $._x)),
+          field('giving', seq($._GIVING, $._x))
+        ))
+      ),
+      seq(
+        $._STOP,
+        field('x', $._LITERAL),
+      )
     ),
 
     accept_statement: $ => seq(
