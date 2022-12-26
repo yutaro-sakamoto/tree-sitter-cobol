@@ -2531,14 +2531,15 @@ module.exports = grammar({
       nonempty($.invalid_key, $.not_invalid_key),
     ),
 
-    eop: $ => seq(
-      $._AT,
+    eop: $ => prec(1, seq(
+      optional($._AT),
       choice($._EOP, $._END_OF_PAGE),
-    ),
+    )),
 
     not_eop: $ => seq(
-      $._NOT,
-      $._AT,
+      optional(seq(
+        $._NOT,
+        $._AT)),
       choice($._EOP, $._END_OF_PAGE),
     ),
 

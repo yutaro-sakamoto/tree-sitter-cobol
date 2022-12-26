@@ -14367,37 +14367,62 @@
       ]
     },
     "eop": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_AT"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "_EOP"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_END_OF_PAGE"
-            }
-          ]
-        }
-      ]
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_AT"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_EOP"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_END_OF_PAGE"
+              }
+            ]
+          }
+        ]
+      }
     },
     "not_eop": {
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "_NOT"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_AT"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_NOT"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_AT"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "CHOICE",
