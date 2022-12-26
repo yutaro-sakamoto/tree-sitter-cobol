@@ -1763,8 +1763,8 @@
 176300 IF--INIT-T.                                                      NC2504.2
 176400     MOVE "ABBREV---CONDITION" TO FEATURE.                        NC2504.2
 176500 IF--TEST-113.                                                    NC2504.2
-176600     IF SMALLEST-VALU LESS THAN SMALL-VALU AND (SMALLEST-VALU NOT NC2504.2
-176700     GREATER THAN EVEN-SMALLER OR SMALLER-VALU)                   NC2504.2
+176600     IF SMALLEST-VALU LESS THAN SMALL-VALU AND (SMALLEST-VALU     NC2504.2
+176700     NOT GREATER THAN EVEN-SMALLER OR SMALLER-VALU)               NC2504.2
 176800             PERFORM PASS                                         NC2504.2
 176900         GO TO IF--WRITE-113.                                     NC2504.2
 177000     MOVE "CONDITION TRUE" TO CORRECT-A.                          NC2504.2

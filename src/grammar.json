@@ -17923,11 +17923,11 @@
     },
     "_NOT_LESS": {
       "type": "PATTERN",
-      "value": "([nN][oO][tT][ \\t]+[lL][eE][sS][sS])"
+      "value": "([nN][oO][tT][ \\t]+(<|[lL][eE][sS][sS]))"
     },
     "_NOT_GREATER": {
       "type": "PATTERN",
-      "value": "([nN][oO][tT][ \\t]+[gG][rR][eE][aA][tT][eE][rR])"
+      "value": "([nN][oO][tT][ \\t]+(>|[gG][rR][eE][aA][tT][eE][rR]))"
     },
     "NOT_OMITTED": {
       "type": "PATTERN",
