@@ -975,7 +975,7 @@ module.exports = grammar({
 
     picture_a: $ => /([aA](\([0-9]+\))?)+/,
 
-    picture_edit: $ => /([aAxX9bBvVzZpP\(\)0-9$/,\.*+<>-]|[cC][rR]|[dD][bB])*([aAxX9bBvVzZpP\(\)0-9$/,*+<>-]|[cC][rR]|[dD][bB])/,
+    picture_edit: $ => /([aAxX9bBvVzZpPwW\(\)0-9$/,\.*+<>-]|[cC][rR]|[dD][bB])*([aAxX9bBvVzZpPwW\(\)0-9$/,*+<>-]|[cC][rR]|[dD][bB])/,
 
     usage_clause: $ => seq(
       optional(seq($._USAGE, optional($._IS))),
@@ -2632,7 +2632,7 @@ module.exports = grammar({
 
     //todo
     number: $ => choice($.integer, $.decimal),
-    integer: $ => /[+-]?[0-9]+/,
+    integer: $ => /[+-]?[0-9,]+/,
     decimal: $ => /[+-]?[0-9]*\.[0-9]+/,
     _string: $ => choice(
       $.string,

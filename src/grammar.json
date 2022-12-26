@@ -4879,7 +4879,7 @@
     },
     "picture_edit": {
       "type": "PATTERN",
-      "value": "([aAxX9bBvVzZpP\\(\\)0-9$/,\\.*+<>-]|[cC][rR]|[dD][bB])*([aAxX9bBvVzZpP\\(\\)0-9$/,*+<>-]|[cC][rR]|[dD][bB])"
+      "value": "([aAxX9bBvVzZpPwW\\(\\)0-9$/,\\.*+<>-]|[cC][rR]|[dD][bB])*([aAxX9bBvVzZpPwW\\(\\)0-9$/,*+<>-]|[cC][rR]|[dD][bB])"
     },
     "usage_clause": {
       "type": "SEQ",
@@ -15165,7 +15165,7 @@
     },
     "integer": {
       "type": "PATTERN",
-      "value": "[+-]?[0-9]+"
+      "value": "[+-]?[0-9,]+"
     },
     "decimal": {
       "type": "PATTERN",
