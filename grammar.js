@@ -415,7 +415,43 @@ module.exports = grammar({
       optional(seq($.POSITION, $.integer))
     ),
 
-    apply_clause: $ => /todo_apply_clause/,
+    apply_clause: $ => seq(
+      $._APPLY,
+      choice(
+        seq(
+          $._COMMITMENT_CONTROL,
+          optional($._ON),
+          field('commitment_control', repeat1($.qualified_word)),
+        ),
+        seq(
+          $._CYL_OVERFLOW,
+          optional($._OF),
+          field('cyl_overflow', $._LITERAL),
+          $._TRACKS,
+          $._ON,
+          field('tracks_on', repeat1($.qualified_word)),
+        ),
+        seq(
+          $._CORE_INDEX,
+          $._TO,
+          field('core_index_to', $.qualified_word),
+          $._ON,
+          field('core_index_on', repeat1($.qualified_word))
+        ),
+        seq(
+          $._FORMS_OVERLAY,
+          $._TO,
+          field('forms_overlay_to', $.qualified_word),
+          $._ON,
+          field('forms_overlay_on', repeat1($.qualified_word))
+        ),
+        seq(
+          $._CLOSE_NOFEED,
+          $._ON,
+          field('close_nofeed_on', repeat1($.qualified_word)),
+        ),
+      )
+    ),
 
     _select_clause: $ => choice(
       $.assign_clause,
@@ -3226,7 +3262,7 @@ module.exports = grammar({
     COMMAND_LINE: $ => $._COMMAND_LINE,
     //COMMA_DELIM: $ => $._COMMA_DELIM,
     //COMMIT: $ => $._COMMIT,
-    //COMMITMENT_CONTROL: $ => $._COMMITMENT_CONTROL,
+    COMMITMENT_CONTROL: $ => $._COMMITMENT_CONTROL,
     //COMMON: $ => $._COMMON,
     COMP: $ => $._COMP,
     //COMPUTE: $ => $._COMPUTE,
