@@ -1432,7 +1432,7 @@ module.exports = grammar({
       $._accept_body,
     ),
 
-    _accept_body: $ => seq(
+    _accept_body: $ => prec.right(seq(
       $._identifier,
       choice(
         seq(
@@ -1459,7 +1459,7 @@ module.exports = grammar({
           ))
         )
       )
-    ),
+    )),
 
     at_line_column: $ => choice(
       seq(optional($._AT), $.line_number, $.column_number),
@@ -1706,7 +1706,7 @@ module.exports = grammar({
       $._display_body,
     ),
 
-    _display_body: $ => choice(
+    _display_body: $ => prec.right(choice(
       seq($._id_or_lit, $._UPON_ENVIRONMENT_NAME),
       seq($._id_or_lit, $._UPON_ENVIRONMENT_VALUE),
       seq($._id_or_lit, $._UPON_ARGUMENT_NUMBER),
@@ -1716,9 +1716,34 @@ module.exports = grammar({
       seq(repeat1($._x), optional($.at_line_column), $.UPON, $._WORD, optional($.with_clause)),
       seq(repeat1($._x), optional($.at_line_column), $.UPON, $.PRINTER, optional($.with_clause)),
       seq(repeat1($._x), optional($.at_line_column), $.UPON, $.CRT, optional($.with_clause)),
+    )),
+
+    at_line_column: $ => choice(
+      seq(optional($._AT), $.line_number, $.column_number),
+      seq(optional($._AT), $.column_number, $.line_number),
+      seq(optional($._AT), $.line_number),
+      seq(optional($._AT), $.column_number),
+      seq($._AT, field('at', $._simple_value))
     ),
 
-    at_line_column: $ => /todo_at_line_column/,
+    line_number: $ => seq(
+      $._LINE,
+      optional($.number),
+      $._id_or_lit
+    ),
+
+    column_number: $ => choice(
+      seq(
+        $._COLUMN,
+        field('column_x', optional($.number)),
+        field('column_y', $._id_or_lit),
+      ),
+      seq(
+        $._POSITION,
+        field('position_x', optional($.number)),
+        field('position_y', $._id_or_lit),
+      ),
+    ),
 
     _id_or_lit: $ => choice(
       $._identifier,
