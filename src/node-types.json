@@ -295,6 +295,106 @@
     "fields": {}
   },
   {
+    "type": "END_ACCEPT",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_ADD",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_CALL",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_COMPUTE",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_DELETE",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_DISPLAY",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_DIVIDE",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_EVALUATE",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_IF",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_MULTIPLY",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_PERFORM",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_READ",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_RETURN",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_REWRITE",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_SEARCH",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_START",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_STRING",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_SUBTRACT",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_UNSTRING",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_WRITE",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "ENVIRONMENT",
     "named": true,
     "fields": {}
@@ -8836,6 +8936,86 @@
       "required": false,
       "types": [
         {
+          "type": "END_ACCEPT",
+          "named": true
+        },
+        {
+          "type": "END_ADD",
+          "named": true
+        },
+        {
+          "type": "END_CALL",
+          "named": true
+        },
+        {
+          "type": "END_COMPUTE",
+          "named": true
+        },
+        {
+          "type": "END_DELETE",
+          "named": true
+        },
+        {
+          "type": "END_DISPLAY",
+          "named": true
+        },
+        {
+          "type": "END_DIVIDE",
+          "named": true
+        },
+        {
+          "type": "END_EVALUATE",
+          "named": true
+        },
+        {
+          "type": "END_IF",
+          "named": true
+        },
+        {
+          "type": "END_MULTIPLY",
+          "named": true
+        },
+        {
+          "type": "END_PERFORM",
+          "named": true
+        },
+        {
+          "type": "END_READ",
+          "named": true
+        },
+        {
+          "type": "END_RETURN",
+          "named": true
+        },
+        {
+          "type": "END_REWRITE",
+          "named": true
+        },
+        {
+          "type": "END_SEARCH",
+          "named": true
+        },
+        {
+          "type": "END_START",
+          "named": true
+        },
+        {
+          "type": "END_STRING",
+          "named": true
+        },
+        {
+          "type": "END_SUBTRACT",
+          "named": true
+        },
+        {
+          "type": "END_UNSTRING",
+          "named": true
+        },
+        {
+          "type": "END_WRITE",
+          "named": true
+        },
+        {
           "type": "accept_statement",
           "named": true
         },
@@ -9082,6 +9262,86 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "END_ACCEPT",
+          "named": true
+        },
+        {
+          "type": "END_ADD",
+          "named": true
+        },
+        {
+          "type": "END_CALL",
+          "named": true
+        },
+        {
+          "type": "END_COMPUTE",
+          "named": true
+        },
+        {
+          "type": "END_DELETE",
+          "named": true
+        },
+        {
+          "type": "END_DISPLAY",
+          "named": true
+        },
+        {
+          "type": "END_DIVIDE",
+          "named": true
+        },
+        {
+          "type": "END_EVALUATE",
+          "named": true
+        },
+        {
+          "type": "END_IF",
+          "named": true
+        },
+        {
+          "type": "END_MULTIPLY",
+          "named": true
+        },
+        {
+          "type": "END_PERFORM",
+          "named": true
+        },
+        {
+          "type": "END_READ",
+          "named": true
+        },
+        {
+          "type": "END_RETURN",
+          "named": true
+        },
+        {
+          "type": "END_REWRITE",
+          "named": true
+        },
+        {
+          "type": "END_SEARCH",
+          "named": true
+        },
+        {
+          "type": "END_START",
+          "named": true
+        },
+        {
+          "type": "END_STRING",
+          "named": true
+        },
+        {
+          "type": "END_SUBTRACT",
+          "named": true
+        },
+        {
+          "type": "END_UNSTRING",
+          "named": true
+        },
+        {
+          "type": "END_WRITE",
+          "named": true
+        },
         {
           "type": "accept_statement",
           "named": true

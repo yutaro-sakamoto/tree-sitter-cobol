@@ -6804,75 +6804,83 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_END_ACCEPT"
+          "name": "END_ACCEPT"
         },
         {
           "type": "SYMBOL",
-          "name": "_END_ADD"
+          "name": "END_ADD"
         },
         {
           "type": "SYMBOL",
-          "name": "_END_CALL"
+          "name": "END_CALL"
         },
         {
           "type": "SYMBOL",
-          "name": "_END_DELETE"
+          "name": "END_COMPUTE"
         },
         {
           "type": "SYMBOL",
-          "name": "_END_DISPLAY"
+          "name": "END_DELETE"
         },
         {
           "type": "SYMBOL",
-          "name": "_END_DIVIDE"
+          "name": "END_DISPLAY"
         },
         {
           "type": "SYMBOL",
-          "name": "_END_MULTIPLY"
+          "name": "END_DIVIDE"
         },
         {
           "type": "SYMBOL",
-          "name": "_END_READ"
+          "name": "END_MULTIPLY"
         },
         {
           "type": "SYMBOL",
-          "name": "_END_SEARCH"
+          "name": "END_READ"
         },
         {
           "type": "SYMBOL",
-          "name": "_END_SUBTRACT"
+          "name": "END_SEARCH"
         },
         {
           "type": "SYMBOL",
-          "name": "_END_WRITE"
+          "name": "END_SUBTRACT"
         },
         {
           "type": "SYMBOL",
-          "name": "_END_PERFORM"
+          "name": "END_WRITE"
         },
         {
           "type": "SYMBOL",
-          "name": "_END_IF"
+          "name": "END_PERFORM"
         },
         {
           "type": "SYMBOL",
-          "name": "_END_EVALUATE"
+          "name": "END_IF"
         },
         {
           "type": "SYMBOL",
-          "name": "_END_RETURN"
+          "name": "END_EVALUATE"
         },
         {
           "type": "SYMBOL",
-          "name": "_END_REWRITE"
+          "name": "END_RETURN"
         },
         {
           "type": "SYMBOL",
-          "name": "_END_START"
+          "name": "END_REWRITE"
         },
         {
           "type": "SYMBOL",
-          "name": "_END_STRING"
+          "name": "END_START"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "END_STRING"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "END_UNSTRING"
         },
         {
           "type": "SYMBOL",
@@ -18037,6 +18045,90 @@
     "EBCDIC": {
       "type": "SYMBOL",
       "name": "_EBCDIC"
+    },
+    "END_ACCEPT": {
+      "type": "SYMBOL",
+      "name": "_END_ACCEPT"
+    },
+    "END_ADD": {
+      "type": "SYMBOL",
+      "name": "_END_ADD"
+    },
+    "END_CALL": {
+      "type": "SYMBOL",
+      "name": "_END_CALL"
+    },
+    "END_COMPUTE": {
+      "type": "SYMBOL",
+      "name": "_END_COMPUTE"
+    },
+    "END_DELETE": {
+      "type": "SYMBOL",
+      "name": "_END_DELETE"
+    },
+    "END_DISPLAY": {
+      "type": "SYMBOL",
+      "name": "_END_DISPLAY"
+    },
+    "END_DIVIDE": {
+      "type": "SYMBOL",
+      "name": "_END_DIVIDE"
+    },
+    "END_EVALUATE": {
+      "type": "SYMBOL",
+      "name": "_END_EVALUATE"
+    },
+    "END_FUNCTION": {
+      "type": "SYMBOL",
+      "name": "_END_FUNCTION"
+    },
+    "END_IF": {
+      "type": "SYMBOL",
+      "name": "_END_IF"
+    },
+    "END_MULTIPLY": {
+      "type": "SYMBOL",
+      "name": "_END_MULTIPLY"
+    },
+    "END_PERFORM": {
+      "type": "SYMBOL",
+      "name": "_END_PERFORM"
+    },
+    "END_READ": {
+      "type": "SYMBOL",
+      "name": "_END_READ"
+    },
+    "END_RETURN": {
+      "type": "SYMBOL",
+      "name": "_END_RETURN"
+    },
+    "END_REWRITE": {
+      "type": "SYMBOL",
+      "name": "_END_REWRITE"
+    },
+    "END_SEARCH": {
+      "type": "SYMBOL",
+      "name": "_END_SEARCH"
+    },
+    "END_START": {
+      "type": "SYMBOL",
+      "name": "_END_START"
+    },
+    "END_STRING": {
+      "type": "SYMBOL",
+      "name": "_END_STRING"
+    },
+    "END_SUBTRACT": {
+      "type": "SYMBOL",
+      "name": "_END_SUBTRACT"
+    },
+    "END_UNSTRING": {
+      "type": "SYMBOL",
+      "name": "_END_UNSTRING"
+    },
+    "END_WRITE": {
+      "type": "SYMBOL",
+      "name": "_END_WRITE"
     },
     "ENVIRONMENT": {
       "type": "SYMBOL",
