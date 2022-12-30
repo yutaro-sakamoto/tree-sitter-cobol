@@ -2,22 +2,22 @@
 000200 PROGRAM-ID.                                                      OBNC14.2
 000300     OBNC1M.                                                      OBNC14.2
 000400                                                                  OBNC14.2
-000500*AUTHOR.                                                          OBNC14.2
-000600*    FEDERAL COMPILER TESTING CENTRE.                             OBNC14.2
-000700*INSTALLATION.                                                    OBNC14.2
-000800*    GENERAL SERVICES ADMINISTRATION                              OBNC14.2
-000900*    AUTOMATIC DATA AND TELECOMMUNICATION SERVICE                 OBNC14.2
-001000*    SOFTWARE DEVELOPMENT OFFICE                                  OBNC14.2
-001100*    5203 LEESBURG PIKE. SUITE 1100                               OBNC14.2
-001200*    FALLS CHURCH VIRGINIA 22041                                  OBNC14.2
-001300*                                                                 OBNC14.2
-001400*    PHONE   (703) 756-6153                                       OBNC14.2
-001500*DATE-WRITTEN.                                                    OBNC14.2
-001600*    CCVS-74 VERSION 4.0 - 1980 JULY 1.                           OBNC14.2
-001700*    CREATION DATE     /    VALIDATION DATE                       OBNC14.2
-001800*                                                                 OBNC14.2
-001900*SECURITY.                                                        OBNC14.2
-002000*    NONE                                                         OBNC14.2
+000500 AUTHOR.                                                          OBNC14.2
+000600     FEDERAL COMPILER TESTING CENTRE.                             OBNC14.2
+000700 INSTALLATION.                                                    OBNC14.2
+000800     GENERAL SERVICES ADMINISTRATION                              OBNC14.2
+000900     AUTOMATIC DATA AND TELECOMMUNICATION SERVICE                 OBNC14.2
+001000     SOFTWARE DEVELOPMENT OFFICE                                  OBNC14.2
+001100     5203 LEESBURG PIKE. SUITE 1100                               OBNC14.2
+001200     FALLS CHURCH VIRGINIA 22041                                  OBNC14.2
+001300                                                                  OBNC14.2
+001400     PHONE   (703) 756-6153                                       OBNC14.2
+001500 DATE-WRITTEN.                                                    OBNC14.2
+001600     CCVS-74 VERSION 4.0 - 1980 JULY 1.                           OBNC14.2
+001700     CREATION DATE     /    VALIDATION DATE                       OBNC14.2
+001800                                                                  OBNC14.2
+001900 SECURITY.                                                        OBNC14.2
+002000     NONE                                                         OBNC14.2
 002100                                                                  OBNC14.2
 002200                                                                  OBNC14.2
 002300****************************************************************  OBNC14.2

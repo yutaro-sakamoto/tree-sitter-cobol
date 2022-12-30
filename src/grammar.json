@@ -138,6 +138,34 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "author_section"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "installation_section"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "date_written_section"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "date_compiled_section"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "security_section"
+              }
+            ]
+          }
         }
       ]
     },
@@ -190,6 +218,126 @@
         {
           "type": "SYMBOL",
           "name": "_COMMON"
+        }
+      ]
+    },
+    "author_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_AUTHOR"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "FIELD",
+          "name": "comment",
+          "content": {
+            "type": "REPEAT1",
+            "content": {
+              "type": "SYMBOL",
+              "name": "comment_entry"
+            }
+          }
+        }
+      ]
+    },
+    "installation_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_INSTALLATION"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "FIELD",
+          "name": "comment",
+          "content": {
+            "type": "REPEAT1",
+            "content": {
+              "type": "SYMBOL",
+              "name": "comment_entry"
+            }
+          }
+        }
+      ]
+    },
+    "date_written_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_DATE_WRITTEN"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "FIELD",
+          "name": "comment",
+          "content": {
+            "type": "REPEAT1",
+            "content": {
+              "type": "SYMBOL",
+              "name": "comment_entry"
+            }
+          }
+        }
+      ]
+    },
+    "date_compiled_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_DATE_COMPILED"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "FIELD",
+          "name": "comment",
+          "content": {
+            "type": "REPEAT1",
+            "content": {
+              "type": "SYMBOL",
+              "name": "comment_entry"
+            }
+          }
+        }
+      ]
+    },
+    "security_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_SECURITY"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "FIELD",
+          "name": "comment",
+          "content": {
+            "type": "REPEAT1",
+            "content": {
+              "type": "SYMBOL",
+              "name": "comment_entry"
+            }
+          }
         }
       ]
     },
@@ -18694,6 +18842,26 @@
       "type": "SYMBOL",
       "name": "_ZEROS"
     },
+    "_DATE_WRITTEN": {
+      "type": "PATTERN",
+      "value": "[dD][aA][tT][eE]-[wW][rR][iI][tT][tT][eE][nN]"
+    },
+    "_DATE_COMPILED": {
+      "type": "PATTERN",
+      "value": "[dD][aA][tT][eE]-[cC][oO][mM][pP][iI][lL][eE][dD]"
+    },
+    "_SECURITY": {
+      "type": "PATTERN",
+      "value": "[sS][eE][cC][uU][rR][iI][tT][yY]"
+    },
+    "_INSTALLATION": {
+      "type": "PATTERN",
+      "value": "[iI][nN][sS][tT][aA][lL][lL][aA][tT][iI][oO][nN]"
+    },
+    "_AUTHOR": {
+      "type": "PATTERN",
+      "value": "[aA][uU][tT][hH][oO][rR]"
+    },
     "COMPUTATIONAL": {
       "type": "SYMBOL",
       "name": "_COMPUTATIONAL"
@@ -18839,6 +19007,10 @@
     {
       "type": "SYMBOL",
       "name": "_LINE_COMMENT"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "comment_entry"
     },
     {
       "type": "SYMBOL",

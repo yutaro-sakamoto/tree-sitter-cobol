@@ -17,6 +17,7 @@ module.exports = grammar({
     $._LINE_PREFIX_COMMENT,
     $._LINE_SUFFIX_COMMENT,
     $._LINE_COMMENT,
+    $.comment_entry,
     $._multiline_string,
   ],
 
@@ -54,7 +55,13 @@ module.exports = grammar({
             $.as_literal,
             $.is_initial,
             $.is_common)),
-          '.'))
+          '.')),
+      repeat(choice(
+        $.author_section,
+        $.installation_section,
+        $.date_written_section,
+        $.date_compiled_section,
+        $.security_section)),
     ),
 
     program_name: $ => choice(
@@ -75,6 +82,31 @@ module.exports = grammar({
     is_common: $ => seq(
       $._IS,
       $._COMMON
+    ),
+
+    author_section: $ => seq(
+      $._AUTHOR, '.',
+      field('comment', repeat1($.comment_entry)),
+    ),
+
+    installation_section: $ => seq(
+      $._INSTALLATION, '.',
+      field('comment', repeat1($.comment_entry)),
+    ),
+
+    date_written_section: $ => seq(
+      $._DATE_WRITTEN, '.',
+      field('comment', repeat1($.comment_entry)),
+    ),
+
+    date_compiled_section: $ => seq(
+      $._DATE_COMPILED, '.',
+      field('comment', repeat1($.comment_entry)),
+    ),
+
+    security_section: $ => seq(
+      $._SECURITY, '.',
+      field('comment', repeat1($.comment_entry)),
     ),
 
     function_definition: $ => /todo_function_definition/,
@@ -3670,6 +3702,11 @@ module.exports = grammar({
     ZERO: $ => $._ZERO,
     ZEROS: $ => $._ZEROS,
 
+    _DATE_WRITTEN: $ => /[dD][aA][tT][eE]-[wW][rR][iI][tT][tT][eE][nN]/,
+    _DATE_COMPILED: $ => /[dD][aA][tT][eE]-[cC][oO][mM][pP][iI][lL][eE][dD]/,
+    _SECURITY: $ => /[sS][eE][cC][uU][rR][iI][tT][yY]/,
+    _INSTALLATION: $ => /[iI][nN][sS][tT][aA][lL][lL][aA][tT][iI][oO][nN]/,
+    _AUTHOR: $ => /[aA][uU][tT][hH][oO][rR]/,
 
     COMPUTATIONAL: $ => $._COMPUTATIONAL,
     _COMPUTATIONAL: $ => /[cC][oO][mM][pP][uU][tT][aA][tT][iI][oO][nN][aA][lL]/,
