@@ -342,8 +342,71 @@
       ]
     },
     "function_definition": {
-      "type": "PATTERN",
-      "value": "todo_function_definition"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "function_division"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "environment_division"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "data_division"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "procedure_division"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "end_function"
+        }
+      ]
+    },
+    "function_division": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_FUNCTION_ID"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "SYMBOL",
+          "name": "program_name"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "as_literal"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        }
+      ]
+    },
+    "end_function": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_END_FUNCTION"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "program_name"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        }
+      ]
     },
     "environment_division": {
       "type": "SEQ",

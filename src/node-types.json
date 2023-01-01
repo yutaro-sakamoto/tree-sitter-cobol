@@ -4265,6 +4265,21 @@
     }
   },
   {
+    "type": "end_function",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "program_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "end_program",
     "named": true,
     "fields": {},
@@ -5250,6 +5265,25 @@
         },
         {
           "type": "x_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "function_division",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "as_literal",
+          "named": true
+        },
+        {
+          "type": "program_name",
           "named": true
         }
       ]

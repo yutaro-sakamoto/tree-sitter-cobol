@@ -109,7 +109,27 @@ module.exports = grammar({
       field('comment', repeat1($.comment_entry)),
     ),
 
-    function_definition: $ => /todo_function_definition/,
+    function_definition: $ => seq(
+      $.function_division,
+      $.environment_division,
+      $.data_division,
+      $.procedure_division,
+      $.end_function
+    ),
+
+    function_division: $ => seq(
+      $._FUNCTION_ID,
+      '.',
+      $.program_name,
+      $.as_literal,
+      '.'
+    ),
+
+    end_function: $ => seq(
+      $._END_FUNCTION,
+      $.program_name,
+      '.'
+    ),
 
     environment_division: $ => seq(
       $._ENVIRONMENT,
