@@ -1226,7 +1226,6 @@ module.exports = grammar({
       optional($.procedure_returning),
       '.',
       optional($.procedure_declaratives),
-      //repeat($._procedure),
       optional($._procedure_division_contenet)
     ),
 
@@ -1297,7 +1296,6 @@ module.exports = grammar({
         )),
         repeat($._procedure_division_statement)
       ),
-      //$._procedure_division_headers,
     )),
 
     _procedure_division_declaratives_content: $ => prec.right(1, choice(
@@ -1478,7 +1476,6 @@ module.exports = grammar({
       field('keys', repeat1($._identifier))
     ),
 
-    //todo
     stop_statement: $ => choice(
       seq(
         $._STOP,
