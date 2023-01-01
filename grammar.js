@@ -895,7 +895,20 @@ module.exports = grammar({
       $._WORD
     ),
 
-    constant_entry: $ => /todo_constant_entry/,
+    constant_entry: $ => seq(
+      $.level_number,
+      field('name', $.WORD),
+      $._CONSTANT,
+      field('is_global', seq(optional($._IS), $.GLOBAL)),
+      optional($._AS),
+      $._lit_or_length,
+    ),
+
+    _lit_or_length: $ => choice(
+      $._literal,
+      field('length_of', seq($._LEADING, optional($._OF), $._identifier)),
+      field('byte_length_of', seq($._BYTE_LENGTH, optional($._OF), $._identifier)),
+    ),
 
     _data_description_clause: $ => choice(
       $.redefines_clause,
