@@ -295,6 +295,106 @@
     "fields": {}
   },
   {
+    "type": "END_ACCEPT",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_ADD",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_CALL",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_COMPUTE",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_DELETE",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_DISPLAY",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_DIVIDE",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_EVALUATE",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_IF",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_MULTIPLY",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_PERFORM",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_READ",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_RETURN",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_REWRITE",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_SEARCH",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_START",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_STRING",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_SUBTRACT",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_UNSTRING",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_WRITE",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "ENVIRONMENT",
     "named": true,
     "fields": {}
@@ -411,6 +511,11 @@
   },
   {
     "type": "INDEXED",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "INITIALIZED",
     "named": true,
     "fields": {}
   },
@@ -1565,6 +1670,64 @@
     "fields": {}
   },
   {
+    "type": "allocate_statement",
+    "named": true,
+    "fields": {
+      "initialized": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "INITIALIZED",
+            "named": true
+          }
+        ]
+      },
+      "returning": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          }
+        ]
+      },
+      "x": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "WORD",
+            "named": true
+          },
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "CHARACTERS",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "alphabet_literal",
     "named": true,
     "fields": {},
@@ -1864,6 +2027,108 @@
     "fields": {}
   },
   {
+    "type": "apply_clause",
+    "named": true,
+    "fields": {
+      "close_nofeed_on": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          }
+        ]
+      },
+      "commitment_control": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          }
+        ]
+      },
+      "core_index_on": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          }
+        ]
+      },
+      "core_index_to": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          }
+        ]
+      },
+      "cyl_overflow": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
+          }
+        ]
+      },
+      "forms_overlay_on": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          }
+        ]
+      },
+      "forms_overlay_to": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          }
+        ]
+      },
+      "tracks_on": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "arithmetic_x",
     "named": true,
     "fields": {},
@@ -2047,6 +2312,112 @@
     "type": "at_end",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "at_line_column",
+    "named": true,
+    "fields": {
+      "at": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "HIGH_VALUE",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE",
+            "named": true
+          },
+          {
+            "type": "QUOTE",
+            "named": true
+          },
+          {
+            "type": "SPACE",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL",
+            "named": true
+          },
+          {
+            "type": "ZERO",
+            "named": true
+          },
+          {
+            "type": "ZEROS",
+            "named": true
+          },
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "column_number",
+          "named": true
+        },
+        {
+          "type": "line_number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "author_section",
+    "named": true,
+    "fields": {
+      "comment": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "comment_entry",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "based_clause",
@@ -2592,6 +2963,180 @@
     }
   },
   {
+    "type": "column_number",
+    "named": true,
+    "fields": {
+      "column_x": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "number",
+            "named": true
+          }
+        ]
+      },
+      "column_y": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "ALL",
+            "named": true
+          },
+          {
+            "type": "HIGH_VALUE",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE",
+            "named": true
+          },
+          {
+            "type": "QUOTE",
+            "named": true
+          },
+          {
+            "type": "SPACE",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL",
+            "named": true
+          },
+          {
+            "type": "ZERO",
+            "named": true
+          },
+          {
+            "type": "ZEROS",
+            "named": true
+          },
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
+          }
+        ]
+      },
+      "position_x": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "number",
+            "named": true
+          }
+        ]
+      },
+      "position_y": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "ALL",
+            "named": true
+          },
+          {
+            "type": "HIGH_VALUE",
+            "named": true
+          },
+          {
+            "type": "LOW_VALUE",
+            "named": true
+          },
+          {
+            "type": "QUOTE",
+            "named": true
+          },
+          {
+            "type": "SPACE",
+            "named": true
+          },
+          {
+            "type": "TOK_NULL",
+            "named": true
+          },
+          {
+            "type": "ZERO",
+            "named": true
+          },
+          {
+            "type": "ZEROS",
+            "named": true
+          },
+          {
+            "type": "h_string",
+            "named": true
+          },
+          {
+            "type": "n_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          },
+          {
+            "type": "x_string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "compute_statement",
     "named": true,
     "fields": {
@@ -2639,6 +3184,130 @@
         },
         {
           "type": "special_names_paragraph",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "constant_entry",
+    "named": true,
+    "fields": {
+      "byte_length_of": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          }
+        ]
+      },
+      "is_global": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "GLOBAL",
+            "named": true
+          }
+        ]
+      },
+      "length_of": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "qualified_word",
+            "named": true
+          },
+          {
+            "type": "refmod",
+            "named": true
+          },
+          {
+            "type": "subref",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "WORD",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ALL",
+          "named": true
+        },
+        {
+          "type": "HIGH_VALUE",
+          "named": true
+        },
+        {
+          "type": "LOW_VALUE",
+          "named": true
+        },
+        {
+          "type": "QUOTE",
+          "named": true
+        },
+        {
+          "type": "SPACE",
+          "named": true
+        },
+        {
+          "type": "TOK_NULL",
+          "named": true
+        },
+        {
+          "type": "ZERO",
+          "named": true
+        },
+        {
+          "type": "ZEROS",
+          "named": true
+        },
+        {
+          "type": "h_string",
+          "named": true
+        },
+        {
+          "type": "level_number",
+          "named": true
+        },
+        {
+          "type": "n_string",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "x_string",
           "named": true
         }
       ]
@@ -2915,6 +3584,38 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "date_compiled_section",
+    "named": true,
+    "fields": {
+      "comment": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "comment_entry",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "date_written_section",
+    "named": true,
+    "fields": {
+      "comment": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "comment_entry",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -3685,6 +4386,21 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "end_function",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "program_name",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -4679,6 +5395,25 @@
     }
   },
   {
+    "type": "function_division",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "as_literal",
+          "named": true
+        },
+        {
+          "type": "program_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "ge",
     "named": true,
     "fields": {}
@@ -4817,6 +5552,22 @@
           "named": true
         },
         {
+          "type": "author_section",
+          "named": true
+        },
+        {
+          "type": "date_compiled_section",
+          "named": true
+        },
+        {
+          "type": "date_written_section",
+          "named": true
+        },
+        {
+          "type": "installation_section",
+          "named": true
+        },
+        {
           "type": "is_common",
           "named": true
         },
@@ -4826,6 +5577,10 @@
         },
         {
           "type": "program_name",
+          "named": true
+        },
+        {
+          "type": "security_section",
           "named": true
         }
       ]
@@ -5665,6 +6420,22 @@
     }
   },
   {
+    "type": "installation_section",
+    "named": true,
+    "fields": {
+      "comment": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "comment_entry",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "invalid_key",
     "named": true,
     "fields": {}
@@ -6132,6 +6903,81 @@
     }
   },
   {
+    "type": "line_number",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "ALL",
+          "named": true
+        },
+        {
+          "type": "HIGH_VALUE",
+          "named": true
+        },
+        {
+          "type": "LOW_VALUE",
+          "named": true
+        },
+        {
+          "type": "QUOTE",
+          "named": true
+        },
+        {
+          "type": "SPACE",
+          "named": true
+        },
+        {
+          "type": "TOK_NULL",
+          "named": true
+        },
+        {
+          "type": "ZERO",
+          "named": true
+        },
+        {
+          "type": "ZEROS",
+          "named": true
+        },
+        {
+          "type": "h_string",
+          "named": true
+        },
+        {
+          "type": "n_string",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "qualified_word",
+          "named": true
+        },
+        {
+          "type": "refmod",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "subref",
+          "named": true
+        },
+        {
+          "type": "x_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "line_or_lines",
     "named": true,
     "fields": {},
@@ -6152,6 +6998,21 @@
   },
   {
     "type": "linkage_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "record_description_list",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "local_storage_section",
     "named": true,
     "fields": {},
     "children": {
@@ -7951,6 +8812,10 @@
           "named": true
         },
         {
+          "type": "picture_n",
+          "named": true
+        },
+        {
           "type": "picture_x",
           "named": true
         }
@@ -8332,11 +9197,95 @@
       "required": false,
       "types": [
         {
+          "type": "END_ACCEPT",
+          "named": true
+        },
+        {
+          "type": "END_ADD",
+          "named": true
+        },
+        {
+          "type": "END_CALL",
+          "named": true
+        },
+        {
+          "type": "END_COMPUTE",
+          "named": true
+        },
+        {
+          "type": "END_DELETE",
+          "named": true
+        },
+        {
+          "type": "END_DISPLAY",
+          "named": true
+        },
+        {
+          "type": "END_DIVIDE",
+          "named": true
+        },
+        {
+          "type": "END_EVALUATE",
+          "named": true
+        },
+        {
+          "type": "END_IF",
+          "named": true
+        },
+        {
+          "type": "END_MULTIPLY",
+          "named": true
+        },
+        {
+          "type": "END_PERFORM",
+          "named": true
+        },
+        {
+          "type": "END_READ",
+          "named": true
+        },
+        {
+          "type": "END_RETURN",
+          "named": true
+        },
+        {
+          "type": "END_REWRITE",
+          "named": true
+        },
+        {
+          "type": "END_SEARCH",
+          "named": true
+        },
+        {
+          "type": "END_START",
+          "named": true
+        },
+        {
+          "type": "END_STRING",
+          "named": true
+        },
+        {
+          "type": "END_SUBTRACT",
+          "named": true
+        },
+        {
+          "type": "END_UNSTRING",
+          "named": true
+        },
+        {
+          "type": "END_WRITE",
+          "named": true
+        },
+        {
           "type": "accept_statement",
           "named": true
         },
         {
           "type": "add_statement",
+          "named": true
+        },
+        {
+          "type": "allocate_statement",
           "named": true
         },
         {
@@ -8575,11 +9524,95 @@
       "required": false,
       "types": [
         {
+          "type": "END_ACCEPT",
+          "named": true
+        },
+        {
+          "type": "END_ADD",
+          "named": true
+        },
+        {
+          "type": "END_CALL",
+          "named": true
+        },
+        {
+          "type": "END_COMPUTE",
+          "named": true
+        },
+        {
+          "type": "END_DELETE",
+          "named": true
+        },
+        {
+          "type": "END_DISPLAY",
+          "named": true
+        },
+        {
+          "type": "END_DIVIDE",
+          "named": true
+        },
+        {
+          "type": "END_EVALUATE",
+          "named": true
+        },
+        {
+          "type": "END_IF",
+          "named": true
+        },
+        {
+          "type": "END_MULTIPLY",
+          "named": true
+        },
+        {
+          "type": "END_PERFORM",
+          "named": true
+        },
+        {
+          "type": "END_READ",
+          "named": true
+        },
+        {
+          "type": "END_RETURN",
+          "named": true
+        },
+        {
+          "type": "END_REWRITE",
+          "named": true
+        },
+        {
+          "type": "END_SEARCH",
+          "named": true
+        },
+        {
+          "type": "END_START",
+          "named": true
+        },
+        {
+          "type": "END_STRING",
+          "named": true
+        },
+        {
+          "type": "END_SUBTRACT",
+          "named": true
+        },
+        {
+          "type": "END_UNSTRING",
+          "named": true
+        },
+        {
+          "type": "END_WRITE",
+          "named": true
+        },
+        {
           "type": "accept_statement",
           "named": true
         },
         {
           "type": "add_statement",
+          "named": true
+        },
+        {
+          "type": "allocate_statement",
           "named": true
         },
         {
@@ -10123,6 +11156,22 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "security_section",
+    "named": true,
+    "fields": {
+      "comment": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "comment_entry",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -13523,15 +14572,7 @@
     "named": false
   },
   {
-    "type": "apply_clause",
-    "named": true
-  },
-  {
-    "type": "at_line_column",
-    "named": true
-  },
-  {
-    "type": "constant_entry",
+    "type": "comment_entry",
     "named": true
   },
   {
@@ -13575,10 +14616,6 @@
     "named": true
   },
   {
-    "type": "local_storage_section",
-    "named": true
-  },
-  {
     "type": "low-VALUE",
     "named": false
   },
@@ -13612,6 +14649,10 @@
   },
   {
     "type": "picture_edit",
+    "named": true
+  },
+  {
+    "type": "picture_n",
     "named": true
   },
   {

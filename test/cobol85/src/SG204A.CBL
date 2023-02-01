@@ -1,40 +1,40 @@
 000100 IDENTIFICATION DIVISION.                                         SG2044.2
 000200 PROGRAM-ID.                                                      SG2044.2
 000300     SG204A.                                                      SG2044.2
-000400*AUTHOR.                                                          SG2044.2
-000500*    FEDERAL COMPILER TESTING CENTER.                             SG2044.2
-000600*INSTALLATION.                                                    SG2044.2
-000700*    GENERAL SERVICES ADMINISTRATION                              SG2044.2
-000800*    AUTOMATED DATA AND TELECOMMUNICATION SERVICE.                SG2044.2
-000900*    SOFTWARE DEVELOPMENT OFFICE.                                 SG2044.2
-001000*    5203 LEESBURG PIKE  SUITE 1100                               SG2044.2
-001100*    FALLS CHURCH VIRGINIA 22041.                                 SG2044.2
-001200*                                                                 SG2044.2
-001300*    PHONE   (703) 756-6153                                       SG2044.2
-001400*                                                                 SG2044.2
-001500*    " HIGH       ".                                              SG2044.2
-001600*DATE-WRITTEN.                                                    SG2044.2
-001700*    CCVS-74 VERSION 4.0 - 1980 JULY 1.                           SG2044.2
-001800*    CREATION DATE     /    VALIDATION DATE                       SG2044.2
-001900*    "4.2 ".                                                      SG2044.2
-002000*SECURITY.                                                        SG2044.2
-002100*    NONE.                                                        SG2044.2
-002200*    THIS PROGRAM CONTAINS 3 SORTS USING NUMERIC OR ALPHABETIC    SG2044.2
-002300*    KEYS - BUT NOT BOTH IN THE SAME KEY  DUE TO DIFFERING        SG2044.2
-002400*    COLLATING SEQUENCES AMONG COMPUTERS. EXTERNAL FILES ARE      SG2044.2
-002500*    GENERATED INTERNALLY FOR SUBSEQUENT USE. THE SELECT CLAUSE   SG2044.2
-002600*    IS HIGHLY DEPENDENT ON HARDWARE. THE USER SHOULD EXERCISE THESG2044.2
-002700*    VARIOUS OPTIONS OF HARDWARE ASSIGNMENTS TO THE EXTENT THEY   SG2044.2
-002800*    ARE AVAILABLE. THE SORT OF A MULTI-REEL FILE IS EXERCISED    SG2044.2
-002900*    IN PROGRAM ST202. HOWEVER THE EXERCISE OF THE "FOR MULTIPLE  SG2044.2
-003000*    REEL-UNIT" OF THE GIVING OPTION IS NOT DUE TO THE INDETER-   SG2044.2
-003100*    MINATE LENGTH OF SUCH A FILE (E.G. RECORDING DENSITY OR SIZE SG2044.2
-003200*    OF UNIT) AND PROCESSING COST. SORT INPUT-OUTPUT OPTIONS      SG2044.2
-003300*    WILL BE EXERCISED AS FOLLOWS.                                SG2044.2
-003400*        SORT 1  USING        GIVING                              SG2044.2
-003500*        SORT 2  INPUT PROC   GIVING                              SG2044.2
-003600*        SORT 3  INPUT PROC   OUTPUT PROC                         SG2044.2
-003700*    THIS PROGRAM ALSO EXERCISES THE "SAME RECORD AREA" CLAUSE.   SG2044.2
+000400 AUTHOR.                                                          SG2044.2
+000500     FEDERAL COMPILER TESTING CENTER.                             SG2044.2
+000600 INSTALLATION.                                                    SG2044.2
+000700     GENERAL SERVICES ADMINISTRATION                              SG2044.2
+000800     AUTOMATED DATA AND TELECOMMUNICATION SERVICE.                SG2044.2
+000900     SOFTWARE DEVELOPMENT OFFICE.                                 SG2044.2
+001000     5203 LEESBURG PIKE  SUITE 1100                               SG2044.2
+001100     FALLS CHURCH VIRGINIA 22041.                                 SG2044.2
+001200                                                                  SG2044.2
+001300     PHONE   (703) 756-6153                                       SG2044.2
+001400                                                                  SG2044.2
+001500     " HIGH       ".                                              SG2044.2
+001600 DATE-WRITTEN.                                                    SG2044.2
+001700     CCVS-74 VERSION 4.0 - 1980 JULY 1.                           SG2044.2
+001800     CREATION DATE     /    VALIDATION DATE                       SG2044.2
+001900     "4.2 ".                                                      SG2044.2
+002000 SECURITY.                                                        SG2044.2
+002100     NONE.                                                        SG2044.2
+002200     THIS PROGRAM CONTAINS 3 SORTS USING NUMERIC OR ALPHABETIC    SG2044.2
+002300     KEYS - BUT NOT BOTH IN THE SAME KEY  DUE TO DIFFERING        SG2044.2
+002400     COLLATING SEQUENCES AMONG COMPUTERS. EXTERNAL FILES ARE      SG2044.2
+002500     GENERATED INTERNALLY FOR SUBSEQUENT USE. THE SELECT CLAUSE   SG2044.2
+002600     IS HIGHLY DEPENDENT ON HARDWARE. THE USER SHOULD EXERCISE THESG2044.2
+002700     VARIOUS OPTIONS OF HARDWARE ASSIGNMENTS TO THE EXTENT THEY   SG2044.2
+002800     ARE AVAILABLE. THE SORT OF A MULTI-REEL FILE IS EXERCISED    SG2044.2
+002900     IN PROGRAM ST202. HOWEVER THE EXERCISE OF THE "FOR MULTIPLE  SG2044.2
+003000     REEL-UNIT" OF THE GIVING OPTION IS NOT DUE TO THE INDETER-   SG2044.2
+003100     MINATE LENGTH OF SUCH A FILE (E.G. RECORDING DENSITY OR SIZE SG2044.2
+003200     OF UNIT) AND PROCESSING COST. SORT INPUT-OUTPUT OPTIONS      SG2044.2
+003300     WILL BE EXERCISED AS FOLLOWS.                                SG2044.2
+003400         SORT 1  USING        GIVING                              SG2044.2
+003500         SORT 2  INPUT PROC   GIVING                              SG2044.2
+003600         SORT 3  INPUT PROC   OUTPUT PROC                         SG2044.2
+003700     THIS PROGRAM ALSO EXERCISES THE "SAME RECORD AREA" CLAUSE.   SG2044.2
 003800                                                                  SG2044.2
 003900 ENVIRONMENT DIVISION.                                            SG2044.2
 004000 CONFIGURATION SECTION.                                           SG2044.2

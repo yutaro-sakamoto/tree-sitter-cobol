@@ -17,6 +17,7 @@ module.exports = grammar({
     $._LINE_PREFIX_COMMENT,
     $._LINE_SUFFIX_COMMENT,
     $._LINE_COMMENT,
+    $.comment_entry,
     $._multiline_string,
   ],
 
@@ -26,6 +27,7 @@ module.exports = grammar({
     $._LINE_SUFFIX_COMMENT,
     $._LINE_COMMENT,
     $.copy_statement,
+    $._comment,
   ],
 
   rules: {
@@ -35,6 +37,8 @@ module.exports = grammar({
         //optional($.function_definition) //todo
       )
     ),
+
+    _comment: $ => /\*>[^\n]*/,
 
     program_definition: $ => prec.right(seq(
       $.identification_division,
@@ -54,7 +58,13 @@ module.exports = grammar({
             $.as_literal,
             $.is_initial,
             $.is_common)),
-          '.'))
+          '.')),
+      repeat(choice(
+        $.author_section,
+        $.installation_section,
+        $.date_written_section,
+        $.date_compiled_section,
+        $.security_section)),
     ),
 
     program_name: $ => choice(
@@ -77,7 +87,52 @@ module.exports = grammar({
       $._COMMON
     ),
 
-    function_definition: $ => /todo_function_definition/,
+    author_section: $ => seq(
+      $._AUTHOR, '.',
+      field('comment', repeat1($.comment_entry)),
+    ),
+
+    installation_section: $ => seq(
+      $._INSTALLATION, '.',
+      field('comment', repeat1($.comment_entry)),
+    ),
+
+    date_written_section: $ => seq(
+      $._DATE_WRITTEN, '.',
+      field('comment', repeat1($.comment_entry)),
+    ),
+
+    date_compiled_section: $ => seq(
+      $._DATE_COMPILED, '.',
+      field('comment', repeat1($.comment_entry)),
+    ),
+
+    security_section: $ => seq(
+      $._SECURITY, '.',
+      field('comment', repeat1($.comment_entry)),
+    ),
+
+    function_definition: $ => seq(
+      $.function_division,
+      $.environment_division,
+      $.data_division,
+      $.procedure_division,
+      $.end_function
+    ),
+
+    function_division: $ => seq(
+      $._FUNCTION_ID,
+      '.',
+      $.program_name,
+      $.as_literal,
+      '.'
+    ),
+
+    end_function: $ => seq(
+      $._END_FUNCTION,
+      $.program_name,
+      '.'
+    ),
 
     environment_division: $ => seq(
       $._ENVIRONMENT,
@@ -415,7 +470,43 @@ module.exports = grammar({
       optional(seq($.POSITION, $.integer))
     ),
 
-    apply_clause: $ => /todo_apply_clause/,
+    apply_clause: $ => seq(
+      $._APPLY,
+      choice(
+        seq(
+          $._COMMITMENT_CONTROL,
+          optional($._ON),
+          field('commitment_control', repeat1($.qualified_word)),
+        ),
+        seq(
+          $._CYL_OVERFLOW,
+          optional($._OF),
+          field('cyl_overflow', $._LITERAL),
+          $._TRACKS,
+          $._ON,
+          field('tracks_on', repeat1($.qualified_word)),
+        ),
+        seq(
+          $._CORE_INDEX,
+          $._TO,
+          field('core_index_to', $.qualified_word),
+          $._ON,
+          field('core_index_on', repeat1($.qualified_word))
+        ),
+        seq(
+          $._FORMS_OVERLAY,
+          $._TO,
+          field('forms_overlay_to', $.qualified_word),
+          $._ON,
+          field('forms_overlay_on', repeat1($.qualified_word))
+        ),
+        seq(
+          $._CLOSE_NOFEED,
+          $._ON,
+          field('close_nofeed_on', repeat1($.qualified_word)),
+        ),
+      )
+    ),
 
     _select_clause: $ => choice(
       $.assign_clause,
@@ -807,7 +898,20 @@ module.exports = grammar({
       $._WORD
     ),
 
-    constant_entry: $ => /todo_constant_entry/,
+    constant_entry: $ => seq(
+      $.level_number,
+      field('name', $.WORD),
+      $._CONSTANT,
+      field('is_global', seq(optional($._IS), $.GLOBAL)),
+      optional($._AS),
+      $._lit_or_length,
+    ),
+
+    _lit_or_length: $ => choice(
+      $._literal,
+      field('length_of', seq($._LEADING, optional($._OF), $._identifier)),
+      field('byte_length_of', seq($._BYTE_LENGTH, optional($._OF), $._identifier)),
+    ),
 
     _data_description_clause: $ => choice(
       $.redefines_clause,
@@ -957,12 +1061,15 @@ module.exports = grammar({
     //todo
     _picture_string: $ => choice(
       $.picture_x,
+      $.picture_n,
       $.picture_9,
       $.picture_a,
       $.picture_edit,
     ),
 
     picture_x: $ => /([xX](\([0-9]+\))?)+/,
+
+    picture_n: $ => /([nN](\([0-9]+\))?)+/,
 
     picture_9: $ => choice(
       $._picture_9_z,
@@ -1108,7 +1215,12 @@ module.exports = grammar({
       $._LENGTH
     ),
 
-    local_storage_section: $ => /local_storage_section/,
+    local_storage_section: $ => seq(
+      $._LOCAL_STORAGE,
+      $._SECTION,
+      '.',
+      $.record_description_list
+    ),
 
     linkage_section: $ => seq(
       $._LINKAGE, $._SECTION, '.',
@@ -1125,7 +1237,6 @@ module.exports = grammar({
       optional($.procedure_returning),
       '.',
       optional($.procedure_declaratives),
-      //repeat($._procedure),
       optional($._procedure_division_contenet)
     ),
 
@@ -1196,7 +1307,6 @@ module.exports = grammar({
         )),
         repeat($._procedure_division_statement)
       ),
-      //$._procedure_division_headers,
     )),
 
     _procedure_division_declaratives_content: $ => prec.right(1, choice(
@@ -1253,6 +1363,7 @@ module.exports = grammar({
     _statement: $ => choice(
       $.accept_statement,
       $.add_statement,
+      $.allocate_statement,
       $.alter_statement,
       $.call_statement,
       $.cancel_statement,
@@ -1290,24 +1401,26 @@ module.exports = grammar({
     ),
 
     _end_statement: $ => choice(
-      $._END_ACCEPT,
-      $._END_ADD,
-      $._END_CALL,
-      $._END_DELETE,
-      $._END_DISPLAY,
-      $._END_DIVIDE,
-      $._END_MULTIPLY,
-      $._END_READ,
-      $._END_SEARCH,
-      $._END_SUBTRACT,
-      $._END_WRITE,
-      $._END_PERFORM,
-      $._END_IF,
-      $._END_EVALUATE,
-      $._END_RETURN,
-      $._END_REWRITE,
-      $._END_START,
-      $._END_STRING,
+      $.END_ACCEPT,
+      $.END_ADD,
+      $.END_CALL,
+      $.END_COMPUTE,
+      $.END_DELETE,
+      $.END_DISPLAY,
+      $.END_DIVIDE,
+      $.END_MULTIPLY,
+      $.END_READ,
+      $.END_SEARCH,
+      $.END_SUBTRACT,
+      $.END_WRITE,
+      $.END_PERFORM,
+      $.END_IF,
+      $.END_EVALUATE,
+      $.END_RETURN,
+      $.END_REWRITE,
+      $.END_START,
+      $.END_STRING,
+      $.END_UNSTRING,
       $.period
     ),
 
@@ -1374,7 +1487,6 @@ module.exports = grammar({
       field('keys', repeat1($._identifier))
     ),
 
-    //todo
     stop_statement: $ => choice(
       seq(
         $._STOP,
@@ -1395,7 +1507,7 @@ module.exports = grammar({
       $._accept_body,
     ),
 
-    _accept_body: $ => seq(
+    _accept_body: $ => prec.right(seq(
       $._identifier,
       choice(
         seq(
@@ -1422,7 +1534,7 @@ module.exports = grammar({
           ))
         )
       )
-    ),
+    )),
 
     at_line_column: $ => choice(
       seq(optional($._AT), $.line_number, $.column_number),
@@ -1510,6 +1622,23 @@ module.exports = grammar({
       $._SIZE,
       $._ERROR,
     ),
+
+    allocate_statement: $ => prec(1, seq(
+      $._ALLOCATE,
+      choice(
+        seq(
+          field('x', $.WORD),
+          field('initialized', optional($.INITIALIZED)),
+          field('returning', optional(seq($._RETURNING, $._target_x)))
+        ),
+        seq(
+          field('x', $.expr),
+          $.CHARACTERS,
+          field('initialized', optional($.INITIALIZED)),
+          field('returning', optional(seq($._RETURNING, $._target_x)))
+        )
+      )
+    )),
 
     alter_statement: $ => seq(
       $._ALTER,
@@ -1652,7 +1781,7 @@ module.exports = grammar({
       $._display_body,
     ),
 
-    _display_body: $ => choice(
+    _display_body: $ => prec.right(choice(
       seq($._id_or_lit, $._UPON_ENVIRONMENT_NAME),
       seq($._id_or_lit, $._UPON_ENVIRONMENT_VALUE),
       seq($._id_or_lit, $._UPON_ARGUMENT_NUMBER),
@@ -1662,9 +1791,34 @@ module.exports = grammar({
       seq(repeat1($._x), optional($.at_line_column), $.UPON, $._WORD, optional($.with_clause)),
       seq(repeat1($._x), optional($.at_line_column), $.UPON, $.PRINTER, optional($.with_clause)),
       seq(repeat1($._x), optional($.at_line_column), $.UPON, $.CRT, optional($.with_clause)),
+    )),
+
+    at_line_column: $ => choice(
+      seq(optional($._AT), $.line_number, $.column_number),
+      seq(optional($._AT), $.column_number, $.line_number),
+      seq(optional($._AT), $.line_number),
+      seq(optional($._AT), $.column_number),
+      seq($._AT, field('at', $._simple_value))
     ),
 
-    at_line_column: $ => /todo_at_line_column/,
+    line_number: $ => seq(
+      $._LINE,
+      optional($.number),
+      $._id_or_lit
+    ),
+
+    column_number: $ => choice(
+      seq(
+        $._COLUMN,
+        field('column_x', optional($.number)),
+        field('column_y', $._id_or_lit),
+      ),
+      seq(
+        $._POSITION,
+        field('position_x', optional($.number)),
+        field('position_y', $._id_or_lit),
+      ),
+    ),
 
     _id_or_lit: $ => choice(
       $._identifier,
@@ -3208,7 +3362,7 @@ module.exports = grammar({
     COMMAND_LINE: $ => $._COMMAND_LINE,
     //COMMA_DELIM: $ => $._COMMA_DELIM,
     //COMMIT: $ => $._COMMIT,
-    //COMMITMENT_CONTROL: $ => $._COMMITMENT_CONTROL,
+    COMMITMENT_CONTROL: $ => $._COMMITMENT_CONTROL,
     //COMMON: $ => $._COMMON,
     COMP: $ => $._COMP,
     //COMPUTE: $ => $._COMPUTE,
@@ -3263,29 +3417,29 @@ module.exports = grammar({
     EBCDIC: $ => $._EBCDIC,
     //ELSE: $ => $._ELSE,
     //END: $ => $._END,
-    //END_ACCEPT: $ => $._END_ACCEPT,
-    //END_ADD: $ => $._END_ADD,
-    //END_CALL: $ => $._END_CALL,
-    //END_COMPUTE: $ => $._END_COMPUTE,
-    //END_DELETE: $ => $._END_DELETE,
-    //END_DISPLAY: $ => $._END_DISPLAY,
-    //END_DIVIDE: $ => $._END_DIVIDE,
-    //END_EVALUATE: $ => $._END_EVALUATE,
-    //END_FUNCTION: $ => $._END_FUNCTION,
-    //END_IF: $ => $._END_IF,
-    //END_MULTIPLY: $ => $._END_MULTIPLY,
+    END_ACCEPT: $ => $._END_ACCEPT,
+    END_ADD: $ => $._END_ADD,
+    END_CALL: $ => $._END_CALL,
+    END_COMPUTE: $ => $._END_COMPUTE,
+    END_DELETE: $ => $._END_DELETE,
+    END_DISPLAY: $ => $._END_DISPLAY,
+    END_DIVIDE: $ => $._END_DIVIDE,
+    END_EVALUATE: $ => $._END_EVALUATE,
+    END_FUNCTION: $ => $._END_FUNCTION,
+    END_IF: $ => $._END_IF,
+    END_MULTIPLY: $ => $._END_MULTIPLY,
     //END_OF_PAGE: $ => $._END_OF_PAGE,
-    //END_PERFORM: $ => $._END_PERFORM,
+    END_PERFORM: $ => $._END_PERFORM,
     //END_PROGRAM: $ => $._END_PROGRAM,
-    //END_READ: $ => $._END_READ,
-    //END_RETURN: $ => $._END_RETURN,
-    //END_REWRITE: $ => $._END_REWRITE,
-    //END_SEARCH: $ => $._END_SEARCH,
-    //END_START: $ => $._END_START,
-    //END_STRING: $ => $._END_STRING,
-    //END_SUBTRACT: $ => $._END_SUBTRACT,
-    //END_UNSTRING: $ => $._END_UNSTRING,
-    //END_WRITE: $ => $._END_WRITE,
+    END_READ: $ => $._END_READ,
+    END_RETURN: $ => $._END_RETURN,
+    END_REWRITE: $ => $._END_REWRITE,
+    END_SEARCH: $ => $._END_SEARCH,
+    END_START: $ => $._END_START,
+    END_STRING: $ => $._END_STRING,
+    END_SUBTRACT: $ => $._END_SUBTRACT,
+    END_UNSTRING: $ => $._END_UNSTRING,
+    END_WRITE: $ => $._END_WRITE,
     //ENTRY: $ => $._ENTRY,
     ENVIRONMENT: $ => $._ENVIRONMENT,
     //ENVIRONMENT_NAME: $ => $._ENVIRONMENT_NAME,
@@ -3342,7 +3496,7 @@ module.exports = grammar({
     INDEXED: $ => $._INDEXED,
     //INDICATE: $ => $._INDICATE,
     //INITIALIZE: $ => $._INITIALIZE,
-    //INITIALIZED: $ => $._INITIALIZED,
+    INITIALIZED: $ => $._INITIALIZED,
     //INITIATE: $ => $._INITIATE,
     INPUT: $ => $._INPUT,
     //INPUT_OUTPUT: $ => $._INPUT_OUTPUT,
@@ -3589,6 +3743,11 @@ module.exports = grammar({
     ZERO: $ => $._ZERO,
     ZEROS: $ => $._ZEROS,
 
+    _DATE_WRITTEN: $ => /[dD][aA][tT][eE]-[wW][rR][iI][tT][tT][eE][nN]/,
+    _DATE_COMPILED: $ => /[dD][aA][tT][eE]-[cC][oO][mM][pP][iI][lL][eE][dD]/,
+    _SECURITY: $ => /[sS][eE][cC][uU][rR][iI][tT][yY]/,
+    _INSTALLATION: $ => /[iI][nN][sS][tT][aA][lL][lL][aA][tT][iI][oO][nN]/,
+    _AUTHOR: $ => /[aA][uU][tT][hH][oO][rR]/,
 
     COMPUTATIONAL: $ => $._COMPUTATIONAL,
     _COMPUTATIONAL: $ => /[cC][oO][mM][pP][uU][tT][aA][tT][iI][oO][nN][aA][lL]/,

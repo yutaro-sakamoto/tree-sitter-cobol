@@ -1,28 +1,28 @@
 000100 IDENTIFICATION DIVISION.                                         SG2034.2
 000200 PROGRAM-ID.                                                      SG2034.2
 000300     SG203A.                                                      SG2034.2
-000400*AUTHOR.                                                          SG2034.2
-000500*    FEDERAL COMPILER TESTING CENTER.                             SG2034.2
-000600*INSTALLATION.                                                    SG2034.2
-000700*    GENERAL SERVICES ADMINISTRATION                              SG2034.2
-000800*    AUTOMATED DATA AND TELECOMMUNICATION SERVICE.                SG2034.2
-000900*    SOFTWARE DEVELOPMENT OFFICE.                                 SG2034.2
-001000*    5203 LEESBURG PIKE  SUITE 1100                               SG2034.2
-001100*    FALLS CHURCH VIRGINIA 22041.                                 SG2034.2
-001200*                                                                 SG2034.2
-001300*    PHONE   (703) 756-6153                                       SG2034.2
-001400*                                                                 SG2034.2
-001500*    " HIGH       ".                                              SG2034.2
-001600*DATE-WRITTEN.                                                    SG2034.2
-001700*    CCVS-74 VERSION 4.0 - 1980 JULY 1.                           SG2034.2
-001800*    CREATION DATE     /    VALIDATION DATE                       SG2034.2
-001900*    "4.2 ".                                                      SG2034.2
-002000*SECURITY.                                                        SG2034.2
-002100*    NONE.                                                        SG2034.2
-002200*      THE FOLLOWING FEATURES ARE TESTED BY THIS PROGRAM ---      SG2034.2
-002300*        VARIOUS OPTIONS OF THE PERFORM AND ALTER STATEMENTS      SG2034.2
-002400*        ARE USED IN CONJUNCTION WITH THE SEGMENT-LIMIT CLAUSE    SG2034.2
-002500*        CHECKING INITIAL AND LAST-USED STATES.                   SG2034.2
+000400 AUTHOR.                                                          SG2034.2
+000500     FEDERAL COMPILER TESTING CENTER.                             SG2034.2
+000600 INSTALLATION.                                                    SG2034.2
+000700     GENERAL SERVICES ADMINISTRATION                              SG2034.2
+000800     AUTOMATED DATA AND TELECOMMUNICATION SERVICE.                SG2034.2
+000900     SOFTWARE DEVELOPMENT OFFICE.                                 SG2034.2
+001000     5203 LEESBURG PIKE  SUITE 1100                               SG2034.2
+001100     FALLS CHURCH VIRGINIA 22041.                                 SG2034.2
+001200                                                                  SG2034.2
+001300     PHONE   (703) 756-6153                                       SG2034.2
+001400                                                                  SG2034.2
+001500     " HIGH       ".                                              SG2034.2
+001600 DATE-WRITTEN.                                                    SG2034.2
+001700     CCVS-74 VERSION 4.0 - 1980 JULY 1.                           SG2034.2
+001800     CREATION DATE     /    VALIDATION DATE                       SG2034.2
+001900     "4.2 ".                                                      SG2034.2
+002000 SECURITY.                                                        SG2034.2
+002100     NONE.                                                        SG2034.2
+002200       THE FOLLOWING FEATURES ARE TESTED BY THIS PROGRAM ---      SG2034.2
+002300         VARIOUS OPTIONS OF THE PERFORM AND ALTER STATEMENTS      SG2034.2
+002400         ARE USED IN CONJUNCTION WITH THE SEGMENT-LIMIT CLAUSE    SG2034.2
+002500         CHECKING INITIAL AND LAST-USED STATES.                   SG2034.2
 002600*                                                                 SG2034.2
 002700 ENVIRONMENT DIVISION.                                            SG2034.2
 002800 CONFIGURATION SECTION.                                           SG2034.2
