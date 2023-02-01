@@ -27,6 +27,7 @@ module.exports = grammar({
     $._LINE_SUFFIX_COMMENT,
     $._LINE_COMMENT,
     $.copy_statement,
+    $._comment,
   ],
 
   rules: {
@@ -36,6 +37,8 @@ module.exports = grammar({
         //optional($.function_definition) //todo
       )
     ),
+
+    _comment: $ => /\*>[^\n]*/,
 
     program_definition: $ => prec.right(seq(
       $.identification_division,
@@ -1058,12 +1061,15 @@ module.exports = grammar({
     //todo
     _picture_string: $ => choice(
       $.picture_x,
+      $.picture_n,
       $.picture_9,
       $.picture_a,
       $.picture_edit,
     ),
 
     picture_x: $ => /([xX](\([0-9]+\))?)+/,
+
+    picture_n: $ => /([nN](\([0-9]+\))?)+/,
 
     picture_9: $ => choice(
       $._picture_9_z,
@@ -1209,7 +1215,12 @@ module.exports = grammar({
       $._LENGTH
     ),
 
-    local_storage_section: $ => /local_storage_section/,
+    local_storage_section: $ => seq(
+      $._LOCAL_STORAGE,
+      $._SECTION,
+      '.',
+      $.record_description_list
+    ),
 
     linkage_section: $ => seq(
       $._LINKAGE, $._SECTION, '.',

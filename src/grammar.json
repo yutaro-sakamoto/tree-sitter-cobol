@@ -14,6 +14,10 @@
         ]
       }
     },
+    "_comment": {
+      "type": "PATTERN",
+      "value": "\\*>[^\\n]*"
+    },
     "program_definition": {
       "type": "PREC_RIGHT",
       "value": 0,
@@ -5350,6 +5354,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "picture_n"
+        },
+        {
+          "type": "SYMBOL",
           "name": "picture_9"
         },
         {
@@ -5365,6 +5373,10 @@
     "picture_x": {
       "type": "PATTERN",
       "value": "([xX](\\([0-9]+\\))?)+"
+    },
+    "picture_n": {
+      "type": "PATTERN",
+      "value": "([nN](\\([0-9]+\\))?)+"
     },
     "picture_9": {
       "type": "CHOICE",
@@ -6287,8 +6299,25 @@
       ]
     },
     "local_storage_section": {
-      "type": "PATTERN",
-      "value": "local_storage_section"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_LOCAL_STORAGE"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_SECTION"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "SYMBOL",
+          "name": "record_description_list"
+        }
+      ]
     },
     "linkage_section": {
       "type": "SEQ",
@@ -19175,6 +19204,10 @@
     {
       "type": "SYMBOL",
       "name": "copy_statement"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_comment"
     }
   ],
   "conflicts": [],
