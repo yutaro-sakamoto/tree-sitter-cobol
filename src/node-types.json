@@ -3462,10 +3462,6 @@
           "named": true
         },
         {
-          "type": "error",
-          "named": true
-        },
-        {
           "type": "external_clause",
           "named": true
         },
@@ -4867,10 +4863,6 @@
         },
         {
           "type": "data_records_clause",
-          "named": true
-        },
-        {
-          "type": "error",
           "named": true
         },
         {
@@ -11220,10 +11212,6 @@
           "named": true
         },
         {
-          "type": "error",
-          "named": true
-        },
-        {
           "type": "file_status_clause",
           "named": true
         },
@@ -14577,10 +14565,6 @@
   },
   {
     "type": "decimal",
-    "named": true
-  },
-  {
-    "type": "error",
     "named": true
   },
   {

@@ -2347,10 +2347,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "error"
-        },
-        {
-          "type": "SYMBOL",
           "name": "nominal_key_clause"
         }
       ]
@@ -3233,10 +3229,6 @@
         }
       ]
     },
-    "error": {
-      "type": "PATTERN",
-      "value": "todo_error"
-    },
     "nominal_key_clause": {
       "type": "SEQ",
       "members": [
@@ -3559,10 +3551,6 @@
         {
           "type": "SYMBOL",
           "name": "report_clase"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "error"
         }
       ]
     },
@@ -4726,10 +4714,6 @@
         {
           "type": "SYMBOL",
           "name": "any_length_clause"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "error"
         }
       ]
     },
