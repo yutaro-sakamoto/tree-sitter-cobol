@@ -3,16 +3,17 @@
   "word": "_WORD",
   "rules": {
     "start": {
-      "type": "REPEAT",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "program_definition"
-          }
-        ]
-      }
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "program_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "copybook_definition"
+        }
+      ]
     },
     "_comment": {
       "type": "PATTERN",
@@ -69,6 +70,25 @@
             "content": {
               "type": "SYMBOL",
               "name": "end_program"
+            }
+          }
+        ]
+      }
+    },
+    "copybook_definition": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "data_description"
+          },
+          {
+            "type": "REPEAT1",
+            "content": {
+              "type": "STRING",
+              "value": "."
             }
           }
         ]
