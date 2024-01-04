@@ -335,6 +335,16 @@
     "fields": {}
   },
   {
+    "type": "END_EXEC",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "END_EXECUTE",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "END_IF",
     "named": true,
     "fields": {}
@@ -426,6 +436,16 @@
   },
   {
     "type": "EXCLUSIVE",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "EXEC",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "EXECUTE",
     "named": true,
     "fields": {}
   },
@@ -4500,6 +4520,82 @@
       "types": [
         {
           "type": "qualified_word",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "execute_body",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "WORD",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "execute_end",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "END_EXEC",
+          "named": true
+        },
+        {
+          "type": "END_EXECUTE",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "execute_header",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "EXEC",
+          "named": true
+        },
+        {
+          "type": "EXECUTE",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "execute_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "execute_body",
+          "named": true
+        },
+        {
+          "type": "execute_end",
+          "named": true
+        },
+        {
+          "type": "execute_header",
           "named": true
         }
       ]
@@ -9229,6 +9325,14 @@
           "named": true
         },
         {
+          "type": "END_EXEC",
+          "named": true
+        },
+        {
+          "type": "END_EXECUTE",
+          "named": true
+        },
+        {
           "type": "END_IF",
           "named": true
         },
@@ -9342,6 +9446,10 @@
         },
         {
           "type": "evaluate_header",
+          "named": true
+        },
+        {
+          "type": "execute_statement",
           "named": true
         },
         {
@@ -9556,6 +9664,14 @@
           "named": true
         },
         {
+          "type": "END_EXEC",
+          "named": true
+        },
+        {
+          "type": "END_EXECUTE",
+          "named": true
+        },
+        {
           "type": "END_IF",
           "named": true
         },
@@ -9669,6 +9785,10 @@
         },
         {
           "type": "evaluate_header",
+          "named": true
+        },
+        {
+          "type": "execute_statement",
           "named": true
         },
         {
