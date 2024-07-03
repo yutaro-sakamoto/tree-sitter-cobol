@@ -10,6 +10,7 @@ open input
        procedure division.
        open input f.
 ---
+
 (start
   (program_definition
     (identification_division
@@ -24,7 +25,9 @@ open input
       (open_statement
         (open_arg
           mode: (INPUT)
-          file_name_list: (WORD))))))
+          file_name_list: (WORD)))
+      (period))))
+
 ====================================
 open output
 ====================================
@@ -37,6 +40,7 @@ open output
        procedure division.
        open output f.
 ---
+
 (start
   (program_definition
     (identification_division
@@ -51,7 +55,9 @@ open output
       (open_statement
         (open_arg
           mode: (OUTPUT)
-          file_name_list: (WORD))))))
+          file_name_list: (WORD)))
+      (period))))
+
 ====================================
 open i-o
 ====================================
@@ -64,6 +70,7 @@ open i-o
        procedure division.
        open i-o f.
 ---
+
 (start
   (program_definition
     (identification_division
@@ -78,7 +85,9 @@ open i-o
       (open_statement
         (open_arg
           mode: (I_O)
-          file_name_list: (WORD))))))
+          file_name_list: (WORD)))
+      (period))))
+
 ====================================
 open extend
 ====================================
@@ -91,6 +100,7 @@ open extend
        procedure division.
        open extend f.
 ---
+
 (start
   (program_definition
     (identification_division
@@ -105,7 +115,9 @@ open extend
       (open_statement
         (open_arg
           mode: (EXTEND)
-          file_name_list: (WORD))))))
+          file_name_list: (WORD)))
+      (period))))
+
 ====================================
 close
 ====================================
@@ -118,6 +130,7 @@ close
        procedure division.
        close f.
 ---
+
 (start
   (program_definition
     (identification_division
@@ -131,7 +144,9 @@ close
     (procedure_division
       (close_statement
         (close_arg
-          file_handler: (WORD))))))
+          file_handler: (WORD)))
+      (period))))
+
 ====================================
 close reel
 ====================================
@@ -144,6 +159,7 @@ close reel
        procedure division.
        close f reel.
 ---
+
 (start
   (program_definition
     (identification_division
@@ -159,7 +175,9 @@ close reel
         (close_arg
           file_handler: (WORD)
           (close_option
-            (REEL)))))))
+            (REEL))))
+      (period))))
+
 ====================================
 close unit
 ====================================
@@ -172,6 +190,7 @@ close unit
        procedure division.
        close f UNIT.
 ---
+
 (start
   (program_definition
     (identification_division
@@ -187,7 +206,9 @@ close unit
         (close_arg
           file_handler: (WORD)
           (close_option
-            (UNIT)))))))
+            (UNIT))))
+      (period))))
+
 ====================================
 close unit removal
 ====================================
@@ -200,6 +221,7 @@ close unit removal
        procedure division.
        close f unit removal.
 ---
+
 (start
   (program_definition
     (identification_division
@@ -216,7 +238,9 @@ close unit removal
           file_handler: (WORD)
           (close_option
             (UNIT)
-            (REMOVAL)))))))
+            (REMOVAL))))
+      (period))))
+
 ====================================
 close unit for removal
 ====================================
@@ -229,6 +253,7 @@ close unit for removal
        procedure division.
        close f unit for removal.
 ---
+
 (start
   (program_definition
     (identification_division
@@ -245,7 +270,9 @@ close unit for removal
           file_handler: (WORD)
           (close_option
             (UNIT)
-            (REMOVAL)))))))
+            (REMOVAL))))
+      (period))))
+
 ====================================
 close unit no rewind
 ====================================
@@ -258,6 +285,7 @@ close unit no rewind
        procedure division.
        close f no rewind. 
 ---
+
 (start
   (program_definition
     (identification_division
@@ -274,7 +302,9 @@ close unit no rewind
           file_handler: (WORD)
           (close_option
             (NO)
-            (REWIND)))))))
+            (REWIND))))
+      (period))))
+
 ====================================
 close unit with no rewind
 ====================================
@@ -287,6 +317,7 @@ close unit with no rewind
        procedure division.
        close f with no rewind. 
 ---
+
 (start
   (program_definition
     (identification_division
@@ -303,7 +334,9 @@ close unit with no rewind
           file_handler: (WORD)
           (close_option
             (NO)
-            (REWIND)))))))
+            (REWIND))))
+      (period))))
+
 ====================================
 close unit lock
 ====================================
@@ -316,6 +349,7 @@ close unit lock
        procedure division.
        close f lock. 
 ---
+
 (start
   (program_definition
     (identification_division
@@ -331,7 +365,9 @@ close unit lock
         (close_arg
           file_handler: (WORD)
           (close_option
-            (LOCK)))))))
+            (LOCK))))
+      (period))))
+
 ====================================
 close unit with lock
 ====================================
@@ -344,6 +380,7 @@ close unit with lock
        procedure division.
        close f with lock. 
 ---
+
 (start
   (program_definition
     (identification_division
@@ -359,4 +396,5 @@ close unit with lock
         (close_arg
           file_handler: (WORD)
           (close_option
-            (LOCK)))))))
+            (LOCK))))
+      (period))))

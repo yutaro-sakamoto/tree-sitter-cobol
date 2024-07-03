@@ -7,6 +7,7 @@ perform label
        perform aa.
        aa.
 ---
+
 (start
   (program_definition
     (identification_division
@@ -17,7 +18,9 @@ perform label
           (label
             (qualified_word
               (WORD)))))
+      (period)
       (paragraph_header))))
+
 ====================================
 perform label thru label
 ====================================
@@ -28,6 +31,7 @@ perform label thru label
        aa.
        bb.
 ---
+
 (start
   (program_definition
     (identification_division
@@ -38,12 +42,14 @@ perform label thru label
           (label
             (qualified_word
               (WORD)))
-           (THRU)
+          (THRU)
           (label
             (qualified_word
               (WORD)))))
+      (period)
       (paragraph_header)
       (paragraph_header))))
+
 ====================================
 perform label FOREVER
 ====================================
@@ -53,6 +59,7 @@ perform label FOREVER
        perform aa forever.
        aa.
 ---
+
 (start
   (program_definition
     (identification_division
@@ -65,7 +72,9 @@ perform label FOREVER
               (WORD))))
         option: (perform_option
           (FOREVER)))
+      (period)
       (paragraph_header))))
+
 ====================================
 perform continue
 ====================================
@@ -76,6 +85,7 @@ perform continue
          continue
        end-perform.
 ---
+
 (start
   (program_definition
     (identification_division
@@ -83,8 +93,11 @@ perform continue
     (procedure_division
       (perform_statement_loop
         option: (perform_option
-          (FOREVER))
-        statements: (continue_statement)))))
+          (FOREVER)))
+      (continue_statement)
+      (END_PERFORM)
+      (period))))
+
 ====================================
 perform label times
 ====================================
@@ -94,6 +107,7 @@ perform label times
        perform aa 3 times.
        aa.
 ---
+
 (start
   (program_definition
     (identification_division
@@ -106,8 +120,10 @@ perform label times
               (WORD))))
         option: (perform_option
           times: (number
-              (integer))))
+            (integer))))
+      (period)
       (paragraph_header))))
+
 ====================================
 perform label UNTIL
 ====================================
@@ -120,6 +136,7 @@ perform label UNTIL
        perform aa varying c FROM 1 BY 1 UNTIL c >= 1.
        aa.
 ---
+
 (start
   (program_definition
     (identification_division
@@ -151,4 +168,5 @@ perform label UNTIL
               (ge)
               (number
                 (integer))))))
+      (period)
       (paragraph_header))))
