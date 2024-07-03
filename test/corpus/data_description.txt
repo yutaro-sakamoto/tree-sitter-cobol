@@ -18,6 +18,7 @@ file-section
        PROCEDURE DIVISION.
        DISPLAY 1.
 ---
+
 (start
   (program_definition
     (identification_division
@@ -55,7 +56,9 @@ file-section
     (procedure_division
       (display_statement
         (number
-          (integer))))))
+          (integer)))
+      (period))))
+
 ====================================
 value clause
 ====================================
@@ -66,6 +69,7 @@ value clause
        77  A06THREES-DS-03V03          PICTURE S999V999 VALUE 333.333.  
        PROCEDURE DIVISION.
 ---
+
 (start
   (program_definition
     (identification_division
@@ -78,8 +82,9 @@ value clause
           (picture_clause
             (picture_9))
           (value_clause
-            (number
-              (decimal))))))
+            (value_item
+              (number
+                (decimal)))))))
     (procedure_division)))
 
 ====================================
@@ -92,6 +97,7 @@ picture decimal
        77  A06THREES-DS-03V03     PICTURE SV9(5) VALUE .11111.
        PROCEDURE DIVISION.
 ---
+
 (start
   (program_definition
     (identification_division
@@ -104,9 +110,11 @@ picture decimal
           (picture_clause
             (picture_9))
           (value_clause
-            (number
-              (decimal))))))
+            (value_item
+              (number
+                (decimal)))))))
     (procedure_division)))
+
 ====================================
 computational
 ====================================
@@ -117,6 +125,7 @@ computational
        77  A06THREES-DS-03V03     PICTURE SV9(5) COMPUTATIONAL.
        PROCEDURE DIVISION.
 ---
+
 (start
   (program_definition
     (identification_division

@@ -16,4 +16,6 @@ Minimal COBOL program
       (program_name))
     (procedure_division
       (stop_statement)
-      (stop_statement))))
+      (period)
+      (stop_statement)
+      (period))))
