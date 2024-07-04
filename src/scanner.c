@@ -1,5 +1,5 @@
 #include <tree_sitter/parser.h>
-#include <ctype.h>
+#include <wctype.h>
 
 enum TokenType {
     WHITE_SPACES,
@@ -14,8 +14,8 @@ void *tree_sitter_COBOL_external_scanner_create() {
     return NULL;
 }
 
-bool is_white_space(int c) {
-    return isspace(c) || c == ';' || c == ',';
+static bool is_white_space(int c) {
+    return iswspace(c) || c == ';' || c == ',';
 }
 
 const int number_of_comment_entry_keywords = 9;
@@ -31,7 +31,7 @@ char* any_content_keyword[] = {
     "procedure division",
 };
 
-bool start_with_word( TSLexer *lexer, char *words[], int number_of_words) {
+static bool start_with_word( TSLexer *lexer, char *words[], int number_of_words) {
     while(lexer->lookahead == ' ' || lexer->lookahead == '\t') {
         lexer->advance(lexer, true);
     }
@@ -76,7 +76,7 @@ bool start_with_word( TSLexer *lexer, char *words[], int number_of_words) {
         for(int i=0; i<number_of_words; ++i) {
             char k = *(keyword_pointer[i]);
             if(continue_check[i]) {
-                continue_check[i] = c == toupper(k) || c == tolower(k);
+                continue_check[i] = c == towupper(k) || c == towlower(k);
             }
             (keyword_pointer[i])++;
         }
