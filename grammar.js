@@ -26,8 +26,9 @@ module.exports = grammar({
     $._LINE_PREFIX_COMMENT,
     $._LINE_SUFFIX_COMMENT,
     $._LINE_COMMENT,
+    $._LINE_COMMENT_ALIAS,
     $.copy_statement,
-    $._comment,
+    $.comment,
   ],
 
   rules: {
@@ -38,7 +39,9 @@ module.exports = grammar({
       )
     ),
 
-    _comment: $ => /\*>[^\n]*/,
+    _LINE_COMMENT_ALIAS: $ => alias($._LINE_COMMENT, $.comment),
+
+    comment: $ => /\*>[^\n]*/,
 
     program_definition: $ => prec.right(seq(
       $.identification_division,
