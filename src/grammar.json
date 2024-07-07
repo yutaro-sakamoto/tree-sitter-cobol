@@ -14,7 +14,16 @@
         ]
       }
     },
-    "_comment": {
+    "_LINE_COMMENT_ALIAS": {
+      "type": "ALIAS",
+      "content": {
+        "type": "SYMBOL",
+        "name": "_LINE_COMMENT"
+      },
+      "named": true,
+      "value": "comment"
+    },
+    "comment": {
       "type": "PATTERN",
       "value": "\\*>[^\\n]*"
     },
@@ -19203,11 +19212,15 @@
     },
     {
       "type": "SYMBOL",
+      "name": "_LINE_COMMENT_ALIAS"
+    },
+    {
+      "type": "SYMBOL",
       "name": "copy_statement"
     },
     {
       "type": "SYMBOL",
-      "name": "_comment"
+      "name": "comment"
     }
   ],
   "conflicts": [],
@@ -19241,4 +19254,3 @@
   "inline": [],
   "supertypes": []
 }
-

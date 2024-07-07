@@ -14572,6 +14572,10 @@
     "named": false
   },
   {
+    "type": "comment",
+    "named": true
+  },
+  {
     "type": "comment_entry",
     "named": true
   },
