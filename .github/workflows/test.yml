@@ -5,9 +5,12 @@ on:
   pull_request:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  check-workflows:
+    uses: ./.github/workflows/check-workflows.yml
 
+  build:
+    needs: check-workflows
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js
