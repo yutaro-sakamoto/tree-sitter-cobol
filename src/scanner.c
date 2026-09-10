@@ -1,4 +1,5 @@
 #include <tree_sitter/parser.h>
+#include <stdlib.h>
 #include <wctype.h>
 
 enum TokenType {
@@ -8,10 +9,21 @@ enum TokenType {
     LINE_COMMENT,
     COMMENT_ENTRY,
     multiline_string,
+    EXEC_BLOCK,
 };
 
+// Wide mode: a preprocessor that converts free-format COBOL to fixed format
+// by left-padding every line 7 columns writes the sentinel "CGWIDE" into the
+// sequence area (columns 1-6) of the FIRST line. Free-format lines routinely
+// run past column 72, so when the sentinel is seen the fixed-format right
+// margin (column 73+ = ignored identification area) is pushed out of reach.
+// The one-byte flag is scanner state, carried through serialize/deserialize.
+#define CG_FIXED_WIDTH 72
+#define CG_WIDE_WIDTH 4096
+static const char CG_WIDE_SENTINEL[6] = {'C', 'G', 'W', 'I', 'D', 'E'};
+
 void *tree_sitter_COBOL_external_scanner_create() {
-    return NULL;
+    return calloc(1, 1);
 }
 
 static bool is_white_space(int c) {
@@ -31,7 +43,7 @@ char* any_content_keyword[] = {
     "procedure division",
 };
 
-static bool start_with_word( TSLexer *lexer, char *words[], int number_of_words) {
+static bool start_with_word( TSLexer *lexer, char *words[], int number_of_words, int width) {
     while(lexer->lookahead == ' ' || lexer->lookahead == '\t') {
         lexer->advance(lexer, true);
     }
@@ -45,7 +57,7 @@ static bool start_with_word( TSLexer *lexer, char *words[], int number_of_words)
 
     while(true) {
         // At the end of the line
-        if(lexer->get_column(lexer) > 71 || lexer->lookahead == '\n' || lexer->lookahead == 0) {
+        if(lexer->get_column(lexer) > width - 1 || lexer->lookahead == '\n' || lexer->lookahead == 0) {
             return false;
         }
 
@@ -58,7 +70,7 @@ static bool start_with_word( TSLexer *lexer, char *words[], int number_of_words)
         }
 
         if(all_match_failed) {
-            for(; lexer->get_column(lexer) < 71 && lexer->lookahead != '\n' && lexer->lookahead != 0;
+            for(; lexer->get_column(lexer) < width - 1 && lexer->lookahead != '\n' && lexer->lookahead != 0;
             lexer->advance(lexer, true)) {
             }
             return false;
@@ -94,6 +106,9 @@ bool tree_sitter_COBOL_external_scanner_scan(void *payload, TSLexer *lexer,
         return false;
     }
 
+    char *wide = (char *)payload;
+    const int width = (wide && *wide) ? CG_WIDE_WIDTH : CG_FIXED_WIDTH;
+
     if(valid_symbols[WHITE_SPACES]) {
         if(is_white_space(lexer->lookahead)) {
             while(is_white_space(lexer->lookahead)) {
@@ -106,8 +121,19 @@ bool tree_sitter_COBOL_external_scanner_scan(void *payload, TSLexer *lexer,
     }
 
     if(valid_symbols[LINE_PREFIX_COMMENT] && lexer->get_column(lexer) <= 5) {
+        // The sequence area is ignored content — but the free-format
+        // preprocessor plants the CGWIDE sentinel here on the first line.
+        int match = 0;
         while(lexer->get_column(lexer) <= 5) {
+            if(match >= 0 && match < 6 && lexer->lookahead == CG_WIDE_SENTINEL[match]) {
+                match++;
+            } else {
+                match = -1;
+            }
             lexer->advance(lexer, true);
+        }
+        if(match == 6 && wide) {
+            *wide = 1;
         }
         lexer->result_symbol = LINE_PREFIX_COMMENT;
         lexer->mark_end(lexer);
@@ -132,7 +158,7 @@ bool tree_sitter_COBOL_external_scanner_scan(void *payload, TSLexer *lexer,
     }
 
     if(valid_symbols[LINE_SUFFIX_COMMENT]) {
-        if(lexer->get_column(lexer) >= 72) {
+        if(lexer->get_column(lexer) >= width) {
             while(lexer->lookahead != '\n' && lexer->lookahead != 0) {
                 lexer->advance(lexer, true);
             }
@@ -143,7 +169,7 @@ bool tree_sitter_COBOL_external_scanner_scan(void *payload, TSLexer *lexer,
     }
 
     if(valid_symbols[COMMENT_ENTRY]) {
-        if(!start_with_word(lexer, any_content_keyword, number_of_comment_entry_keywords)) {
+        if(!start_with_word(lexer, any_content_keyword, number_of_comment_entry_keywords, width)) {
             lexer->mark_end(lexer);
             lexer->result_symbol = COMMENT_ENTRY;
             return true;
@@ -152,18 +178,66 @@ bool tree_sitter_COBOL_external_scanner_scan(void *payload, TSLexer *lexer,
         }
     }
 
+    if(valid_symbols[EXEC_BLOCK]) {
+        // EXEC (CICS|SQL|DLI|...) ... END-EXEC embedded block. Match the word
+        // EXEC (case-insensitive) followed by whitespace, then consume through
+        // the next END-EXEC. On any mismatch return false so the internal
+        // lexer re-reads the same characters as an ordinary WORD.
+        if(lexer->lookahead == 'e' || lexer->lookahead == 'E') {
+            const char *kw = "exec";
+            int ki = 0;
+            while(ki < 4 && (lexer->lookahead == towupper(kw[ki]) || lexer->lookahead == towlower(kw[ki]))) {
+                lexer->advance(lexer, false);
+                ki++;
+            }
+            if(ki == 4 && (lexer->lookahead == ' ' || lexer->lookahead == '\t' ||
+                           lexer->lookahead == '\n' || lexer->lookahead == '\r')) {
+                char ring[8] = {0,0,0,0,0,0,0,0};
+                while(lexer->lookahead != 0) {
+                    for(int i = 0; i < 7; ++i) ring[i] = ring[i+1];
+                    ring[7] = (char)towlower(lexer->lookahead);
+                    lexer->advance(lexer, false);
+                    if(ring[0]=='e' && ring[1]=='n' && ring[2]=='d' && ring[3]=='-' &&
+                       ring[4]=='e' && ring[5]=='x' && ring[6]=='e' && ring[7]=='c') {
+                        lexer->result_symbol = EXEC_BLOCK;
+                        lexer->mark_end(lexer);
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+    }
+
     if(valid_symbols[multiline_string]) {
+        int quote = lexer->lookahead;
+        if(quote != '"' && quote != '\'') {
+            return false;
+        }
         while(true) {
-            if(lexer->lookahead != '"') {
+            if(lexer->lookahead != quote) {
                 return false;
             }
             lexer->advance(lexer, false);
-            while(lexer->lookahead != '"' && lexer->lookahead != 0 && lexer->get_column(lexer) < 72) {
+            bool closed = false;
+            while(true) {
+                while(lexer->lookahead != quote && lexer->lookahead != 0 && lexer->get_column(lexer) < width) {
+                    lexer->advance(lexer, false);
+                }
+                if(lexer->lookahead != quote) {
+                    break;
+                }
                 lexer->advance(lexer, false);
+                if(lexer->lookahead == quote) {
+                    // doubled quote = escaped quote inside the literal
+                    lexer->advance(lexer, false);
+                    continue;
+                }
+                closed = true;
+                break;
             }
-            if(lexer->lookahead == '"') {
+            if(closed) {
                 lexer->result_symbol = multiline_string;
-                lexer->advance(lexer, false);
                 lexer->mark_end(lexer);
                 return true;
             }
@@ -187,7 +261,7 @@ bool tree_sitter_COBOL_external_scanner_scan(void *payload, TSLexer *lexer,
             }
 
             lexer->advance(lexer, true);
-            while(lexer->lookahead == ' ' && lexer->get_column(lexer) < 72) {
+            while(lexer->lookahead == ' ' && lexer->get_column(lexer) < width) {
                 lexer->advance(lexer, true);
             }
         }
@@ -197,11 +271,19 @@ bool tree_sitter_COBOL_external_scanner_scan(void *payload, TSLexer *lexer,
 }
 
 unsigned tree_sitter_COBOL_external_scanner_serialize(void *payload, char *buffer) {
+    if(payload && buffer) {
+        buffer[0] = *(char *)payload;
+        return 1;
+    }
     return 0;
 }
 
 void tree_sitter_COBOL_external_scanner_deserialize(void *payload, const char *buffer, unsigned length) {
+    if(payload) {
+        *(char *)payload = (buffer && length >= 1) ? buffer[0] : 0;
+    }
 }
 
 void tree_sitter_COBOL_external_scanner_destroy(void *payload) {
+    free(payload);
 }

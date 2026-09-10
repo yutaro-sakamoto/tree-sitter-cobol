@@ -19,6 +19,7 @@ module.exports = grammar({
     $._LINE_COMMENT,
     $.comment_entry,
     $._multiline_string,
+    $._exec_block,
   ],
 
   extras: $ => [
@@ -29,19 +30,29 @@ module.exports = grammar({
     $._LINE_COMMENT_ALIAS,
     $.copy_statement,
     $.comment,
+    $.directive,
   ],
 
   rules: {
-    start: $ => repeat(
-      choice(
-        $.program_definition,
-        //optional($.function_definition) //todo
-      )
+    start: $ => optional(choice(
+      repeat1($.program_definition),
+      $.copybook_fragment,
+      //optional($.function_definition) //todo
+    )),
+
+    // A standalone copybook (.cpy): data descriptions or procedure code
+    // without a program header.
+    copybook_fragment: $ => choice(
+      $.record_description_list,
+      $._procedure_division_contenet
     ),
 
     _LINE_COMMENT_ALIAS: $ => alias($._LINE_COMMENT, $.comment),
 
     comment: $ => /\*>[^\n]*/,
+
+    // GnuCOBOL / COBOL-2002 compiler directives: >>SOURCE, >>IF, >>DEFINE, ...
+    directive: $ => />>[^\n]*/,
 
     program_definition: $ => prec.right(seq(
       $.identification_division,
@@ -60,7 +71,8 @@ module.exports = grammar({
           optional(choice(
             $.as_literal,
             $.is_initial,
-            $.is_common)),
+            $.is_common,
+            $.is_recursive)),
           '.')),
       repeat(choice(
         $.author_section,
@@ -90,6 +102,11 @@ module.exports = grammar({
       $._COMMON
     ),
 
+    is_recursive: $ => seq(
+      optional($._IS),
+      $._RECURSIVE
+    ),
+
     author_section: $ => seq(
       $._AUTHOR, '.',
       field('comment', repeat1($.comment_entry)),
@@ -102,17 +119,17 @@ module.exports = grammar({
 
     date_written_section: $ => seq(
       $._DATE_WRITTEN, '.',
-      field('comment', repeat1($.comment_entry)),
+      field('comment', repeat($.comment_entry)),
     ),
 
     date_compiled_section: $ => seq(
       $._DATE_COMPILED, '.',
-      field('comment', repeat1($.comment_entry)),
+      field('comment', repeat($.comment_entry)),
     ),
 
     security_section: $ => seq(
       $._SECURITY, '.',
-      field('comment', repeat1($.comment_entry)),
+      field('comment', repeat($.comment_entry)),
     ),
 
     function_definition: $ => seq(
@@ -734,7 +751,7 @@ module.exports = grammar({
     file_description: $ => seq(
       $.file_type,
       $.file_description_entry,
-      $.record_description_list
+      optional($.record_description_list)
     ),
 
     file_type: $ => choice(
@@ -870,12 +887,12 @@ module.exports = grammar({
     ),
 
     record_description_list: $ => seq(
-      repeat1(seq($.data_description, repeat1('.')))
+      repeat1(choice(seq($.data_description, repeat1('.')), prec(1, seq($.exec_statement, optional('.')))))
     ),
 
     working_storage_section: $ => seq(
       $._WORKING_STORAGE, $._SECTION, '.',
-      repeat(seq($.data_description, repeat1('.')))
+      repeat(choice(seq($.data_description, repeat1('.')), seq($.exec_statement, optional('.'))))
     ),
 
     data_description: $ => choice(
@@ -1070,7 +1087,7 @@ module.exports = grammar({
       $.picture_edit,
     ),
 
-    picture_x: $ => /([xX](\([0-9]+\))?)+/,
+    picture_x: $ => /([xX](\(([0-9]+|[a-zA-Z][a-zA-Z0-9-]*)\))?)+/,
 
     picture_n: $ => /([nN](\([0-9]+\))?)+/,
 
@@ -1119,6 +1136,11 @@ module.exports = grammar({
       seq($.BINARY_SHORT, $.SIGNED),
       seq($.BINARY_SHORT, $.UNSIGNED),
       $.BINARY_SHORT,
+      seq($.BINARY_LONG_LONG, $.SIGNED),
+      seq($.BINARY_LONG_LONG, $.UNSIGNED),
+      $.BINARY_LONG_LONG,
+      $.FLOAT_LONG,
+      $.FLOAT_SHORT,
       seq($.BINARY_LONG, $.SIGNED),
       seq($.BINARY_LONG, $.UNSIGNED),
       $.BINARY_LONG,
@@ -1197,7 +1219,7 @@ module.exports = grammar({
     )),
 
     value_item: $ => seq(
-      $._literal,
+      choice($._literal, $.qualified_word),
       optional(seq(
         $.THRU,
         $._literal
@@ -1227,7 +1249,7 @@ module.exports = grammar({
 
     linkage_section: $ => seq(
       $._LINKAGE, $._SECTION, '.',
-      $.record_description_list
+      optional($.record_description_list)
     ),
 
     report_section: $ => /report_section/,
@@ -1357,6 +1379,19 @@ module.exports = grammar({
       '.'
     ),
 
+    exec_statement: $ => $._exec_block,
+
+    free_statement: $ => prec.right(seq(
+      $._FREE,
+      repeat1($._target_x)
+    )),
+
+    entry_statement: $ => prec.right(seq(
+      $._ENTRY,
+      field('name', $.string),
+      optional(seq($._USING, repeat1($._call_param)))
+    )),
+
     end_program: $ => prec(1, seq(
       $._END_PROGRAM,
       $.program_name,
@@ -1364,6 +1399,9 @@ module.exports = grammar({
     )),
 
     _statement: $ => choice(
+      $.exec_statement,
+      $.entry_statement,
+      $.free_statement,
       $.accept_statement,
       $.add_statement,
       $.allocate_statement,
@@ -1465,11 +1503,18 @@ module.exports = grammar({
     ),
 
     replacing_clause: $ => seq(
-      field('leading_or_trailing', optional(choice($.LEADING, $.TRAILING))),
-      field('x', choice($.WORD, $.string)),
-      optional($._BY),
-      field('by', choice($.WORD, $.string)),
+      $._REPLACING,
+      repeat1($.replacing_pair)
     ),
+
+    replacing_pair: $ => seq(
+      field('leading_or_trailing', optional(choice($.LEADING, $.TRAILING))),
+      field('x', choice($.pseudo_text, $.WORD, $.string)),
+      $._BY,
+      field('by', choice($.pseudo_text, $.WORD, $.string)),
+    ),
+
+    pseudo_text: $ => /==([^=\n]|=[^=\n])*==/,
 
     start_statement: $ => seq(
       $._START,
@@ -1670,9 +1715,9 @@ module.exports = grammar({
         repeat1($._call_param)
       ))),
       optional(choice(
-        field('returning', seq($._RETURNING, $._identifier),
-          field('giving', seq($._GIVING, $._identifier)),
-        )))
+        field('returning', seq($._RETURNING, $._identifier)),
+        field('giving', seq($._GIVING, $._identifier))
+      ))
     ),
 
     _call_param: $ => choice(
@@ -1902,6 +1947,7 @@ module.exports = grammar({
 
     _evaluate_object: $ => choice(
       $.expr,
+      prec.right(seq(choice('=', '>', '<', '>=', '<=', $._NOT_EQUAL), $.expr)),
       $.ANY,
       $.TRUE,
       $.FALSE
@@ -1951,6 +1997,10 @@ module.exports = grammar({
     expr: $ => prec.left(choice(
       seq($.NOT, $.expr),
       seq($.expr, choice($.AND, $.OR), $.expr),
+      // Abbreviated combined relation: `X < 0 OR > Y` — the subject of the
+      // second comparison is implied. (The AND_LT/OR_GT combined tokens the
+      // grammar carries for this never win against keyword lexing.)
+      seq($.expr, choice($.AND, $.OR), $._comparator, $._expr_calc),
       $._expr_bool,
       seq("(", $.expr, ")")
     )),
@@ -1965,6 +2015,11 @@ module.exports = grammar({
     )),
 
     _expr_calc_binary: $ => choice(
+      prec.left(1, seq($._expr_calc, $.B_AND, $._expr_calc)),
+      prec.left(1, seq($._expr_calc, $.B_OR, $._expr_calc)),
+      prec.left(1, seq($._expr_calc, $.B_XOR, $._expr_calc)),
+      prec.left(1, seq($._expr_calc, $.B_SHIFT_L, $._expr_calc)),
+      prec.left(1, seq($._expr_calc, $.B_SHIFT_R, $._expr_calc)),
       prec.left(1, seq($._expr_calc, '+', $._expr_calc)),
       prec.left(1, seq($._expr_calc, '-', $._expr_calc)),
       prec.left(2, seq($._expr_calc, '**', $._expr_calc)),
@@ -1974,6 +2029,7 @@ module.exports = grammar({
     ),
 
     _expr_calc_unary: $ => prec(4, choice(
+      seq($.B_NOT, $._expr_calc),
       seq('+', $._expr_calc),
       seq('-', $._expr_calc),
       seq('^', $._expr_calc),
@@ -2753,7 +2809,7 @@ module.exports = grammar({
       seq($.TRIM_FUNCTION, '(', $._trim_args, ')', optional($.func_refmod)),
       seq($.NUMVALC_FUNC, '(', $._numvalc_args, ')'),
       seq($.LOCALE_DT_FUNC, '(', $._locale_dt_args, ')', optional($.func_refmod)),
-      seq($.WORD, optional($.func_args)),
+      seq($.WORD, optional($.func_args), optional($.func_refmod)),
     ))),
 
     func_refmod: $ => choice(
@@ -2868,6 +2924,16 @@ module.exports = grammar({
     _BINARY_CHAR: $ => /[bB][iI][nN][aA][rR][yY]-[cC][hH][aA][rR]/,
     _BINARY_DOUBLE: $ => /[bB][iI][nN][aA][rR][yY]-[dD][oO][uU][bB][lL][eE]/,
     _BINARY_LONG: $ => /[bB][iI][nN][aA][rR][yY]-[lL][oO][nN][gG]/,
+    _BINARY_LONG_LONG: $ => /[bB][iI][nN][aA][rR][yY]-[lL][oO][nN][gG]-[lL][oO][nN][gG]/,
+    _FREE: $ => /[fF][rR][eE][eE]/,
+    B_AND: $ => /[bB]-[aA][nN][dD]/,
+    B_OR: $ => /[bB]-[oO][rR]/,
+    B_XOR: $ => /[bB]-[xX][oO][rR]/,
+    B_NOT: $ => /[bB]-[nN][oO][tT]/,
+    B_SHIFT_L: $ => /[bB]-[sS][hH][iI][fF][tT]-[lL][cC]?/,
+    B_SHIFT_R: $ => /[bB]-[sS][hH][iI][fF][tT]-[rR][cC]?/,
+    _FLOAT_LONG: $ => /[fF][lL][oO][aA][tT]-[lL][oO][nN][gG]/,
+    _FLOAT_SHORT: $ => /[fF][lL][oO][aA][tT]-[sS][hH][oO][rR][tT]/,
     _BINARY_SHORT: $ => /[bB][iI][nN][aA][rR][yY]-[sS][hH][oO][rR][tT]/,
     _BLANK: $ => /[bB][lL][aA][nN][kK]/,
     _BLANK_LINE: $ => /[bB][lL][aA][nN][kK]-[lL][iI][nN][eE]/,
@@ -3335,6 +3401,9 @@ module.exports = grammar({
     BINARY_CHAR: $ => $._BINARY_CHAR,
     BINARY_DOUBLE: $ => $._BINARY_DOUBLE,
     BINARY_LONG: $ => $._BINARY_LONG,
+    BINARY_LONG_LONG: $ => $._BINARY_LONG_LONG,
+    FLOAT_LONG: $ => $._FLOAT_LONG,
+    FLOAT_SHORT: $ => $._FLOAT_SHORT,
     BINARY_SHORT: $ => $._BINARY_SHORT,
     //BLANK: $ => $._BLANK,
     BLANK_LINE: $ => $._BLANK_LINE,
@@ -3754,7 +3823,7 @@ module.exports = grammar({
 
     COMPUTATIONAL: $ => $._COMPUTATIONAL,
     _COMPUTATIONAL: $ => /[cC][oO][mM][pP][uU][tT][aA][tT][iI][oO][nN][aA][lL]/,
-    _NOT_EQUAL: $ => /(!=)|([nN][oO][tT][ \t]+(([eE][qQ][uU][aA][lL])|=))/,
+    _NOT_EQUAL: $ => /(!=)|([nN][oO][tT]([ \t]+[eE][qQ][uU][aA][lL]|[ \t]*=))/,
     _NOT_LESS: $ => /([nN][oO][tT][ \t]+(<|[lL][eE][sS][sS]))/,
     _NOT_GREATER: $ => /([nN][oO][tT][ \t]+(>|[gG][rR][eE][aA][tT][eE][rR]))/,
 
