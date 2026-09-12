@@ -9,3 +9,15 @@ aaaaaa program-id. a.  ,,, ;;;                                          aaaaa
   (program_definition
     (identification_division
       (program_name))))
+
+====================================
+comment: sequence area truncated at end of file
+====================================
+aaaaaa identification division.
+aaaaaa program-id. a.
+aaa
+---
+(start
+  (program_definition
+    (identification_division
+      (program_name))))
