@@ -32,11 +32,10 @@ module.exports = grammar({
   ],
 
   rules: {
-    start: $ => repeat(
-      choice(
-        $.program_definition,
-        //optional($.function_definition) //todo
-      )
+    start: $ => choice(
+      $.program_definition,
+      $.copybook_definition
+      //optional($.function_definition) //todo
     ),
 
     _LINE_COMMENT_ALIAS: $ => alias($._LINE_COMMENT, $.comment),
@@ -51,6 +50,10 @@ module.exports = grammar({
       repeat($.end_program), //todo
       //optional($.LINE_PREFIX_COMMENT),
     )),
+
+    copybook_definition: $ => repeat1(
+      seq($.data_description, repeat1('.'))
+    ),
 
     identification_division: $ => seq(
       $._IDENTIFICATION, $._DIVISION, '.',
