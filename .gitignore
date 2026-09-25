@@ -37,3 +37,8 @@ dsl.d.ts
 
 test/cobol85/result/
 test/cobol85/summary.txt
+
+# CMake artifacts
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake

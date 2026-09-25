@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-cobol",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "COBOL grammar for tree-sitter",
   "main": "bindings/node",
   "scripts": {
