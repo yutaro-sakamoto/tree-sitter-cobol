@@ -72,13 +72,15 @@ static bool start_with_word( TSLexer *lexer, char *words[], int number_of_words)
             }
         }
 
-        // matching keywords
+        // Keep stopped keyword pointers within their string literals.
         for(int i=0; i<number_of_words; ++i) {
-            char k = *(keyword_pointer[i]);
             if(continue_check[i]) {
+                char k = *(keyword_pointer[i]);
                 continue_check[i] = c == towupper(k) || c == towlower(k);
+                if(continue_check[i]) {
+                    keyword_pointer[i]++;
+                }
             }
-            (keyword_pointer[i])++;
         }
 
         // next character
