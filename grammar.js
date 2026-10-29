@@ -2725,7 +2725,14 @@ module.exports = grammar({
       $.EXECUTE,
     ),
 
-    execute_body: $ => repeat1($.WORD),
+    execute_body: $ => repeat1(
+      choice(
+        /[a-zA-Z0-9_]+/,   // Words
+        /:[a-zA-Z0-9_-]+/, // Host variables
+        /\s+/,             // Whitespace
+        /./                // Any other character
+      )
+    ),
 
     execute_end: $ => choice(
       $.END_EXECUTE,

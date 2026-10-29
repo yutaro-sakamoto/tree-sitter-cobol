@@ -1,0 +1,67 @@
+====================================
+exec sql
+====================================
+       identification division.
+       program-id. a.
+       procedure division.
+           EXEC SQL
+             SELECT NAME INTO :WS-NAME FROM EMP WHERE ID = 1
+           END-EXEC.
+---
+
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (procedure_division
+      (execute_statement
+        (execute_header
+          (EXEC))
+        (execute_body)
+        (execute_end
+          (END_EXEC)))
+      (period))))
+
+====================================
+exec cics lower case
+====================================
+       identification division.
+       program-id. a.
+       procedure division.
+           exec cics return end-exec.
+---
+
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (procedure_division
+      (execute_statement
+        (execute_header
+          (EXEC))
+        (execute_body)
+        (execute_end
+          (END_EXEC)))
+      (period))))
+
+====================================
+execute end-execute
+====================================
+       identification division.
+       program-id. a.
+       procedure division.
+           EXECUTE SQL COMMIT END-EXECUTE.
+---
+
+(start
+  (program_definition
+    (identification_division
+      (program_name))
+    (procedure_division
+      (execute_statement
+        (execute_header
+          (EXECUTE))
+        (execute_body)
+        (execute_end
+          (END_EXECUTE)))
+      (period))))
